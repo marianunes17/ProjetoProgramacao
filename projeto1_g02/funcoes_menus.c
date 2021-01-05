@@ -67,7 +67,7 @@ char submenuAulas(){
 
 
 
-void subMenuUc(tipoUc vetorUc[], int numUc){
+char subMenuUc(tipoUc vetorUc[], int numUc){
     char op;
     int codigoUC, numUcs=0;
        do{
@@ -83,44 +83,7 @@ void subMenuUc(tipoUc vetorUc[], int numUc){
     scanf("%c", &op);
     limpaBufferStdin();
     op = toupper(op);
-
-
-            switch(op){
-                case 'L':
-                        printf("Escolheu a opção: L \n");
-                        leFicheiroUcBinario(vetorUc, &numUc);
-                        printf("Total de UC: %d", numUc);
-                        listaDadosUc(vetorUc, numUc);
-                        break;
-                case 'I':
-                        printf("Escolheu a opção: I \n");
-                        acrescentaUc(vetorUc, &numUc);
-                        gravarUcBinario(vetorUc, numUc);
-                        gravarUcTexto(vetorUc, numUc);
-                        numUcs++;
-                        break;
-                case 'P':
-                        printf("Insira um código: ");
-                        scanf("%d", &codigoUC);
-                        procuraUc(vetorUc, numUc, codigoUC);
-                        break;
-                case 'E':
-                        printf("Escolheu a opção: E \n");
-                        eliminarDoVetor(vetorUc, &numUc);
-                        gravarUcBinario(vetorUc, numUc);
-                        gravarUcTexto(vetorUc, numUc);
-                        break;
-                case 'M':
-                        printf("Escolheu a opção: M \n");
-                        break;
-                case 'V':
-                        menu(numUc);
-                        break;
-
-                default: printf("\nOpcao inválida");
-            }
-        }while(op!='V');
-        //return op;
+    }while(op!='V');
 }
 
 

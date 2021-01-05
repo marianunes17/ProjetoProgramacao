@@ -17,18 +17,19 @@ tipoAula lerDadosAula(){
     return aula;
 }
 
+/*
 int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
     int i, pos;
     pos = -1;
 
     for (i=0; i<num; i++){
-        if (strcmp(vAula[i].designacao, procAula) == 0){  /* Elemento encontrado */
-            pos = i;       /* guarda posição de numero em vAula */
-            i = num;    /* para concluir pesquisa (sair do for) */
+        if (strcmp(vAula[i].designacao, procAula) == 0){  // Elemento encontrado
+            pos = i;       // guarda posição de numero em vAula
+            i = num;    // para concluir pesquisa (sair do for)
         }
     }
     return pos;
-}
+}*/
 
 
 //tipoAula *acrescentaAula(tipoAula vAula[], int *num)

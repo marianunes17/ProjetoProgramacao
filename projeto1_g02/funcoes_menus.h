@@ -3,8 +3,9 @@
 
 #include "constantes.h"
 
-char menu(int numUc);
-void subMenuAulas();
-void subMenuUc(tipoUc vetorUc[], int numUc);
+char menu();
+char menuAulas();
+//char menuAulas(tipoUc vetorUc[], int numUc);
+char subMenuUc();
 
 #endif // FUNCOES_MENUS_H_INCLUDED

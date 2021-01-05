@@ -19,7 +19,7 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
-    int numUc=0, numAula=0, codigoUc;
+    int numUc=0, numAula=0, codigoUc,p;
     char opcao,opSubmenu, opSubmenu2, designacao, opcaoSubMenuUc;
 
    // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
@@ -27,16 +27,16 @@ int main(){
 
 
      do{
-        opcao = menu();
+        opcao = menu(numUc);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
-                    opcaoSubMenuUc=subMenuUc();
+                    opcaoSubMenuUc=subMenuUc(vetorUc);
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
                                 printf("Escolheu a opção: L \n");
                                 leFicheiroUcBinario(vetorUc, &numUc);
-                                printf("Total de UC: %d", numUc);
+                                printf("Total de UC: %d\n", numUc);
                                 listaDadosUc(vetorUc, numUc);
                                 break;
                         case 'I': //Inserir nova UC
@@ -47,9 +47,15 @@ int main(){
                                 numUc++;
                                 break;
                         case 'P': //Procurar UC
-                                printf("Insira um código: ");
-                                scanf("%d", &codigoUc);
-                                procuraUc(vetorUc, numUc, codigoUc);
+                                codigoUc = lerInteiro("Insira um código: ",1,100);
+
+                                p=procuraUc(vetorUc, numUc, codigoUc);
+
+                                if(p==-1){
+                                    printf("O código não existe");
+                                } else{
+                                listaDadosUc(vetorUc, numUc);
+                                }
                                 break;
                         case 'E': //Eliminar UC
                                 printf("Escolheu a opção: E \n");
@@ -68,8 +74,8 @@ int main(){
                     }
                 }while(opcaoSubMenuUc!='V');
 
-            break;
-            case 'A':
+                break;
+          /*  case 'A':
                 do{
                 opSubmenu = menuAulas();
                 switch(opSubmenu){
@@ -120,23 +126,23 @@ int main(){
             case 'S':   printf("Escolheu a opção S");
             break;
             case 'F':
-            break;
+            break; */
+
+            case 'V':
+                    printf("Escolheu a opção R");
+                    break;
+            case 'F':
+                    printf("Escolheu a opção F \n Fim do Programa");
+                    break;
             default:
                 printf("\nOpcao invalida");
-        }
+       }
     }while(opcao!='F');
-
+/*
     gravaFicheiroBin(vAulas,numAula); //grava os elementos antes de sair do programa
 
     free(vAulas);  // Liberta memoria do vetor dinamico
-
-
-
-    */
-    /* ------------ FIm Menu NOVO !!!! ----------- */
-
-
-
+*/
 
     return 0;
 }

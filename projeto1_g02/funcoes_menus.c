@@ -53,7 +53,7 @@ char menuAulas(){
     return opcao;
 }
 
-char submenuAulas(){
+char submenuAulas(tipoUc vetorUc[]){
     char opcao;
     printf("\n\n ****------------**** Modificar Aula ****------------****");
     printf("\n E - Eliminar Aula \n A - Alterar Agendamento");
@@ -67,10 +67,10 @@ char submenuAulas(){
 
 
 
-char subMenuUc(tipoUc vetorUc[], int numUc){
-    char op;
+char subMenuUc(tipoUc vetorUc[]){
+    char opcao;
     int codigoUC, numUcs=0;
-       do{
+
     printf("\n\n ----------------- Menu de Unidades Curriculares -----------------");
     printf("\n L - Listar UC's");
     printf("\n I - Inserir UC");
@@ -80,10 +80,10 @@ char subMenuUc(tipoUc vetorUc[], int numUc){
     printf("\n V - Voltar\n");
     printf("\n Insira Opção ->");
 
-    scanf("%c", &op);
+    scanf("%c", &opcao);
     limpaBufferStdin();
-    op = toupper(op);
-    }while(op!='V');
+    opcao = toupper(opcao);
+    return opcao;
 }
 
 

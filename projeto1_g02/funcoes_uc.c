@@ -10,9 +10,9 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n Código: %d\n", vetorUc.codigo);
     printf(" Designação: %s\n", vetorUc.designacao);
     printf(" Tipo (T, TP ou PL): %s\n", vetorUc.tipo);
-    printf(" Semestre: %s\n", vetorUc.semestre);
+    printf(" Semestre: %d\n", vetorUc.semestre);
     printf(" Regime (D,PL): %s\n", vetorUc.regime);
-    printf(" Duração de cada aula(em minutos): %s\n", vetorUc.duracao);
+    printf(" Duração de cada aula(em minutos): %.2f\n", vetorUc.duracao);
 }
 
 
@@ -25,10 +25,16 @@ tipoUc leDadosUc(void){
     do{
         lerString("Tipo (T, TP ou PL): ", vetorUc.tipo,3);
     } while( strcmp(vetorUc.tipo, "T") && strcmp(vetorUc.tipo, "t") && strcmp(vetorUc.tipo, "TP") && strcmp(vetorUc.tipo, "tp") && strcmp(vetorUc.tipo, "PL") && strcmp(vetorUc.tipo, "pl"));
+    //strcmp - Compara se o a string tipo é igual a T/PL/TP
 
     vetorUc.semestre = lerInteiro("Semestre: ",1,6);
-    lerString("Regime (D,PL): ", vetorUc.regime,3);
-    lerFloat("Duração de cada aula(em minutos): ", vetorUc.duracao, 0.60);
+
+    do{
+        lerString("Regime (D,PL): ", vetorUc.regime,3);
+    } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
+
+
+    vetorUc.duracao = lerFloat("Duração de cada aula(em minutos): ", vetorUc.duracao, 0.60);
 
     return vetorUc;
 }
@@ -46,7 +52,7 @@ void listaDadosUc(tipoUc vetorUc[MAX_UC], int numUc){
     }
 }
 
-int procuraUc(tipoUc vetorUc[MAX_UC], int numUc, int codigoUC){
+int procuraUc(tipoUc vetorUc[], int numUc, int codigoUC){
     int i, posicao;
     posicao = -1;
 
@@ -67,14 +73,14 @@ int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc){
         printf("Impossível acrescentar");
     }
     else {
-        dados=leDadosUc(); //ou leDadosFuncAlt(&dados);
+        dados=leDadosUc();
         posicao=procuraUc(vetorUc,*numUc,dados.codigo);
 
-        if(posicao != -1){
+        if(posicao != -1){ //Se o codigo da Uc ja existir escreve:
             printf("Unidade Curricular já existente");
         }
-        else {
-            vetorUc[*numUc]= dados;
+        else { //Se nao existir vai adicionar mais 1
+            vetorUc[*numUc]=dados;
             (*numUc)++;
         }
     }
@@ -95,9 +101,9 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
                 fprintf(ficheiro, "\n %d", vetorUc[i].codigo);
                 fprintf(ficheiro, "\n %s", vetorUc[i].designacao);
                 fprintf(ficheiro, "\n %s", vetorUc[i].tipo);
-                fprintf(ficheiro, "\n %s", vetorUc[i].semestre);
+                fprintf(ficheiro, "\n %d", vetorUc[i].semestre);
                 fprintf(ficheiro, "\n %s", vetorUc[i].regime);
-                fprintf(ficheiro, "\n %s", vetorUc[i].duracao);
+                fprintf(ficheiro, "\n %f", vetorUc[i].duracao);
             }
             fclose(ficheiro);
         }
@@ -132,7 +138,7 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numUc){
                 fgets(vetorUc[i].tipo,2,ficheiro);
                 fscanf(ficheiro, "%d", vetorUc[i].semestre);
                 fgets(vetorUc[i].regime,2,ficheiro);
-                fscanf(ficheiro, "%d", vetorUc[i].duracao);
+                fscanf(ficheiro, "%f", vetorUc[i].duracao);
             }
             fclose(ficheiro);
         }

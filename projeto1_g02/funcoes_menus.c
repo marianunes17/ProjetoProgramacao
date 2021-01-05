@@ -7,10 +7,10 @@
 #include "funcoes_menus.h"
 #include "funcoes_auxiliares.h"
 #include "funcoes_uc.h"
+#include "funcoes_aulas.h"
 
 
 
-//não sei se funciona a 100% !!!!
 
 char menu(int numUc){
     char opcao;
@@ -28,32 +28,40 @@ char menu(int numUc){
     return opcao;
 }
 
-void subMenuAulas(){
-    char op;
+/*
+char menu(){
+    char opcao;
+    printf("\n\n************************ Menu Principal ************************");
+    printf("\nQuantidade de UC's: **** \tQnt. aulas agendadas: ** horas  \nQnt. aulas realizadas: **** \tQnt. aulas gravadas: ****\n");
+    printf("\n U - Unidades Curriculares\n A - Aulas online\n R - Raking\n E - Estatística");
+    printf("\n S - Salas de Aula online\n F - Fim/Sair\n\n Insira Opção ->");
+    scanf("%c", &opcao);
+    limpaBufferStdin();
+    opcao = toupper(opcao);
+    return opcao;
+}*/
 
-    do{
+
+char menuAulas(){
+    char opcao;
     printf("\n\n ----------------- Menu das Aulas Online -----------------");
     printf("\n L - Listar Aulas\n A - Agendar Aula\n M - Modificar Aula");
     printf("\n V - Voltar\n\n Insira Opção ->");
-    scanf("%c", &op);
+    scanf(" %c", &opcao);
     limpaBufferStdin();
-    op = toupper(op);
+    opcao = toupper(opcao);
+    return opcao;
+}
 
-
-            //op = menu();
-            switch(op){
-                case 'L':   printf("Escolheu a opção L");
-                break;
-                case 'A':   printf("Escolheu a opção A");
-                break;
-                case 'M':   printf("Escolheu a opção M");
-                break;
-                case 'V':
-                break;
-                default: printf("\nOpcao inválida");
-            }
-        }while(op!='V');
-        //return op;
+char submenuAulas(){
+    char opcao;
+    printf("\n\n ****------------**** Modificar Aula ****------------****");
+    printf("\n E - Eliminar Aula \n A - Alterar Agendamento");
+    printf("\n V - Voltar\n\n Insira Opção ->");
+    scanf(" %c", &opcao);
+    limpaBufferStdin();
+    opcao = toupper(opcao);
+    return opcao;
 }
 
 

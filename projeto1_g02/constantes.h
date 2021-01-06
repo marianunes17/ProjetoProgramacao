@@ -6,6 +6,7 @@
 #define MAX_STRING 100
 #define MAX_CODIGO 7
 #define MAX_AULAS 50
+#define HORAS_SEGUNDOS 0.60
 
 typedef struct{
     int dia, mes, ano;

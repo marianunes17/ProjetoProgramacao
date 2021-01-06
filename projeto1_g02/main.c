@@ -10,8 +10,6 @@
 #include "funcoes_menus.h"
 
 
-
-
 int main(){
     setlocale(LC_ALL, "");     // Texto com acentos
 
@@ -19,15 +17,14 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
-    int numUc=0, numAula=0, codigoUc,p;
+    int numUc=0, numAula=0, codigoUc,posicao;
     char opcao,opSubmenu, opSubmenu2, designacao, opcaoSubMenuUc;
 
    // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
 
 
-
      do{
-        opcao = menu(numUc);
+        opcao = menu(vetorUc, numUc);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
@@ -36,38 +33,72 @@ int main(){
                         case 'L': //Listar UC
                                 printf("Escolheu a opção: L \n");
                                 leFicheiroUcBinario(vetorUc, &numUc);
-                                printf("Total de UC: %d\n", numUc);
+                                printf("\n\nLista de Unidades Curriculares:");
+                                printf("\nTotal de UC: %d\n", numUc);
                                 listaDadosUc(vetorUc, numUc);
                                 break;
+
                         case 'I': //Inserir nova UC
                                 printf("Escolheu a opção: I \n");
-                                acrescentaUc(vetorUc, &numUc);
+                                leFicheiroUcBinario(vetorUc, &numUc);
+                                do{ //Verifica se o codigo inserido já existe
+                                    codigoUc=lerInteiro("Codigo: ",1000,2000);;
+                                    posicao=procuraUc(vetorUc, numUc, codigoUc);
+
+                                    if(posicao==-1){
+                                        acrescentaUc(vetorUc, &numUc, codigoUc);
+                                    } else{
+                                        printf("O codigo já existe.");
+                                    }
+                                } while(posicao!=-1);
+
+
                                 gravarUcBinario(vetorUc, numUc);
                                 gravarUcTexto(vetorUc, numUc);
                                 numUc++;
                                 break;
+
                         case 'P': //Procurar UC
-                                codigoUc = lerInteiro("Insira um código: ",1,100);
+                                leFicheiroUcBinario(vetorUc, &numUc);
+                                codigoUc = lerInteiro("Insira um código: ",1000,2000);
 
-                                p=procuraUc(vetorUc, numUc, codigoUc);
+                                posicao=procuraUc(vetorUc, numUc, codigoUc);
 
-                                if(p==-1){
+                                if(posicao==-1){
                                     printf("O código não existe");
                                 } else{
-                                listaDadosUc(vetorUc, numUc);
+                                    listaDadosUc(vetorUc, numUc);
                                 }
                                 break;
+
                         case 'E': //Eliminar UC
                                 printf("Escolheu a opção: E \n");
                                 eliminarDoVetor(vetorUc, &numUc);
                                 gravarUcBinario(vetorUc, numUc);
                                 gravarUcTexto(vetorUc, numUc);
                                 break;
+
                         case 'M': //Modificar UC
                                 printf("Escolheu a opção: M \n");
+
+                                codigoUc = lerInteiro("Insira um código: ",1000,2000);
+                                posicao=procuraUc(vetorUc, numUc, codigoUc);
+                                if(posicao==-1){
+                                    printf("O código não existe");
+                                } else{
+                                alterarVetorUc(vetorUc);
+
+                                gravarUcBinario(vetorUc, numUc);
+                                gravarUcTexto(vetorUc, numUc);
+                                }
+
+
+
+
                                 break;
+
                         case 'V':
-                                menu(numUc);
+                                menu(vetorUc,numUc);
                                 break;
 
                         default: printf("\nOpcao inválida");

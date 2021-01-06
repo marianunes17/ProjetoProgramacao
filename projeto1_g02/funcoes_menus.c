@@ -12,8 +12,10 @@
 
 
 
-char menu(int numUc){
+char menu(tipoUc vetorUc[], int numUc){
     char opcao;
+    leFicheiroUcBinario(vetorUc, &numUc);
+
     printf("\n\n************************ Menu Principal ************************");
     printf("\nQuantidade de UC's: %d", numUc);
     printf("\tQnt. aulas agendadas: ** horas  ");

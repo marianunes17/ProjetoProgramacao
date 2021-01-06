@@ -7,19 +7,20 @@
 
 
 void escreveDadosUc(tipoUc vetorUc){
-    printf("\n Código: %d\n", vetorUc.codigo);
-    printf(" Designação: %s\n", vetorUc.designacao);
-    printf(" Tipo (T, TP ou PL): %s\n", vetorUc.tipo);
-    printf(" Semestre: %d\n", vetorUc.semestre);
-    printf(" Regime (D,PL): %s\n", vetorUc.regime);
-    printf(" Duração de cada aula(em minutos): %.2f\n", vetorUc.duracao);
+    printf("\n\tCódigo: %d", vetorUc.codigo);
+    printf("\n\tDesignação: %s", vetorUc.designacao);
+    printf("\n\tTipo (T, TP ou PL): %s", vetorUc.tipo);
+    printf("\n\tSemestre: %d", vetorUc.semestre);
+    printf("\n\tRegime (D,PL): %s", vetorUc.regime);
+    printf("\n\tDuração de cada aula(em minutos): %.2f \n", vetorUc.duracao);
 }
 
 
-tipoUc leDadosUc(void){
+tipoUc leDadosUc(int codigoUc){
     tipoUc vetorUc;
 
-    vetorUc.codigo = lerInteiro("Codigo: ",1,100);
+    vetorUc.codigo = codigoUc;
+
     lerString("Designacao: ", vetorUc.designacao,80);
 
     do{
@@ -65,7 +66,7 @@ int procuraUc(tipoUc vetorUc[], int numUc, int codigoUC){
     return posicao;
 }
 
-int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc){
+int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc, int codigoUc){
     tipoUc dados;
     int posicao;
 
@@ -73,7 +74,7 @@ int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc){
         printf("Impossível acrescentar");
     }
     else {
-        dados=leDadosUc();
+        dados=leDadosUc(codigoUc);
         posicao=procuraUc(vetorUc,*numUc,dados.codigo);
 
         if(posicao != -1){ //Se o codigo da Uc ja existir escreve:
@@ -91,7 +92,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
      FILE *ficheiro;
         int i;
 
-        ficheiro=fopen("infoUc.txt", "a");
+        ficheiro=fopen("infoUc.txt", "w");
         if(ficheiro==NULL){
             printf("Erro ao abrir o ficheiro");
         } else{
@@ -103,7 +104,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
                 fprintf(ficheiro, "\n %s", vetorUc[i].tipo);
                 fprintf(ficheiro, "\n %d", vetorUc[i].semestre);
                 fprintf(ficheiro, "\n %s", vetorUc[i].regime);
-                fprintf(ficheiro, "\n %f", vetorUc[i].duracao);
+                fprintf(ficheiro, "\n %.2f", vetorUc[i].duracao);
             }
             fclose(ficheiro);
         }
@@ -113,7 +114,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
 void gravarUcBinario(tipoUc vetorUc[], int numUc){
      FILE *ficheiro;
 
-        ficheiro=fopen("infoUc.dat", "ab");
+        ficheiro=fopen("infoUc.dat", "wb");
         if(ficheiro==NULL){
             printf("Erro ao abrir o ficheiro");
         } else{
@@ -176,6 +177,11 @@ void eliminarDoVetor(tipoUc vetorUc[], int *numUc){
                 vetorUc[i]=vetorUc[i+1];
             }
             (*numUc)--;
+             printf("A Unidade Curricular foi eliminada");
         }
     }
+}
+
+void alterarVetorUc(tipoUc vetorUc){
+    lerString("Designacao: ", vetorUc.designacao,80);
 }

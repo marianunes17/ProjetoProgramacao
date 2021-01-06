@@ -214,4 +214,30 @@ void gravaFicheiroTextAula(tipoAula vAulas[],int num){
 
 }
 
+void lerFicheiroTextAula(tipoAula vAulas[],int num){
+    FILE *ficheiro;
+    int lerDados,i,erro;
+
+    ficheiro = fopen("dadosAulas.txt", "r");
+
+    if (ficheiro == NULL) {
+        printf ("Impossível abrir ficheiro");
+    }
+    else {
+
+        fprintf(ficheiro,"Lista Aulas: %d\n", num);
+        for (i=0; i<num; i++){
+            fprintf(ficheiro,"%s\n",vAulas[i].designacao);
+            fprintf(ficheiro,"%s\n",vAulas[i].docente);
+        }
+
+        //fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d no fecho ficheiro", erro);
+        }
+    }
+}
+
+
 

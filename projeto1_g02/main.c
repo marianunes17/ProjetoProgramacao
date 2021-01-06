@@ -109,6 +109,7 @@ int main(){
                     // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
                         vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
+                        lerFicheiroTextAula(vAulas,numAula);
                         break;
 
                     // ----- AGENDAR AULA  -----

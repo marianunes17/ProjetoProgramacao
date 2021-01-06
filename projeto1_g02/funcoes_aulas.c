@@ -128,7 +128,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
 }
 
 
-
+/*
 tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
     int gravarDados, erro;
 
@@ -165,6 +165,26 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
         }
     }
     return vAulas;
+}
+*/
+
+void  gravaFicheiroBin(tipoAula vAulas[],int num) {
+
+    FILE *ficheiro;
+
+    ficheiro = fopen("dataAulas.dat", "wb");
+
+    if (ficheiro == NULL)
+    {
+        printf ("Impossível abrir ficheiro");
+    }
+    else
+    {
+        fwrite(&num,sizeof(int),1,ficheiro);
+        fwrite(vAulas,sizeof(tipoAula),num,ficheiro);
+        fclose(ficheiro);
+    }
+
 }
 
 

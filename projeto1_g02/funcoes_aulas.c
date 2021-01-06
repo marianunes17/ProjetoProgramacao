@@ -60,7 +60,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
 
 
-tipoAula *eliminarAula(tipoAula vAula[], int *num, char designacao[]){
+tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
     int i, pos;
     tipoAula *pAula;
     pAula = vAula; // ponteiro auxiliar

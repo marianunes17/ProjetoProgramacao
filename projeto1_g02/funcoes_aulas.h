@@ -6,7 +6,7 @@
 tipoAula lerDadosAula();
 tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[],int numCodigo);
 
-tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]);
+tipoAula *eliminaAula(tipoAula vAulas[], int *num, char designacao[]);
 int procuraAulaNome(tipoAula vAula[], int num, char procAula[]);
 
 int procuraUc(tipoUc vetorUc[MAX_UC], int numUc, int codigoUC); //buscar o da MAria~!!!

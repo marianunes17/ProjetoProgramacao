@@ -125,7 +125,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
 void gravarUcBinario(tipoUc vetorUc[], int numUc){
      FILE *ficheiro;
 
-        ficheiro=fopen("infoUc.dat", "a+b");
+        ficheiro=fopen("infoUc.dat", "wb");
         if(ficheiro==NULL){
             printf("Erro ao abrir o ficheiro. \n");
         } else{

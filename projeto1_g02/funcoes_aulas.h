@@ -15,7 +15,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);
 //tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num);
 void  gravaFicheiroBin(tipoAula vAulas[],int num);
 void gravaFicheiroTextAula(tipoAula vAulas[],int num);
-void lerFicheiroTextAula(tipoAula vAulas[],int num);
+tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num);
 
 
 #endif // FUNCOES_AULAS_H_INCLUDED

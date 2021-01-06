@@ -109,7 +109,6 @@ int main(){
                     // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
                         vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
-                        lerFicheiroTextAula(vAulas,numAula);
                         mostrarDadosAula(vAulas,numAula);
                         break;
 
@@ -131,6 +130,10 @@ int main(){
                             gravaFicheiroTextAula(vAulas,numAula);
                         }
                         break;
+                         case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
+                                           vAulas = eliminaAula(vAulas, &numAula, designacao);
+                                           // só dá se a aula estiver com estado 'agendada' ou 'realizada'
+                                    break;
 
                     // ----- MODIFICAR AULA  -----
                     case 'M':
@@ -177,11 +180,8 @@ int main(){
                 printf("\nOpcao invalida");
        }
     }while(opcao!='F');
-/*
-    gravaFicheiroBin(vAulas,numAula); //grava os elementos antes de sair do programa
 
     free(vAulas);  // Liberta memoria do vetor dinamico
-*/
 
     return 0;
 }

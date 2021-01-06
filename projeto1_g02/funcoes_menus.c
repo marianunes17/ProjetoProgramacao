@@ -47,7 +47,7 @@ char menu(){
 char menuAulas(){
     char opcao;
     printf("\n\n ----------------- Menu das Aulas Online -----------------");
-    printf("\n L - Listar Aulas\n A - Agendar Aula\n M - Modificar Aula");
+    printf("\n L - Listar Aulas\n A - Agendar Aula\n M - Modificar Aula\n E - Eliminar");
     printf("\n V - Voltar\n\n Insira Opção ->");
     scanf(" %c", &opcao);
     limpaBufferStdin();

@@ -9,6 +9,7 @@
 
 tipoAula lerDadosAula(){
     tipoAula aula;
+
     lerString("Indique Descrição: ", aula.designacao, MAX_AULAS);
     lerString("Docente: ", aula.docente, MAX_AULAS);
     //campo tipo contador - tem a haver com a funcionalidade do programa
@@ -30,6 +31,7 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
     }
     return pos;
 }
+
 
 
 tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
@@ -96,44 +98,12 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
                 printf ("Erro na alocacao de memoria");
                 vAula = pAula;   // restaura valor de vAula
             }
-            (*num)--; // Atualiza numero funcionarios
+            (*num)--; // Atualiza numero aulas retirando uma
         }
     }
     return vAula;
 }
 
-
-tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
-
-    FILE *ficheiro;
-    tipoAula *pAula;
-
-    ficheiro = fopen("dadosAula.dat", "rb");
-
-    if(ficheiro == NULL){
-        printf("Impossível abrir ficheiro - Bin - ler");
-    }
-    else {
-        fread(&(*num),sizeof(int),1,ficheiro);
-        pAula = vAulas;
-        vAulas = realloc(vAulas, (*num) * sizeof(tipoAula));
-
-        if(vAulas == NULL && *num !=0){
-            printf("Erro ao reservar memoria");
-            vAulas = pAula;
-        }
-        else{
-            fread(vAulas, sizeof(tipoAula), *num, ficheiro);
-        }
-
-        fclose(ficheiro);
-        /*erro = fclose(ficheiro);
-        if (erro != 0){
-            printf ("Erro %d ao fechar ficheiro", erro);
-        }*/
-    }
-    return vAulas;
-}
 
 
 /*
@@ -176,6 +146,46 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
 }
 */
 
+
+
+tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
+    FILE *ficheiro;
+
+    int lerDados, erro;
+    tipoAula *pAula;
+
+    ficheiro = fopen("dataAulas.dat", "rb");
+
+    if (ficheiro == NULL) {
+        printf ("\nImpossível abrir ficheiro.");
+    }
+    else {
+        fread(&(*num),sizeof(int),1,ficheiro); //fwrite(&quantidade,sizeof(int),1,ficheiro)
+    pAula = vAulas; // ponteiro auxiliar
+
+        // usar o realloc para se conseguir ler o vetor dinamico
+        // criar um vetor dinamico antes de se fazer a leitura
+
+        vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
+
+        if(vAulas == NULL && *num !=0){
+            printf("Erro ao reservar memoria");
+            vAulas = pAula;   // restaura valor de vAulas
+        }
+        else{
+            lerDados = fread(vAulas,sizeof(tipoAula),*num,ficheiro);
+            printf("Elementos escritos = %d \n", lerDados);
+        }
+
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d ao fechar ficheiro", erro);
+        }
+    }
+    return vAulas;
+}
+
+
 void  gravaFicheiroBin(tipoAula vAulas[],int num) {
 
     FILE *ficheiro;
@@ -197,10 +207,10 @@ void  gravaFicheiroBin(tipoAula vAulas[],int num) {
 
 
 void gravaFicheiroTextAula(tipoAula vAulas[],int num){
- int lerDados,i,erro;
 
     FILE *ficheiro;
-    ficheiro = fopen("dadosAulas.txt", "w");
+ int lerDados,i,erro;
+    ficheiro = fopen("dadosAulas.txt", "a+");
 
     if (ficheiro == NULL) {
         printf ("Impossível abrir ficheiro");
@@ -222,8 +232,11 @@ void gravaFicheiroTextAula(tipoAula vAulas[],int num){
 
 }
 
-void lerFicheiroTextAula(tipoAula vAulas[],int num){
+tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
+
     FILE *ficheiro;
+
+    tipoAula *pAulas;
     int lerDados,i,erro;
 
     ficheiro = fopen("dadosAulas.txt", "r");
@@ -232,11 +245,12 @@ void lerFicheiroTextAula(tipoAula vAulas[],int num){
         printf ("Impossível abrir ficheiro");
     }
     else {
+pAulas = vAulas;
+        fprintf(ficheiro,"Lista Aulas: %d\n", *num);
 
-        fprintf(ficheiro,"Lista Aulas: %d\n", num);
-        for (i=0; i<num; i++){
-            fprintf(ficheiro,"%s\n",vAulas[i].designacao);
-            fprintf(ficheiro,"%s\n",vAulas[i].docente);
+        for (i=0; i<*num; i++){
+            fprintf(ficheiro,"%s\n",pAulas[i].designacao);
+            fprintf(ficheiro,"%s\n",pAulas[i].docente);
         }
 
         //fclose(ficheiro);
@@ -245,6 +259,7 @@ void lerFicheiroTextAula(tipoAula vAulas[],int num){
             printf ("Erro %d no fecho ficheiro", erro);
         }
     }
+    return vAulas;
 }
 
 

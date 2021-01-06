@@ -94,7 +94,6 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
 
     FILE *ficheiro;
     tipoAula *pAula;
-    pAula = vAulas; // ponteiro auxiliar
 
     ficheiro = fopen("dadosAula.dat", "rb");
 
@@ -103,13 +102,14 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
     }
     else {
         fread(&(*num),sizeof(int),1,ficheiro); //fwrite(&quantidade,sizeof(int),1,ficheiro)
+    pAula = vAulas; // ponteiro auxiliar
 
         // usar o realloc para se conseguir ler o vetor dinamico
         // criar um vetor dinamico antes de se fazer a leitura
 
         vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
 
-        if(vAulas == NULL && vAulas !=0){
+        if(vAulas == NULL && *num !=0){
                 printf("Erro ao reservar memoria");
             vAulas = pAula;   // restaura valor de vAulas
         }
@@ -149,7 +149,7 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
 
         vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
 
-        if(vAulas == NULL && vAulas !=0){
+        if(vAulas == NULL && *num !=0){
                 printf("Erro ao reservar memoria");
             vAulas = pAula;   // restaura valor de vAulas
         }

@@ -57,31 +57,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 }
 
 
-/*
-int acrescentaAula(tipoAula vAulas[], int *numAula){
-    tipoAula dados;
-    int posAula;
 
-    if(*numAula == MAX_UC){
-        printf("Impossivel acrescentar");
-    }
-    else{
-        dados = lerDadosAula();
-        //posAula = procuraAulaNome(vAulas, *numAula, dados.designacao);​
-        posAula = procuraAulaNome(vAulas, *numAula, dados.designacao);
-
-        if(posAula != -1){
-            printf("Aula ja existente");
-        }
-        else{
-            vAulas[*numAula]=dados;
-            (*numAula)++;
-        }
-    }
-}*/
-
-
-/*
 
 
 tipoAula *eliminarAula(tipoAula vAula[], int *num, char designacao[]){
@@ -190,6 +166,6 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
     }
     return vAula;
 }
-*/
+
 
 

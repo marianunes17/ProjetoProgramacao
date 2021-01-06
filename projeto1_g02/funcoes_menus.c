@@ -55,7 +55,7 @@ char menuAulas(){
     return opcao;
 }
 
-char submenuAulas(tipoUc vetorUc[]){
+char submenuAulas(){
     char opcao;
     printf("\n\n ****------------**** Modificar Aula ****------------****");
     printf("\n E - Eliminar Aula \n A - Alterar Agendamento");

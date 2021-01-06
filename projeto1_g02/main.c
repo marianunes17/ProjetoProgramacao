@@ -18,7 +18,7 @@ int main(){
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
     int numUc=0, numAula=0, codigoUc,posicao;
-    char opcao,opSubmenu, opSubmenu2, designacao, opcaoSubMenuUc;
+    char opcao,subMenuAula, subSubMenuAula, designacao, opcaoSubMenuUc;
 
    // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
 
@@ -104,8 +104,8 @@ int main(){
                 break;
             case 'A':
                 do{
-                opSubmenu = menuAulas();
-                switch(opSubmenu){
+                subMenuAula = menuAulas();
+                switch(subMenuAula){
                 // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
                         break;
@@ -120,11 +120,11 @@ int main(){
                 // ----- MODIFICAR AULA  -----
                     case 'M':
                         do{
-                            opSubmenu2 = menuAulas();
-                            switch(opSubmenu2){
+                            subSubMenuAula = menuAulas();
+                            switch(subSubMenuAula){
                                  // ----- ELIMINAR AULA  -----
-                                case 'E':  //lerString("Designação da Aula a Eliminar: ", designacao, 30);
-                                           //vAulas = eliminaAula(vAulas, &numAula, designacao);
+                                case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
+                                           vAulas = eliminaAula(vAulas, &numAula, designacao);
                                            // só dá se a aula estiver com estado 'agendada' ou 'realizada'
                                     break;
 
@@ -136,14 +136,14 @@ int main(){
                                     break;
                                 default:    printf("\n\n Opção Inválida! Tente Novamente...\n");
                             }
-                        }while(opSubmenu2!='V');
+                        }while(subSubMenuAula!='V');
                         break;
 
                     case 'V':
                         break;
                     default:    printf("\n\n Opção Inválida! Tente Novamente...\n");
                     }
-                }while(opSubmenu!='V');
+                }while(subMenuAula!='V');
                 break;
 
             case 'R':   printf("Escolheu a opção R");

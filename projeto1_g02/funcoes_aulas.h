@@ -8,8 +8,8 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[],int numCod
 
 tipoAula *eliminaAula(tipoAula vAulas[], int *num, char designacao[]);
 int procuraAulaNome(tipoAula vAula[], int num, char procAula[]);
+void mostrarDadosAula(tipoAula vAulas[], int numAula);
 
-int procuraUc(tipoUc vetorUc[MAX_UC], int numUc, int codigoUC); //buscar o da MAria~!!!
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);
 //tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num);

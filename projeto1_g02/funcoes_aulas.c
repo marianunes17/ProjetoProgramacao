@@ -56,7 +56,21 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     return vAula;
 }
 
+void mostrarDadosAula(tipoAula vAulas[], int numAula) {
+    int i;
+    if (numAula == 0) {
+        printf("\nSem dados!");
+    }
+    else{
+        printf("\nListagem das Aulas ->\n");
 
+        for(i=0; i<numAula; i++) {
+            printf("Descricao: %s\n",vAulas[i].designacao);
+            printf("Docente: %s\n",vAulas[i].docente);
+            printf("Codigo UC: %s\n\n",vAulas[i].codigo);
+        }
+    }
+}
 
 
 
@@ -90,39 +104,33 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
 
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
-    int lerDados, erro;
 
     FILE *ficheiro;
     tipoAula *pAula;
 
     ficheiro = fopen("dadosAula.dat", "rb");
 
-    if (ficheiro == NULL) {
-        printf ("Impossível abrir ficheiro");
+    if(ficheiro == NULL){
+        printf("Impossível abrir ficheiro - Bin - ler");
     }
     else {
-        fread(&(*num),sizeof(int),1,ficheiro); //fwrite(&quantidade,sizeof(int),1,ficheiro)
-    pAula = vAulas; // ponteiro auxiliar
-
-        // usar o realloc para se conseguir ler o vetor dinamico
-        // criar um vetor dinamico antes de se fazer a leitura
-
-        vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
+        fread(&(*num),sizeof(int),1,ficheiro);
+        pAula = vAulas;
+        vAulas = realloc(vAulas, (*num) * sizeof(tipoAula));
 
         if(vAulas == NULL && *num !=0){
-                printf("Erro ao reservar memoria");
-            vAulas = pAula;   // restaura valor de vAulas
+            printf("Erro ao reservar memoria");
+            vAulas = pAula;
         }
         else{
-            lerDados = fread(vAulas,sizeof(tipoAula),*num,ficheiro);
-            printf("Elementos escritos = %d \n", lerDados);
+            fread(vAulas, sizeof(tipoAula), *num, ficheiro);
         }
 
-        //fclose(ficheiro);
-        erro = fclose(ficheiro);
+        fclose(ficheiro);
+        /*erro = fclose(ficheiro);
         if (erro != 0){
             printf ("Erro %d ao fechar ficheiro", erro);
-        }
+        }*/
     }
     return vAulas;
 }

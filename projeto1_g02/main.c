@@ -40,21 +40,20 @@ int main(){
 
                         case 'I': //Inserir nova UC
                                 printf("Escolheu a opção: I \n");
-                                leFicheiroUcBinario(vetorUc, &numUc);
                                 do{ //Verifica se o codigo inserido já existe
                                     codigoUc=lerInteiro("Codigo: ",1000,2000);;
+                                    leFicheiroUcBinario(vetorUc, &numUc);
                                     posicao=procuraUc(vetorUc, numUc, codigoUc);
 
                                     if(posicao==-1){
                                         acrescentaUc(vetorUc, &numUc, codigoUc);
+                                        gravarUcBinario(vetorUc, numUc);
+                                        gravarUcTexto(vetorUc, numUc);
                                     } else{
                                         printf("O codigo já existe.");
                                     }
                                 } while(posicao!=-1);
 
-
-                                gravarUcBinario(vetorUc, numUc);
-                                gravarUcTexto(vetorUc, numUc);
                                 numUc++;
                                 break;
 
@@ -92,16 +91,13 @@ int main(){
                                 gravarUcTexto(vetorUc, numUc);
                                 }
 
-
-
-
                                 break;
 
                         case 'V':
-                                menu(vetorUc,numUc);
+                                 printf("\nSair do menu de UC. ");
                                 break;
 
-                        default: printf("\nOpcao inválida");
+                        default: printf("\nOpcao inválida. ");
                     }
                 }while(opcaoSubMenuUc!='V');
 

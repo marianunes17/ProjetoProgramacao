@@ -17,7 +17,7 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
-    int numUc=0, numAula=0, codigoUc,posicao,posUc;
+    int numUc=0, numAula=0, codigoUc,posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
 
    // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
@@ -43,27 +43,27 @@ int main(){
                                 do{ //Verifica se o codigo inserido já existe
                                     codigoUc=lerInteiro("Codigo: ",1000,2000);;
                                     leFicheiroUcBinario(vetorUc, &numUc);
-                                    posicao=procuraUc(vetorUc, numUc, codigoUc);
+                                    posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
 
-                                    if(posicao==-1){
+                                    if(posicaoUcVetor==-1){
                                         acrescentaUc(vetorUc, &numUc, codigoUc);
                                         gravarUcBinario(vetorUc, numUc);
                                         gravarUcTexto(vetorUc, numUc);
                                     } else{
                                         printf("O codigo já existe.");
                                     }
-                                } while(posicao!=-1);
+                                } while(posicaoUcVetor!=-1);
 
                                 numUc++;
                                 break;
 
                         case 'P': //Procurar UC
-                                leFicheiroUcBinario(vetorUc, &numUc);
                                 codigoUc = lerInteiro("Insira um código: ",1000,2000);
 
-                                posicao=procuraUc(vetorUc, numUc, codigoUc);
+                                leFicheiroUcBinario(vetorUc, &numUc);
+                                posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
 
-                                if(posicao==-1){
+                                if(posicaoUcVetor==-1){
                                     printf("O código não existe");
                                 } else{
                                     listaDadosUc(vetorUc, numUc);
@@ -81,8 +81,8 @@ int main(){
                                 printf("Escolheu a opção: M \n");
 
                                 codigoUc = lerInteiro("Insira um código: ",1000,2000);
-                                posicao=procuraUc(vetorUc, numUc, codigoUc);
-                                if(posicao==-1){
+                                posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
+                                if(posicaoUcVetor==-1){
                                     printf("O código não existe");
                                 } else{
                                 alterarVetorUc(vetorUc);
@@ -118,8 +118,8 @@ int main(){
                         leFicheiroUcBinario(vetorUc, &numUc); // funcao maria
 
                         codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
-                        posUc = procuraUc(vetorUc, numUc, codigoUc);
-                        if(posUc == -1){
+                        posicaoUcVetor = procuraUc(vetorUc, numUc, codigoUc);
+                        if(posicaoUcVetor == -1){
                             printf("Uc não existe");
                         }
                         else{

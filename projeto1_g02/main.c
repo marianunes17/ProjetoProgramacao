@@ -102,7 +102,7 @@ int main(){
                 }while(opcaoSubMenuUc!='V');
 
                 break;
-          /*  case 'A':
+            case 'A':
                 do{
                 opSubmenu = menuAulas();
                 switch(opSubmenu){
@@ -123,8 +123,8 @@ int main(){
                             opSubmenu2 = menuAulas();
                             switch(opSubmenu2){
                                  // ----- ELIMINAR AULA  -----
-                                case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
-                                           vAulas = eliminaAula(vAulas, &numAula, designacao);
+                                case 'E':  //lerString("Designação da Aula a Eliminar: ", designacao, 30);
+                                           //vAulas = eliminaAula(vAulas, &numAula, designacao);
                                            // só dá se a aula estiver com estado 'agendada' ou 'realizada'
                                     break;
 
@@ -152,11 +152,8 @@ int main(){
             break;
             case 'S':   printf("Escolheu a opção S");
             break;
-            case 'F':
-            break; */
-
             case 'V':
-                    printf("Escolheu a opção R");
+                    printf("Escolheu a opção V");
                     break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");

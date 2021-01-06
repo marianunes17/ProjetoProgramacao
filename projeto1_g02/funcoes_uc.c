@@ -60,13 +60,13 @@ int procuraUc(tipoUc vetorUc[], int numUc, int codigoUC){
     for (i=0; i<numUc; i++){
         if (vetorUc[i].codigo == codigoUC){
             posicao = i;
-            i = numUc;
+            i = numUc; //Quando se encontra o codigoUc iguala-se o i=numUc para sair do for
         }
     }
     return posicao;
 }
 
-int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc, int codigoUc){
+void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc, int codigoUc){
     tipoUc dados;
     int posicao;
 
@@ -78,7 +78,7 @@ int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc, int codigoUc){
         posicao=procuraUc(vetorUc,*numUc,dados.codigo);
 
         if(posicao != -1){ //Se o codigo da Uc ja existir escreve:
-            printf("Unidade Curricular já existente");
+            printf("Unidade Curricular já existente. \n");
         }
         else { //Se nao existir vai adicionar mais 1
             vetorUc[*numUc]=dados;
@@ -92,9 +92,9 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
      FILE *ficheiro;
         int i;
 
-        ficheiro=fopen("infoUc.txt", "w");
+        ficheiro=fopen("infoUc.txt", "a+");
         if(ficheiro==NULL){
-            printf("Erro ao abrir o ficheiro");
+            printf("Erro ao abrir o ficheiro. \n");
         } else{
             fprintf(ficheiro, "%d", numUc);
 
@@ -114,9 +114,9 @@ void gravarUcTexto(tipoUc vetorUc[], int numUc){
 void gravarUcBinario(tipoUc vetorUc[], int numUc){
      FILE *ficheiro;
 
-        ficheiro=fopen("infoUc.dat", "wb");
+        ficheiro=fopen("infoUc.dat", "a+b");
         if(ficheiro==NULL){
-            printf("Erro ao abrir o ficheiro");
+            printf("Erro ao abrir o ficheiro. \n");
         } else{
             fwrite(&numUc,sizeof(int),1,ficheiro);
             fwrite(vetorUc,sizeof(tipoUc),numUc,ficheiro);
@@ -131,7 +131,7 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numUc){
 
         ficheiro=fopen("infoUc.txt", "r");
         if(ficheiro==NULL){
-            printf("Erro ao abrir o ficheiro");
+            printf("Erro ao abrir o ficheiro. \n");
         } else{
             for(i=0; i<=*numUc; i++){
                 fscanf(ficheiro, "%d", vetorUc[i].codigo);
@@ -151,7 +151,7 @@ void leFicheiroUcBinario(tipoUc vetorUc[], int *numUc){
 
         ficheiro=fopen("infoUc.dat", "rb");
         if(ficheiro==NULL){
-            printf("Erro ao abrir o ficheiro");
+            printf("Erro ao abrir o ficheiro. \n");
         } else{
             fread(&(*numUc),sizeof(int),1,ficheiro);
             fread(vetorUc,sizeof(tipoUc),*numUc,ficheiro);
@@ -164,13 +164,13 @@ void eliminarDoVetor(tipoUc vetorUc[], int *numUc){
     int i, posicao, numeroUc;
 
     if(*numUc == 0 ){
-        printf("Não existem Unidades Curriculares");
+        printf("Não existem Unidades Curriculares. \n");
     }
     else{
         numeroUc=lerInteiro("Número de Unidades Curriculares: ", 1,100 );
         posicao=procuraUc(vetorUc,*numUc, numeroUc);
         if(posicao==-1){
-            printf("A Unidade Curricular não existe");
+            printf("A Unidade Curricular não existe. \n");
         }
         else {
             for(i=posicao; i<*numUc-1; i++){

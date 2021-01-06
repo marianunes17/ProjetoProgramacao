@@ -8,7 +8,7 @@ void escreveDadosUc(tipoUc vetorUc);
 tipoUc leDadosUc();
 void listaDadosUc(tipoUc vetorUc[MAX_UC], int numUc);
 int procuraUc(tipoUc vetorUc[], int numUc, int codigoUC);
-int acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc, int codigoUc);
+void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numUc, int codigoUc);
 void gravarUcTexto(tipoUc vetorUc[], int numUc);
 void gravarUcBinario(tipoUc vetorUc[], int numUc);
 void leFicheiroUcTexto(tipoUc vetorUc[], int *numUc);

@@ -17,7 +17,7 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
-    int numUc=0, numAula=0, codigoUc,posicao;
+    int numUc=0, numAula=0, codigoUc,posicao,posUc;
     char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
 
    // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
@@ -106,20 +106,29 @@ int main(){
                 do{
                 subMenuAula = menuAulas();
                 switch(subMenuAula){
-                // ----- LISTAR AULA  -----
+                    // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
                     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
                         break;
 
-                // ----- AGENDAR AULA  -----
-                    case 'A':   printf("Escolheu a opção de Agendar uma Aula");
-                        codigoUc = lerInteiro("Indique codiogo Uc: ", 1000, 2000);
-                        vAulas = acrescentaAula(vAulas, &numAula, vetorUc, codigoUc);
-                        gravaFicheiroBin(vAulas, numAula);
+                    // ----- AGENDAR AULA  -----
+                    case 'A':
+                        printf("Escolheu a opção de Agendar uma Aula");
+                        leFicheiroUcBinario(vetorUc, &numUc); // funcao maria
 
+                        codigoUc = lerInteiro("Indique codiogo Uc: ",1,1000);
+                        posUc = procuraUc(vetorUc, numUc, codigoUc);
+                        if(posUc == -1){
+                            printf("Uc não existe");
+                        }
+                        else{
+                            vAulas = acrescentaAula(vAulas,&numAula,vetorUc,codigoUc);
+                            gravaFicheiroBin(vAulas,numAula);
+                            //acrescentaAula(vAulas,&numAula);
+                        }
                         break;
 
-                // ----- MODIFICAR AULA  -----
+                    // ----- MODIFICAR AULA  -----
                     case 'M':
                         do{
                             subSubMenuAula = menuAulas();
@@ -140,7 +149,7 @@ int main(){
                             }
                         }while(subSubMenuAula!='V');
                         break;
-
+                    // ----- SAIR SUBMENU AULA -----
                     case 'V':
                         break;
                     default:    printf("\n\n Opção Inválida! Tente Novamente...\n");

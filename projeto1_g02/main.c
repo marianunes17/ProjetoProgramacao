@@ -108,12 +108,14 @@ int main(){
                 switch(subMenuAula){
                 // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
+                    vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
                         break;
 
                 // ----- AGENDAR AULA  -----
                     case 'A':   printf("Escolheu a opção de Agendar uma Aula");
-                        codigoUc = lerInteiro("Indique codiogo Uc: ", 00, 99);
+                        codigoUc = lerInteiro("Indique codiogo Uc: ", 1000, 2000);
                         vAulas = acrescentaAula(vAulas, &numAula, vetorUc, codigoUc);
+                        gravaFicheiroBin(vAulas, numAula);
 
                         break;
 

@@ -108,7 +108,7 @@ int main(){
                 switch(subMenuAula){
                     // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
-                    vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
+                        vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
                         break;
 
                     // ----- AGENDAR AULA  -----
@@ -116,7 +116,7 @@ int main(){
                         printf("Escolheu a opção de Agendar uma Aula");
                         leFicheiroUcBinario(vetorUc, &numUc); // funcao maria
 
-                        codigoUc = lerInteiro("Indique codiogo Uc: ",1,1000);
+                        codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
                         posUc = procuraUc(vetorUc, numUc, codigoUc);
                         if(posUc == -1){
                             printf("Uc não existe");
@@ -125,6 +125,8 @@ int main(){
                             vAulas = acrescentaAula(vAulas,&numAula,vetorUc,codigoUc);
                             gravaFicheiroBin(vAulas,numAula);
                             //acrescentaAula(vAulas,&numAula);
+
+                            gravaFicheiroTextAula(vAulas,numAula);
                         }
                         break;
 

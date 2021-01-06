@@ -18,7 +18,7 @@ int main(){
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
     int numUc=0, numAula=0, codigoUc,posicao;
-    char opcao,subMenuAula, subSubMenuAula, designacao, opcaoSubMenuUc;
+    char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
 
    // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
 

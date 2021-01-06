@@ -94,7 +94,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
 
     FILE *ficheiro;
     tipoAula *pAula;
-    pAula = vAula; ​// ponteiro auxiliar
+    pAula = vAulas; // ponteiro auxiliar
 
     ficheiro = fopen("dadosAula.dat", "rb");
 
@@ -107,12 +107,12 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
         // usar o realloc para se conseguir ler o vetor dinamico
         // criar um vetor dinamico antes de se fazer a leitura
 
-        vAula = realloc(vAula,(*num)*sizeof(tipoAula));​
+        vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
 
-        if (vAula == NULL && != 0){​
-            printf ("Erro ao reservar memoria ");​
-            vAula = pAula;   // restaura valor de vAula
-        }​
+        if(vAulas == NULL && vAulas !=0){
+                printf("Erro ao reservar memoria");
+            vAulas = pAula;   // restaura valor de vAulas
+        }
         else{
             lerDados = fread(vAulas,sizeof(tipoAula),*num,ficheiro);
             printf("Elementos escritos = %d \n", lerDados);
@@ -124,7 +124,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
             printf ("Erro %d ao fechar ficheiro", erro);
         }
     }
-    return vAula;
+    return vAulas;
 }
 
 
@@ -134,7 +134,7 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
 
     FILE *ficheiro;
     tipoAula *pAula;
-    pAula = vAula; ​// ponteiro auxiliar
+    pAula = vAulas; // ponteiro auxiliar
 
     ficheiro = fopen("dadosAula.dat", "ab");
 
@@ -147,12 +147,12 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
         // usar o realloc para se conseguir ler o vetor dinamico
         // criar um vetor dinamico antes de se fazer a leitura
 
-        vAula = realloc(vAula,(*num)*sizeof(tipoAula));​
+        vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
 
-        if (vAula == NULL && != 0){​
-            printf ("Erro ao reservar memoria ");​
-            vAula = pAula;   // restaura valor de vAula
-        }​
+        if(vAulas == NULL && vAulas !=0){
+                printf("Erro ao reservar memoria");
+            vAulas = pAula;   // restaura valor de vAulas
+        }
         else{
             gravarDados = fwrite(vAulas,sizeof(tipoAula),*num,ficheiro);
             printf("Elementos escritos = %d \n", gravarDados);
@@ -164,7 +164,7 @@ tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
             printf ("Erro %d ao fechar ficheiro", erro);
         }
     }
-    return vAula;
+    return vAulas;
 }
 
 

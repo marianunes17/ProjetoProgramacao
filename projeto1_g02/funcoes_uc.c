@@ -35,7 +35,18 @@ tipoUc leDadosUc(int codigoUc){
     } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
 
 
-    vetorUc.duracao = lerFloat("Duração de cada aula(em minutos): ", vetorUc.duracao, 0.60);
+    if(vetorUc.tipo=="T"){
+         vetorUc.duracao = 0.60;
+    } else {
+        if(vetorUc.tipo=="TP"){
+             vetorUc.duracao = HORAS_SEGUNDOS * 2;
+        }
+        else {
+            if(vetorUc.tipo=="PL"){
+                 vetorUc.duracao = HORAS_SEGUNDOS * 3;
+            }
+        }
+    }
 
     return vetorUc;
 }

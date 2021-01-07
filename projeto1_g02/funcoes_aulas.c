@@ -13,6 +13,7 @@ tipoAula lerDadosAula(){
     lerString("Indique Descrição: ", aula.designacao, MAX_AULAS);
     lerString("Docente: ", aula.docente, MAX_AULAS);
     //campo tipo contador - tem a haver com a funcionalidade do programa
+    aula.codigo = 0;
     aula.gavacao = 0;
     aula.estadoAula = 0;
     return aula;
@@ -45,6 +46,10 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     if(posAula != -1){
         printf("Nome de Aula existente");
     }else{
+
+        dados.codigo = vetorUc[posUc].codigo;
+        dados.data = lerData();
+
         vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
         if(vAula == NULL){
@@ -64,27 +69,30 @@ void mostrarDadosAula(tipoAula vAulas[], int numAula) {
         printf("\nSem dados!");
     }
     else{
-        printf("\nListagem das Aulas ->\n");
+        printf("\nListagem das Aulas ->\n\n");
 
         for(i=0; i<numAula; i++) {
-            printf("Descricao: %s\n",vAulas[i].designacao);
-            printf("Docente: %s\n",vAulas[i].docente);
-            printf("Codigo UC: %s\n\n",vAulas[i].codigo);
+            printf(" Descricao: %s\n",vAulas[i].designacao);
+            printf(" Docente: %s\n",vAulas[i].docente);
+            printf(" Codigo UC: %d\n",vAulas[i].codigo);
+            printf(" Data: %d / %d / %d\n\n",vAulas[i].data.dia,vAulas[i].data.mes,vAulas[i].data.ano);
         }
     }
 }
 
 
-
+// só dá se a aula estiver com estado 'agendada' ou 'realizada'!!!!!!!!
 tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
     int i, pos;
     tipoAula *pAula;
     pAula = vAula; // ponteiro auxiliar
 
-    if(*num !=0){
-        pos=procuraAulaNome(vAula, *num,designacao);
-        if(pos== -1){
-            printf ("Funcionario nao existe!");
+    if(*num != 0){
+
+        pos = procuraAulaNome(vAula, *num, designacao);
+
+        if(pos == -1){
+            printf ("Aula nao existe!");
         }
 
         else{
@@ -106,62 +114,20 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
 
 
 
-/*
-tipoAula *gravaFicheiroBin(tipoAula vAulas[],int *num){
-    int gravarDados, erro;
-
-    FILE *ficheiro;
-    tipoAula *pAula;
-    pAula = vAulas; // ponteiro auxiliar
-
-    ficheiro = fopen("dadosAula.dat", "ab");
-
-    if (ficheiro == NULL) {
-        printf ("Impossível abrir ficheiro");
-    }
-    else {
-        fwrite(&(*num),sizeof(int),1,ficheiro); //fwrite(&quantidade,sizeof(int),1,ficheiro)
-
-        // usar o realloc para se conseguir ler o vetor dinamico
-        // criar um vetor dinamico antes de se fazer a leitura
-
-        vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
-
-        if(vAulas == NULL && *num !=0){
-                printf("Erro ao reservar memoria");
-            vAulas = pAula;   // restaura valor de vAulas
-        }
-        else{
-            gravarDados = fwrite(vAulas,sizeof(tipoAula),*num,ficheiro);
-            printf("Elementos escritos = %d \n", gravarDados);
-        }
-
-        //fclose(ficheiro);
-        erro = fclose(ficheiro);
-        if (erro != 0){
-            printf ("Erro %d ao fechar ficheiro", erro);
-        }
-    }
-    return vAulas;
-}
-*/
-
-
-
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
     FILE *ficheiro;
 
-    int lerDados, erro;
+    int erro;
     tipoAula *pAula;
 
     ficheiro = fopen("dataAulas.dat", "rb");
 
     if (ficheiro == NULL) {
-        printf ("\nImpossível abrir ficheiro.");
+        printf ("\nImpossível abrir ficheiro");
     }
     else {
         fread(&(*num),sizeof(int),1,ficheiro); //fwrite(&quantidade,sizeof(int),1,ficheiro)
-    pAula = vAulas; // ponteiro auxiliar
+        pAula = vAulas; // ponteiro auxiliar
 
         // usar o realloc para se conseguir ler o vetor dinamico
         // criar um vetor dinamico antes de se fazer a leitura
@@ -173,8 +139,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
             vAulas = pAula;   // restaura valor de vAulas
         }
         else{
-            lerDados = fread(vAulas,sizeof(tipoAula),*num,ficheiro);
-            printf("Elementos escritos = %d \n", lerDados);
+            fread(vAulas,sizeof(tipoAula),*num,ficheiro);
         }
 
         erro = fclose(ficheiro);
@@ -189,6 +154,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
 void  gravaFicheiroBin(tipoAula vAulas[],int num) {
 
     FILE *ficheiro;
+    int gravarDados,erro;
 
     ficheiro = fopen("dataAulas.dat", "wb");
 
@@ -199,8 +165,16 @@ void  gravaFicheiroBin(tipoAula vAulas[],int num) {
     else
     {
         fwrite(&num,sizeof(int),1,ficheiro);
-        fwrite(vAulas,sizeof(tipoAula),num,ficheiro);
-        fclose(ficheiro);
+        gravarDados = fwrite(vAulas,sizeof(tipoAula),num,ficheiro);
+        printf("Aulas escritas gravadas = %d \n", gravarDados);
+
+        gravaFicheiroTextAula(vAulas,num);
+
+        //fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d no fecho ficheiro", erro);
+        }
     }
 
 }
@@ -217,10 +191,15 @@ void gravaFicheiroTextAula(tipoAula vAulas[],int num){
     }
     else {
 
-        fprintf(ficheiro,"%d\n", num);
+        fprintf(ficheiro, "Todas as Aulas: %d\n\n",num);
+
         for (i=0; i<num; i++){
-            fprintf(ficheiro,"%s\n",vAulas[i].designacao);
-            fprintf(ficheiro,"%s\n",vAulas[i].docente);
+            fprintf(ficheiro,"Designacao -> %s\n",vAulas[i].designacao);
+            fprintf(ficheiro,"Docente -> %s\n",vAulas[i].docente);
+            fprintf(ficheiro,"Codigo UC -> %d\n",vAulas[i].codigo);
+            fprintf(ficheiro,"Data -> %d\t",vAulas[i].data.dia);
+            fprintf(ficheiro,"%d\t",vAulas[i].data.mes);
+            fprintf(ficheiro,"%d\n",vAulas[i].data.ano);
         }
 
         //fclose(ficheiro);
@@ -245,12 +224,13 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
         printf ("Impossível abrir ficheiro");
     }
     else {
-pAulas = vAulas;
+        pAulas = vAulas;
         fprintf(ficheiro,"Lista Aulas: %d\n", *num);
 
         for (i=0; i<*num; i++){
             fprintf(ficheiro,"%s\n",pAulas[i].designacao);
             fprintf(ficheiro,"%s\n",pAulas[i].docente);
+            fprintf(ficheiro,"%d\n",pAulas[i].codigo);
         }
 
         //fclose(ficheiro);

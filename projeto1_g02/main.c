@@ -20,7 +20,7 @@ int main(){
     int numUc=0, numAula=0, codigoUc,posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
 
-   // vAulas = *lerFicheiroBin(vAulas[], &numAula); //carrega os elementos existentes para o vetor
+    vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
 
 
      do{
@@ -108,7 +108,7 @@ int main(){
                 switch(subMenuAula){
                     // ----- LISTAR AULA  -----
                     case 'L':   printf("Escolheu a opção de Listar Aulas");
-                        vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
+                        //vAulas = lerFicheiroBin(vAulas, &numAula);
                         mostrarDadosAula(vAulas,numAula);
                         break;
 
@@ -123,27 +123,23 @@ int main(){
                             printf("Uc não existe");
                         }
                         else{
-                            vAulas = acrescentaAula(vAulas,&numAula,vetorUc,codigoUc);
+                            vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                             gravaFicheiroBin(vAulas,numAula);
                             //acrescentaAula(vAulas,&numAula);
 
                             gravaFicheiroTextAula(vAulas,numAula);
                         }
                         break;
-                         case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
-                                           vAulas = eliminaAula(vAulas, &numAula, designacao);
-                                           // só dá se a aula estiver com estado 'agendada' ou 'realizada'
-                                    break;
 
                     // ----- MODIFICAR AULA  -----
                     case 'M':
                         do{
-                            subSubMenuAula = menuAulas();
+                            subSubMenuAula = submenuAulas();
                             switch(subSubMenuAula){
                                  // ----- ELIMINAR AULA  -----
                                 case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
                                            vAulas = eliminaAula(vAulas, &numAula, designacao);
-                                           // só dá se a aula estiver com estado 'agendada' ou 'realizada'
+                                           gravaFicheiroBin(vAulas,numAula);
                                     break;
 
                                 // ----- ALTERAR AULA  -----

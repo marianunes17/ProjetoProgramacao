@@ -1,26 +1,32 @@
-1
-dedef
-hgjyhg
-1
-iiui
-jujuj
-2
-iiui
-jujuj
-byyjujm
-rfty
-3
-iiui
-jujuj
-byyjujm
-rfty
-affrf
-frfr
-1
-aaa
-bbb
-2
-aaa
-bbb
-gkjk
-hhk
+Todas as Aulas: 1
+
+Designacao -> Aula Fisica
+Docente -> HUgo Brito
+Codigo UC -> 1245
+Data -> 8	12	2020
+Todas as Aulas: 1
+
+Designacao -> Aula Fisica
+Docente -> HUgo Brito
+Codigo UC -> 1245
+Data -> 8	12	2020
+Todas as Aulas: 2
+
+Designacao -> Aula Fisica
+Docente -> HUgo Brito
+Codigo UC -> 1245
+Data -> 8	12	2020
+Designacao -> Aula Mat
+Docente -> Manuel Santos
+Codigo UC -> 1111
+Data -> 15	1	2021
+Todas as Aulas: 2
+
+Designacao -> Aula Fisica
+Docente -> HUgo Brito
+Codigo UC -> 1245
+Data -> 8	12	2020
+Designacao -> Aula Mat
+Docente -> Manuel Santos
+Codigo UC -> 1111
+Data -> 15	1	2021

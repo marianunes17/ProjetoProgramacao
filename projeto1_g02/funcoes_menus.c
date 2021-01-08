@@ -66,9 +66,6 @@ char submenuAulas(){
     return opcao;
 }
 
-
-
-
 char subMenuUc(tipoUc vetorUc[]){
     char opcao;
     int codigoUC, numUcs=0;
@@ -76,7 +73,6 @@ char subMenuUc(tipoUc vetorUc[]){
     printf("\n\n ----------------- Menu de Unidades Curriculares -----------------");
     printf("\n L - Listar UC's");
     printf("\n I - Inserir UC");
-    printf("\n P - Procurar UC");
     printf("\n M - Modificar UC");
     printf("\n E - Eliminar UC");
     printf("\n V - Voltar\n");

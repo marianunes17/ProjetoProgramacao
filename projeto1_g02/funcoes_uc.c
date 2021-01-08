@@ -178,7 +178,7 @@ void eliminarDoVetor(tipoUc vetorUc[], int *numUc){
         printf("Não existem Unidades Curriculares. \n");
     }
     else{
-        numeroUc=lerInteiro("Número de Unidades Curriculares: ", 1,100 );
+        numeroUc=lerInteiro("Número de Unidades Curriculares: ", 1000,2000 );
         posicao=procuraUc(vetorUc,*numUc, numeroUc);
         if(posicao==-1){
             printf("A Unidade Curricular não existe. \n");

@@ -168,7 +168,7 @@ void  gravaFicheiroBin(tipoAula vAulas[],int num) {
         gravarDados = fwrite(vAulas,sizeof(tipoAula),num,ficheiro);
         printf("Aulas escritas gravadas = %d \n", gravarDados);
 
-        gravaFicheiroTextAula(vAulas,num);
+       // gravaFicheiroTextAula(vAulas,num);
 
         //fclose(ficheiro);
         erro = fclose(ficheiro);

@@ -57,19 +57,6 @@ int main(){
                                 numUc++;
                                 break;
 
-                        case 'P': //Procurar UC
-                                codigoUc = lerInteiro("Insira um código: ",1000,2000);
-
-                                leFicheiroUcBinario(vetorUc, &numUc);
-                                posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
-
-                                if(posicaoUcVetor==-1){
-                                    printf("O código não existe");
-                                } else{
-                                    listaDadosUc(vetorUc, numUc);
-                                }
-                                break;
-
                         case 'E': //Eliminar UC
                                 printf("Escolheu a opção: E \n");
                                 eliminarDoVetor(vetorUc, &numUc);

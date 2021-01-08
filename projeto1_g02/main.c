@@ -109,9 +109,8 @@ int main(){
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':   printf("Escolheu a opção de Alterar um Aula Agendada");
-                                            codigoUc= lerInteiro("Codigo da Uc: ", 1000, 2000);
                                             lerString("Designação da Aula: ", designacao, 30);
-                                            vAulas = alteraAulas(vAulas, &numAula, codigoUc, designacao);
+                                            vAulas = alteraAulas(vAulas, &numAula, designacao);
                                             // só dá se a aula estiver com estado 'agendada'
                                             break;
                                 case 'V':

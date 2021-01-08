@@ -248,31 +248,31 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
     return vAula;
 }
 
-tipoAula *alteraAulas(tipoAula vAula[], int *numAulas, int codigoUc, char designacao[]){
+tipoAula *alteraAulas(tipoAula vAula[], int *numAulas,  char designacaoAula[]){
     int  posicao, i;
     char opcao;
-    tipoAula *pAula;
+    tipoAula aula;
 
     if(*numAulas == 0 ){
         printf("Não existem Aulas. \n");
     }
     else{
-        posicao=procuraAulaNome(vAula, *numAulas, designacao);
+        posicao=procuraAulaNome(vAula, *numAulas, designacaoAula);
+
         if(posicao==-1){
-                printf("A designação nao existe.");
+            printf("A designação nao existe.");
         } else {
-            pAula = vAula;
             for (i=0; i<*numAulas; i++){
-                if (vAula[i].codigo == codigoUc && vAula[i].designacao, designacao) {
+                if (strcmp(vAula[i].designacao, designacaoAula)) {
 
                     do{
                         opcao=subMenuAlteraAula();
                         switch(opcao){
                             case 'A':
-
+                                    lerString("Indique Descrição: ", vAula[i].designacao, MAX_AULAS);
                                      break;
                             case 'B':
-                                     lerString("Docente: ", pAula[i].docente, MAX_AULAS);
+                                     lerString("Docente: ", vAula[i].docente, MAX_AULAS);
                                     break;
                             case 'V':
                                     printf("Voltar");

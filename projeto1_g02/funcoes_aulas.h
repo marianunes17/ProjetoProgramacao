@@ -9,7 +9,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[],int numCod
 tipoAula *eliminaAula(tipoAula vAulas[], int *num, char designacao[]);
 int procuraAulaNome(tipoAula vAula[], int num, char procAula[]);
 void mostrarDadosAula(tipoAula vAulas[], int numAula);
-tipoAula *alteraAulas(tipoAula vAula[], int *numAulas, int codigoUc, char designacao[]);
+tipoAula *alteraAulas(tipoAula vAula[], int *numAulas, char designacao[]);
 
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);

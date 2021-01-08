@@ -1,187 +1,295 @@
 1
- 1245
- frfg
- t
- 1
- d
- 0,50
- 0
- 
- 
- 0
- 
- 0,002
- 1245
- frfg
- t
- 1
- d
- 0,50
- 1223
- deere
- tp
- 1
- d
- 0,50
- 0
- 
- 
- 0
- 
- 0,002
- 1245
- frfg
- t
- 1
- d
- 0,50
- 1224
- edede
- t
- 1
- d
- 0,50
- 0
- 
- 
- 0
- 
- 0,002
- 1245
- frfg
- t
- 1
- d
- 0,50
- 1232
- eded
- t
- 1
- d
- 0,40
- 0
- 
- 
- 0
- 
- 0,002
- 1245
- frfg
- t
- 1
- d
- 0,50
- 1343
- asas
- t
- 1
- d
- 0,00
- 0
- 
- 
- 0
- 
- 0,002
- 1245
- frfg
- t
- 1
- d
- 0,50
- 1222
- eewe
- t
- 1
- d
- 0,50
- 0
- 
- 
- 0
- 
- 0,002
- 1245
- frfg
- t
- 1
- d
- 0,50
  1000
- asasas
+ aaaaaaaa
  t
  1
  d
- 0,00
+ 60
  0
  
  
  0
  
- 0,002
- 1245
- frfg
+ 2
+ 1000
+ aaaaaaaa
  t
  1
  d
- 0,50
+ 60
  1111
- aswsas
+ bbbbbbbbbbb
+ t
+ 1
+ d
+ 80
+ 0
+ 
+ 
+ 0
+ 
+ 2
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ bbbbbbbbbbb
+ t
+ 1
+ d
+ 80
+ 0
+ 
+ 
+ 0
+ 
+ 2
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ ffffffffff
+ t
+ 1
+ d
+ 80
+ 0
+ 
+ 
+ 0
+ 
+ 2
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ 2
  pl
  1
  d
- 0,00
+ 80
  0
  
  
  0
  
- 0,003
- 1245
- frfg
+ 3
+ 1000
+ dddddddddddd
  t
  1
  d
- 0,50
+ 60
  1111
- aswsas
+ 2
  pl
  1
  d
- 0,00
+ 80
  1222
- asqsq
- pl
- 1
- d
- 0,00
- 0
- 
- 
- 0
- 
- 0,003
- 1245
- frfg
+ aaa
  t
  1
  d
- 0,50
+ 70
+ 0
+ 
+ 
+ 0
+ 
+ 4
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
  1111
- aswsas
+ 2
  pl
  1
  d
- 0,00
- 1112
- sasas
- pl
+ 80
+ 1222
+ aaa
+ t
  1
  d
- 0,00
+ 70
+ 1234
+ prog
+ t
+ 6
+ d
+ 80
  0
  
  
  0
  
- 0,00
+ 4
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ 2
+ pl
+ 1
+ d
+ 80
+ 1222
+ aaa
+ t
+ 1
+ d
+ 70
+ 1234
+ prog
+ t
+ 6
+ d
+ 80
+ 0
+ 
+ 
+ 0
+ 
+ 5
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ 2
+ pl
+ 1
+ d
+ 80
+ 1222
+ aaa
+ t
+ 1
+ d
+ 70
+ 1234
+ prog
+ t
+ 6
+ d
+ 80
+ 1245
+ frfrf
+ t
+ 1
+ pl
+ 80
+ 0
+ 
+ 
+ 0
+ 
+ 4
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ 2
+ pl
+ 1
+ d
+ 80
+ 1222
+ aaa
+ t
+ 1
+ d
+ 70
+ 1234
+ prog
+ t
+ 6
+ d
+ 80
+ 1245
+ frfrf
+ t
+ 1
+ pl
+ 804
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ mat
+ pl
+ 1
+ d
+ 80
+ 1222
+ aaa
+ t
+ 1
+ d
+ 70
+ 1234
+ prog
+ t
+ 6
+ d
+ 80
+ 1245
+ frfrf
+ t
+ 1
+ pl
+ 804
+ 1000
+ dddddddddddd
+ t
+ 1
+ d
+ 60
+ 1111
+ mat
+ pl
+ 1
+ d
+ 80
+ 1222
+ aaa
+ t
+ 1
+ d
+ 70
+ 1234
+ prog
+ t
+ 6
+ d
+ 80
+ 0
+ 
+ 
+ 0
+ 
+ 

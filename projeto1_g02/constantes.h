@@ -4,9 +4,7 @@
 #define MAX_ALUNOS 100
 #define MAX_UC 40
 #define MAX_STRING 100
-#define MAX_CODIGO 7
 #define MAX_AULAS 50
-#define HORAS_SEGUNDOS 0.60
 
 typedef struct{
     int dia, mes, ano;
@@ -19,7 +17,7 @@ typedef struct{
     char tipo[MAX_STRING];
     int semestre;
     char regime[MAX_STRING];
-    float duracao;
+    int duracao;
 } tipoUc;
 
 

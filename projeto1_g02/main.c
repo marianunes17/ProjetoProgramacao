@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <locale.h>
 
@@ -11,7 +12,7 @@
 
 
 int main(){
-    setlocale(LC_ALL, "");     // Texto com acentos
+    setlocale(LC_ALL, "");     // Permite texto com acentos
 
     tipoUc vetorUc[MAX_UC];
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
@@ -32,50 +33,28 @@ int main(){
                     opcaoSubMenuUc=subMenuUc(vetorUc);
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
-                                printf("Escolheu a opção: L \n");
-                                printf("\n\nLista de Unidades Curriculares:");
+                                printf("Escolheu a opção: Listar Unidades Curriculares:");
                                 printf("\nTotal de UC: %d\n", numUc);
                                 listaDadosUc(vetorUc, numUc);
                                 break;
 
                         case 'I': //Inserir nova UC
-                                printf("Escolheu a opção: I \n");
-                                do{ //Verifica se o codigo inserido já existe
-                                    codigoUc=lerInteiro("Codigo: ",1000,2000);
-                                    posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
+                                printf("Escolheu a opção: Inserir nova Unidade Curricular \n");
+                                    codigoUc=lerInteiro("\tCodigo: ",1000,2000);
+                                    acrescentaUc(vetorUc, &numUc, codigoUc);
 
-                                    if(posicaoUcVetor==-1){
-                                        acrescentaUc(vetorUc, &numUc, codigoUc);
-                                        gravarUcBinario(vetorUc, numUc);
-                                        gravarUcTexto(vetorUc, numUc);
-                                    } else{
-                                        printf("O codigo já existe.");
-                                    }
-                                } while(posicaoUcVetor!=-1);
-
-                                numUc++;
                                 break;
 
                         case 'E': //Eliminar UC
-                                printf("Escolheu a opção: E \n");
+                                printf("Escolheu a opção: Eliminar Unidade Curricular \n");
                                 eliminarDoVetor(vetorUc, &numUc);
-                                gravarUcBinario(vetorUc, numUc);
-                                gravarUcTexto(vetorUc, numUc);
                                 break;
 
                         case 'M': //Modificar UC
-                                printf("Escolheu a opção: M \n");
+                                printf("Escolheu a opção: Modificar Unidade Curricular \n");
 
-                                codigoUc = lerInteiro("Insira um código: ",1000,2000);
-                                posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
-                                if(posicaoUcVetor==-1){
-                                    printf("O código não existe");
-                                } else{
-                                alterarVetorUc(vetorUc);
+                                alterarVetorUc(vetorUc, &numUc);
 
-                                gravarUcBinario(vetorUc, numUc);
-                                gravarUcTexto(vetorUc, numUc);
-                                }
 
                                 break;
 
@@ -85,7 +64,7 @@ int main(){
 
                         default: printf("\nOpcao inválida. ");
                     }
-                }while(opcaoSubMenuUc!='V');
+                } while(opcaoSubMenuUc!='V');
 
                 break;
             case 'A':
@@ -126,12 +105,15 @@ int main(){
                                 case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
                                            vAulas = eliminaAula(vAulas, &numAula, designacao);
                                            gravaFicheiroBin(vAulas,numAula);
-                                    break;
+                                            break;
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':   printf("Escolheu a opção de Alterar um Aula Agendada");
+                                            codigoUc= lerInteiro("Codigo da Uc: ", 1000, 2000);
+                                            lerString("Designação da Aula: ", designacao, 30);
+                                            vAulas = alteraAulas(vAulas, &numAula, codigoUc, designacao);
                                             // só dá se a aula estiver com estado 'agendada'
-                                    break;
+                                            break;
                                 case 'V':
                                     break;
                                 default:    printf("\n\n Opção Inválida! Tente Novamente...\n");

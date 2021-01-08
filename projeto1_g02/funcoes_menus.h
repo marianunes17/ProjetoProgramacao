@@ -9,4 +9,6 @@ char menuAulas();
 char subMenuUc(tipoUc vetorUc[]);
 char submenuAulas();
 
+char subMenuAlteraUC();
+char subMenuAlteraAula();
 #endif // FUNCOES_MENUS_H_INCLUDED

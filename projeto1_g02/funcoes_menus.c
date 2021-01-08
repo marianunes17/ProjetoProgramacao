@@ -10,8 +10,6 @@
 #include "funcoes_aulas.h"
 
 
-
-
 char menu(tipoUc vetorUc[], int numUc){
     char opcao;
     leFicheiroUcBinario(vetorUc, &numUc);
@@ -68,7 +66,6 @@ char submenuAulas(){
 
 char subMenuUc(tipoUc vetorUc[]){
     char opcao;
-    int codigoUC, numUcs=0;
 
     printf("\n\n ----------------- Menu de Unidades Curriculares -----------------");
     printf("\n L - Listar UC's");
@@ -84,5 +81,34 @@ char subMenuUc(tipoUc vetorUc[]){
     return opcao;
 }
 
+char subMenuAlteraUC(){
+    char opcaoUc;
+    printf("\n\n Alterar Campo das Unidades Curriculares");
+    printf("\n\t A - Designação");
+    printf("\n\t B - Tipo (T, TP ou PL)");
+    printf("\n\t C - Semestre");
+    printf("\n\t D - Regime (D,PL)");
+    printf("\n\t E - Duração de cada aula(em minutos)");
+    printf("\n\t V - Voltar\n");
+    printf("\n\t Insira Opção ->");
 
+    scanf(" %c", &opcaoUc);
+    opcaoUc = toupper(opcaoUc);
+    limpaBufferStdin();
+    return opcaoUc;
+}
+
+char subMenuAlteraAula(){
+    char opcaoAula;
+    printf("\n\n Alterar Campo das Aulas");
+    printf("\n\t A - Designação");
+    printf("\n\t B - Docente)");
+    printf("\n\t V - Voltar\n");
+    printf("\n\t Insira Opção ->");
+
+    scanf(" %c", &opcaoAula);
+    opcaoAula = toupper(opcaoAula);
+    limpaBufferStdin();
+    return opcaoAula;
+}
 

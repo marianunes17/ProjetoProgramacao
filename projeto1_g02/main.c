@@ -21,6 +21,7 @@ int main(){
     char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
+    leFicheiroUcBinario(vetorUc, &numUc);
 
 
      do{
@@ -32,7 +33,6 @@ int main(){
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
                                 printf("Escolheu a opção: L \n");
-                                leFicheiroUcBinario(vetorUc, &numUc);
                                 printf("\n\nLista de Unidades Curriculares:");
                                 printf("\nTotal de UC: %d\n", numUc);
                                 listaDadosUc(vetorUc, numUc);
@@ -41,8 +41,7 @@ int main(){
                         case 'I': //Inserir nova UC
                                 printf("Escolheu a opção: I \n");
                                 do{ //Verifica se o codigo inserido já existe
-                                    codigoUc=lerInteiro("Codigo: ",1000,2000);;
-                                    leFicheiroUcBinario(vetorUc, &numUc);
+                                    codigoUc=lerInteiro("Codigo: ",1000,2000);
                                     posicaoUcVetor=procuraUc(vetorUc, numUc, codigoUc);
 
                                     if(posicaoUcVetor==-1){

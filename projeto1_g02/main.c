@@ -127,10 +127,12 @@ int main(){
                 }while(subMenuAula!='V');
                 break;
 
-            case 'R':   printf("Escolheu a opção R");
-            break;
-            case 'E':   printf("Escolheu a opção E");
-            break;
+            case 'R':   printf("Escolheu a opção Raking");
+
+                        break;
+            case 'E':   printf("\nEscolheu a opção Estatistica");
+                        quantidadeAulasOnline(vAulas, numAula, vetorUc);
+                        break;
             case 'S':   printf("Escolheu a opção S");
             break;
             case 'V':

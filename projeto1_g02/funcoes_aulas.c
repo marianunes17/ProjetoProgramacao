@@ -84,6 +84,14 @@ void mostrarDadosAula(tipoAula vAulas[], int numAula) {
     }
 }
 
+void escreveDadosAulas(tipoAula vAulas){
+    printf("\tDescricao: %s\n",vAulas.designacao);
+    printf("\tDocente: %s\n",vAulas.docente);
+    printf("\tCodigo UC: %d\n",vAulas.codigo);
+    printf("\tData: %d / %d / %d\n\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
+}
+
+
 
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
@@ -285,10 +293,40 @@ tipoAula *alteraAulas(tipoAula vAula[], int *numAulas,  char designacaoAula[]){
                    gravaFicheiroTextAula(vAula, *numAulas);
 
                    i=*numAulas;
+                }
+            }
         }
-    }
-    }
     }
     return vAula;
 }
+
+void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]){
+    int contador=0, maior=0, conta=0;
+    int i, j;
+
+    if(numTotalAulas==0){
+        printf("\nNão existem aulas agendadas.");
+    } else {
+        for(i=0; i<numTotalAulas; i++){
+            contador=0;
+            for(j=0; j<numTotalAulas; j++){
+                if(vAulas[i].codigo == vAulas[j].codigo){
+                    contador++;
+                    maior = vAulas[j].codigo;
+                }
+            }
+        }
+
+
+        printf("\n A disciplina com mais aulas online é: %d \n", maior);
+        for(i=0; i<numTotalAulas; i++){
+            if(vAulas[i].codigo == maior){
+                escreveDadosAulas(vAulas[i]);
+                conta++;
+            }
+        }
+    }
+}
+
+
 

@@ -10,6 +10,8 @@ tipoAula *eliminaAula(tipoAula vAulas[], int *num, char designacao[]);
 int procuraAulaNome(tipoAula vAula[], int num, char procAula[]);
 void mostrarDadosAula(tipoAula vAulas[], int numAula);
 tipoAula *alteraAulas(tipoAula vAula[], int *numAulas, char designacao[]);
+void escreveDadosAulas(tipoAula vAulas[]);
+void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas, tipoUc vetorUc[]);
 
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);

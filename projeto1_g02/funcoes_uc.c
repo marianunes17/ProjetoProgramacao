@@ -23,7 +23,7 @@ tipoUc leDadosUc(int codigoUc){
 
     vetorUc.codigo = codigoUc;
 
-    lerString("\tDesignacao: ", vetorUc.designacao,80);
+    lerString("\tDesignacao: ", vetorUc.designacao,MAX_STRING);
 
     do{
         lerString("\tTipo (T, TP ou PL): ", vetorUc.tipo,3);
@@ -206,7 +206,7 @@ void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc){
                         opcao=subMenuAlteraUC();
                         switch(opcao){
                             case 'A':
-                                     lerString("Designacao: ", vetorUc[i].designacao,80);
+                                     lerString("Designacao: ", vetorUc[i].designacao,MAX_STRING);
                                      break;
                             case 'B':
                                      do{

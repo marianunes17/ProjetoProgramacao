@@ -13,9 +13,9 @@
 tipoAula lerDadosAula(){
     tipoAula aula;
 
-    lerString("Indique Descrição: ", aula.designacao, MAX_STRING);
+    lerString("Indique Descrição: ", aula.designacao, MAX_STRING_AULAS);
 
-    lerString("Docente: ", aula.docente, MAX_STRING);
+    lerString("Docente: ", aula.docente, MAX_STRING_AULAS);
     //campo tipo contador - tem a haver com a funcionalidade do programa
     aula.codigo = 0;
     aula.gavacao = 0;
@@ -48,7 +48,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     posAula = procuraAulaNome(vAula,*num,dados.designacao);
 
     if(posAula != -1){
-        printf("\nO nome da aula já existente.");
+        printf("Nome de Aula existente");
     }else{
 
         dados.codigo = vetorUc[posUc].codigo;
@@ -57,7 +57,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
         if(vAula == NULL){
-            printf("\nERRO - impossivel inserir aula");
+            printf("ERRO - impossivel inserir aula");
             vAula = pAula;
         }else{
             vAula[*num] = dados;
@@ -95,7 +95,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
     ficheiro = fopen("dataAulas.dat", "rb");
 
     if (ficheiro == NULL) {
-        printf ("\nImpossível abrir ficheiro.");
+        printf ("\nImpossível abrir ficheiro");
     }
     else {
         fread(&(*num),sizeof(int),1,ficheiro); //fwrite(&quantidade,sizeof(int),1,ficheiro)
@@ -107,7 +107,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
         vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
 
         if(vAulas == NULL && *num !=0){
-            printf("Erro ao reservar memoria.");
+            printf("Erro ao reservar memoria");
             vAulas = pAula;   // restaura valor de vAulas
         }
         else{
@@ -116,7 +116,7 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
 
         erro = fclose(ficheiro);
         if (erro != 0){
-            printf ("Erro %d ao fechar ficheiro.", erro);
+            printf ("Erro %d ao fechar ficheiro", erro);
         }
     }
     return vAulas;
@@ -130,7 +130,7 @@ void gravaFicheiroTextAula(tipoAula vAulas[],int num){
     ficheiro = fopen("dadosAulas.txt", "a+");
 
     if (ficheiro == NULL) {
-        printf ("Impossível abrir ficheiro.");
+        printf ("Impossível abrir ficheiro");
     }
     else {
 
@@ -263,16 +263,16 @@ tipoAula *alteraAulas(tipoAula vAula[], int *numAulas,  char designacaoAula[]){
             printf("A designação nao existe.");
         } else {
             for (i=0; i<*numAulas; i++){
-                if (strcmp(vAula[i].designacao, designacaoAula) == 0) {
+                if (strcmp(vAula[i].designacao, designacaoAula)) {
 
                     do{
                         opcao=subMenuAlteraAula();
                         switch(opcao){
                             case 'A':
-                                    lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING);
+                                    lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING_AULAS);
                                      break;
                             case 'B':
-                                     lerString("Docente: ", vAula[i].docente, MAX_STRING);
+                                     lerString("Docente: ", vAula[i].docente, MAX_STRING_AULAS);
                                     break;
                             case 'V':
                                     printf("Voltar");

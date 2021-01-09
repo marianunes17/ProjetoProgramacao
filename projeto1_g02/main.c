@@ -102,14 +102,14 @@ int main(){
                             subSubMenuAula = submenuAulas();
                             switch(subSubMenuAula){
                                  // ----- ELIMINAR AULA  -----
-                                case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, 30);
+                                case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING_AULAS);
                                            vAulas = eliminaAula(vAulas, &numAula, designacao);
                                            gravaFicheiroBin(vAulas,numAula);
                                             break;
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':   printf("Escolheu a opção de Alterar um Aula Agendada");
-                                            lerString("Designação da Aula: ", designacao, 30);
+                                            lerString("Designação da Aula: ", designacao, MAX_STRING_AULAS);
                                             vAulas = alteraAulas(vAulas, &numAula, designacao);
                                             // só dá se a aula estiver com estado 'agendada'
                                             break;

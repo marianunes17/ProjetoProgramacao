@@ -4,7 +4,6 @@
 #define MAX_ALUNOS 100
 #define MAX_UC 40
 #define MAX_STRING 100
-#define MAX_STRING_AULAS 50
 
 typedef struct{
     int dia, mes, ano;
@@ -29,9 +28,9 @@ typedef struct{
 
 
 typedef struct{
-    char designacao[MAX_STRING_AULAS];
+    char designacao[MAX_STRING];
     char tipoDeAula;
-    char docente[MAX_STRING_AULAS];
+    char docente[MAX_STRING];
     tipoData data;
     float hora;
     char estadoAula;

@@ -13,9 +13,9 @@
 tipoAula lerDadosAula(){
     tipoAula aula;
 
-    lerString("Indique Descrição: ", aula.designacao, MAX_STRING_AULAS);
+    lerString("Indique Descrição: ", aula.designacao, MAX_STRING);
 
-    lerString("Docente: ", aula.docente, MAX_STRING_AULAS);
+    lerString("Docente: ", aula.docente, MAX_STRING);
     //campo tipo contador - tem a haver com a funcionalidade do programa
     aula.codigo = 0;
     aula.gavacao = 0;
@@ -79,7 +79,8 @@ void mostrarDadosAula(tipoAula vAulas[], int numAula) {
             printf(" Descricao: %s\n",vAulas[i].designacao);
             printf(" Docente: %s\n",vAulas[i].docente);
             printf(" Codigo UC: %d\n",vAulas[i].codigo);
-            printf(" Data: %d / %d / %d\n\n",vAulas[i].data.dia,vAulas[i].data.mes,vAulas[i].data.ano);
+            printf(" Data: %d / %d / %d\n",vAulas[i].data.dia,vAulas[i].data.mes,vAulas[i].data.ano);
+            printf(" Estado da Aula: %c\n\n",vAulas[i].estadoAula);
         }
     }
 }
@@ -277,10 +278,10 @@ tipoAula *alteraAulas(tipoAula vAula[], int *numAulas,  char designacaoAula[]){
                         opcao=subMenuAlteraAula();
                         switch(opcao){
                             case 'A':
-                                    lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING_AULAS);
+                                    lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING);
                                      break;
                             case 'B':
-                                     lerString("Docente: ", vAula[i].docente, MAX_STRING_AULAS);
+                                     lerString("Docente: ", vAula[i].docente, MAX_STRING);
                                     break;
                             case 'V':
                                     printf("Voltar");
@@ -328,5 +329,19 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]
     }
 }
 
+void comecarAula(tipoAula vAulas[], int numTotalAulas){
+    char designacaoAula;
 
+    if(numTotalAulas == 0 ){
+        printf("Não existem Aulas. \n");
+    }else{
+        lerString("Designação da Aula: ", designacaoAula, MAX_STRING);
+        posicao=procuraAulaNome(vAula, numTotalAulas, designacaoAula);
+
+    char escolhe;
+    printf("Quer alterar o estado da aula de 'agendada' para 'a realizar'?(S-Sim, N-Nao)  %c: ",escolhe);
+    if(escolhe=='S'){
+
+    }
+}
 

@@ -18,8 +18,9 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
-    int numTotalUc=0, numAula=0, codigoUc,posicaoUcVetor, posicaoAulaVetor;
-    char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
+    int numTotalUc=0, numAula=0, codigoUc, posicaoUcVetor, posicaoAulaVetor;
+    char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala;
+    char designacao[80];
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
@@ -52,10 +53,7 @@ int main(){
 
                         case 'M': //Modificar UC
                                 printf("Escolheu a opção: Modificar Unidade Curricular \n");
-
                                 alterarVetorUc(vetorUc, &numTotalUc);
-
-
                                 break;
 
                         case 'V':
@@ -102,14 +100,14 @@ int main(){
                             subSubMenuAula = submenuAulas();
                             switch(subSubMenuAula){
                                  // ----- ELIMINAR AULA  -----
-                                case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING_AULAS);
+                                case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
                                            vAulas = eliminaAula(vAulas, &numAula, designacao);
                                            gravaFicheiroBin(vAulas,numAula);
                                             break;
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':   printf("Escolheu a opção de Alterar um Aula Agendada");
-                                            lerString("Designação da Aula: ", designacao, MAX_STRING_AULAS);
+                                            lerString("Designação da Aula: ", designacao, MAX_STRING);
                                             vAulas = alteraAulas(vAulas, &numAula, designacao);
                                             // só dá se a aula estiver com estado 'agendada'
                                             break;
@@ -127,13 +125,30 @@ int main(){
                 }while(subMenuAula!='V');
                 break;
 
+            case 'S':   printf("Escolheu a opção Salas de Aula online");
+                        do{
+                            subMenuSala = subMenuSalasOnline();
+                            switch(subMenuSala){
+                                case 'C':
+                                        printf("Escolheu a opção de Começar Aula");
+                                        vAulas = comecarAula(vAulas, numAula);
+                                        break;
+                                case 'A':
+                                        printf("Escolheu a opção de Assistir à aula");
+                                        break;
+                                case 'V':
+                                        printf("\nSair do menu de UC. ");
+                                        break;
+                                default: printf("\nOpcao inválida. ");
+                            }
+                        }while(subMenuSala!='V');
+
+                        break;
             case 'R':   printf("Escolheu a opção Raking");
 
                         break;
             case 'E':   printf("\nEscolheu a opção Estatistica");
                         quantidadeAulasOnline(vAulas, numAula, vetorUc);
-                        break;
-            case 'S':   printf("Escolheu a opção S");
                         break;
             case 'V':
                     printf("Escolheu a opção V");

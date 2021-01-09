@@ -20,8 +20,13 @@ char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas
     printf("\nQnt. aulas realizadas: **** ");
     printf("\tQnt. aulas gravadas: ****\n");
 
-    printf("\n U - Unidades Curriculares\n A - Aulas online\n R - Raking\n E - Estatística");
-    printf("\n S - Salas de Aula online\n F - Fim/Sair\n\n Insira Opção ->");
+    printf("\nU - Unidades Curriculares");
+    printf("\nA - Aulas online");
+    printf("\nS - Salas de Aula online");
+    printf("\nR - Raking");
+    printf("\nE - Estatística");
+    printf("\nF - Fim/Sair");
+    printf("\n\nInsira Opção ->");
     scanf("%c", &opcao);
     limpaBufferStdin();
     opcao = toupper(opcao);
@@ -81,6 +86,20 @@ char subMenuUc(tipoUc vetorUc[]){
     return opcao;
 }
 
+char subMenuSalasOnline(){
+    char opcao;
+    printf("\n\n ----------------- Menu Salas de Aula online-----------------");
+    printf("\n C - Começar Aula");
+    printf("\n A - Assistir à Aula");
+    printf("\n V - Voltar\n");
+    printf("\n Insira Opção ->");
+
+
+    scanf("%c", &opcao);
+    limpaBufferStdin();
+    opcao = toupper(opcao);
+    return opcao;
+}
 
 //Menu para escolher a parte do vetor se quer alterar no vetor Uc
 char subMenuAlteraUC(){

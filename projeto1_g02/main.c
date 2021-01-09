@@ -18,15 +18,15 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
 
-    int numUc=0, numAula=0, codigoUc,posicaoUcVetor, posicaoAulaVetor;
+    int numTotalUc=0, numAula=0, codigoUc,posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, designacao[80], opcaoSubMenuUc;
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
-    leFicheiroUcBinario(vetorUc, &numUc);
+    leFicheiroUcBinario(vetorUc, &numTotalUc);
 
 
      do{
-        opcao = menu(vetorUc, numUc);
+        opcao = menu(vetorUc, numTotalUc);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
@@ -34,26 +34,26 @@ int main(){
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
                                 printf("Escolheu a opção: Listar Unidades Curriculares:");
-                                printf("\nTotal de UC: %d\n", numUc);
-                                listaDadosUc(vetorUc, numUc);
+                                printf("\nTotal de UC: %d\n", numTotalUc);
+                                listaDadosUc(vetorUc, numTotalUc);
                                 break;
 
                         case 'I': //Inserir nova UC
                                 printf("Escolheu a opção: Inserir nova Unidade Curricular \n");
                                     codigoUc=lerInteiro("\tCodigo: ",1000,2000);
-                                    acrescentaUc(vetorUc, &numUc, codigoUc);
+                                    acrescentaUc(vetorUc, &numTotalUc, codigoUc);
 
                                 break;
 
                         case 'E': //Eliminar UC
                                 printf("Escolheu a opção: Eliminar Unidade Curricular \n");
-                                eliminarDoVetor(vetorUc, &numUc);
+                                eliminarDoVetor(vetorUc, &numTotalUc);
                                 break;
 
                         case 'M': //Modificar UC
                                 printf("Escolheu a opção: Modificar Unidade Curricular \n");
 
-                                alterarVetorUc(vetorUc, &numUc);
+                                alterarVetorUc(vetorUc, &numTotalUc);
 
 
                                 break;
@@ -80,10 +80,10 @@ int main(){
                     // ----- AGENDAR AULA  -----
                     case 'A':
                         printf("Escolheu a opção de Agendar uma Aula");
-                        leFicheiroUcBinario(vetorUc, &numUc); // funcao maria
+                        leFicheiroUcBinario(vetorUc, &numTotalUc); // funcao maria
 
                         codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
-                        posicaoUcVetor = procuraUc(vetorUc, numUc, codigoUc);
+                        posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc);
                         if(posicaoUcVetor == -1){
                             printf("Uc não existe");
                         }

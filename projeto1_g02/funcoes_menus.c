@@ -81,6 +81,8 @@ char subMenuUc(tipoUc vetorUc[]){
     return opcao;
 }
 
+
+//Menu para escolher a parte do vetor se quer alterar no vetor Uc
 char subMenuAlteraUC(){
     char opcaoUc;
     printf("\n\n Alterar Campo das Unidades Curriculares");
@@ -98,6 +100,7 @@ char subMenuAlteraUC(){
     return opcaoUc;
 }
 
+//Menu para escolher a parte do vetor se quer alterar no vetor Aula
 char subMenuAlteraAula(){
     char opcaoAula;
     printf("\n\n Alterar Campo das Aulas");

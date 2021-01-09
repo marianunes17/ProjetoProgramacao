@@ -26,7 +26,7 @@ int main(){
 
 
      do{
-        opcao = menu(vetorUc, numTotalUc);
+        opcao = menu(vetorUc, numTotalUc, vAulas, numAula);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
@@ -134,7 +134,7 @@ int main(){
                         quantidadeAulasOnline(vAulas, numAula, vetorUc);
                         break;
             case 'S':   printf("Escolheu a opção S");
-            break;
+                        break;
             case 'V':
                     printf("Escolheu a opção V");
                     break;

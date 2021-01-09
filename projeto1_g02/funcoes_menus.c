@@ -10,13 +10,13 @@
 #include "funcoes_aulas.h"
 
 
-char menu(tipoUc vetorUc[], int numUc){
+char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas){
     char opcao;
-    leFicheiroUcBinario(vetorUc, &numUc);
+    leFicheiroUcBinario(vetorUc, &numTotalUc);
 
     printf("\n\n************************ Menu Principal ************************");
-    printf("\nQuantidade de UC's: %d", numUc);
-    printf("\tQnt. aulas agendadas: ** horas  ");
+    printf("\nQuantidade de UC's: %d", numTotalUc);
+    printf("\tQnt. aulas agendadas: ** horas");
     printf("\nQnt. aulas realizadas: **** ");
     printf("\tQnt. aulas gravadas: ****\n");
 
@@ -45,7 +45,7 @@ char menu(){
 char menuAulas(){
     char opcao;
     printf("\n\n ----------------- Menu das Aulas Online -----------------");
-    printf("\n L - Listar Aulas\n A - Agendar Aula\n M - Modificar Aula\n E - Eliminar \n P - Procurar");
+    printf("\n L - Listar Aulas\n A - Agendar Aula\n M - Modificar Aula");
     printf("\n V - Voltar\n\n Insira Opção ->");
     scanf(" %c", &opcao);
     limpaBufferStdin();

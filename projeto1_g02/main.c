@@ -131,7 +131,8 @@ int main(){
                             switch(subMenuSala){
                                 case 'C':
                                         printf("Escolheu a opção de Começar Aula");
-                                        vAulas = comecarAula(vAulas, numAula);
+                                        lerString("Designação da Aula: ", designacao, MAX_STRING);
+                                        comecarAula(vAulas, numAula, designacao);
                                         break;
                                 case 'A':
                                         printf("Escolheu a opção de Assistir à aula");

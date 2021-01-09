@@ -12,7 +12,7 @@ void mostrarDadosAula(tipoAula vAulas[], int numAula);
 tipoAula *alteraAulas(tipoAula vAula[], int *numAulas, char designacao[]);
 void escreveDadosAulas(tipoAula vAulas[]);
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas, tipoUc vetorUc[]);
-void comecarAula(tipoAula vAulas[], int numTotalAulas);
+void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]);
 
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);

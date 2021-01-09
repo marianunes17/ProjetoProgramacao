@@ -90,6 +90,7 @@ void escreveDadosAulas(tipoAula vAulas){
     printf("\tDocente: %s\n",vAulas.docente);
     printf("\tCodigo UC: %d\n",vAulas.codigo);
     printf("\tData: %d / %d / %d\n\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
+    printf(" Estado da Aula: %c\n\n",vAulas.estadoAula);
 }
 
 
@@ -272,14 +273,14 @@ tipoAula *alteraAulas(tipoAula vAula[], int *numAulas,  char designacaoAula[]){
             printf("A designação nao existe.");
         } else {
             for (i=0; i<*numAulas; i++){
-                if (strcmp(vAula[i].designacao, designacaoAula)) {
+                if (strcmp(vAula[i].designacao, designacaoAula)==0) {
 
                     do{
                         opcao=subMenuAlteraAula();
                         switch(opcao){
                             case 'A':
                                     lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING);
-                                     break;
+                                    break;
                             case 'B':
                                      lerString("Docente: ", vAula[i].docente, MAX_STRING);
                                     break;
@@ -329,19 +330,32 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]
     }
 }
 
-void comecarAula(tipoAula vAulas[], int numTotalAulas){
-    char designacaoAula;
+void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
+    int posicao, i;
+    char estadoAula;
 
     if(numTotalAulas == 0 ){
         printf("Não existem Aulas. \n");
     }else{
-        lerString("Designação da Aula: ", designacaoAula, MAX_STRING);
-        posicao=procuraAulaNome(vAula, numTotalAulas, designacaoAula);
+        posicao=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
+        if(posicao == -1){
+            printf ("Aula nao está agendada");
+        }
+        else{
+            printf("Quer alterar o estado da aula de 'agendada' para 'a realizar'?(S-Sim, N-Nao)  %c: ",estadoAula);
+            scanf("%c", &estadoAula);
+            estadoAula = toupper(estadoAula);
 
-    char escolhe;
-    printf("Quer alterar o estado da aula de 'agendada' para 'a realizar'?(S-Sim, N-Nao)  %c: ",escolhe);
-    if(escolhe=='S'){
+            if(estadoAula=='S'){
+                for(i=0; i<numTotalAulas; i++){
+                      if(( strcmp(vAulas[i].estadoAula, designacaoAula)==0)){
+                            vAulas[i].estadoAula = "Agendada";
+                      }
+                    }
+                }
+             gravaFicheiroBin(vAulas, numTotalAulas);
+             gravaFicheiroTextAula(vAulas, numTotalAulas);
+            }
 
+        }
     }
-}
-

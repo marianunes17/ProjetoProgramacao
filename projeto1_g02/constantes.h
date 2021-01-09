@@ -33,7 +33,7 @@ typedef struct{
     char docente[MAX_STRING];
     tipoData data;
     float hora;
-    char estadoAula;
+    char *estadoAula;
     int gavacao;
     int codigo; //chave primaria UCs
 } tipoAula;

@@ -27,7 +27,12 @@ tipoUc leDadosUc(int codigoUc){
     lerString("\tDesignacao: ", vetorUc.designacao,MAX_STRING);
 
     do{
+
         lerString("\tTipo (T, TP ou PL): ", vetorUc.tipoAula,3);
+
+         if(vetorUc.tipoAula!="T" || vetorUc.tipoAula!="t" || vetorUc.tipoAula!="TP" || vetorUc.tipoAula!="tp" || vetorUc.tipoAula!="PL" ||vetorUc.tipoAula!="pl" ){
+            printf("Insira uma opcão válida. ");
+         }
     } while( strcmp(vetorUc.tipoAula, "T") && strcmp(vetorUc.tipoAula, "t") && strcmp(vetorUc.tipoAula, "TP") && strcmp(vetorUc.tipoAula, "tp") && strcmp(vetorUc.tipoAula, "PL") && strcmp(vetorUc.tipoAula, "pl"));
     //strcmp - Compara se a string tipo é igual a T/PL/TP
 
@@ -35,6 +40,10 @@ tipoUc leDadosUc(int codigoUc){
 
     do{
         lerString("\tRegime (D,PL): ", vetorUc.regime,3);
+
+        if(vetorUc.regime!="D" || vetorUc.regime!="d" || vetorUc.regime!="PL" || vetorUc.regime!="pl"){
+           printf("Insira uma opcão válida. ");
+         }
     } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
 
     vetorUc.quantidadeAulas = lerInteiro("\tTotal de horas prevista: ", 1, 100);

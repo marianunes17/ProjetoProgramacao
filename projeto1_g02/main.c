@@ -8,6 +8,7 @@
 #include "funcoes_estudantes.h"
 #include "funcoes_uc.h"
 #include "funcoes_aulas.h"
+#include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
 
@@ -17,13 +18,16 @@ int main(){
     tipoUc vetorUc[MAX_UC];
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
+    tipoEstudante vEstudante[MAX_ESTUDANTES];
 
-    int numTotalUc=0, numAula=0, codigoUc, posicaoUcVetor, posicaoAulaVetor;
-    char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala;
+    int numTotalUc=0, numAula=0, numTotalEstudantes=0;
+    int codigoUc, numeroEstudante, posicaoUcVetor, posicaoAulaVetor;
+    char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala, subMenuEstudante;
     char designacao[80];
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
+    leFicheiroUcBinarioEstudantes(vEstudante, &numTotalEstudantes);
 
 
      do{
@@ -53,7 +57,7 @@ int main(){
 
                         case 'M': //Modificar UC
                                 printf("Escolheu a opção: Modificar Unidade Curricular \n");
-                                alterarVetorUc(vetorUc, &numTotalUc);
+                                alterarVetorUc(vetorUc, numTotalUc);
                                 break;
 
                         case 'V':
@@ -136,6 +140,13 @@ int main(){
                                         break;
                                 case 'A':
                                         printf("Escolheu a opção de Assistir à aula");
+                                        lerString("Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
+                                        assistirAula(vEstudante, &numTotalEstudantes, vAulas, numAula, designacao);
+
+                                        break;
+                                case 'G':
+                                        printf("Escolheu a opção de Ver Gravações");
+                                        lerString("Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
                                         break;
                                 case 'V':
                                         printf("\nSair do menu de UC. ");
@@ -143,12 +154,46 @@ int main(){
                                 default: printf("\nOpcao inválida. ");
                             }
                         }while(subMenuSala!='V');
+                        break;
+
+            case 'E':   printf("Escolheu a opção Estudantes");
+                        do{
+                            subMenuEstudante = subMenuEstudantes();
+                            switch(subMenuEstudante){
+                                case 'L': //Listar Estudante
+                                        printf("Escolheu a opção: Listar Unidades Curriculares:");
+                                        printf("\nTotal de Estudantes: %d\n", numTotalEstudantes);
+                                        listaDadosEstudante(vEstudante, numTotalEstudantes);
+                                        break;
+
+                                case 'I': //Inserir novo Estudante
+                                        printf("Escolheu a opção: Inserir um novo Estudate \n");
+                                        numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
+                                        acrescentaEstudante(vEstudante, &numTotalEstudantes, numeroEstudante);
+
+                                        break;
+
+                                case 'E': //Eliminar Estudante
+                                        printf("Escolheu a opção: Eliminar Estudate \n");
+                                        //eliminarDoVetor(vetorUc, &numTotalUc);
+                                        break;
+
+                                case 'M': //Modificar Estudante
+                                        printf("Escolheu a opção: Modificar dados de um Estudate \n");
+                                        alterarVetorEstudante(vEstudante, numTotalEstudantes);
+                                        break;
+                                case 'V':
+                                        printf("\nSair do menu de UC. ");
+                                        break;
+                                default: printf("\nOpcao inválida. ");
+                            }
+                        }while(subMenuEstudante!='V');
 
                         break;
             case 'R':   printf("Escolheu a opção Raking");
 
                         break;
-            case 'E':   printf("\nEscolheu a opção Estatistica");
+            case 'D':   printf("\nEscolheu a opção Dados Estatisticos");
                         quantidadeAulasOnline(vAulas, numAula, vetorUc);
                         break;
             case 'V':

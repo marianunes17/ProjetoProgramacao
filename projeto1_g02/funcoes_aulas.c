@@ -3,10 +3,10 @@
 #include <ctype.h>
 #include <string.h>
 
-
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
 #include "funcoes_uc.h"
+#include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
 
@@ -349,7 +349,7 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
             if(estadoAula=='S'){
                 for(i=0; i<numTotalAulas; i++){
                       if(( strcmp(vAulas[i].estadoAula, designacaoAula)==0)){
-                            vAulas[i].estadoAula = "Agendada";
+                            strcmp(vAulas[i].estadoAula, "Agendada");
                       }
                     }
                 }

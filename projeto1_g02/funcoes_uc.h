@@ -4,13 +4,13 @@
 #include "constantes.h"
 
 
-void escreveDadosUc(tipoUc vetorUc);
+void escreveDadosUc(tipoUc vetorUc[]);
 tipoUc leDadosUc();
 void listaDadosUc(tipoUc vetorUc[MAX_UC], int numTotalUc);
 int procuraUc(tipoUc vetorUc[], int numTotalUc, int codigoUC);
 void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numTotalUc, int codigoUc);
 void eliminarDoVetor(tipoUc vetorUc[], int *numTotalUc);
-void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc);
+void alterarVetorUc(tipoUc vetorUc[], int numTotalUc);
 
 void gravarUcTexto(tipoUc vetorUc[], int numTotalUc);
 void gravarUcBinario(tipoUc vetorUc[], int numTotalUc);

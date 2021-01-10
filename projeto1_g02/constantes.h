@@ -1,7 +1,7 @@
 #ifndef contantes
 #define contantes
 
-#define MAX_ALUNOS 100
+#define MAX_ESTUDANTES 100
 #define MAX_UC 40
 #define MAX_STRING 100
 
@@ -22,12 +22,6 @@ typedef struct{
 
 
 typedef struct{
-    int numero;
-    char nome[MAX_STRING];
-} tipoEstudante;
-
-
-typedef struct{
     char designacao[MAX_STRING];
     char tipoDeAula;
     char docente[MAX_STRING];
@@ -37,6 +31,13 @@ typedef struct{
     int gavacao;
     int codigo; //chave primaria UCs
 } tipoAula;
+
+
+typedef struct{
+    int numeroEstudante;
+    char nome[MAX_STRING];
+    char regime[MAX_STRING];
+} tipoEstudante;
 
 
 

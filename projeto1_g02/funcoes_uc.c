@@ -27,23 +27,14 @@ tipoUc leDadosUc(int codigoUc){
     lerString("\tDesignacao: ", vetorUc.designacao,MAX_STRING);
 
     do{
-
         lerString("\tTipo (T, TP ou PL): ", vetorUc.tipoAula,3);
-
-         if(vetorUc.tipoAula!="T" || vetorUc.tipoAula!="t" || vetorUc.tipoAula!="TP" || vetorUc.tipoAula!="tp" || vetorUc.tipoAula!="PL" ||vetorUc.tipoAula!="pl" ){
-            printf("Insira uma opcão válida. ");
-         }
-    } while( strcmp(vetorUc.tipoAula, "T") && strcmp(vetorUc.tipoAula, "t") && strcmp(vetorUc.tipoAula, "TP") && strcmp(vetorUc.tipoAula, "tp") && strcmp(vetorUc.tipoAula, "PL") && strcmp(vetorUc.tipoAula, "pl"));
+    } while( strcmp(vetorUc.tipoAula, "T") && strcmp(vetorUc.tipoAula, "t") && strcmp(vetorUc.tipoAula, "TP") && strcmp(vetorUc.tipoAula, "tp") && strcmp(vetorUc.tipoAula, "P") && strcmp(vetorUc.tipoAula, "p"));
     //strcmp - Compara se a string tipo é igual a T/PL/TP
 
     vetorUc.semestre = lerInteiro("\tSemestre: ",1,6);
 
     do{
         lerString("\tRegime (D,PL): ", vetorUc.regime,3);
-
-        if(vetorUc.regime!="D" || vetorUc.regime!="d" || vetorUc.regime!="PL" || vetorUc.regime!="pl"){
-           printf("Insira uma opcão válida. ");
-         }
     } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
 
     vetorUc.quantidadeAulas = lerInteiro("\tTotal de horas prevista: ", 1, 100);
@@ -125,7 +116,7 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
         } else{
             for(i=0; i<=*numTotalUc; i++){
                 fscanf(ficheiro, "%d", vetorUc[i].codigo);
-                fgets(vetorUc[i].designacao,80,ficheiro);
+                fgets(vetorUc[i].designacao,100,ficheiro);
                 fgets(vetorUc[i].tipoAula,2,ficheiro);
                 fscanf(ficheiro, "%d", vetorUc[i].semestre);
                 fgets(vetorUc[i].regime,2,ficheiro);
@@ -221,9 +212,9 @@ void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc){
                                      lerString("Designacao: ", vetorUc[i].designacao,MAX_STRING);
                                      break;
                             case 'B':
-                                     do{
-                                        lerString("Tipo (T, TP ou PL): ", vetorUc[i].tipoAula,3);
-                                    } while( strcmp(vetorUc[i].tipoAula, "T") && strcmp(vetorUc[i].tipoAula, "t") && strcmp(vetorUc[i].tipoAula, "TP") && strcmp(vetorUc[i].tipoAula, "tp") && strcmp(vetorUc[i].tipoAula, "PL") && strcmp(vetorUc[i].tipoAula, "pl"));
+                                    do{
+                                        lerString("\tTipo (T, TP ou PL): ", vetorUc[i].tipoAula,3);
+                                    } while( strcmp(vetorUc[i].tipoAula, "T") && strcmp(vetorUc[i].tipoAula, "t") && strcmp(vetorUc[i].tipoAula, "TP") && strcmp(vetorUc[i].tipoAula, "tp") && strcmp(vetorUc[i].tipoAula, "P") && strcmp(vetorUc[i].tipoAula, "p"));
                                     //strcmp - Compara se o a string tipoAula é igual a T/PL/TP
                                     break;
                             case 'C':
@@ -231,7 +222,7 @@ void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc){
                                     break;
                             case 'D':
                                     do{
-                                        lerString("Regime (D,PL): ", vetorUc->regime,3);
+                                        lerString("\tRegime (D,PL): ", vetorUc[i].regime,3);
                                     } while( strcmp(vetorUc[i].regime, "D") && strcmp(vetorUc[i].regime, "d") && strcmp(vetorUc[i].regime, "PL") && strcmp(vetorUc[i].regime, "pl"));
                                     break;
                             case 'E':

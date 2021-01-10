@@ -13,19 +13,20 @@
 char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas){
     char opcao;
     leFicheiroUcBinario(vetorUc, &numTotalUc);
+    vAulas = lerFicheiroBin(vAulas, &numTotalAulas);
 
     printf("\n\n************************ Menu Principal ************************");
     printf("\nQuantidade de UC's: %d", numTotalUc);
-    printf("\tQnt. aulas agendadas: ** horas");
+    printf("\t\tQnt. aulas agendadas: %d", numTotalAulas);
     printf("\nQnt. aulas realizadas: **** ");
     printf("\tQnt. aulas gravadas: ****\n");
 
-    printf("\nU - Unidades Curriculares");
-    printf("\nA - Aulas online");
-    printf("\nS - Salas de Aula online");
-    printf("\nR - Raking");
-    printf("\nE - Estatística");
-    printf("\nF - Fim/Sair");
+    printf("\n U - Unidades Curriculares");
+    printf("\n A - Aulas online");
+    printf("\n S - Salas de Aula online");
+    printf("\n R - Raking");
+    printf("\n E - Estatística");
+    printf("\n F - Fim/Sair");
     printf("\n\nInsira Opção ->");
     scanf("%c", &opcao);
     limpaBufferStdin();
@@ -50,8 +51,11 @@ char menu(){
 char menuAulas(){
     char opcao;
     printf("\n\n ----------------- Menu das Aulas Online -----------------");
-    printf("\n L - Listar Aulas\n A - Agendar Aula\n M - Modificar Aula");
-    printf("\n V - Voltar\n\n Insira Opção ->");
+    printf("\n L - Listar Aulas");
+    printf("\n A - Agendar Aula");
+    printf("\n M - Modificar Aula");
+    printf("\n V - Voltar\n");
+    printf("\n Insira Opção ->");
     scanf(" %c", &opcao);
     limpaBufferStdin();
     opcao = toupper(opcao);
@@ -60,9 +64,11 @@ char menuAulas(){
 
 char submenuAulas(){
     char opcao;
-    printf("\n\n ****------------**** Modificar Aula ****------------****");
-    printf("\n E - Eliminar Aula \n A - Alterar Agendamento");
-    printf("\n V - Voltar\n\n Insira Opção ->");
+    printf("\n\n ****--------------- Modificar Aula ---------------****");
+    printf("\n E - Eliminar Aula");
+    printf("\n A - Alterar Agendamento");
+    printf("\n V - Voltar\n");
+    printf("\n Insira Opção ->");
     scanf(" %c", &opcao);
     limpaBufferStdin();
     opcao = toupper(opcao);
@@ -121,16 +127,16 @@ char subMenuAlteraUC(){
 
 //Menu para escolher a parte do vetor se quer alterar no vetor Aula
 char subMenuAlteraAula(){
-    char opcaoAula;
+    char opcao;
     printf("\n\n Alterar Campo das Aulas");
-    printf("\n\t A - Designação");
-    printf("\n\t B - Docente)");
+    printf("\n\t N - Designação");
+    printf("\n\t D - Docente)");
     printf("\n\t V - Voltar\n");
-    printf("\n\t Insira Opção ->");
-
-    scanf(" %c", &opcaoAula);
-    opcaoAula = toupper(opcaoAula);
+    printf("\n V - Voltar\n");
+    printf("\n Insira Opção ->");
+    scanf(" %c", &opcao);
     limpaBufferStdin();
-    return opcaoAula;
+    opcao = toupper(opcao);
+    return opcao;
 }
 

@@ -20,14 +20,13 @@ int main(){
 
     int numTotalUc=0, numAula=0, codigoUc, posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala;
-    char designacao[80];
+    char designacao;
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
 
-
      do{
-        opcao = menu(vetorUc, numTotalUc, vAulas, numAula);
+        opcao = menu(vetorUc, numTotalUc, vAulas, &numAula);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
@@ -77,20 +76,28 @@ int main(){
 
                     // ----- AGENDAR AULA  -----
                     case 'A':
-                        printf("Escolheu a opção de Agendar uma Aula");
+                        printf("Escolheu a opção de Agendar uma Aula\n");
                         leFicheiroUcBinario(vetorUc, &numTotalUc); // funcao maria
 
                         codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
                         posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc);
-                        if(posicaoUcVetor == -1){
-                            printf("Uc não existe");
+                        if(posicaoUcVetor != -1){
+
+                            if(vetorUc[posicaoUcVetor].quantidadeAulas == 0){
+                                printf("ja esgotou as horas");
+                            }
+                            else{
+                                printf("Uc: %s", vetorUc[posicaoUcVetor].designacao);
+                                printf("\tAinda tem disponivel %d horas\n\n", vetorUc[posicaoUcVetor].quantidadeAulas);
+                                vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
+                                gravaFicheiroBin(vAulas,numAula);
+                            }
                         }
                         else{
-                            vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
-                            gravaFicheiroBin(vAulas,numAula);
-                            //acrescentaAula(vAulas,&numAula);
-
-                            gravaFicheiroTextAula(vAulas,numAula);
+                            //vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
+                            //gravaFicheiroBin(vAulas,numAula);
+                            //gravaFicheiroTextAula(vAulas,numAula);
+                            printf("Uc não existe");
                         }
                         break;
 
@@ -102,15 +109,16 @@ int main(){
                                  // ----- ELIMINAR AULA  -----
                                 case 'E':  lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
                                            vAulas = eliminaAula(vAulas, &numAula, designacao);
-                                           gravaFicheiroBin(vAulas,numAula);
-                                            break;
+                                           gravaFicheiroBin(vAulas,&numAula);
+                                    break;
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':   printf("Escolheu a opção de Alterar um Aula Agendada");
                                             lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                            vAulas = alteraAulas(vAulas, &numAula, designacao);
+                                            alteraAulas(vAulas, &numAula, designacao);
                                             // só dá se a aula estiver com estado 'agendada'
-                                            break;
+                                    break;
+
                                 case 'V':
                                     break;
                                 default:    printf("\n\n Opção Inválida! Tente Novamente...\n");

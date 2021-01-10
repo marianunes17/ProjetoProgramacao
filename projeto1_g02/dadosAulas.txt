@@ -1,72 +1,16 @@
-Todas as Aulas: 1
+Lista Todas as Aulas: 1
 
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 1111
-Data -> 31	1	2021
-Todas as Aulas: 1
+Designacao: Aula Algebra 1
+Docente: Mario Silva
+Codigo UC: 1000
+Data: 15	2	2020
+Lista Todas as Aulas: 2
 
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 1111
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 1111
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 1111
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 1111
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 1111
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 0
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 0
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 0
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 0
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 0
-Data -> 31	1	2021
-Todas as Aulas: 1
-
-Designacao -> Algebra - Aula 1
-Docente -> Raul
-Codigo UC -> 0
-Data -> 31	1	2021
+Designacao: Aula Algebra 1
+Docente: Mario Silva
+Codigo UC: 1000
+Data: 15	2	2020
+Designacao: Aula Prog1
+Docente: Hugo Gomes
+Codigo UC: 1000
+Data: 12	6	2020

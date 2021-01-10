@@ -13,7 +13,7 @@
 tipoAula lerDadosAula(){
     tipoAula aula;
 
-    lerString("Indique Descrição: ", aula.designacao, MAX_STRING);
+    lerString("Indique Descricao: ", aula.designacao, MAX_STRING);
 
     lerString("Docente: ", aula.docente, MAX_STRING);
     //campo tipo contador - tem a haver com a funcionalidade do programa
@@ -52,7 +52,33 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     }else{
 
         dados.codigo = vetorUc[posUc].codigo;
+        //dados.tipoDeAula = vetorUc[posUc].tipoAula;
+        //strcpy(dados.tipoDeAula,vetorUc[posUc].tipoAula);
+        dados.regimeAula = vetorUc[posUc].regime;
         dados.data = lerData();
+
+
+        //algo do genero para conferir as horas -- mas não sei se dá assim
+        /* if(regime == 'D'){
+            do{
+
+            //perguntar hora
+            //perguntar minuto
+
+            }while( hora < 8 || hora > 18 ); //deve tar mal mas foi só para raciocinio
+
+         }
+         else{
+            do{
+
+            //perguntar hora
+            //perguntar minuto
+
+            }while( hora < 18 || hora > 24 ); //deve tar mal mas foi só para raciocini
+
+         }*/
+
+
 
         vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
@@ -62,37 +88,39 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         }else{
             vAula[*num] = dados;
             (*num)++;
+
+            //actualizar a quantidade de aulas
+            // vetorUc[posUc].quantidadeAulas ...
+
         }
     }
     return vAula;
 }
 
-void mostrarDadosAula(tipoAula vAulas[], int numAula) {
+void escreveDadosAulas(tipoAula vAulas){
+    printf("\tCodigo UC: %d\n",vAulas.codigo);
+    printf("\tDescricao: %s\n",vAulas.designacao);
+    printf("\tDocente: %s\n",vAulas.docente);
+    printf("\tTipo de Aula: %\n",vAulas.tipoDeAula);
+    printf("\tRegime: %c\n",vAulas.regimeAula);
+    printf("\tData: %d/%d/%d\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
+    printf("\tEstado da Aula: %c\n\n",vAulas.estadoAula);
+}
+
+
+void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     int i;
-    if (numAula == 0) {
+    if (numAulas == 0) {
         printf("\nSem dados!");
     }
     else{
-        printf("\nListagem das Aulas ->\n\n");
+        printf("\nListagem das Aulas:\n\n");
 
-        for(i=0; i<numAula; i++) {
-            printf(" Descricao: %s\n",vAulas[i].designacao);
-            printf(" Docente: %s\n",vAulas[i].docente);
-            printf(" Codigo UC: %d\n",vAulas[i].codigo);
-            printf(" Data: %d / %d / %d\n",vAulas[i].data.dia,vAulas[i].data.mes,vAulas[i].data.ano);
-            printf(" Estado da Aula: %c\n\n",vAulas[i].estadoAula);
+        for(i=0; i<numAulas; i++) {
+            escreveDadosAulas(vAulas[i]);
         }
     }
 }
-
-void escreveDadosAulas(tipoAula vAulas){
-    printf("\tDescricao: %s\n",vAulas.designacao);
-    printf("\tDocente: %s\n",vAulas.docente);
-    printf("\tCodigo UC: %d\n",vAulas.codigo);
-    printf("\tData: %d / %d / %d\n\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
-    printf(" Estado da Aula: %c\n\n",vAulas.estadoAula);
-}
-
 
 
 
@@ -136,7 +164,8 @@ tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num){
 void gravaFicheiroTextAula(tipoAula vAulas[],int num){
 
     FILE *ficheiro;
- int lerDados,i,erro;
+    int i,erro;
+
     ficheiro = fopen("dadosAulas.txt", "a+");
 
     if (ficheiro == NULL) {
@@ -144,18 +173,17 @@ void gravaFicheiroTextAula(tipoAula vAulas[],int num){
     }
     else {
 
-        fprintf(ficheiro, "Todas as Aulas: %d\n\n",num);
+        fprintf(ficheiro, "Lista Todas as Aulas: %d\n\n",num);
 
         for (i=0; i<num; i++){
-            fprintf(ficheiro,"Designacao -> %s\n",vAulas[i].designacao);
-            fprintf(ficheiro,"Docente -> %s\n",vAulas[i].docente);
-            fprintf(ficheiro,"Codigo UC -> %d\n",vAulas[i].codigo);
-            fprintf(ficheiro,"Data -> %d\t",vAulas[i].data.dia);
+            fprintf(ficheiro,"Designacao: %s\n",vAulas[i].designacao);
+            fprintf(ficheiro,"Docente: %s\n",vAulas[i].docente);
+            fprintf(ficheiro,"Codigo UC: %d\n",vAulas[i].codigo);
+            fprintf(ficheiro,"Data: %d\t",vAulas[i].data.dia);
             fprintf(ficheiro,"%d\t",vAulas[i].data.mes);
             fprintf(ficheiro,"%d\n",vAulas[i].data.ano);
         }
 
-        //fclose(ficheiro);
         erro = fclose(ficheiro);
         if (erro != 0){
             printf ("Erro %d no fecho ficheiro", erro);
@@ -171,19 +199,17 @@ void  gravaFicheiroBin(tipoAula vAulas[],int num) {
 
     ficheiro = fopen("dataAulas.dat", "wb");
 
-    if (ficheiro == NULL)
-    {
+    if (ficheiro == NULL){
         printf ("Impossível abrir ficheiro");
     }
-    else
-    {
+    else{
+
         fwrite(&num,sizeof(int),1,ficheiro);
         gravarDados = fwrite(vAulas,sizeof(tipoAula),num,ficheiro);
         printf("Aulas escritas gravadas = %d \n", gravarDados);
 
-       gravaFicheiroTextAula(vAulas,num);
+        gravaFicheiroTextAula(vAulas,num);
 
-        //fclose(ficheiro);
         erro = fclose(ficheiro);
         if (erro != 0){
             printf ("Erro %d no fecho ficheiro", erro);
@@ -198,7 +224,7 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
 
     FILE *ficheiro;
 
-    tipoAula *pAulas;
+    tipoAula *pAula;
     int lerDados,i,erro;
 
     ficheiro = fopen("dadosAulas.txt", "r");
@@ -207,16 +233,26 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
         printf ("Impossível abrir ficheiro");
     }
     else {
-        pAulas = vAulas;
-        fprintf(ficheiro,"Lista Aulas: %d\n", *num);
+        pAula = vAulas;
+        //fprintf(ficheiro,"Lista Aulas: %d\n", *num);
+        fscanf(ficheiro,"Aulas: %d\n", &(*num));
 
-        for (i=0; i<*num; i++){
-            fprintf(ficheiro,"%s\n",pAulas[i].designacao);
-            fprintf(ficheiro,"%s\n",pAulas[i].docente);
-            fprintf(ficheiro,"%d\n",pAulas[i].codigo);
+        vAulas = realloc(vAulas,(*num)*sizeof(tipoAula));
+
+        if(vAulas == NULL && *num !=0){
+            printf("Erro ao reservar memoria");
+            vAulas = pAula;
+        }
+        else{
+            for (i=0; i<*num; i++){
+                fprintf(ficheiro,"%s\n",vAulas[i].designacao);
+                //fprintf(ficheiro,"%s\n",vAulas[i].docente);
+                fgets(vAulas[i].docente,MAX_STRING,ficheiro);
+                //fprintf(ficheiro,"%d\n",vAulas[i].codigo);
+                fscanf(ficheiro,"%d\n",&vAulas[i].codigo);
+            }
         }
 
-        //fclose(ficheiro);
         erro = fclose(ficheiro);
         if (erro != 0){
             printf ("Erro %d no fecho ficheiro", erro);
@@ -228,21 +264,21 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
 
 // só dá se a aula estiver com estado 'agendada' ou 'realizada'!!!!!!!!
 tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
-    int i, pos;
+    int i, posAula;
     tipoAula *pAula;
     pAula = vAula; // ponteiro auxiliar
 
     if(*num != 0){
 
-        pos = procuraAulaNome(vAula, *num, designacao);
+        posAula = procuraAulaNome(vAula, *num, designacao);
 
-        if(pos == -1){
+        if(posAula == -1){
             printf ("Aula nao existe!");
         }
 
         else{
-            for(i=pos; i<*num-1;i++){
-                vAula[i]=vAula[i+1];
+            for(i=posAula; i<*num-1; i++){
+                vAula[i] = vAula[i+1];
             }
 
             vAula = realloc(vAula,(*num-1)*sizeof(tipoAula));
@@ -252,54 +288,56 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
                 vAula = pAula;   // restaura valor de vAula
             }
             (*num)--; // Atualiza numero aulas retirando uma
+
            gravaFicheiroBin(vAula, *num);
         }
     }
     return vAula;
 }
 
-tipoAula *alteraAulas(tipoAula vAula[], int *numAulas,  char designacaoAula[]){
-    int  posicao, i;
+void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[]){
+    int  posAula, i;
     char opcao;
-    tipoAula aula;
 
     if(*numAulas == 0 ){
-        printf("Não existem Aulas. \n");
+        printf("Não existem Aulas\n");
     }
     else{
-        posicao=procuraAulaNome(vAula, *numAulas, designacaoAula);
+        posAula = procuraAulaNome(vAula, *numAulas, designacaoAula);
 
-        if(posicao==-1){
-            printf("A designação nao existe.");
+        if(posAula == -1){
+            printf("A designacao inserida nao foi encontrada\n");
         } else {
+
             for (i=0; i<*numAulas; i++){
-                if (strcmp(vAula[i].designacao, designacaoAula)==0) {
+
+                if (strcmp(vAula[i].designacao, designacaoAula) == 0){
 
                     do{
-                        opcao=subMenuAlteraAula();
+                        opcao = subMenuAlteraAula();
                         switch(opcao){
-                            case 'A':
+                            case 'D':
                                     lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING);
                                     break;
-                            case 'B':
-                                     lerString("Docente: ", vAula[i].docente, MAX_STRING);
+                            case 'N':
+                                    lerString("Docente: ", vAula[i].docente, MAX_STRING);
                                     break;
                             case 'V':
-                                    printf("Voltar");
                                     break;
                             default: printf("Opção Invalida.");
                         }
-                    } while(opcao!='V');
+                    }while(opcao!='V');
 
-                   gravaFicheiroBin(vAula, *numAulas);
-                   gravaFicheiroTextAula(vAula, *numAulas);
+                    gravaFicheiroBin(vAula, *numAulas);
+                   //  o ficheiro BIN já grava o TEXT automáticamente
+                   //gravaFicheiroTextAula(vAula, *numAulas);
 
-                   i=*numAulas;
+                   i = *numAulas;
                 }
             }
         }
     }
-    return vAula;
+
 }
 
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]){

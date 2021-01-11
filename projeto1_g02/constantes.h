@@ -11,6 +11,11 @@ typedef struct{
 
 
 typedef struct{
+    int h, m;
+} tipoHora;
+
+
+typedef struct{
     int codigo;
     char designacao[MAX_STRING];
     char tipoAula[MAX_STRING];
@@ -25,12 +30,12 @@ typedef struct{
 
 typedef struct{
     char designacao[MAX_STRING];
-    char tipoDeAula[MAX_STRING];
     char regimeAula[MAX_STRING];
     char docente[MAX_STRING];
     tipoData data;
-    float horaInicio;
-    float horaFim;
+    tipoHora hora;
+    int horaFim;
+    int minFim;
     char *estadoAula;
     int gavacao;
     int codigo; //chave primaria UCs

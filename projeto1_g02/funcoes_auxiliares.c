@@ -97,6 +97,17 @@ tipoData lerData(void){
     return data;
 }
 
+
+tipoHora lerHora(int minimo, int maximo){
+    tipoHora hora;
+
+    hora.h = lerInteiro(" hora",minimo,maximo);
+    hora.m = lerInteiro(" minutos",00,59);
+
+    return hora;
+}
+
+
 void limpaBufferStdin(void) {
     char chr;
 

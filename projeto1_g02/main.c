@@ -83,7 +83,7 @@ int main(){
 
                     // ----- AGENDAR AULA  -----
                     case 'A':
-                         printf("Escolheu a opção de Agendar uma Aula\n");
+                            printf("Escolheu a opção de Agendar uma Aula\n\n");
                             leFicheiroUcBinario(vetorUc, &numTotalUc); // funcao Maria
 
                             codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
@@ -93,11 +93,11 @@ int main(){
                             }
                             else{
                                 if(vetorUc[posicaoUcVetor].quantidadeAulas == 0){
-                                    printf("ja esgotou as horas");
+                                    printf("Esgotou as horas para o agendamento");
                                 }
                                 else{
                                     printf("Uc de %s", vetorUc[posicaoUcVetor].designacao);
-                                    printf("\tAinda tem disponivel %d horas\n\n", vetorUc[posicaoUcVetor].quantidadeAulas);
+                                    printf(" e ainda tem disponivel %d horas\n", vetorUc[posicaoUcVetor].quantidadeAulas);
 
                                     vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                                     gravaFicheiroBin(vAulas,numAula);
@@ -124,7 +124,7 @@ int main(){
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':
-                                    printf("Escolheu a opção de Alterar um Aula Agendada");
+                                    printf("Escolheu a opção de Alterar um Aula Agendada\n");
                                     lerString("Designação da Aula: ", designacao, MAX_STRING);
                                     // vAulas = alteraAulas(vAulas, &numAula, designacao);
                                     // só dá se a aula estiver com estado 'agendada'

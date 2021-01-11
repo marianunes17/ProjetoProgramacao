@@ -1,6 +1,6 @@
 Lista Todas as Aulas: 1
 
-Designacao: aula teste
-Docente: mario
+Designacao: Aula teste 1
+Docente: hugo Brito
 Codigo UC: 1000
-Data: 5	5	2020
+Data: 5	2	2020

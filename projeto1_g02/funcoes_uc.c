@@ -18,7 +18,7 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n\tRegime (D,PL): %s", vetorUc.regime);
     printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeHoras);
     printf("\n\tDuração de cada aula(em minutos): %d \n", vetorUc.duracao);
-    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulas);
+    printf("\n\tMédia de aulas prevista: %d \n", vetorUc.quantidadeAulas);
     printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulasAgendadas);
 }
 
@@ -46,7 +46,7 @@ tipoUc leDadosUc(int codigoUc){
 
     vetorUc.duracao = lerInteiro("\tDuração de cada aula(em minutos): ", 60, 180);
 
-    vetorUc.quantidadeAulas = vetorUc.quantidadeHoras/vetorUc.quantidadeHoras;
+    vetorUc.quantidadeAulas = (vetorUc.quantidadeHoras)/(vetorUc.duracao/60);
 
     //vetorUc.quantidadeAulas = vetorUc.quantidadeHoras/vetorUc.quantidadeHoras;
     return vetorUc;

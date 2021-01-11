@@ -19,7 +19,7 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeHoras);
     printf("\n\tDuração de cada aula(em minutos): %d \n", vetorUc.duracao);
     printf("\n\tMédia de aulas prevista: %d \n", vetorUc.quantidadeAulas);
-    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulasAgendadas);
+ //   printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulasAgendadas);
 }
 
 
@@ -46,7 +46,7 @@ tipoUc leDadosUc(int codigoUc){
 
     vetorUc.duracao = lerInteiro("\tDuração de cada aula(em minutos): ", 60, 180);
 
-    vetorUc.quantidadeAulas = (vetorUc.quantidadeHoras)/(vetorUc.duracao/60);
+    vetorUc.quantidadeAulas = ((vetorUc.quantidadeHoras)/(vetorUc.duracao/60));
 
     //vetorUc.quantidadeAulas = vetorUc.quantidadeHoras/vetorUc.quantidadeHoras;
     return vetorUc;
@@ -97,7 +97,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
                 fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeHoras);
                 fprintf(ficheiro, "\n %.d", vetorUc[i].duracao);
                 fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulas);
-                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
+        //        fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
             }
             fclose(ficheiro);
         }
@@ -135,7 +135,7 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
                 fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
                 fscanf(ficheiro, "%d", vetorUc[i].duracao);
                 fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulas);
-                fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
+            //    fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
             }
             fclose(ficheiro);
         }

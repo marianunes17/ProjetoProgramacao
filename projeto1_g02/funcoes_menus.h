@@ -9,6 +9,7 @@ char subMenuUc();
 char submenuAulas();
 char subMenuSalasOnline();
 char subMenuEstudantes();
+char subMenuDadosEstatisticos();
 
 char subMenuAlteraUC();
 char subMenuAlteraAula();

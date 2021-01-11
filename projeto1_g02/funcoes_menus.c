@@ -1,7 +1,9 @@
+#include <string.h>
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <locale.h>
+
 
 #include "constantes.h"
 #include "funcoes_menus.h"
@@ -107,6 +109,24 @@ char subMenuSalasOnline(){
     return opcao;
 }
 
+
+char subMenuDadosEstatisticos(){
+    char opcaoDados;
+
+    printf("\n\t Q - Quantidade média de presenças em cada aulas online");
+    printf("\n\t P - Per)");
+    printf("\n\t V - Voltar\n");
+    printf("\n\t Insira Opção ->");
+
+    scanf(" %c", &opcaoDados);
+    opcaoDados = toupper(opcaoDados);
+    limpaBufferStdin();
+    return opcaoDados;
+}
+
+
+
+
 //Menu para escolher a parte do vetor se quer alterar no vetor Uc
 char subMenuAlteraUC(){
     char opcaoUc;
@@ -143,7 +163,7 @@ char subMenuAlteraAula(){
 //Menu para escolher a parte do vetor se quer alterar no vetor Estudante
 char subMenuAlteraEstudante(){
     char opcaoAula;
-    printf("\n\n Alterar Dados do Estudante");
+    printf("\n\n Alterar Dados do Estudante: ");
     printf("\n\t A - Nome");
     printf("\n\t B - Regime)");
     printf("\n\t V - Voltar\n");
@@ -154,4 +174,3 @@ char subMenuAlteraEstudante(){
     limpaBufferStdin();
     return opcaoAula;
 }
-

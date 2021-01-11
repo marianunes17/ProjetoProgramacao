@@ -1,7 +1,9 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <string.h>
+#include <locale.h>
+
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
@@ -166,7 +168,7 @@ void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numTotalUc, int codigoUc){
 
 
 
-void eliminarDoVetor(tipoUc vetorUc[], int *numTotalUc){
+void eliminarVetorUc(tipoUc vetorUc[], int *numTotalUc){
     int i, posicao, numeroUc;
 
     if(*numTotalUc == 0 ){

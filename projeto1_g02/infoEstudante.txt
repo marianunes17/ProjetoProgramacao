@@ -142,4 +142,25 @@
  pl
  0
  
- 
+ 6
+ 2
+ Vasco
+ D
+ 1
+ Ana
+ PL
+ 5
+ Pedro
+ pl
+ 4
+ jose
+ pl
+ 9
+ ana
+ d
+ 19
+ laura
+ D
+ 20
+ helena
+ pl

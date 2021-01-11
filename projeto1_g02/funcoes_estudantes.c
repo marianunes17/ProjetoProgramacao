@@ -1,7 +1,8 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <string.h>
+#include <locale.h>
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
@@ -26,7 +27,6 @@ tipoEstudante leDadosEstudante(int numeroEstudante){
 
     do{
         lerString("\tRegime (D,PL): ", vEstudante.regime,3);
-
     } while( strcmp(vEstudante.regime, "D") && strcmp(vEstudante.regime, "d") && strcmp(vEstudante.regime, "PL") && strcmp(vEstudante.regime, "pl"));
     //strcmp - Compara se a string regime é igual a D/pl
 
@@ -214,5 +214,32 @@ void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes){
             }
         }
         printf("\n\tOs dados do estudante foram alterado.");
+    }
+}
+
+
+void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
+    int i, posicao, numeroEstudante;
+
+    if(*numTotalEstudantes == 0 ){
+        printf("\tNão existem Unidades Curriculares. \n");
+    }
+    else{
+        numeroEstudante=lerInteiro("\tNumero de Estudante: ", 1,100 );
+        posicao=procuraEstudante(vEstudante,*numTotalEstudantes, numeroEstudante);
+        if(posicao==-1){
+            printf("\tA Unidade Curricular não existe. \n");
+        }
+        else {
+            for(i=posicao; i<*numTotalEstudantes-1; i++){
+                vEstudante[i]=vEstudante[i+1];
+            }
+            (*numTotalEstudantes)--;
+
+            gravarBinarioEstudantes(vEstudante, *numTotalEstudantes);
+            gravarTextoEstudantes(vEstudante, *numTotalEstudantes);
+
+            printf("\n\tO estudante foi eliminada");
+        }
     }
 }

@@ -1,7 +1,8 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <string.h>
+#include <locale.h>
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
@@ -16,6 +17,7 @@ tipoAula lerDadosAula(){
     lerString("Indique Descricao: ", aula.designacao, MAX_STRING);
 
     lerString("Docente: ", aula.docente, MAX_STRING);
+
     //campo tipo contador - tem a haver com a funcionalidade do programa
     aula.codigo = 0;
     aula.gavacao = 0;
@@ -39,27 +41,46 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
 
 
 
-tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
+tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int numTotalUc, int codigoUc){
     tipoAula *pAula, dados;
-    int posAula;
+    int posAula, posicaoUc, i;
     pAula = vAula;
+
+    posicaoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
 
     dados = lerDadosAula();
     posAula = procuraAulaNome(vAula,*num,dados.designacao);
+    posicaoUc = procuraUc(vetorUc, numTotalUc, codigoUc);
 
     if(posAula != -1){
         printf("Nome de Aula existente");
     }else{
+        if(posicaoUc != -1){
+            printf("O codigo da Unidade Curricular não existe");
+        } else{
+                leDadosUc(codigoUc);
+                for(i=0; i<numTotalUc; i++){
+                    if(vetorUc[i].codigo == codigoUc){
+                        (strcmp(vetorUc[i].regime, vAula->regimeAula)== 0);
+                    }
+                }
 
-        dados.codigo = vetorUc[posUc].codigo;
+
+            }
+            }
+
+           // dados=leDadosUc(codigoUc);
+           // (strcmp(vetorUc[i].regime, dados[i].regimeAula) == 0)
+
+      //  dados.codigo = vetorUc[posUc].codigo;
         //dados.tipoDeAula = vetorUc[posUc].tipoAula;
         //strcpy(dados.tipoDeAula,vetorUc[posUc].tipoAula);
-        dados.regimeAula = vetorUc[posUc].regime;
+        //dados.regimeAula = vetorUc[posUc].regime;
         dados.data = lerData();
 
 
         //algo do genero para conferir as horas -- mas não sei se dá assim
-        /* if(regime == 'D'){
+     /*   if(regime == 'D'){
             do{
 
             //perguntar hora
@@ -76,9 +97,9 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
             }while( hora < 18 || hora > 24 ); //deve tar mal mas foi só para raciocini
 
-         }*/
+         }
 
-
+*/
 
         vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
@@ -93,7 +114,6 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
             // vetorUc[posUc].quantidadeAulas ...
 
         }
-    }
     return vAula;
 }
 
@@ -358,7 +378,7 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]
         }
 
 
-        printf("\n A disciplina com mais aulas online é: %d \n", maior);
+        printf("\n\t A disciplina com mais aulas online é: %d \n", maior);
         for(i=0; i<numTotalAulas; i++){
             if(vAulas[i].codigo == maior){
                 escreveDadosAulas(vAulas[i]);

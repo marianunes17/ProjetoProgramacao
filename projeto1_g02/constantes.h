@@ -24,7 +24,7 @@ typedef struct{
 typedef struct{
     char designacao[MAX_STRING];
     char tipoDeAula[MAX_STRING];
-    char regimeAula;
+    char regimeAula[MAX_STRING];
     char docente[MAX_STRING];
     tipoData data;
     float horaInicio;

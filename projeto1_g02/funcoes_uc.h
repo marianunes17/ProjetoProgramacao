@@ -9,7 +9,7 @@ tipoUc leDadosUc();
 void listaDadosUc(tipoUc vetorUc[MAX_UC], int numTotalUc);
 int procuraUc(tipoUc vetorUc[], int numTotalUc, int codigoUC);
 void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numTotalUc, int codigoUc);
-void eliminarDoVetor(tipoUc vetorUc[], int *numTotalUc);
+void eliminarVetorUc(tipoUc vetorUc[], int *numTotalUc);
 void alterarVetorUc(tipoUc vetorUc[], int numTotalUc);
 
 void gravarUcTexto(tipoUc vetorUc[], int numTotalUc);

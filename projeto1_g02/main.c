@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <locale.h>
+
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
@@ -52,7 +53,7 @@ int main(){
 
                         case 'E': //Eliminar UC
                                 printf("Escolheu a opção: Eliminar Unidade Curricular \n");
-                                eliminarDoVetor(vetorUc, &numTotalUc);
+                                eliminarVetorUc(vetorUc, &numTotalUc);
                                 break;
 
                         case 'M': //Modificar UC
@@ -90,9 +91,9 @@ int main(){
                             printf("Uc não existe");
                         }
                         else{
-                            vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
+                            //vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                             gravaFicheiroBin(vAulas,numAula);
-                            //acrescentaAula(vAulas,&numAula);
+                            acrescentaAula(vAulas,&numAula, vetorUc, numTotalUc, codigoUc);
 
                             gravaFicheiroTextAula(vAulas,numAula);
                         }
@@ -112,7 +113,7 @@ int main(){
                                 // ----- ALTERAR AULA  -----
                                 case 'A':   printf("Escolheu a opção de Alterar um Aula Agendada");
                                             lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                            vAulas = alteraAulas(vAulas, &numAula, designacao);
+                                           // vAulas = alteraAulas(vAulas, &numAula, designacao);
                                             // só dá se a aula estiver com estado 'agendada'
                                             break;
                                 case 'V':
@@ -175,7 +176,7 @@ int main(){
 
                                 case 'E': //Eliminar Estudante
                                         printf("Escolheu a opção: Eliminar Estudate \n");
-                                        //eliminarDoVetor(vetorUc, &numTotalUc);
+                                        eliminarEstudante(vEstudante, &numTotalEstudantes);
                                         break;
 
                                 case 'M': //Modificar Estudante
@@ -194,7 +195,16 @@ int main(){
 
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos");
+                        printf("\n\tPercentagem de Ucs com aulas gravadas:");
+
+                        printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");
+
+                        printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
                         quantidadeAulasOnline(vAulas, numAula, vetorUc);
+
+
+                        printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");
+                        printf("\n\tAula(s) online realizada(s) há mais tempo.: ");
                         break;
             case 'V':
                     printf("Escolheu a opção V");

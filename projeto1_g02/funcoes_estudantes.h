@@ -10,6 +10,7 @@ int procuraEstudante(tipoEstudante vEstudante[], int numTotalEstudantes, int num
 void acrescentaEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes, int numeroEstudante);
 void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes);
 void assistirAula(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[]);
+void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes);
 
 void gravarTextoEstudantes(tipoEstudante vEstudante[], int numTotalEstudante);
 void gravarBinarioEstudantes(tipoEstudante vEstudante[], int numTotalEstudante);

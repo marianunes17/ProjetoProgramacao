@@ -41,18 +41,23 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
 
 
 
-tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int numTotalUc, int codigoUc){
+//tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int numTotalUc, int codigoUc)
+tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
     tipoAula *pAula, dados;
-    int posAula, posicaoUc, i;
+    int posAula, posicaoUc, i, hora, min, horaTotal;
+    char regimeUc[3];
     pAula = vAula;
 
-    posicaoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
+    //posicaoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
 
     dados = lerDadosAula();
     posAula = procuraAulaNome(vAula,*num,dados.designacao);
-    posicaoUc = procuraUc(vetorUc, numTotalUc, codigoUc);
+    strcpy(regimeUc,vetorUc[posUc].regime);
+    strupr(regimeUc); //por string em maiuscula
 
-    if(posAula != -1){
+    //posicaoUc = procuraUc(vetorUc, numTotalUc, codigoUc);
+
+    /*if(posAula != -1){
         printf("Nome de Aula existente");
     }else{
         if(posicaoUc != -1){
@@ -67,7 +72,53 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int numTo
 
 
             }
-            }
+        }
+    }*/
+    if(posAula != -1){
+        printf("Nome de Aula existente");
+    }
+    else{
+        dados.codigo = vetorUc[posUc].codigo;
+        strcmp(vAula->regimeAula,regimeUc);
+        dados.data = lerData();
+
+        //calcula a hora inicio/fim consoante o regime e o tipo de aula
+        if(regimeUc == 'D'){
+            //do{
+                //vetorUc.duracao <---
+
+                hora = lerInteiro("\tInsira a hora",8,18);
+                min = lerInteiro("\tInsira os minutos",0,59);
+
+                hora = (hora*60);
+                min = (min*100)%100;
+                horaTotal = hora + min;
+                printf("hora: %d min: %d total: %d",hora,min,horaTotal);
+
+            //perguntar hora
+            //perguntar minuto
+
+            //}while(hora < 8 || hora > 18);
+
+        }
+        else{
+            //do{
+                hora = lerInteiro("\tInsira a hora",18,24);
+                min = lerInteiro("\tInsira os minutos",0,59);
+
+                hora = (hora*60);
+                min = (min*100)%100;
+                horaTotal = hora + min;
+                printf("hora: %d min: %d total: %d",hora,min,horaTotal);
+
+
+            //perguntar hora
+            //perguntar minuto
+
+            //}while(hora < 18 || hora > 24);
+
+        }
+    }
 
            // dados=leDadosUc(codigoUc);
            // (strcmp(vetorUc[i].regime, dados[i].regimeAula) == 0)
@@ -76,30 +127,8 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int numTo
         //dados.tipoDeAula = vetorUc[posUc].tipoAula;
         //strcpy(dados.tipoDeAula,vetorUc[posUc].tipoAula);
         //dados.regimeAula = vetorUc[posUc].regime;
-        dados.data = lerData();
+        //dados.data = lerData();
 
-
-        //algo do genero para conferir as horas -- mas não sei se dá assim
-     /*   if(regime == 'D'){
-            do{
-
-            //perguntar hora
-            //perguntar minuto
-
-            }while( hora < 8 || hora > 18 ); //deve tar mal mas foi só para raciocinio
-
-         }
-         else{
-            do{
-
-            //perguntar hora
-            //perguntar minuto
-
-            }while( hora < 18 || hora > 24 ); //deve tar mal mas foi só para raciocini
-
-         }
-
-*/
 
         vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
@@ -114,6 +143,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int numTo
             // vetorUc[posUc].quantidadeAulas ...
 
         }
+
     return vAula;
 }
 

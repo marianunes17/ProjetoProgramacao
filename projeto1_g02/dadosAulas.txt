@@ -1,16 +1,6 @@
 Lista Todas as Aulas: 1
 
-Designacao: Aula Algebra 1
-Docente: Mario Silva
+Designacao: aula teste
+Docente: mario
 Codigo UC: 1000
-Data: 15	2	2020
-Lista Todas as Aulas: 2
-
-Designacao: Aula Algebra 1
-Docente: Mario Silva
-Codigo UC: 1000
-Data: 15	2	2020
-Designacao: Aula Prog1
-Docente: Hugo Gomes
-Codigo UC: 1000
-Data: 12	6	2020
+Data: 5	5	2020

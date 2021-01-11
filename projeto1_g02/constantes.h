@@ -16,8 +16,10 @@ typedef struct{
     char tipoAula[MAX_STRING];
     int semestre;
     char regime[MAX_STRING];
-    int quantidadeAulas;
+    int quantidadeHoras;
     int duracao;
+    int quantidadeAulas;
+    int quantidadeAulasAgendadas;
 } tipoUc;
 
 

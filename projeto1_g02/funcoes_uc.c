@@ -16,8 +16,10 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n\tTipo (T, TP ou PL): %s", vetorUc.tipoAula);
     printf("\n\tSemestre: %d", vetorUc.semestre);
     printf("\n\tRegime (D,PL): %s", vetorUc.regime);
-    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulas);
+    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeHoras);
     printf("\n\tDuração de cada aula(em minutos): %d \n", vetorUc.duracao);
+    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulas);
+    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulasAgendadas);
 }
 
 
@@ -39,8 +41,14 @@ tipoUc leDadosUc(int codigoUc){
         lerString("\tRegime (D,PL): ", vetorUc.regime,3);
     } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
 
-    vetorUc.quantidadeAulas = lerInteiro("\tTotal de horas prevista: ", 1, 100);
+    vetorUc.quantidadeHoras = lerInteiro("\tTotal de horas prevista: ", 1, 100);
+
+
     vetorUc.duracao = lerInteiro("\tDuração de cada aula(em minutos): ", 60, 180);
+
+    vetorUc.quantidadeAulas = vetorUc.quantidadeHoras/vetorUc.quantidadeHoras;
+
+    //vetorUc.quantidadeAulas = vetorUc.quantidadeHoras/vetorUc.quantidadeHoras;
     return vetorUc;
 }
 
@@ -86,8 +94,10 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
                 fprintf(ficheiro, "\n %s", vetorUc[i].tipoAula);
                 fprintf(ficheiro, "\n %d", vetorUc[i].semestre);
                 fprintf(ficheiro, "\n %s", vetorUc[i].regime);
-                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulas);
+                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeHoras);
                 fprintf(ficheiro, "\n %.d", vetorUc[i].duracao);
+                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulas);
+                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
             }
             fclose(ficheiro);
         }
@@ -122,8 +132,10 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
                 fgets(vetorUc[i].tipoAula,2,ficheiro);
                 fscanf(ficheiro, "%d", vetorUc[i].semestre);
                 fgets(vetorUc[i].regime,2,ficheiro);
-                fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulas);
+                fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
                 fscanf(ficheiro, "%d", vetorUc[i].duracao);
+                fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulas);
+                fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
             }
             fclose(ficheiro);
         }

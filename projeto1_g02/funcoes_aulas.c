@@ -146,7 +146,8 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         (*num)++;
 
         //actualizar a quantidade de aulas no vetor da UC
-        vetorUc[posUc].quantidadeHoras = duracaoUcRest;
+        //vetorUc[posUc].quantidadeHoras = duracaoUcRest;
+
 
         printf("\n\nAula agendada com sucesso!\n");
 

@@ -21,7 +21,6 @@ tipoAula lerDadosAula(){
     //campo tipo contador - tem a haver com a funcionalidade do programa
     aula.codigo = 0;
     aula.gavacao = 0;
-    aula.estadoAula = 0;
     return aula;
 }
 
@@ -165,7 +164,7 @@ void escreveDadosAulas(tipoAula vAulas){
     printf("\tHora de Fim: %d:%d\n",vAulas.horaFim,vAulas.minFim);
     printf("\tRegime: %s\n",vAulas.regimeAula);
     printf("\tData: %d/%d/%d\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
-    printf("\tEstado da Aula: %c\n\n",vAulas.estadoAula);
+    printf("\tEstado da Aula: %s\n\n",vAulas.estadoAula);
 }
 
 

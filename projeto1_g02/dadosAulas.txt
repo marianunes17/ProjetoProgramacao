@@ -1,18 +1,6 @@
 Lista Todas as Aulas: 1
 
-Designacao: asasas
-Docente: sasaas
+Designacao: Aula teste 1
+Docente: marco Gomes
 Codigo UC: 1111
-Data: 1	1	2019
-Lista Todas as Aulas: 1
-
-Designacao: asasas
-Docente: sasaas
-Codigo UC: 1111
-Data: 1	1	2019
-Lista Todas as Aulas: 1
-
-Designacao: asasas
-Docente: sasaas
-Codigo UC: 1111
-Data: 1	1	2019
+Data: 5	5	2020

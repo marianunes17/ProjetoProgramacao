@@ -37,7 +37,7 @@ typedef struct{
     tipoHora hora;
     int horaFim;
     int minFim;
-    char estadoAula;
+    char estadoAula[MAX_STRING];
     int gavacao;
     int codigo; //chave primaria UCs
 } tipoAula;

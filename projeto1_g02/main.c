@@ -99,7 +99,7 @@ int main(){
                                     printf("Uc de %s", vetorUc[posicaoUcVetor].designacao);
                                     printf(" e ainda tem disponivel %d horas\n", vetorUc[posicaoUcVetor].quantidadeHoras);
 
-                                    vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
+                                    vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor, codigoUc, numTotalUc);
                                     gravaFicheiroBin(vAulas,numAula);
                                     //gravaFicheiroTextAula(vAulas,numAula);
                                 }

@@ -45,11 +45,11 @@ void calculaHora( int *horaF, int *minF){
 }
 
 
-tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
+tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc,int codigoUc, int numTotalUc){
 
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc, duracaoUcRest=0;
-    char regimeUc[3];
+    char regimeUc[3], k;
     pAula = vAula;
 
     strcpy(regimeUc,vetorUc[posUc].regime);
@@ -131,6 +131,14 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         }
 
         strcpy(dados.estadoAula, "Agendada");
+
+
+           for(k=0;k<numTotalUc; k++){
+                if(codigoUc == vetorUc[k].codigo){
+                    vetorUc[k].quantidadeHoras = duracaoUcRest;
+                }
+            }
+
     }
 
 
@@ -151,6 +159,9 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         printf("\n\nAula agendada com sucesso!\n");
 
     }
+
+                    gravarUcBinario(vetorUc, numTotalUc);
+                    gravarUcTexto(vetorUc, numTotalUc);
 
     return vAula;
 }
@@ -486,19 +497,22 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
         }
         else{
             printf("Quer alterar o estado da aula de 'agendada' para 'a decorrer'?(S-Sim, N-Nao)  %c: ",estadoA);
-            scanf("%c", &estadoA);
+            scanf(" %c", &estadoA);
             estadoA = toupper(estadoA);
 
             if(estadoA=='S'){
                 for(i=0; i<numTotalAulas; i++){
-                      if(( strcmp(vAulas[i].estadoAula, "Agendada")==0)){
-                            strcmp(vAulas[i].estadoAula, "A decorrer");
-                      }
-                    }
+                    if(strcmp(vAulas[i].estadoAula, "Agendada")==0){
+                        (strcmp(vAulas[i].estadoAula, "A decorrer")==0);
+                            }
                 }
-             gravaFicheiroBin(vAulas, numTotalAulas);
-             gravaFicheiroTextAula(vAulas, numTotalAulas);
+
+                                gravaFicheiroBin(vAulas, numTotalAulas);
+            }
+
+
             }
 
         }
     }
+

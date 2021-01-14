@@ -4,57 +4,67 @@ Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
-Lista Todas as Aulas: 1
-
-Designacao: fisica
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
 Lista Todas as Aulas: 2
 
 Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
-Designacao: fisica1
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Lista Todas as Aulas: 2
-
 Designacao: fisica
 Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Designacao: fisica1
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
+Codigo UC: 0
+Data: 0	6383488	0
 Lista Todas as Aulas: 3
 
 Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
-Designacao: fisica1
+Designacao: fisica
+Docente: raul
+Codigo UC: 0
+Data: 0	6383488	0
+Designacao: fisica2
 Docente: raul
 Codigo UC: 1111
-Data: 1	1	2019
-Designacao: fisica2
-Docente: assa
-Codigo UC: 1111
-Data: 1	1	2019
-Lista Todas as Aulas: 3
+Data: 1	11	2019
+Lista Todas as Aulas: 4
 
 Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
-Designacao: fisica1
+Designacao: fisica
+Docente: raul
+Codigo UC: 0
+Data: 0	6383488	0
+Designacao: fisica2
+Docente: raul
+Codigo UC: 1111
+Data: 1	11	2019
+Designacao: pedro
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Lista Todas as Aulas: 5
+
+Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
+Designacao: fisica
+Docente: raul
+Codigo UC: 0
+Data: 0	6383488	0
 Designacao: fisica2
-Docente: assa
+Docente: raul
+Codigo UC: 1111
+Data: 1	11	2019
+Designacao: pedro
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica3
+Docente: pedro
 Codigo UC: 1111
 Data: 1	1	2019

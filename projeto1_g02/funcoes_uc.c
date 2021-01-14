@@ -44,10 +44,10 @@ void escreveDadosUc(tipoUc vetorUc){
             printf("Pós-Laboral");
         }
 
-    printf("\n\tTotal de horas prevista: \t %d", vetorUc.quantidadeHoras);
+    printf("\n\tTotal de horas prevista: \t %d", vetorUc.quantidadeTotalHoras);
     printf("\n\tDuração de cada aula(em minutos):%d", vetorUc.duracao);
     printf("\n\tMédia de aulas prevista: \t %d\n", vetorUc.quantidadeAulas);
- //   printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulasAgendadas);
+    printf("\n\tQuantidade de horas que faltam lecionar: \t %d", vetorUc.quantidadeHoras);
 }
 
 
@@ -77,14 +77,14 @@ tipoUc leDadosUc(int codigoUc){
         lerString("\tRegime (D,PL): ", vetorUc.regime,3);
     } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
 
-    vetorUc.quantidadeHoras = lerInteiro("\tTotal de horas prevista: ", 1, 100);
+    vetorUc.quantidadeTotalHoras = lerInteiro("\tTotal de horas prevista: ", 1, 100);
 
 
     vetorUc.duracao = lerInteiro("\tDuração de cada aula(em minutos): ", 60, 180);
 
-    vetorUc.quantidadeAulas = ((vetorUc.quantidadeHoras)/(vetorUc.duracao/60));
+    vetorUc.quantidadeAulas = ((vetorUc.quantidadeTotalHoras)/(vetorUc.duracao/60));
 
-    //vetorUc.quantidadeAulas = vetorUc.quantidadeHoras/vetorUc.quantidadeHoras;
+    vetorUc.quantidadeHoras = vetorUc.quantidadeTotalHoras ;
     return vetorUc;
 }
 
@@ -132,9 +132,10 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
                 fprintf(ficheiro, "\n %s", vetorUc[i].tipoAula);
                 fprintf(ficheiro, "\n %d", vetorUc[i].semestre);
                 fprintf(ficheiro, "\n %s", vetorUc[i].regime);
-                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeHoras);
+                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeTotalHoras);
                 fprintf(ficheiro, "\n %.d", vetorUc[i].duracao);
                 fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulas);
+                fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeHoras);
         //        fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
             }
             fclose(ficheiro);
@@ -171,9 +172,10 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
                 fgets(vetorUc[i].tipoAula,3,ficheiro);
                 fscanf(ficheiro, "%d", vetorUc[i].semestre);
                 fgets(vetorUc[i].regime,2,ficheiro);
-                fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
+                fscanf(ficheiro, "%d", vetorUc[i].quantidadeTotalHoras);
                 fscanf(ficheiro, "%d", vetorUc[i].duracao);
                 fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulas);
+                fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
             //    fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
             }
             fclose(ficheiro);
@@ -291,13 +293,13 @@ void alterarVetorUc(tipoUc vetorUc[], int numTotalUc){
                                     break;
                             case 'F':
                                     printf("Escolheu a opção de Alterar Total de horas previstas\n");
-                                    vetorUc[i].quantidadeHoras = lerInteiro("\tTotal de horas prevista: ", 1, 100);
-                                    vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeHoras)/(vetorUc[i].duracao/60));
+                                    vetorUc[i].quantidadeTotalHoras = lerInteiro("\tTotal de horas prevista: ", 1, 100);
+                                    vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeTotalHoras)/(vetorUc[i].duracao/60));
                                     break;
                             case 'G':
                                     printf("Escolheu a opção de Alterar Duração de cada aula(em minutos)\n");
                                      vetorUc[i].duracao = lerInteiro("\tf: ", 60, 180);
-                                     vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeHoras)/(vetorUc[i].duracao/60));
+                                     vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeTotalHoras)/(vetorUc[i].duracao/60));
                                     break;
 
 

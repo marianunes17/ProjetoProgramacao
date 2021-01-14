@@ -11,14 +11,42 @@
 
 
 void escreveDadosUc(tipoUc vetorUc){
-    printf("\n\tCódigo: %d", vetorUc.codigo);
-    printf("\n\tDesignação: %s", vetorUc.designacao);
-    printf("\n\tTipo (T, TP ou PL): %s", vetorUc.tipoAula);
-    printf("\n\tSemestre: %d", vetorUc.semestre);
-    printf("\n\tRegime (D,PL): %s", vetorUc.regime);
-    printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeHoras);
-    printf("\n\tDuração de cada aula(em minutos): %d \n", vetorUc.duracao);
-    printf("\n\tMédia de aulas prevista: %d \n", vetorUc.quantidadeAulas);
+    strupr(vetorUc.tipoAula);
+    strupr(vetorUc.tipoDeUc);
+    strupr(vetorUc.regime);
+
+    printf("\n\tCódigo da Uc: \t %d", vetorUc.codigo);
+    printf("\n\tDesignação: \t %s", vetorUc.designacao);
+    printf("\n\tTipo de Uc: \t " );
+        if( (strcmp(vetorUc.tipoDeUc, "S")==0) ){
+            printf("Obrigatória");
+        } else {
+            printf("Opcional");
+        }
+
+    printf("\n\tTipo de Aula: \t ");
+        if( (strcmp(vetorUc.tipoAula, "T")==0) ){
+                printf("Teorico");
+        } else {
+            if( (strcmp(vetorUc.tipoAula, "P")==0) ){
+                printf("Prático");
+            } else{
+                printf("Prático Laboratorial");
+            }
+        }
+
+    printf("\n\tSemestre: \t %dº semestre", vetorUc.semestre);
+
+    printf("\n\tRegime: \t ");
+        if( (strcmp(vetorUc.regime, "D")==0) ){
+            printf("Diurno");
+        } else {
+            printf("Pós-Laboral");
+        }
+
+    printf("\n\tTotal de horas prevista: \t %d", vetorUc.quantidadeHoras);
+    printf("\n\tDuração de cada aula(em minutos):%d", vetorUc.duracao);
+    printf("\n\tMédia de aulas prevista: \t %d\n", vetorUc.quantidadeAulas);
  //   printf("\n\tTotal de horas prevista: %d \n", vetorUc.quantidadeAulasAgendadas);
 }
 
@@ -30,8 +58,16 @@ tipoUc leDadosUc(int codigoUc){
 
     lerString("\tDesignacao: ", vetorUc.designacao,MAX_STRING);
 
+
+
     do{
-        lerString("\tTipo (T, TP ou PL): ", vetorUc.tipoAula,3);
+        lerString("\tTipo de Uc (S - Obrigatorio, N - Opcional): ", vetorUc.tipoDeUc,3);
+    } while( strcmp(vetorUc.tipoDeUc, "S") && strcmp(vetorUc.tipoDeUc, "s") && strcmp(vetorUc.tipoDeUc, "N") && strcmp(vetorUc.tipoDeUc, "n"));
+    //strcmp - Compara se a string tipo é igual a S ou N
+
+
+    do{
+        lerString("\tTipo de Aula (T, TP ou P): ", vetorUc.tipoAula,3);
     } while( strcmp(vetorUc.tipoAula, "T") && strcmp(vetorUc.tipoAula, "t") && strcmp(vetorUc.tipoAula, "TP") && strcmp(vetorUc.tipoAula, "tp") && strcmp(vetorUc.tipoAula, "P") && strcmp(vetorUc.tipoAula, "p"));
     //strcmp - Compara se a string tipo é igual a T/PL/TP
 
@@ -60,7 +96,8 @@ void listaDadosUc(tipoUc vetorUc[MAX_UC], int numTotalUc){
     }
     else {
         for (i=0; i<numTotalUc; i++) {
-        escreveDadosUc(vetorUc[i]);
+            escreveDadosUc(vetorUc[i]);
+
         }
     }
 }
@@ -91,6 +128,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
             for(i=0; i<=numTotalUc; i++){
                 fprintf(ficheiro, "\n %d", vetorUc[i].codigo);
                 fprintf(ficheiro, "\n %s", vetorUc[i].designacao);
+                fprintf(ficheiro, "\n %s", vetorUc[i].tipoDeUc);
                 fprintf(ficheiro, "\n %s", vetorUc[i].tipoAula);
                 fprintf(ficheiro, "\n %d", vetorUc[i].semestre);
                 fprintf(ficheiro, "\n %s", vetorUc[i].regime);
@@ -129,7 +167,8 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
             for(i=0; i<=*numTotalUc; i++){
                 fscanf(ficheiro, "%d", vetorUc[i].codigo);
                 fgets(vetorUc[i].designacao,100,ficheiro);
-                fgets(vetorUc[i].tipoAula,2,ficheiro);
+                fgets(vetorUc[i].tipoDeUc,3,ficheiro);
+                fgets(vetorUc[i].tipoAula,3,ficheiro);
                 fscanf(ficheiro, "%d", vetorUc[i].semestre);
                 fgets(vetorUc[i].regime,2,ficheiro);
                 fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
@@ -227,22 +266,28 @@ void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc){
                                      break;
                             case 'B':
                                     do{
-                                        lerString("\tTipo (T, TP ou PL): ", vetorUc[i].tipoAula,3);
+                                        lerString("\tTipo de Uc (S - Obrigatorio, N - Opcional): ", vetorUc[i].tipoDeUc,3);
+                                    } while( strcmp(vetorUc[i].tipoDeUc, "S") && strcmp(vetorUc[i].tipoDeUc, "s") && strcmp(vetorUc[i].tipoDeUc, "N") && strcmp(vetorUc[i].tipoDeUc, "n"));
+
+                                    break;
+                            case 'C':
+                                    do{
+                                        lerString("\tTipo (T, TP ou P): ", vetorUc[i].tipoAula,3);
                                     } while( strcmp(vetorUc[i].tipoAula, "T") && strcmp(vetorUc[i].tipoAula, "t") && strcmp(vetorUc[i].tipoAula, "TP") && strcmp(vetorUc[i].tipoAula, "tp") && strcmp(vetorUc[i].tipoAula, "P") && strcmp(vetorUc[i].tipoAula, "p"));
                                     //strcmp - Compara se o a string tipoAula é igual a T/PL/TP
                                     break;
-                            case 'C':
+                            case 'D':
                                     vetorUc[i].semestre = lerInteiro("Semestre: ",1,6);
                                     break;
-                            case 'D':
+                            case 'E':
                                     do{
                                         lerString("\tRegime (D,PL): ", vetorUc[i].regime,3);
                                     } while( strcmp(vetorUc[i].regime, "D") && strcmp(vetorUc[i].regime, "d") && strcmp(vetorUc[i].regime, "PL") && strcmp(vetorUc[i].regime, "pl"));
                                     break;
-                            case 'E':
+                            case 'F':
                                     vetorUc[i].quantidadeAulas = lerInteiro("Duração de cada aula(em minutos): ", 0, 100);
                                     break;
-                            case 'F':
+                            case 'G':
                                     vetorUc[i].duracao = lerInteiro("Duração de cada aula(em minutos): ", 60, 180);
                                     break;
                             case 'V':

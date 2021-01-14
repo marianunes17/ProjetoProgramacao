@@ -127,7 +127,7 @@ int main(){
                                 case 'A':
                                     printf("Escolheu a opção de Alterar um Aula Agendada\n");
                                     lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                    alteraAulas(vAulas, &numAula, designacao);
+                                    alteraAulas(vAulas, &numAula, designacao, vetorUc);
                                     // só dá se a aula estiver com estado 'agendada' !!!!!!
                                     break;
 

@@ -138,10 +138,12 @@ char subMenuAlteraUC(){
     char opcaoUc;
     printf("\n\n Alterar Campo das Unidades Curriculares");
     printf("\n\t A - Designação");
-    printf("\n\t B - Tipo (T, TP ou PL)");
-    printf("\n\t C - Semestre");
-    printf("\n\t D - Regime (D,PL)");
-    printf("\n\t E - Duração de cada aula(em minutos)");
+    printf("\n\t B - Tipo de UC (T, TP ou PL)");
+    printf("\n\t C - Tipo de Aula (S-Obrigatorio, N-Opcional)");
+    printf("\n\t D - Semestre");
+    printf("\n\t E - Regime (D,PL)");
+    printf("\n\t F - Total de horas previstas");
+    printf("\n\t G - Duração de cada aula(em minutos)");
     printf("\n\t V - Voltar\n");
     printf("\n\t Insira Opção ->");
 
@@ -155,9 +157,10 @@ char subMenuAlteraUC(){
 char subMenuAlteraAula(){
     char opcaoAula;
     printf("\n\n Alterar Campo das Aulas");
-    printf("\n\t A - Designação");
-    printf("\n\t B - Docente)");
-    printf("\n\t V - Voltar\n");
+    printf("\n\t A - Docente");
+    printf("\n\t B - Hora");
+    printf("\n\t C - Data");
+    printf("\n\t D - Voltar\n");
     printf("\n\t Insira Opção ->");
 
     scanf(" %c", &opcaoAula);

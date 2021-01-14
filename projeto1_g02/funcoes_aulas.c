@@ -355,8 +355,8 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
     return vAula;
 }
 
-void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[]){
-    int  posAula, i;
+void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[]){
+    int  posAula, i, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc, duracaoUcRest=0;
     char opcao;
 
     if(*numAulas == 0 ){
@@ -376,21 +376,66 @@ void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[]){
                     do{
                         opcao = subMenuAlteraAula();
                         switch(opcao){
-                            case 'D':
-                                    lerString("Indique Descrição: ", vAula[i].designacao, MAX_STRING);
-                                    break;
-                            case 'N':
+                            case 'A':
+                                    printf("Escolheu a opção de Alterar Docente\n");
                                     lerString("Docente: ", vAula[i].docente, MAX_STRING);
                                     break;
+                            case 'B':
+                                    printf("Escolheu a opção de Alterar Docente\n");
+
+                                    if(strcmp(vetorUc[i].regime, "D") == 0){
+                                            vAula[i].hora = lerHora(8,18);
+                                            hora = vAula[i].hora.h;
+                                            min = vAula[i].hora.m;
+                                            printf("\n Inicio da Aula: %d:%d",hora,min);
+
+                                            hora = (hora*60);
+                                            horaTotal = hora + min;
+
+                                            //calculação da hora de Fim
+                                            horaTotal = horaTotal + duracaoUc;
+                                            minF = horaTotal;
+                                            calculaHora(&horaF,&minF); //funcao calcula hora de FIM
+                                            printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
+
+                                            vAula[i].horaFim = horaF;
+                                            vAula[i].minFim = minF;
+                                        } else{
+                                            vAula[i].hora = lerHora(18,24);
+                                            hora = vAula[i].hora.h;
+                                            min = vAula[i].hora.m;
+                                            printf("\n Inicio da Aula: %d:%d",hora,min);
+
+                                            hora = (hora*60);
+                                            horaTotal = hora + min;
+
+                                            //calculação da hora de Fim
+                                            horaTotal = horaTotal + duracaoUc;
+                                            minF = horaTotal;
+                                            calculaHora(&horaF,&minF); //funcao calcula hora de FIM
+                                            printf("\n Fim da Aula: %d:%d",horaF,minF);
+
+                                            vAula[i].horaFim = horaF;
+                                            vAula[i].minFim = minF;
+
+                                            quantHorasUc = (quantHorasUc*60); //passa horas para minutos
+                                            duracaoUcRest = quantHorasUc - duracaoUc; //faz a redução
+                                            duracaoUcRest = duracaoUcRest/60; //passa minutos para horas
+                                            printf("\n Numero de horas restante na UC %s: %d",vetorUc[i].designacao,duracaoUcRest);
+
+                                        }
+                                    break;
+                            case 'c':
+                                    printf("Escolheu a opção de Alterar Data\n");
+                                    break;
                             case 'V':
+                                    printf("Escolheu a opção Voltar atras\n");
                                     break;
                             default: printf("Opção Invalida.");
                         }
                     }while(opcao!='V');
 
                     gravaFicheiroBin(vAula, *numAulas);
-                   //  o ficheiro BIN já grava o TEXT automáticamente
-                   //gravaFicheiroTextAula(vAula, *numAulas);
 
                    i = *numAulas;
                 }
@@ -430,7 +475,7 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]
 
 void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
     int posicao, i;
-    char estadoAula;
+    char estadoA;
 
     if(numTotalAulas == 0 ){
         printf("Não existem Aulas. \n");
@@ -440,14 +485,14 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
             printf ("Aula nao está agendada");
         }
         else{
-            printf("Quer alterar o estado da aula de 'agendada' para 'a realizar'?(S-Sim, N-Nao)  %c: ",estadoAula);
-            scanf("%c", &estadoAula);
-            estadoAula = toupper(estadoAula);
+            printf("Quer alterar o estado da aula de 'agendada' para 'a decorrer'?(S-Sim, N-Nao)  %c: ",estadoA);
+            scanf("%c", &estadoA);
+            estadoA = toupper(estadoA);
 
-            if(estadoAula=='S'){
+            if(estadoA=='S'){
                 for(i=0; i<numTotalAulas; i++){
-                      if(( strcmp(vAulas[i].estadoAula, designacaoAula)==0)){
-                            strcmp(vAulas[i].estadoAula, "Agendada");
+                      if(( strcmp(vAulas[i].estadoAula, "Agendada")==0)){
+                            strcmp(vAulas[i].estadoAula, "A decorrer");
                       }
                     }
                 }

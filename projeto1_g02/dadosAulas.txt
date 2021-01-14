@@ -1,6 +1,60 @@
 Lista Todas as Aulas: 1
 
-Designacao: Aula teste 1
-Docente: marco Gomes
+Designacao: fisica
+Docente: raul
 Codigo UC: 1111
-Data: 5	5	2020
+Data: 1	1	2019
+Lista Todas as Aulas: 1
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Lista Todas as Aulas: 3
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica2
+Docente: assa
+Codigo UC: 1111
+Data: 1	1	2019
+Lista Todas as Aulas: 3
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Designacao: fisica2
+Docente: assa
+Codigo UC: 1111
+Data: 1	1	2019

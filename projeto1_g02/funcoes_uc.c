@@ -243,53 +243,70 @@ void eliminarVetorUc(tipoUc vetorUc[], int *numTotalUc){
     }
 }
 
-void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc){
+void alterarVetorUc(tipoUc vetorUc[], int numTotalUc){
     int i, posicao, codigoUc;
     char opcao;
 
-    if(*numTotalUc == 0 ){
+    if(numTotalUc == 0 ){
         printf("\tNão existem Unidades Curriculares. \n");
     }
     else{
         codigoUc=lerInteiro("\tNúmero de Unidades Curriculares: ", 1000, 2000);
-        posicao=procuraUc(vetorUc,*numTotalUc, codigoUc);
+        posicao=procuraUc(vetorUc,numTotalUc, codigoUc);
         if(posicao==-1){
                 printf("\tO numero nao existe.");
         } else{
-             for (i=0; i<*numTotalUc; i++){
+             for (i=0; i<numTotalUc; i++){
                 if (vetorUc[i].codigo == codigoUc){
                     do{
                         opcao=subMenuAlteraUC();
                         switch(opcao){
                             case 'A':
+                                    printf("Escolheu a opção de Alterar Designação\n");
                                      lerString("Designacao: ", vetorUc[i].designacao,MAX_STRING);
                                      break;
                             case 'B':
+                                    printf("Escolheu a opção de Alterar Tipo de Uc\n");
                                     do{
                                         lerString("\tTipo de Uc (S - Obrigatorio, N - Opcional): ", vetorUc[i].tipoDeUc,3);
                                     } while( strcmp(vetorUc[i].tipoDeUc, "S") && strcmp(vetorUc[i].tipoDeUc, "s") && strcmp(vetorUc[i].tipoDeUc, "N") && strcmp(vetorUc[i].tipoDeUc, "n"));
 
                                     break;
                             case 'C':
+                                    printf("Escolheu a opção de Alterar Tipo de Aula\n");
                                     do{
                                         lerString("\tTipo (T, TP ou P): ", vetorUc[i].tipoAula,3);
                                     } while( strcmp(vetorUc[i].tipoAula, "T") && strcmp(vetorUc[i].tipoAula, "t") && strcmp(vetorUc[i].tipoAula, "TP") && strcmp(vetorUc[i].tipoAula, "tp") && strcmp(vetorUc[i].tipoAula, "P") && strcmp(vetorUc[i].tipoAula, "p"));
                                     //strcmp - Compara se o a string tipoAula é igual a T/PL/TP
                                     break;
                             case 'D':
+                                    printf("Escolheu a opção de Alterar Semestre\n");
                                     vetorUc[i].semestre = lerInteiro("Semestre: ",1,6);
                                     break;
                             case 'E':
+                                    printf("Escolheu a opção de Alterar Regime\n");
                                     do{
                                         lerString("\tRegime (D,PL): ", vetorUc[i].regime,3);
                                     } while( strcmp(vetorUc[i].regime, "D") && strcmp(vetorUc[i].regime, "d") && strcmp(vetorUc[i].regime, "PL") && strcmp(vetorUc[i].regime, "pl"));
                                     break;
                             case 'F':
-                                    vetorUc[i].quantidadeAulas = lerInteiro("Duração de cada aula(em minutos): ", 0, 100);
+                                    printf("Escolheu a opção de Alterar Total de horas previstas\n");
+                                    vetorUc[i].quantidadeHoras = lerInteiro("\tTotal de horas prevista: ", 1, 100);
+                                    vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeHoras)/(vetorUc[i].duracao/60));
                                     break;
                             case 'G':
-                                    vetorUc[i].duracao = lerInteiro("Duração de cada aula(em minutos): ", 60, 180);
+                                    printf("Escolheu a opção de Alterar Duração de cada aula(em minutos)\n");
+                                     vetorUc[i].duracao = lerInteiro("\tf: ", 60, 180);
+                                     vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeHoras)/(vetorUc[i].duracao/60));
                                     break;
+
+
+
+
+
+
+
+
                             case 'V':
                                     printf("Voltar");
                                     break;
@@ -297,8 +314,8 @@ void alterarVetorUc(tipoUc vetorUc[], int *numTotalUc){
                         }
                     } while(opcao!='V');
 
-                    gravarUcBinario(vetorUc, *numTotalUc);
-                    gravarUcTexto(vetorUc, *numTotalUc);
+                    gravarUcBinario(vetorUc, numTotalUc);
+                    gravarUcTexto(vetorUc, numTotalUc);
                 }
             }
         }

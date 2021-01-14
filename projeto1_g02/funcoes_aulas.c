@@ -57,7 +57,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     strupr(regimeUc); //por string em maiuscula
 
     duracaoUc = vetorUc[posUc].duracao;
-    quantHorasUc = vetorUc[posUc].quantidadeAulas;
+    quantHorasUc = vetorUc[posUc].quantidadeHoras;
 
     dados = lerDadosAula();
     posAula = procuraAulaNome(vAula,*num,dados.designacao);
@@ -130,6 +130,8 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
             //}while(hora < 18 || hora > 24);
 
         }
+
+        strcpy(dados.estadoAula, "Agendada");
     }
 
 
@@ -144,7 +146,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         (*num)++;
 
         //actualizar a quantidade de aulas no vetor da UC
-        //vetorUc[posUc].quantidadeAulas = duracaoUcRest;
+        vetorUc[posUc].quantidadeHoras = duracaoUcRest;
 
         printf("\n\nAula agendada com sucesso!\n");
 

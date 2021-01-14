@@ -92,12 +92,12 @@ int main(){
                                 printf("Uc não existe");
                             }
                             else{
-                                if(vetorUc[posicaoUcVetor].quantidadeAulas == 0){
+                                if(vetorUc[posicaoUcVetor].quantidadeHoras == 0){
                                     printf("Esgotou as horas para o agendamento");
                                 }
                                 else{
                                     printf("Uc de %s", vetorUc[posicaoUcVetor].designacao);
-                                    printf(" e ainda tem disponivel %d horas\n", vetorUc[posicaoUcVetor].quantidadeAulas);
+                                    printf(" e ainda tem disponivel %d horas\n", vetorUc[posicaoUcVetor].quantidadeHoras);
 
                                     vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                                     gravaFicheiroBin(vAulas,numAula);
@@ -120,14 +120,15 @@ int main(){
                                     lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
                                     vAulas = eliminaAula(vAulas, &numAula, designacao);
                                     gravaFicheiroBin(vAulas,numAula);
+                                    // só dá se a aula estiver com estado 'agendada' ou 'realizada'!!!!!!
                                     break;
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':
                                     printf("Escolheu a opção de Alterar um Aula Agendada\n");
                                     lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                    // vAulas = alteraAulas(vAulas, &numAula, designacao);
-                                    // só dá se a aula estiver com estado 'agendada'
+                                    alteraAulas(vAulas, &numAula, designacao);
+                                    // só dá se a aula estiver com estado 'agendada' !!!!!!
                                     break;
 
                                 case 'V':

@@ -301,14 +301,6 @@ void alterarVetorUc(tipoUc vetorUc[], int numTotalUc){
                                      vetorUc[i].duracao = lerInteiro("\tf: ", 60, 180);
                                      vetorUc[i].quantidadeAulas = ((vetorUc[i].quantidadeTotalHoras)/(vetorUc[i].duracao/60));
                                     break;
-
-
-
-
-
-
-
-
                             case 'V':
                                     printf("Voltar");
                                     break;

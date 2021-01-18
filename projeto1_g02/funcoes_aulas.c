@@ -160,9 +160,6 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
     }
 
-                    gravarUcBinario(vetorUc, numTotalUc);
-                    gravarUcTexto(vetorUc, numTotalUc);
-
     return vAula;
 }
 
@@ -486,33 +483,40 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]
 
 void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
     int posicao, i;
-    char estadoA;
+    char estado, gravacao;
 
     if(numTotalAulas == 0 ){
         printf("Não existem Aulas. \n");
-    }else{
+    } else {
         posicao=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
         if(posicao == -1){
             printf ("Aula nao está agendada");
         }
         else{
-            printf("Quer alterar o estado da aula de 'agendada' para 'a decorrer'?(S-Sim, N-Nao)  %c: ",estadoA);
-            scanf(" %c", &estadoA);
-            estadoA = toupper(estadoA);
+            do{
+                printf("Quer alterar o estado da aula de 'agendada' para 'a decorrer'?(S-Sim, N-Nao)  %c: ",estado);
+                scanf(" %c", &estado);
+                estado = toupper(estado);
 
-            if(estadoA=='S'){
-                for(i=0; i<numTotalAulas; i++){
-                    if(strcmp(vAulas[i].estadoAula, "Agendada")==0){
-                        (strcmp(vAulas[i].estadoAula, "A decorrer")==0);
-                            }
+                if(estado!='S'){
+                    printf("Insira 'S' se quiser mudar o estado da aula");
                 }
+            } while (estado!='S');
 
-                                gravaFicheiroBin(vAulas, numTotalAulas);
+            if(estado=='S'){
+                for(i=0; i<numTotalAulas; i++){
+                    if(strcmp(vAulas[i].designacao, designacaoAula)==0){
+                        strcpy(vAulas[i].estadoAula, "A decorrer");
+                    }
+                }
+                printf("Quer gravar a aula?(S-Sim, N-Nao)  %c: ",gravacao);
+                scanf(" %c", &gravacao);
+                gravacao = toupper(gravacao);
+
+              gravaFicheiroBin(vAulas, numTotalAulas);
             }
-
-
-            }
-
         }
     }
+}
+
 

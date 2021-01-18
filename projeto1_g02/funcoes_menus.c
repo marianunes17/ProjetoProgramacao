@@ -103,6 +103,7 @@ char subMenuSalasOnline(){
     char opcao;
     printf("\n\n ----------------- Sub Menu Salas de Aula online-----------------");
     printf("\n C - Começar Aula");
+    printf("\n T - Terminar Aula");
     printf("\n A - Assistir à Aula Online");
     printf("\n G - Gravações das aula");
     printf("\n V - Voltar\n");

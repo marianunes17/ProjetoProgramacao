@@ -139,8 +139,8 @@ char subMenuAlteraUC(){
     char opcaoUc;
     printf("\n\n Alterar Campo das Unidades Curriculares");
     printf("\n\t A - Designação");
-    printf("\n\t B - Tipo de UC (T, TP ou PL)");
-    printf("\n\t C - Tipo de Aula (S-Obrigatorio, N-Opcional)");
+    printf("\n\t B - Tipo de Aula (S-Obrigatorio, N-Opcional)");
+    printf("\n\t C - Tipo de UC (T, TP ou PL)");
     printf("\n\t D - Semestre");
     printf("\n\t E - Regime (D,PL)");
     printf("\n\t F - Total de horas previstas");

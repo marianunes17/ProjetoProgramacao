@@ -150,6 +150,11 @@ int main(){
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         comecarAula(vAulas, numAula, designacao);
                                         break;
+                                case 'T':
+                                        printf("Escolheu a opção de Terminar Aula");
+                                        lerString("Designação da Aula: ", designacao, MAX_STRING);
+                                        terminarAula(vAulas, numAula, designacao);
+                                        break;
                                 case 'A':
                                         printf("Escolheu a opção de Assistir à aula");
                                         lerString("Designação da Aula que pretende assistir: ", designacao, MAX_STRING);

@@ -523,3 +523,37 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
 }
 
 
+void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
+    int posicao, i;
+    char estado, gravacao;
+
+    if(numTotalAulas == 0 ){
+        printf("Não existem Aulas. \n");
+    } else {
+        posicao=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
+        if(posicao == -1){
+            printf ("Aula nao está agendada");
+        }
+        else{
+            do{
+                printf("Quer alterar o estado da aula de 'a decorrer' para 'terminada'?(S-Sim, N-Nao)  %c: ",estado);
+                scanf(" %c", &estado);
+                estado = toupper(estado);
+
+                if(estado!='S'){
+                    printf("Insira 'S' se quiser mudar o estado da aula");
+                }
+            } while (estado!='S');
+
+            if(estado=='S'){
+                for(i=0; i<numTotalAulas; i++){
+                    if(strcmp(vAulas[i].designacao, designacaoAula)==0){
+                        strcpy(vAulas[i].estadoAula, "Terminada");
+                    }
+                }
+
+              gravaFicheiroBin(vAulas, numTotalAulas);
+            }
+        }
+    }
+}

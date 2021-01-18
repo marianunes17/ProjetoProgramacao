@@ -28,7 +28,7 @@ int main(){
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
-    leFicheiroUcBinarioEstudantes(vEstudante, &numTotalEstudantes);
+    leEstudantesBinario(vEstudante, &numTotalEstudantes);
 
 
      do{
@@ -39,7 +39,7 @@ int main(){
                     opcaoSubMenuUc=subMenuUc(vetorUc);
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
-                                printf("Escolheu a opção: Listar Unidades Curriculares:");
+                                printf("Escolheu a opção: Listar Unidades Curriculares:\n");
                                 printf("\nTotal de UC: %d\n", numTotalUc);
                                 listaDadosUc(vetorUc, numTotalUc);
                                 break;
@@ -83,7 +83,7 @@ int main(){
 
                     // ----- AGENDAR AULA  -----
                     case 'A':
-                            printf("Escolheu a opção de Agendar uma Aula\n\n");
+                            printf("Escolheu a opção de Agendar uma Aula\n");
                             leFicheiroUcBinario(vetorUc, &numTotalUc); // funcao Maria
 
                             codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
@@ -113,7 +113,7 @@ int main(){
                             switch(subSubMenuAula){
                                  // ----- ELIMINAR AULA  -----
                                 case 'E':
-                                    lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
+                                    lerString("Designação da Aula a Eliminar: \n", designacao, MAX_STRING);
                                     vAulas = eliminaAula(vAulas, &numAula, designacao);
                                     gravaFicheiroBin(vAulas,numAula);
                                     // só dá se a aula estiver com estado 'agendada' ou 'realizada'!!!!!!
@@ -146,29 +146,33 @@ int main(){
                             subMenuSala = subMenuSalasOnline();
                             switch(subMenuSala){
                                 case 'C':
-                                        printf("Escolheu a opção de Começar Aula");
+                                        printf("Escolheu a opção de Começar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         comecarAula(vAulas, numAula, designacao);
                                         break;
                                 case 'T':
-                                        printf("Escolheu a opção de Terminar Aula");
+                                        printf("Escolheu a opção de Terminar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         terminarAula(vAulas, numAula, designacao);
                                         break;
                                 case 'A':
-                                        printf("Escolheu a opção de Assistir à aula");
+                                        printf("Escolheu a opção de Assistir à aula\n");
                                         lerString("Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
                                         assistirAula(vEstudante, &numTotalEstudantes, vAulas, numAula, designacao);
 
                                         break;
+                                case 'B':
+                                        printf("Escolheu a opção de Ver Gravações\n");
+                                       gravaAulasEstudantesBin(vEstudante, &numTotalEstudantes, vAulas, &numAula);
+                                        break;
                                 case 'G':
-                                        printf("Escolheu a opção de Ver Gravações");
+                                        printf("Escolheu a opção de Ver Gravações\n");
                                         lerString("Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
                                         break;
                                 case 'V':
-                                        printf("\nSair do menu de UC. ");
+                                        printf("\nSair do menu de UC. \n");
                                         break;
-                                default: printf("\nOpcao inválida. ");
+                                default: printf("\nOpcao inválida. \n");
                             }
                         }while(subMenuSala!='V');
                         break;
@@ -178,25 +182,25 @@ int main(){
                             subMenuEstudante = subMenuEstudantes();
                             switch(subMenuEstudante){
                                 case 'L': //Listar Estudante
-                                        printf("Escolheu a opção: Listar Unidades Curriculares:");
+                                        printf("Escolheu a opção: Listar Estudantes:\n");
                                         printf("\nTotal de Estudantes: %d\n", numTotalEstudantes);
                                         listaDadosEstudante(vEstudante, numTotalEstudantes);
                                         break;
 
                                 case 'I': //Inserir novo Estudante
-                                        printf("Escolheu a opção: Inserir um novo Estudate \n");
+                                        printf("Escolheu a opção: Inserir um novo Estudante \n");
                                         numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
                                         acrescentaEstudante(vEstudante, &numTotalEstudantes, numeroEstudante);
 
                                         break;
 
                                 case 'E': //Eliminar Estudante
-                                        printf("Escolheu a opção: Eliminar Estudate \n");
+                                        printf("Escolheu a opção: Eliminar Estudante \n");
                                         eliminarEstudante(vEstudante, &numTotalEstudantes);
                                         break;
 
                                 case 'M': //Modificar Estudante
-                                        printf("Escolheu a opção: Modificar dados de um Estudate \n");
+                                        printf("Escolheu a opção: Modificar dados de um Estudante \n");
                                         alterarVetorEstudante(vEstudante, numTotalEstudantes);
                                         break;
                                 case 'V':

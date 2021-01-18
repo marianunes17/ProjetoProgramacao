@@ -12,10 +12,11 @@ void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes);
 void assistirAula(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[]);
 void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes);
 
-void gravarTextoEstudantes(tipoEstudante vEstudante[], int numTotalEstudante);
-void gravarBinarioEstudantes(tipoEstudante vEstudante[], int numTotalEstudante);
-void leFicheiroTextoEstudantes(tipoEstudante vEstudante[], int *numTotalEstudante);
-void leFicheiroUcBinarioEstudantes(tipoEstudante vEstudante[], int *numTotalEstudante);
+void gravarEstudantesTexto(tipoEstudante vEstudante[], int numTotalEstudante);
+void gravarEstudantesBinario(tipoEstudante vEstudante[], int numTotalEstudante);
+void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante);
+void leEstudantesBinario(tipoEstudante vEstudante[], int *numTotalEstudante);
 
+void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numAulas);
 
 #endif

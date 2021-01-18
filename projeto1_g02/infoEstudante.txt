@@ -163,4 +163,10 @@
  D
  20
  helena
- pl
+ pl1
+ 1
+ Ana
+ d
+ 0
+ 
+ 

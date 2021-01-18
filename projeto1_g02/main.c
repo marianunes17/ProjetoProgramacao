@@ -114,17 +114,18 @@ int main(){
                                  // ----- ELIMINAR AULA  -----
                                 case 'E':
                                     lerString("Designação da Aula a Eliminar: \n", designacao, MAX_STRING);
-                                    vAulas = eliminaAula(vAulas, &numAula, designacao);
+                                    vAulas = eliminaAula(vAulas, &numAula, designacao,vetorUc,numTotalUc);
                                     gravaFicheiroBin(vAulas,numAula);
-                                    // só dá se a aula estiver com estado 'agendada' ou 'realizada'!!!!!!
+                                    // ver se necessario!!
+                                    gravarUcBinario(vetorUc, &numTotalUc);
+                                    gravarUcTexto(vetorUc, &numTotalUc);
                                     break;
 
                                 // ----- ALTERAR AULA  -----
                                 case 'A':
                                     printf("Escolheu a opção de Alterar um Aula Agendada\n");
                                     lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                    alteraAulas(vAulas, &numAula, designacao, vetorUc);
-                                    // só dá se a aula estiver com estado 'agendada' !!!!!!
+                                    alteraAulas(vAulas, &numAula, designacao, vetorUc, numTotalUc);
                                     break;
 
                                 case 'V':

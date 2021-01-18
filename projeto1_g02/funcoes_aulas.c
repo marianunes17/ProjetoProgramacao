@@ -278,6 +278,8 @@ void gravaFicheiroTextAula(tipoAula vAulas[],int num){
             fprintf(ficheiro,"Data: %d\t",vAulas[i].data.dia);
             fprintf(ficheiro,"%d\t",vAulas[i].data.mes);
             fprintf(ficheiro,"%d\n",vAulas[i].data.ano);
+            fprintf(ficheiro,"Hora de Inicio: %d:%d\n",vAulas[i].hora.h,vAulas[i].hora.m);
+            fprintf(ficheiro,"Hora de Fim: %d:%d\n",vAulas[i].horaFim,vAulas[i].minFim);
         }
 
         erro = fclose(ficheiro);
@@ -358,9 +360,9 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
 }
 
 
-// só dá se a aula estiver com estado 'agendada' ou 'realizada'
-tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
-    int i, posAula;
+// só dá se a aula estiver com estado 'agendada'
+tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[], tipoUc vetorUc[], int numTotalUc){
+    int i, posAula, codigoUc, posicaoUcVetor, duracaoUc, quantHorasUc;
     char estAula[12];
     tipoAula *pAula;
     pAula = vAula; // ponteiro auxiliar
@@ -369,6 +371,12 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
 
         posAula = procuraAulaNome(vAula, *num, designacao);
         strcpy(estAula,vAula[posAula].estadoAula);
+
+        //buscar UC para actualizar quantidade de Horas
+        codigoUc = vAula[posAula].codigo;
+        posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc);
+        duracaoUc = vetorUc[posicaoUcVetor].duracao;
+        quantHorasUc = vetorUc[posicaoUcVetor].quantidadeHoras;
 
 
         if(posAula == -1){
@@ -390,6 +398,11 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
                 (*num)--; // Atualiza numero aulas retirando uma
                 printf (" Aula eliminada!\n\n");
 
+                quantHorasUc = (quantHorasUc*60); //passa horas para minutos
+                quantHorasUc += duracaoUc; //faz a redução
+                quantHorasUc = quantHorasUc/60; //passa minutos para horas
+                printf ("Duaraco antiga: %d -- Nova: %d",vetorUc[posicaoUcVetor].quantidadeHoras,quantHorasUc);
+                vetorUc[posicaoUcVetor].quantidadeHoras = quantHorasUc;
             }
             else{
                 printf ("\nImpossivel Remover! Aula a decorrer ou nao pode ser eliminada \n");
@@ -399,9 +412,9 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
     return vAula;
 }
 
-void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[]){
-    int  posAula, i, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc, duracaoUcRest=0;
-    char opcao;
+void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc){
+    int  posAula, i, hora, min, minF, horaF=0, horaTotal, codigoUc, posUc, duracaoUc;
+    char opcao, regimeUc[3];
 
     if(*numAulas == 0 ){
         printf("Não existem Aulas\n");
@@ -417,68 +430,72 @@ void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc 
 
                 if (strcmp(vAula[i].designacao, designacaoAula) == 0){
 
+                    codigoUc = vAula[posAula].codigo;
+                    posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
+                    duracaoUc = vetorUc[posUc].duracao;
+                    strcpy(regimeUc,vetorUc[posUc].regime);
+                    strupr(regimeUc);
+
                     do{
                         opcao = subMenuAlteraAula();
                         switch(opcao){
                             case 'N':
-                                    printf("Escolheu a opção de Alterar Nome Docente\n");
-                                    lerString("Docente: ", vAula[i].docente, MAX_STRING);
-                                    break;
-                            case 'H':
-                                    printf("Escolheu a opção de Alterar Docente\n");
-
-                                    if(strcmp(vetorUc[i].regime, "D") == 0){
-                                            vAula[i].hora = lerHora(8,18);
-                                            hora = vAula[i].hora.h;
-                                            min = vAula[i].hora.m;
-                                            printf("\n Inicio da Aula: %d:%d",hora,min);
-
-                                            hora = (hora*60);
-                                            horaTotal = hora + min;
-
-                                            //calculação da hora de Fim
-                                            horaTotal = horaTotal + duracaoUc;
-                                            minF = horaTotal;
-                                            calculaHora(&horaF,&minF); //funcao calcula hora de FIM
-                                            printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
-
-                                            vAula[i].horaFim = horaF;
-                                            vAula[i].minFim = minF;
-                                        } else{
-                                            vAula[i].hora = lerHora(18,24);
-                                            hora = vAula[i].hora.h;
-                                            min = vAula[i].hora.m;
-                                            printf("\n Inicio da Aula: %d:%d",hora,min);
-
-                                            hora = (hora*60);
-                                            horaTotal = hora + min;
-
-                                            //calculação da hora de Fim
-                                            horaTotal = horaTotal + duracaoUc;
-                                            minF = horaTotal;
-                                            calculaHora(&horaF,&minF); //funcao calcula hora de FIM
-                                            printf("\n Fim da Aula: %d:%d",horaF,minF);
-
-                                            vAula[i].horaFim = horaF;
-                                            vAula[i].minFim = minF;
-
-                                            quantHorasUc = (quantHorasUc*60); //passa horas para minutos
-                                            duracaoUcRest = quantHorasUc - duracaoUc; //faz a redução
-                                            duracaoUcRest = duracaoUcRest/60; //passa minutos para horas
-                                            printf("\n Numero de horas restante na UC %s: %d",vetorUc[i].designacao,duracaoUcRest);
-
-                                        }
+                                    printf("\tEscolheu a opção de Alterar Nome do Docente\n");
+                                    lerString("Insira o novo nome do docente: ", vAula[i].docente, MAX_STRING);
                                     break;
                             case 'D':
-                                    printf("Escolheu a opção de Alterar Data\n");
+                                    printf("\tEscolheu a opção de Alterar Data\n");
+                                    vAula[i].data = lerData();
+                                    break;
+                            case 'H':
+                                    printf("\tEscolheu a opção de Alterar Hora\n");
+
+                                     //calcula a hora inicio/fim consoante o regime e o tipo de aula
+                                    if(strcmp(regimeUc, "D") == 0){
+
+                                        vAula[posAula].hora = lerHora(8,18);
+                                        hora = vAula[posAula].hora.h;
+                                        min = vAula[posAula].hora.m;
+                                        printf("\n Inicio da Aula: %d:%d",hora,min);
+
+                                        hora = (hora*60);  //coloca hora inicio em minutos
+                                        horaTotal = hora + min;  //soma a hora em mimutis com os minutos
+
+                                        //calculação da hora de Fim
+                                        horaTotal = horaTotal + duracaoUc;
+                                        minF = horaTotal;
+                                        calculaHora(&horaF,&minF); //funcao calcula hora de FIM
+                                        printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
+
+                                        vAula[posAula].horaFim = horaF;
+                                        vAula[posAula].minFim = minF;
+                                    }
+                                    else{
+
+                                        vAula[posAula].hora = lerHora(18,24);
+                                        hora = vAula[posAula].hora.h;
+                                        min = vAula[posAula].hora.m;
+                                        printf("\n Inicio da Aula: %d:%d",hora,min);
+
+                                        hora = (hora*60);
+                                        horaTotal = hora + min;
+
+                                        //calculação da hora de Fim
+                                        horaTotal = horaTotal + duracaoUc;
+                                        minF = horaTotal;
+                                        calculaHora(&horaF,&minF); //funcao calcula hora de FIM
+                                        printf("\n Fim da Aula: %d:%d",horaF,minF);
+
+                                        vAula[posAula].horaFim = horaF;
+                                        vAula[posAula].minFim = minF;
+                                    }
+
                                     break;
                             case 'V':
                                     break;
                             default: printf("Opção Invalida.");
                         }
                     }while(opcao!='V');
-
-                    //gravaFicheiroBin(vAula, *numAulas);
 
                    i = *numAulas;
                 }

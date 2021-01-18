@@ -53,11 +53,21 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     char regimeUc[3];
     pAula = vAula;
 
+        printf("Nome UC -> %s\n",vetorUc[posUc].designacao);
+
     strcpy(regimeUc,vetorUc[posUc].regime);
     strupr(regimeUc); //por string em maiuscula
 
+        printf("Regime vetor -> %s\n",vetorUc[posUc].regime);
+        printf("Regime var -> %s\n",regimeUc);
+
     duracaoUc = vetorUc[posUc].duracao;
     quantHorasUc = vetorUc[posUc].quantidadeHoras;
+
+        printf("Duracao vetor -> %d\n",vetorUc[posUc].duracao);
+        printf("Duracao var -> %d\n",duracaoUc);
+        printf("Quant horas vetor -> %d\n",vetorUc[posUc].quantidadeHoras);
+        printf("Quant horas  var -> %d\n",quantHorasUc);
 
     dados = lerDadosAula();
     posAula = procuraAulaNome(vAula,*num,dados.designacao);
@@ -70,7 +80,12 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         dados.codigo = vetorUc[posUc].codigo;
         strcpy(dados.regimeAula,regimeUc);
 
+            printf("codigo uc vetor -> %d\n",vetorUc[posUc].codigo);
+            printf("codigo uc aulas -> %d\n",dados.codigo);
+            printf("regime uc aulas -> %s\n",dados.regimeAula);
+
         dados.data = lerData();
+
 
 
         //calcula a hora inicio/fim consoante o regime e o tipo de aula
@@ -87,8 +102,13 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
                 hora = (hora*60);  //coloca hora inicio em minutos
                 horaTotal = hora + min;  //soma a hora em mimutis com os minutos
 
+                    printf("hora total antes > %d\n",horaTotal);
+
                 //calculação da hora de Fim
                 horaTotal = horaTotal + duracaoUc;
+
+                    printf("hora total > %d + duracao %d\n",horaTotal,duracaoUc);
+                    printf("Quant horas  var -> %d\n",quantHorasUc);
 
                 minF = horaTotal;
                 calculaHora(&horaF,&minF); //funcao calcula hora de FIM
@@ -99,8 +119,13 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
                 dados.minFim = minF;
 
                 quantHorasUc = (quantHorasUc*60); //passa horas para minutos
+                        printf("\nhoras para min -> %d\n",quantHorasUc);
                 duracaoUcRest = quantHorasUc - duracaoUc; //faz a redução
+                        printf("\nreducao -> %d\n",duracaoUcRest);
                 duracaoUcRest = duracaoUcRest/60; //passa minutos para horas
+
+                        printf("\nmin para horas -> %d\n",duracaoUcRest);
+
                 printf("\n Numero de horas restante na UC %s: %d",vetorUc[posUc].designacao,duracaoUcRest);
 
             //}while(hora < 8 || hora > 18);
@@ -136,6 +161,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         }
 
         strcpy(dados.estadoAula, "Agendada");
+            printf("estado uc aulas -> %s\n",dados.estadoAula);
 
         vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
@@ -147,10 +173,16 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
             vAula[*num] = dados;
             (*num)++;
 
+                printf("\nAntes cod quant horas  var -> %d\n",duracaoUcRest);
+                printf("\nAntes cod quant horas vetor -> %d\n",vetorUc[posUc].quantidadeHoras);
+
             //actualizar a quantidade de aulas no vetor da UC
             vetorUc[posUc].quantidadeHoras = duracaoUcRest;
 
-            printf("\n\nAula agendada com sucesso!\n");
+                printf("\nDepois cod quant horas vetor -> %d\n",vetorUc[posUc].quantidadeHoras);
+                printf("\nDepois cod quant horas var -> %d\n",duracaoUcRest);
+
+                printf("\n\nAula agendada com sucesso!\n");
 
         }
 

@@ -45,11 +45,12 @@ void calculaHora( int *horaF, int *minF){
 }
 
 
-tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc,int codigoUc, int numTotalUc){
+
+tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
 
     tipoAula *pAula, dados;
-    int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc, duracaoUcRest=0;
-    char regimeUc[3], k;
+    int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0;
+    char regimeUc[3];
     pAula = vAula;
 
     strcpy(regimeUc,vetorUc[posUc].regime);
@@ -68,7 +69,9 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     else{
         dados.codigo = vetorUc[posUc].codigo;
         strcpy(dados.regimeAula,regimeUc);
+
         dados.data = lerData();
+
 
         //calcula a hora inicio/fim consoante o regime e o tipo de aula
         if(strcmp(regimeUc, "D") == 0){
@@ -81,14 +84,16 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
                 min = dados.hora.m;
                 printf("\n Inicio da Aula: %d:%d",hora,min);
 
-                hora = (hora*60);
-                horaTotal = hora + min;
+                hora = (hora*60);  //coloca hora inicio em minutos
+                horaTotal = hora + min;  //soma a hora em mimutis com os minutos
 
                 //calculação da hora de Fim
                 horaTotal = horaTotal + duracaoUc;
+
                 minF = horaTotal;
                 calculaHora(&horaF,&minF); //funcao calcula hora de FIM
                 printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
+
 
                 dados.horaFim = horaF;
                 dados.minFim = minF;
@@ -132,31 +137,22 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
         strcpy(dados.estadoAula, "Agendada");
 
+        vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
 
-           for(k=0;k<numTotalUc; k++){
-                if(codigoUc == vetorUc[k].codigo){
-                    vetorUc[k].quantidadeHoras = duracaoUcRest;
-                }
-            }
+        if(vAula == NULL){
+            printf("ERRO - impossivel inserir aula");
+            vAula = pAula;
+        }else
+        {
+            vAula[*num] = dados;
+            (*num)++;
 
-    }
+            //actualizar a quantidade de aulas no vetor da UC
+            vetorUc[posUc].quantidadeHoras = duracaoUcRest;
 
+            printf("\n\nAula agendada com sucesso!\n");
 
-    vAula = realloc(vAula, (*num+1)*sizeof(tipoAula));
-
-    if(vAula == NULL){
-        printf("ERRO - impossivel inserir aula");
-        vAula = pAula;
-    }else
-    {
-        vAula[*num] = dados;
-        (*num)++;
-
-        //actualizar a quantidade de aulas no vetor da UC
-        //vetorUc[posUc].quantidadeHoras = duracaoUcRest;
-
-
-        printf("\n\nAula agendada com sucesso!\n");
+        }
 
     }
 
@@ -330,34 +326,42 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
 }
 
 
-// só dá se a aula estiver com estado 'agendada' ou 'realizada'!!!!!!!!
+// só dá se a aula estiver com estado 'agendada' ou 'realizada'
 tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[]){
     int i, posAula;
+    char estAula[12];
     tipoAula *pAula;
     pAula = vAula; // ponteiro auxiliar
 
     if(*num != 0){
 
         posAula = procuraAulaNome(vAula, *num, designacao);
+        strcpy(estAula,vAula[posAula].estadoAula);
+
 
         if(posAula == -1){
             printf ("Aula nao existe!");
         }
-
         else{
-            for(i=posAula; i<*num-1; i++){
-                vAula[i] = vAula[i+1];
+            if(strcmp(estAula, "Agendada") == 0){
+
+                for(i=posAula; i<*num-1; i++){
+                    vAula[i] = vAula[i+1];
+                }
+
+                vAula = realloc(vAula,(*num-1)*sizeof(tipoAula));
+
+                if(vAula == NULL && (*num-1) != 0){
+                    printf ("Erro na alocacao de memoria");
+                    vAula = pAula;   // restaura valor de vAula
+                }
+                (*num)--; // Atualiza numero aulas retirando uma
+                printf (" Aula eliminada!\n\n");
+
             }
-
-            vAula = realloc(vAula,(*num-1)*sizeof(tipoAula));
-
-            if(vAula==NULL && (*num-1) !=0){
-                printf ("Erro na alocacao de memoria");
-                vAula = pAula;   // restaura valor de vAula
+            else{
+                printf ("\nImpossivel Remover! Aula a decorrer ou nao pode ser eliminada \n");
             }
-            (*num)--; // Atualiza numero aulas retirando uma
-
-           gravaFicheiroBin(vAula, *num);
         }
     }
     return vAula;
@@ -384,11 +388,11 @@ void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc 
                     do{
                         opcao = subMenuAlteraAula();
                         switch(opcao){
-                            case 'A':
-                                    printf("Escolheu a opção de Alterar Docente\n");
+                            case 'N':
+                                    printf("Escolheu a opção de Alterar Nome Docente\n");
                                     lerString("Docente: ", vAula[i].docente, MAX_STRING);
                                     break;
-                            case 'B':
+                            case 'H':
                                     printf("Escolheu a opção de Alterar Docente\n");
 
                                     if(strcmp(vetorUc[i].regime, "D") == 0){
@@ -433,17 +437,16 @@ void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc 
 
                                         }
                                     break;
-                            case 'c':
+                            case 'D':
                                     printf("Escolheu a opção de Alterar Data\n");
                                     break;
                             case 'V':
-                                    printf("Escolheu a opção Voltar atras\n");
                                     break;
                             default: printf("Opção Invalida.");
                         }
                     }while(opcao!='V');
 
-                    gravaFicheiroBin(vAula, *numAulas);
+                    //gravaFicheiroBin(vAula, *numAulas);
 
                    i = *numAulas;
                 }

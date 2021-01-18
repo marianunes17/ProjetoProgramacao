@@ -87,7 +87,7 @@ int main(){
                             leFicheiroUcBinario(vetorUc, &numTotalUc); // funcao Maria
 
                             codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
-                            posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc);
+                            posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc); // funcao Maria
                             if(posicaoUcVetor == -1){
                                 printf("Uc não existe");
                             }
@@ -99,14 +99,10 @@ int main(){
                                     printf("Uc de %s", vetorUc[posicaoUcVetor].designacao);
                                     printf(" e ainda tem disponivel %d horas\n", vetorUc[posicaoUcVetor].quantidadeHoras);
 
-                                    vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor, codigoUc, numTotalUc);
+                                    vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                                     gravaFicheiroBin(vAulas,numAula);
                                     //gravaFicheiroTextAula(vAulas,numAula);
                                 }
-                                //vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
-                                //gravaFicheiroBin(vAulas,numAula);
-                                //acrescentaAula(vAulas,&numAula, vetorUc, numTotalUc, codigoUc);
-                                //gravaFicheiroTextAula(vAulas,numAula);
                             }
                             break;
 

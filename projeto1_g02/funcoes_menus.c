@@ -158,10 +158,10 @@ char subMenuAlteraUC(){
 char subMenuAlteraAula(){
     char opcaoAula;
     printf("\n\n Alterar Campo das Aulas");
-    printf("\n\t A - Docente");
-    printf("\n\t B - Hora");
-    printf("\n\t C - Data");
-    printf("\n\t D - Voltar\n");
+    printf("\n\t N - Nome Docente");
+    printf("\n\t H - Hora");
+    printf("\n\t D - Data");
+    printf("\n\t V - Voltar\n");
     printf("\n\t Insira Opção ->");
 
     scanf(" %c", &opcaoAula);

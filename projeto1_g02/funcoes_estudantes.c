@@ -260,6 +260,37 @@ void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, t
 }
 
 
+void GravaAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
+
+     FILE *ficheiro;
+        int i,j;
+
+        ficheiro=fopen("infoEstudante.txt", "a+");
+        if(ficheiro==NULL){
+            printf("\tErro ao abrir o ficheiro. \n");
+        } else{
+            fprintf(ficheiro, "%d", *numTotalEstudantes);
+            fprintf(ficheiro, "%d", *numTotalAulas);
+
+            for(i=0; i<=*numTotalEstudantes; i++){
+                fprintf(ficheiro, "\n %d", vEstudante[i].numeroEstudante);
+                fprintf(ficheiro, "\n %s", vEstudante[i].nome);
+            }
+            for(j=0; j<=*numTotalAulas; i++){
+                fprintf(ficheiro, "\n %d", vAula[i].codigo);
+                fprintf(ficheiro, "\n %s", vAula[i].designacao);
+                fprintf(ficheiro, "\n %d", vAula[i].data.dia);
+                fprintf(ficheiro, "\n %d", vAula[i].data.mes);
+                fprintf(ficheiro, "\n %d", vAula[i].data.ano);
+                fprintf(ficheiro, "\n %d", vAula[i].hora.h);
+                fprintf(ficheiro, "\n %d", vAula[i].hora.m);
+            }
+
+
+            fclose(ficheiro);
+        }
+}
+
 void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
  FILE *ficheiro;
     int i, j;
@@ -280,16 +311,12 @@ void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, t
                 fscanf(ficheiro, "%d", vAula[i].data.mes);
                 fscanf(ficheiro, "%d", vAula[i].data.ano);
                 fscanf(ficheiro, "%d", vAula[i].hora.h);
+                fscanf(ficheiro, "%d", vAula[i].hora.m);
             }
 
 
             fclose(ficheiro);
         }
-}
-
-
-
-void GravaAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
 }
 
 

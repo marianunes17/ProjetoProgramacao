@@ -17,6 +17,9 @@ void gravarEstudantesBinario(tipoEstudante vEstudante[], int numTotalEstudante);
 void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante);
 void leEstudantesBinario(tipoEstudante vEstudante[], int *numTotalEstudante);
 
-void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numAulas);
+void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numAulas);
+void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numAulas);
+void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numAulas);
+void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numAulas);
 
 #endif

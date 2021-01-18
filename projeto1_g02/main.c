@@ -117,8 +117,8 @@ int main(){
                                     vAulas = eliminaAula(vAulas, &numAula, designacao,vetorUc,numTotalUc);
                                     gravaFicheiroBin(vAulas,numAula);
                                     // ver se necessario!!
-                                    gravarUcBinario(vetorUc, &numTotalUc);
-                                    gravarUcTexto(vetorUc, &numTotalUc);
+                                    gravarUcBinario(vetorUc, numTotalUc);
+                                    gravarUcTexto(vetorUc, numTotalUc);
                                     break;
 
                                 // ----- ALTERAR AULA  -----
@@ -164,7 +164,7 @@ int main(){
                                         break;
                                 case 'B':
                                         printf("Escolheu a opção de Ver Gravações\n");
-                                       gravaAulasEstudantesBin(vEstudante, &numTotalEstudantes, vAulas, &numAula);
+                                       leAulasEstudantesBin(vEstudante, &numTotalEstudantes, vAulas, &numAula);
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");

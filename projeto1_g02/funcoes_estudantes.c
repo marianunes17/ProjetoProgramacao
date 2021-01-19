@@ -47,12 +47,12 @@ void listaDadosEstudante(tipoEstudante vEstudante[MAX_ESTUDANTES], int numTotalE
 }
 
 
-int procuraEstudante(tipoEstudante vEstudante[], int numTotalEstudantes, int numeroEstudante){
+int procuraEstudante(tipoEstudante vEstudante[], int numTotalEstudantes, int numEstudante){
     int i, posicao;
     posicao = -1;
 
     for (i=0; i<numTotalEstudantes; i++){
-        if (vEstudante[i].numeroEstudante == numeroEstudante){
+        if (vEstudante[i].numeroEstudante == numEstudante){
             posicao = i;
             i = numTotalEstudantes;
         }
@@ -129,7 +129,6 @@ void leEstudantesBinario(tipoEstudante vEstudante[], int *numTotalEstudante){
 }
 
 
-
 void acrescentaEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes, int numeroEstudante){
     tipoEstudante dados;
     int posicao;
@@ -148,7 +147,7 @@ void acrescentaEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes, in
 
             gravarEstudantesBinario(vEstudante, *numTotalEstudantes);
             gravarEstudantesTexto(vEstudante, *numTotalEstudantes);
-             printf("\n\tFoi acrescentada um nova Estudante");
+             printf("\n\tFoi acrescentado um novo Estudante");
         }
     }
 }
@@ -225,18 +224,18 @@ void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
 
 
 
-void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
+void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numTotalAulas){
  FILE *ficheiro;
 
         ficheiro=fopen("infoAulasEstudante.dat", "wb");
         if(ficheiro==NULL){
             printf("\tErro ao abrir o ficheiro. \n");
         } else{
-            fwrite(&(*numTotalEstudantes),sizeof(int),1,ficheiro);
-            fwrite(vEstudante,sizeof(tipoEstudante),*numTotalEstudantes,ficheiro);
+            fwrite(&numTotalEstudantes,sizeof(int),1,ficheiro);
+            fwrite(vEstudante,sizeof(tipoEstudante),numTotalEstudantes,ficheiro);
 
-            fwrite(&(*numTotalAulas),sizeof(int),1,ficheiro);
-            fwrite(vAula,sizeof(tipoAula),*numTotalAulas,ficheiro);
+            fwrite(&numTotalAulas,sizeof(int),1,ficheiro);
+            fwrite(vAula,sizeof(tipoAula),numTotalAulas,ficheiro);
             fclose(ficheiro);
         }
 }
@@ -260,7 +259,7 @@ void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, t
 }
 
 
-void GravaAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
+void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numTotalAulas){
 
      FILE *ficheiro;
         int i,j;
@@ -269,14 +268,14 @@ void GravaAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes
         if(ficheiro==NULL){
             printf("\tErro ao abrir o ficheiro. \n");
         } else{
-            fprintf(ficheiro, "%d", *numTotalEstudantes);
-            fprintf(ficheiro, "%d", *numTotalAulas);
+            fprintf(ficheiro, "%d", numTotalEstudantes);
+            fprintf(ficheiro, "%d", numTotalAulas);
 
-            for(i=0; i<=*numTotalEstudantes; i++){
+            for(i=0; i<=numTotalEstudantes; i++){
                 fprintf(ficheiro, "\n %d", vEstudante[i].numeroEstudante);
                 fprintf(ficheiro, "\n %s", vEstudante[i].nome);
             }
-            for(j=0; j<=*numTotalAulas; i++){
+            for(j=0; j<=numTotalAulas; i++){
                 fprintf(ficheiro, "\n %d", vAula[i].codigo);
                 fprintf(ficheiro, "\n %s", vAula[i].designacao);
                 fprintf(ficheiro, "\n %d", vAula[i].data.dia);
@@ -321,26 +320,57 @@ void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, t
 
 
 void assistirAula(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
-    int posicao, i;
+    int posicaoAula, posicaoEstudante, i, numeroEstudante;
     tipoEstudante info;
 
     if(numTotalAulas == 0 ){
         printf("Não existem Aulas. \n");
-    }else{
-        if(numTotalAulas == MAX_ESTUDANTES){
-            printf("\tImpossível aceder à aula online. O máximo de estudantes é de: %d", MAX_ESTUDANTES);
+    } else {
+        posicaoAula=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
+        if(posicaoAula == -1){
+            printf ("A designação da aula não existe");
+        } else {
+                if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
+                    numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
 
-        } else{
-            posicao=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
-            if(posicao == -1){
-                printf ("Aula nao está agendada");
-            }
-            else{
-                for(i=0; i<numTotalAulas; i++){
-                        gravaAulasEstudantesBin(vEstudante, &numTotalEstudantes, vAulas, &numTotalAulas);
+                    posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
+
+                    if(posicaoEstudante == -1){
+                        printf ("O numero de estudante inserido não existe");
+
+                    } else {
+                        gravaAulasEstudantesTxt(vEstudante, numTotalEstudantes, vAulas, numTotalAulas);
+                        gravaAulasEstudantesBin(vEstudante, numTotalEstudantes, vAulas, numTotalAulas);
+
+                        printf ("Está a assitir à aula de %s", designacaoAula);
                     }
+                } else{
+                    printf("A aula não esta a decorrer");
                 }
             }
         }
+}
+
+
+void listaDadosAulasEstudantes(tipoEstudante vEstudante[MAX_ESTUDANTES], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas){
+    int i;
+
+    if (numTotalAulas==0) {
+        printf("\n\t Não foi dada nenhuma aula.");
+    }
+    else {
+            leAulasEstudantesTxt(vEstudante, &numTotalEstudantes, vAulas, &numTotalAulas);
+        }
     }
 
+
+void escreveAulasEstudantes(tipoEstudante vEstudante, tipoAula vAulas){
+    printf("\n\tNumero de Estudante: %d", vEstudante.numeroEstudante);
+    printf("\n\tCodigo Uc: %d", vAulas.codigo);
+    printf("\n\tDesignacao Uc: %d", vAulas.designacao);
+    printf("\n\tDesignacao Uc: %d", vAulas.data.dia);
+    printf("\n\tDesignacao Uc: %d", vAulas.data.mes);
+    printf("\n\tDesignacao Uc: %d", vAulas.data.ano);
+    printf("\n\tDesignacao Uc: %d", vAulas.hora.h);
+    printf("\n\tDesignacao Uc: %d", vAulas.hora.m);
+}

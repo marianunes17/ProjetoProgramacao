@@ -22,4 +22,7 @@ void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, t
 void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numAulas);
 void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numAulas);
 
+
+void escreveAulasEstudantes(tipoEstudante vEstudante, tipoAula vAulas[]);
+void listaDadosAulasEstudantes(tipoEstudante vEstudante[MAX_ESTUDANTES], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas);
 #endif

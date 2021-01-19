@@ -164,7 +164,8 @@ int main(){
                                         break;
                                 case 'B':
                                         printf("Escolheu a opção de Ver Gravações\n");
-                                       leAulasEstudantesBin(vEstudante, &numTotalEstudantes, vAulas, &numAula);
+                                        leAulasEstudantesTxt(vEstudante, &numTotalEstudantes, vAulas, &numAula);
+                                       //listaDadosAulasEstudantes(vEstudante, numTotalEstudantes, vAulas, numAula);
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");

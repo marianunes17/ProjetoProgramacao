@@ -11,13 +11,6 @@
 #include "funcoes_menus.h"
 
 
-
-void escreveDadosEstudante(tipoEstudante vEstudante){
-    printf("\n\tNumero de Estudante: %d", vEstudante.numeroEstudante);
-    printf("\n\tNome: %s", vEstudante.nome);
-    printf("\n\tRegime(D,PL): %s\n", vEstudante.regime);
-}
-
 tipoEstudante leDadosEstudante(int numeroEstudante){
     tipoEstudante vEstudante;
 
@@ -32,6 +25,13 @@ tipoEstudante leDadosEstudante(int numeroEstudante){
 
     return vEstudante;
 }
+
+void escreveDadosEstudante(tipoEstudante vEstudante){
+    printf("\n\tNumero de Estudante: %d", vEstudante.numeroEstudante);
+    printf("\n\tNome: %s", vEstudante.nome);
+    printf("\n\tRegime(D,PL): %s\n", vEstudante.regime);
+}
+
 
 void listaDadosEstudante(tipoEstudante vEstudante[MAX_ESTUDANTES], int numTotalEstudantes){
     int i;
@@ -66,16 +66,16 @@ void gravarEstudantesTexto(tipoEstudante vEstudante[], int numTotalEstudante){
      FILE *ficheiro;
         int i;
 
-        ficheiro=fopen("infoEstudante.txt", "a+");
+        ficheiro=fopen("infoEstudante.txt", "a");
         if(ficheiro==NULL){
             printf("\tErro ao abrir o ficheiro. \n");
         } else{
-            fprintf(ficheiro, "%d", numTotalEstudante);
+            fprintf(ficheiro, "Estudantes:%d\n", numTotalEstudante);
 
-            for(i=0; i<=numTotalEstudante; i++){
-                fprintf(ficheiro, "\n %d", vEstudante[i].numeroEstudante);
-                fprintf(ficheiro, "\n %s", vEstudante[i].nome);
-                fprintf(ficheiro, "\n %s", vEstudante[i].regime);
+            for(i=0; i<numTotalEstudante; i++){
+                fprintf(ficheiro, "\nNumero Estudante: %d", vEstudante[i].numeroEstudante);
+                fprintf(ficheiro, "\nNome: %s", vEstudante[i].nome);
+                fprintf(ficheiro, "\nRegime: %s\n", vEstudante[i].regime);
             }
             fclose(ficheiro);
         }
@@ -103,7 +103,7 @@ void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante){
         if(ficheiro==NULL){
             printf("\tErro ao abrir o ficheiro. \n");
         } else{
-            for(i=0; i<=*numTotalEstudante; i++){
+            for(i=0; i<*numTotalEstudante; i++){
                 fscanf(ficheiro, "%d", vEstudante[i].numeroEstudante);
                 fgets(vEstudante[i].nome,100,ficheiro);
                 fgets(vEstudante[i].regime,3,ficheiro);
@@ -144,9 +144,6 @@ void acrescentaEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes, in
             dados=leDadosEstudante(numeroEstudante);
             vEstudante[*numTotalEstudantes]=dados;
             (*numTotalEstudantes)++;
-
-            gravarEstudantesBinario(vEstudante, *numTotalEstudantes);
-            gravarEstudantesTexto(vEstudante, *numTotalEstudantes);
              printf("\n\tFoi acrescentado um novo Estudante");
         }
     }
@@ -186,8 +183,6 @@ void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes){
                         }
                     } while(opcao!='V');
 
-            gravarEstudantesBinario(vEstudante, numTotalEstudantes);
-            gravarEstudantesTexto(vEstudante, numTotalEstudantes);
                 }
             }
         }
@@ -214,8 +209,6 @@ void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
             }
             (*numTotalEstudantes)--;
 
-            gravarEstudantesBinario(vEstudante, *numTotalEstudantes);
-            gravarEstudantesTexto(vEstudante, *numTotalEstudantes);
 
             printf("\n\tO estudante foi eliminada");
         }
@@ -244,7 +237,7 @@ void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes,
 void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
  FILE *ficheiro;
 
-    ficheiro=fopen("infoEstudante.dat", "rb");
+    ficheiro=fopen("infoAulasEstudante.dat", "rb");
     if(ficheiro==NULL){
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
@@ -259,68 +252,41 @@ void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, t
 }
 
 
-void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numTotalAulas){
-
-     FILE *ficheiro;
+void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, int numEstudante, tipoAula vAula[], int numTotalAulas, int posicaoAula){
+/*
+        FILE *ficheiro;
         int i,j;
 
-        ficheiro=fopen("infoEstudante.txt", "a+");
+        ficheiro=fopen("infoAulasEstudante.txt", "a+");
         if(ficheiro==NULL){
             printf("\tErro ao abrir o ficheiro. \n");
         } else{
-            fprintf(ficheiro, "%d", numTotalEstudantes);
-            fprintf(ficheiro, "%d", numTotalAulas);
 
-            for(i=0; i<=numTotalEstudantes; i++){
-                fprintf(ficheiro, "\n %d", vEstudante[i].numeroEstudante);
-                fprintf(ficheiro, "\n %s", vEstudante[i].nome);
-            }
-            for(j=0; j<=numTotalAulas; i++){
-                fprintf(ficheiro, "\n %d", vAula[i].codigo);
-                fprintf(ficheiro, "\n %s", vAula[i].designacao);
-                fprintf(ficheiro, "\n %d", vAula[i].data.dia);
-                fprintf(ficheiro, "\n %d", vAula[i].data.mes);
-                fprintf(ficheiro, "\n %d", vAula[i].data.ano);
-                fprintf(ficheiro, "\n %d", vAula[i].hora.h);
-                fprintf(ficheiro, "\n %d", vAula[i].hora.m);
-            }
+                fprintf(ficheiro, "Nome estudante: %d\n", vEstudante[numEstudante].numeroEstudante);
+                fprintf(ficheiro, "Numero: %s\n\n", vEstudante[numEstudante].nome);
+
+
+
+                  //  fprintf(ficheiro,"Designacao %s", vAula[posicaoAula].designacao);
+                    fprintf(ficheiro,"Data: %d\t",vAula[posicaoAula].data.dia);
+                    fprintf(ficheiro,"%d\t",vAula[posicaoAula].data.mes);
+                    fprintf(ficheiro,"%d\n",vAula[posicaoAula].data.ano);
+                    fprintf(ficheiro,"Hora de Inicio: %d:%d\n",vAula[posicaoAula].hora.h,vAula[posicaoAula].hora.m);
+                    fprintf(ficheiro,"Hora de Fim: %d:%d\n\n",vAula[posicaoAula].horaFim,vAula[posicaoAula].minFim);
 
 
             fclose(ficheiro);
-        }
-}
-
-void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
- FILE *ficheiro;
-    int i, j;
-
-        ficheiro=fopen("infoAulasEstudantes.txt", "r");
-        if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
-        } else{
-            for(i=0; i<=*numTotalEstudantes; i++){
-                fscanf(ficheiro, "%d", vEstudante[i].numeroEstudante);
-                fgets(vEstudante[i].nome,100,ficheiro);
             }
 
-            for(j=0; j<=*numTotalAulas; j++){
-                fscanf(ficheiro, "%d", vAula[i].codigo);
-                fgets(vAula[i].designacao,100,ficheiro);
-                fscanf(ficheiro, "%d", vAula[i].data.dia);
-                fscanf(ficheiro, "%d", vAula[i].data.mes);
-                fscanf(ficheiro, "%d", vAula[i].data.ano);
-                fscanf(ficheiro, "%d", vAula[i].hora.h);
-                fscanf(ficheiro, "%d", vAula[i].hora.m);
-            }
-
-
-            fclose(ficheiro);
+*/
         }
-}
 
 
-void assistirAula(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
-    int posicaoAula, posicaoEstudante, i, numeroEstudante;
+
+
+
+void assistirAula(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
+ /*   int posicaoAula, *posicaoEstudante, i, *numeroEstudante;
     tipoEstudante info;
 
     if(numTotalAulas == 0 ){
@@ -330,47 +296,22 @@ void assistirAula(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula v
         if(posicaoAula == -1){
             printf ("A designação da aula não existe");
         } else {
-                if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
-                    numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
+            if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
+                *numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
 
-                    posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
+                *posicaoEstudante = procuraEstudante(vEstudante, *numTotalEstudantes, *numeroEstudante);
 
-                    if(posicaoEstudante == -1){
-                        printf ("O numero de estudante inserido não existe");
+                if(*posicaoEstudante == -1){
+                    printf ("O numero de estudante inserido não existe");
 
-                    } else {
-                        gravaAulasEstudantesTxt(vEstudante, numTotalEstudantes, vAulas, numTotalAulas);
-                        gravaAulasEstudantesBin(vEstudante, numTotalEstudantes, vAulas, numTotalAulas);
-
-                        printf ("Está a assitir à aula de %s", designacaoAula);
-                    }
-                } else{
-                    printf("A aula não esta a decorrer");
+                } else {
+                    printf ("Está a assitir à aula de %s", designacaoAula);
+                        gravaAulasEstudantesTxt(vEstudante, *numTotalEstudantes, *posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
+                       // gravaAulasEstudantesBin(vEstudante, *numTotalEstudantes, vAulas, numTotalAulas);
                 }
+            } else{
+                printf("A aula não esta a decorrer");
             }
         }
-}
-
-
-void listaDadosAulasEstudantes(tipoEstudante vEstudante[MAX_ESTUDANTES], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas){
-    int i;
-
-    if (numTotalAulas==0) {
-        printf("\n\t Não foi dada nenhuma aula.");
-    }
-    else {
-            leAulasEstudantesTxt(vEstudante, &numTotalEstudantes, vAulas, &numTotalAulas);
-        }
-    }
-
-
-void escreveAulasEstudantes(tipoEstudante vEstudante, tipoAula vAulas){
-    printf("\n\tNumero de Estudante: %d", vEstudante.numeroEstudante);
-    printf("\n\tCodigo Uc: %d", vAulas.codigo);
-    printf("\n\tDesignacao Uc: %d", vAulas.designacao);
-    printf("\n\tDesignacao Uc: %d", vAulas.data.dia);
-    printf("\n\tDesignacao Uc: %d", vAulas.data.mes);
-    printf("\n\tDesignacao Uc: %d", vAulas.data.ano);
-    printf("\n\tDesignacao Uc: %d", vAulas.hora.h);
-    printf("\n\tDesignacao Uc: %d", vAulas.hora.m);
+    }*/
 }

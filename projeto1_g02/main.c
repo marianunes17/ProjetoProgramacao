@@ -46,9 +46,8 @@ int main(){
 
                         case 'I': //Inserir nova UC
                                 printf("Escolheu a opção: Inserir nova Unidade Curricular \n");
-                                    codigoUc=lerInteiro("\tCodigo: ",1000,2000);
-                                    acrescentaUc(vetorUc, &numTotalUc, codigoUc);
-
+                                codigoUc=lerInteiro("\tCodigo: ",1000,2000);
+                                acrescentaUc(vetorUc, &numTotalUc, codigoUc);
                                 break;
 
                         case 'E': //Eliminar UC
@@ -63,6 +62,9 @@ int main(){
 
                         case 'V':
                                  printf("\nSair do menu de UC. ");
+                                    gravarUcBinario(vetorUc, numTotalUc);
+                                    gravarUcTexto(vetorUc, numTotalUc);
+
                                 break;
 
                         default: printf("\nOpcao inválida. ");
@@ -162,11 +164,6 @@ int main(){
                                         assistirAula(vEstudante, &numTotalEstudantes, vAulas, numAula, designacao);
 
                                         break;
-                                case 'B':
-                                        printf("Escolheu a opção de Ver Gravações\n");
-                                        leAulasEstudantesTxt(vEstudante, &numTotalEstudantes, vAulas, &numAula);
-                                       //listaDadosAulasEstudantes(vEstudante, numTotalEstudantes, vAulas, numAula);
-                                        break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         lerString("Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
@@ -191,7 +188,7 @@ int main(){
 
                                 case 'I': //Inserir novo Estudante
                                         printf("Escolheu a opção: Inserir um novo Estudante \n");
-                                        numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
+                                        numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
                                         acrescentaEstudante(vEstudante, &numTotalEstudantes, numeroEstudante);
 
                                         break;
@@ -207,6 +204,8 @@ int main(){
                                         break;
                                 case 'V':
                                         printf("\nSair do menu de UC. ");
+                                        gravarEstudantesBinario(vEstudante, numTotalEstudantes);
+                                        gravarEstudantesTexto(vEstudante, numTotalEstudantes);
                                         break;
                                 default: printf("\nOpcao inválida. ");
                             }

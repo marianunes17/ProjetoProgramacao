@@ -213,16 +213,16 @@ int main(){
 
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos");
-                        printf("\n\tPercentagem de Ucs com aulas gravadas:");
+                       /* printf("\n\tPercentagem de Ucs com aulas gravadas:");
 
-                        printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");
+                        printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");*/
 
                         printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
                         quantidadeAulasOnline(vAulas, numAula, vetorUc);
 
 
-                        printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");
-                        printf("\n\tAula(s) online realizada(s) há mais tempo.: ");
+                       /* printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");
+                        printf("\n\tAula(s) online realizada(s) há mais tempo.: ");*/
                         break;
             case 'G':
                         printf("\tEscolheu de Gravar Dados");
@@ -240,11 +240,13 @@ int main(){
 
     gravaFicheiroBin(vAulas, numAula);
         printf("\n gravou aula"); // para confirmar se dá - tirar depois
-    gravarUcBinario(vetorUc, &numTotalUc);
-        printf("\n gravou uc bin"); // para confirmar se dá - tirar depois
-    gravarUcTexto(vetorUc, numTotalUc);
-        printf("\n gravou uc txt"); // para confirmar se dá - tirar depois
+    gravaFicheiroTextAula(vAulas, numAula);
+        printf("\n gravou aula"); // para confirmar se dá - tirar depois
 
+    gravarUcTexto(vetorUc, numTotalUc);
+        printf("\n gravou uc bin"); // para confirmar se dá - tirar depois
+    gravarUcBinario(vetorUc, &numTotalUc);
+        printf("\n gravou uc txt"); // para confirmar se dá - tirar depois
 
     free(vAulas);  // Liberta memoria do vetor dinamico
 

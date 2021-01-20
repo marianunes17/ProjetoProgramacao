@@ -54,7 +54,7 @@ void lerString(char mensagem[MAX_STRING], char vetorCaracteres[MAX_STRING], int 
         tamanhoString = strlen(vetorCaracteres);
 
         if (tamanhoString == 1) {
-            printf("Nao foram introduzidos caracteres!!! . apenas carregou no ENTER \n\n");
+            printf("Nao foram introduzidos caracteres. Apenas carregou na tecla enter \n\n");
         }
 
     } while (tamanhoString == 1);

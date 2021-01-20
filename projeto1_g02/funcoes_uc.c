@@ -126,7 +126,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
     ficheiro=fopen("infoUc.txt", "a+");
 
     if(ficheiro==NULL){
-        printf("\tErro ao abrir o ficheiro. gravarTXT \n");
+        printf("\tErro ao abrir o ficheiro. \n");
     } else{
         fprintf(ficheiro, "Unidades Curriculares: %d\n", numTotalUc);
 
@@ -141,7 +141,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
             fprintf(ficheiro, "\nDuracao de cada aula: %.d", vetorUc[i].duracao);
             fprintf(ficheiro, "\nQuantidade Media de Aulas: %.d", vetorUc[i].quantidadeAulas);
             fprintf(ficheiro, "\nQuantidade total de horas: %.d\n", vetorUc[i].quantidadeHoras);
-            fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
+            fprintf(ficheiro, "\nQuantidade de aulas agendadas: %.d", vetorUc[i].quantidadeAulasAgendadas);
         }
         fclose(ficheiro);
     }

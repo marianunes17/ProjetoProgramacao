@@ -149,7 +149,7 @@ int main(){
                                 case 'C':
                                         printf("Escolheu a opção de Começar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                        comecarAula(vAulas, numAula, designacao);
+                                        comecarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
                                         break;
                                 case 'T':
                                         printf("Escolheu a opção de Terminar Aula\n");
@@ -238,9 +238,7 @@ int main(){
        }
     }while(opcao!='F');
 
-    gravaFicheiroBin(vAulas, numAula);
-        printf("\n gravou aula"); // para confirmar se dá - tirar depois
-    gravaFicheiroTextAula(vAulas, numAula);
+    gravaFicheiroBin(vAulas, numAula); // grava automaticamente o ficheiro TXT
         printf("\n gravou aula"); // para confirmar se dá - tirar depois
 
     gravarUcTexto(vetorUc, numTotalUc);

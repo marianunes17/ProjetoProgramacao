@@ -153,13 +153,21 @@ void escreveDadosAulas(tipoAula vAulas){
     printf("\tCodigo UC: %d\n",vAulas.codigo);
     printf("\tDescricao: %s\n",vAulas.designacao);
     printf("\tDocente: %s\n",vAulas.docente);
-    printf("\tHora: %d:%d as ",vAulas.hora.h,vAulas.hora.m);
-    printf("%d:%d\n",vAulas.horaFim,vAulas.minFim);
+    printf("\tHora: %d:%d as",vAulas.hora.h,vAulas.hora.m);
+    printf(" %d:%d\n",vAulas.horaFim,vAulas.minFim);
     printf("\tRegime: %s\n",vAulas.regimeAula);
     printf("\tData: %d/%d/%d\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
-    printf("\tEstado da Aula: %s\n\n",vAulas.estadoAula);
-}
+    printf("\tEstado da Aula: %s\n",vAulas.estadoAula);
 
+    printf("\tGravacao: " );
+    if((strcmp(vAulas.gravacao, "S") == 0) ){
+        printf("Sim");
+    } else {
+        printf("Nao");
+    }
+    printf("\n\n");
+
+}
 
 
 void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
@@ -203,7 +211,7 @@ void procuraAula(tipoAula vAulas[], int num){
             printf("\tAula a Decorrer.\n");
 
             }else{
-                printf("\nEntrou no else");
+                printf("\tEntrou no else\n");
                 //mostrar a quant de estudantes presentes nessa aula
                 //mostrar quant acesso houve ás gravacoes
             }
@@ -384,8 +392,8 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]
 }
 
 
-void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
-    int posicao;
+void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tipoUc vetorUc[], int numTotalUc){
+    int posicao, codigoUc, posUc;
     char estado, opGravacao;
 
     if(numTotalAulas == 0 ){
@@ -401,27 +409,53 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
             do{
                 printf("Quer alterar o estado da aula de 'agendada' para 'a decorrer'?(S-Sim, N-Nao): ");
                 scanf("%c", &estado);
+                limpaBufferStdin();
                 estado = toupper(estado);
 
-                if(estado!='S' && estado!='S' ){
-                    printf("Opcao Invalida\n");
+                if(estado!='S' && estado!='N' ){
+                    printf("Inserio uma opcao invalida\n");
                 }
 
             }while (estado!='S' && estado!='N');
 
             if(estado == 'S'){
-                strcpy(vAulas[posicao].estadoAula, "A decorrer");
 
-                //Gravacao da Aula
-                do{
-                    printf("Quer gravar a aula?(S-Sim, N-Nao):");
-                    scanf("%c", &opGravacao);
+                if(strcmp(vAulas[posicao].estadoAula, "A decorrer") == 0){
+                    printf("\nAual ja se encontra a Decorrer!\n");
+                }
+                else{
+                    //buscar posicao da UC
+                    codigoUc = vAulas[posicao].codigo;
+                    posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
 
-                }while (opGravacao!='S' && opGravacao!='N');
+                    strcpy(vAulas[posicao].estadoAula, "A decorrer");
+                    printf("\nComecou a %s \n\n",vAulas[posicao].designacao);
 
-                opGravacao = toupper(opGravacao);
-                printf("Escolheu opcao: %c",opGravacao);
-                //strcpy(vAulas[posicao].gravacao, opGravacao);  //ver melhor!!! está a sair do programa
+                    //Gravacao da Aula
+                    do{
+                        printf("Quer gravar a aula?(S-Sim, N-Nao):");
+                        scanf("%c", &opGravacao);
+                        limpaBufferStdin();
+                        opGravacao = toupper(opGravacao);
+
+                        if(opGravacao!='S' && opGravacao!='N' ){
+                            printf("Inserio uma opcao invalida\n");
+                        }
+
+                    }while (opGravacao!='S' && opGravacao!='N');
+
+                    if(opGravacao == 'S'){
+                        printf("\nEscolheu opcao %c - aula a gravar!",opGravacao);
+                        strcpy(vAulas[posicao].gravacao, "S");
+                    }else{
+                        printf("\nEscolheu opcao %c - aula nao vai ser gravada",opGravacao);
+                        strcpy(vAulas[posicao].gravacao, "N");
+                    }
+
+                    //actualiza a quantidade de aulas agendadas no vetor da UC
+                    vetorUc[posUc].quantidadeAulasAgendadas = vetorUc[posUc].quantidadeAulasAgendadas - 1; printf("\nQuant depois %d",vetorUc[posUc].quantidadeAulasAgendadas);
+
+                }
 
             }else{
                 printf("\nNao quiz mudar o estado da aula\n");
@@ -430,6 +464,7 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
         }
     }
 }
+
 
 
 void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
@@ -449,16 +484,25 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
             do{
                 printf("Quer alterar o estado da aula de 'a decorrer' para 'terminada'?(S-Sim, N-Nao): ");
                 scanf(" %c", &estado);
+                limpaBufferStdin();
                 estado = toupper(estado);
 
-                if(estado!='S'){
-                    printf("\nInsira 'S' se quiser mudar o estado da aula");
+                if(estado!='S' && estado!='N'){
+                    printf("\nInsira a opcao 'S' ou 'N'");
                 }
-            } while (estado!='S');
+            } while (estado!='S' && estado!='N');
 
             if(estado == 'S'){
-                strcpy(vAulas[posicao].estadoAula, "Terminada");
-
+                if(strcmp(vAulas[posicao].designacao, "Terminada") == 0){
+                    printf("\nAula ja se encontra terminada!\n");
+                }
+                else{
+                    strcpy(vAulas[posicao].estadoAula, "Terminada");
+                    printf("\nTerminou a %s\n",vAulas[posicao].designacao);
+                }
+            }
+            else{
+                printf("\nNao quiz terminar a aula\n");
             }
         }
     }

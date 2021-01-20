@@ -11,16 +11,16 @@ Duracao de cada aula: 60
 Quantidade Media de Aulas: 75
 Quantidade total de horas: 74
 
- 1
-Codigo: 1000
+Quantidade de aulas agendadas: 1
+Codigo: 1234
 Designacao: Fisica
-Tipo de Uc: n
-Tipo de Aula: t
-Semestre: 3
+Tipo de Uc: s
+Tipo de Aula: tp
+Semestre: 4
 Regime: pl
 Quantidade Total de Horas: 100
-Duracao de cada aula: 80
+Duracao de cada aula: 60
 Quantidade Media de Aulas: 100
 Quantidade total de horas: 98
 
- 1
+Quantidade de aulas agendadas: 1

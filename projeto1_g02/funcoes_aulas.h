@@ -14,7 +14,7 @@ void calculaHora(int *horaF, int *minF);
 void procuraAula(tipoAula vAulas[], int num);
 
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas, tipoUc vetorUc[]);
-void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]);
+void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);
 void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]);
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);

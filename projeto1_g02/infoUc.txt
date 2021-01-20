@@ -1,7 +1,7 @@
 Unidades Curriculares: 2
 
 Codigo: 1111
-Designacao: Algebra
+Designacao: Fisica
 Tipo de Uc: s
 Tipo de Aula: t
 Semestre: 2
@@ -9,18 +9,18 @@ Regime: d
 Quantidade Total de Horas: 75
 Duracao de cada aula: 60
 Quantidade Media de Aulas: 75
-Quantidade total de horas: 74
+Quantidade total de horas: 73
 
 Quantidade de aulas agendadas: 1
 Codigo: 1234
-Designacao: Fisica
-Tipo de Uc: s
+Designacao: Algebra
+Tipo de Uc: n
 Tipo de Aula: tp
-Semestre: 4
+Semestre: 3
 Regime: pl
 Quantidade Total de Horas: 100
 Duracao de cada aula: 60
 Quantidade Media de Aulas: 100
-Quantidade total de horas: 98
+Quantidade total de horas: 59
 
-Quantidade de aulas agendadas: 1
+Quantidade de aulas agendadas: 

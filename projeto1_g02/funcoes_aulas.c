@@ -183,7 +183,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
 
 void escreveDadosAulas(tipoAula vAulas){
-    printf("\tDescricao: %s\n",vAulas.designacao);
+    printf("\n\tDescricao: %s\n",vAulas.designacao);
     printf("\tDocente: %s\n",vAulas.docente);
     printf("\tHora: %d:%d as",vAulas.hora.h,vAulas.hora.m);
     printf(" %d:%d\n",vAulas.horaFim,vAulas.minFim);
@@ -196,7 +196,7 @@ void escreveDadosAulas(tipoAula vAulas){
     } else {
         printf("Nao");
     }
-    printf("\n\n");
+    printf("\n");
 
 }
 
@@ -214,10 +214,45 @@ void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     }
 }
 
+void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
+    int i;
+
+    for (i=0; i<numAulas; i++){
+        if (strcmp(vAulas[i].estadoAula, "Agendada") == 0){
+
+            printf("\n\tDescricao: %s\n",vAulas[i].designacao);
+            printf("\tDocente: %s\n",vAulas[i].docente);
+            printf("\tHora: %d:%d as",vAulas[i].hora.h,vAulas[i].hora.m);
+            printf(" %d:%d\n",vAulas[i].horaFim,vAulas[i].minFim);
+            printf("\tData: %d/%d/%d\n",vAulas[i].data.dia, vAulas[i].data.mes,vAulas[i].data.ano);
+            printf("\tEstado da Aula: %s\n",vAulas[i].estadoAula);
+            printf("\n\n");
+
+        }
+    }
+}
+
+void listaAulasDecorrer(tipoAula vAulas[], int numAulas) {
+    int i;
+
+    for (i=0; i<numAulas; i++){
+        if (strcmp(vAulas[i].estadoAula, "A decorrer") == 0){
+            escreveDadosAulas(vAulas[i]);
+        }
+    }
+}
+
+void listaAulasRealizadas(tipoAula vAulas[], int numAulas) {
+    int i;
+
+    for (i=0; i<numAulas; i++){
+        if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
+            escreveDadosAulas(vAulas[i]);
+        }
+    }
+}
 
 
-
-// só dá se a aula estiver com estado 'agendada'
 tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[], tipoUc vetorUc[], int numTotalUc){
     int i, posAula, codigoUc, posicaoUcVetor, duracaoUc, quantHorasUc;
     char estAula[12];

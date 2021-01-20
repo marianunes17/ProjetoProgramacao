@@ -99,16 +99,19 @@ int main(){
                                 // ----- LISTAR AULAS AGENDADAS -----
                                 case 'A':
                                     printf("Escolheu a opção das Aulas Agendadas\n");
+                                    listaAulasAgendadas(vAulas,numAula);
                                     break;
 
                                 // ----- LISTAR AULAS A DECORRER -----
                                 case 'D':
                                     printf("Escolheu a opção das Aulas A Decorrer\n");
+                                    listaAulasDecorrer(vAulas,numAula);
                                     break;
 
                                 // ----- LISTAR AULAS REALIZADAS -----
                                 case 'R':
                                     printf("Escolheu a opção das Aulas Realizadas\n");
+                                    listaAulasRealizadas(vAulas,numAula);
                                     break;
 
                                 case 'V':

@@ -45,6 +45,7 @@ tipoUc leDadosUc(int codigoUc){
     vetorUc.quantidadeHoras = vetorUc.quantidadeTotalHoras ;
 
     vetorUc.quantidadeAulasAgendadas = 0;
+    vetorUc.quantAulasRealizadas = 0;
 
     return vetorUc;
 }

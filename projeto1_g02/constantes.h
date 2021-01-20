@@ -27,6 +27,7 @@ typedef struct{
     int quantidadeAulas;
     int quantidadeAulasAgendadas;
     int quantidadeHoras;
+    int quantAulasRealizadas; //para fazer estatistica
 } tipoUc;
 
 
@@ -40,6 +41,7 @@ typedef struct{
     int minFim;
     char estadoAula[MAX_STRING];
     char gravacao[MAX_STRING];
+    int numAssecoGravacao;
     int codigo; //chave primaria UCs
 } tipoAula;
 

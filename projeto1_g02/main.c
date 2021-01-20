@@ -78,31 +78,61 @@ int main(){
                 } while(opcaoSubMenuUc!='V');
 
                 break;
-            case 'A':
+           case 'A':
                 do{
                 subMenuAula = menuAulas();
                 switch(subMenuAula){
+
                     // ----- LISTAR AULA  -----
                     case 'L':
-                            printf("Escolheu a opção de Listar Aulas\n");
-                            mostrarDadosAula(vAulas,numAula);
-                            //numAula = leFicheiroBinarioReservas(vAulas);
-                            break;
+                        printf("Escolheu a opção: Listagem de Aulas\n");
+                        //mostrarDadosAula(vAulas,numAula);
+                         do{
+                            subSubMenuAula = submenuAulas();
+                            switch(subSubMenuAula){
+                                 // ----- LISTAR TODAS AULAS  -----
+                                case 'T':
+                                    printf("Escolheu a opção na Listagem das Aulas\n");
+                                    mostrarDadosAula(vAulas,numAula);
+                                    break;
+
+                                // ----- LISTAR AULAS AGENDADAS -----
+                                case 'A':
+                                    printf("Escolheu a opção das Aulas Agendadas\n");
+                                    break;
+
+                                // ----- LISTAR AULAS A DECORRER -----
+                                case 'D':
+                                    printf("Escolheu a opção das Aulas A Decorrer\n");
+                                    break;
+
+                                // ----- LISTAR AULAS REALIZADAS -----
+                                case 'R':
+                                    printf("Escolheu a opção das Aulas Realizadas\n");
+                                    break;
+
+                                case 'V':
+                                    break;
+                                default:    printf("\n\n Opção Inválida\n");
+                            }
+                        }while(subSubMenuAula!='V');
+
+                        break;
 
                     // ----- PROCURAR AULA  -----
                     case 'P':
-                            printf("Escolheu a opção de Procurar Aula\n");
-                            pesquisaAula(vAulas, numAula);
-                            break;
+                        printf("Escolheu a opção: Procurar Aula\n");
+                        pesquisaAula(vAulas, numAula);
+                        break;
 
                     // ----- AGENDAR AULA  -----
                     case 'A':
-                            printf("Escolheu a opção de Agendar uma Aula\n\n");
+                            printf("Escolheu a opção: Agendar uma Aula\n\n");
 
                             codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
-                            posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc);
+                            posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc); // funcao Maria
                             if(posicaoUcVetor == -1){
-                                printf("Uc não existe");
+                                printf("Uc inserida não foi encontrada, ou não existe!");
                             }
                             else{
                                 if(vetorUc[posicaoUcVetor].quantidadeHoras == 0){
@@ -116,30 +146,18 @@ int main(){
                             }
                             break;
 
-                    // ----- MODIFICAR AULA  -----
+                    // ----- MODIFICAR AGENDAMENTO  -----
                     case 'M':
-                        do{
-                            subSubMenuAula = submenuAulas();
-                            switch(subSubMenuAula){
-                                 // ----- ELIMINAR AULA  -----
-                                case 'E':
-                                    lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
-                                    vAulas = eliminaAula(vAulas, &numAula, designacao, vetorUc, numTotalUc);
-                                    break;
+                            lerString("Designação da Aula que prentende alterar: ", designacao, MAX_STRING);
+                            alteraAulas(vAulas, &numAula, designacao, vetorUc, numTotalUc);
+                            break;
 
-                                // ----- ALTERAR AULA  -----
-                                case 'A':
-                                    printf("Escolheu a opção de Alterar um Aula Agendada\n");
-                                    lerString("Designação da Aula que prentende alterar: ", designacao, MAX_STRING);
-                                    alteraAulas(vAulas, &numAula, designacao, vetorUc, numTotalUc);
-                                    break;
+                    // ----- ELIMINAR AULA  -----
+                    case 'E':
+                            lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
+                            vAulas = eliminaAula(vAulas, &numAula, designacao, vetorUc, numTotalUc);
+                            break;
 
-                                case 'V':
-                                    break;
-                                default:    printf("\n\n Opção Inválida! Tente Novamente...\n");
-                            }
-                        }while(subSubMenuAula!='V');
-                        break;
                     // ----- SAIR SUBMENU AULA -----
                     case 'V':
                         break;

@@ -39,11 +39,12 @@ char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas
 
 char menuAulas(){
     char opcao;
-    printf("\n\n ----------------- Sub Menu de Aulas Online -----------------");
+    printf("\n\n ----------------- Menu Aulas Online -----------------");
     printf("\n L - Listar Aulas");
-    printf("\n P - Pesquisar Nome Aula");
+    printf("\n P - Procurar Aula");
     printf("\n A - Agendar Aula");
-    printf("\n M - Modificar Aula");
+    printf("\n M - Modificar Agendamento");
+    printf("\n E - Eliminar Aula");
     printf("\n V - Voltar");
     printf("\n\nInsira Opção ->");
     scanf("%c", &opcao);
@@ -54,9 +55,12 @@ char menuAulas(){
 
 char submenuAulas(){
     char opcao;
-    printf("\n\n ****------------- Modificar Aula Online -------------****");
-    printf("\n E - Eliminar Aula");
-    printf("\n A - Alterar Agendamento");
+    printf("\n\n ---------- Sub Menu das Listagens das Aulas  ---------");
+    printf("\n Pretende Listas:");
+    printf("\n T - Todas as Aula");
+    printf("\n A - Aulas Agendadas");
+    printf("\n D - Aulas a Decorrer");
+    printf("\n R - Aulas Realizadas");
     printf("\n V - Voltar");
     printf("\n\nInsira Opção ->");
     scanf("%c", &opcao);

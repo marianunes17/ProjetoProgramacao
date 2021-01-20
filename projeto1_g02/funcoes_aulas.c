@@ -37,13 +37,47 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
     return pos;
 }
 
+
+void pesquisaAula(tipoAula vAulas[], int num){
+    int posAula;
+    char designacao[20];
+
+    lerString("Designacao da Aula a procurar: ", designacao, MAX_STRING);
+    posAula = procuraAulaNome(vAulas,num,designacao);
+
+    if(posAula == -1){
+        printf("Aula inserida não existe");
+    }
+    else{
+        //apresnetar os dados da aula selecionada
+        printf("\n\tDescricao: %s\n",vAulas[posAula].designacao);
+        printf("\tDocente: %s\n",vAulas[posAula].docente);
+        printf("\tHora de inicio: %d:%d\n",vAulas[posAula].hora.h,vAulas[posAula].hora.m);
+        printf("\tHora de Fim: %d:%d\n",vAulas[posAula].horaFim,vAulas[posAula].minFim);
+        printf("\tRegime: %s\n",vAulas[posAula].regimeAula);
+        printf("\tData: %d/%d/%d\n",vAulas[posAula].data.dia,vAulas[posAula].data.mes,vAulas[posAula].data.ano);
+        printf("\tEstado da Aula: %s\n\n",vAulas[posAula].estadoAula);
+
+       if(strcmp(vAulas[posAula].estadoAula, "Agendada") == 0){
+            printf("\tAula com estado Agendada. Sem informação adicional.\n");
+
+        }else if(strcmp(vAulas[posAula].estadoAula, "A Realizar") == 0){
+            printf("\tAula a Decorrer.\n");
+
+            }else{
+                printf("\tEntrou no else\n");
+                //mostrar a quant de estudantes presentes nessa aula
+                //mostrar quant acesso houve ás gravacoes
+            }
+    }
+
+}
+
 void calculaHora( int *horaF, int *minF){
     int min_hora = 60;
     *horaF=*minF/min_hora; //calcula hora
     *minF=(*minF-(min_hora*(*horaF))); //calcula minutos
 }
-
-
 
 
 tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
@@ -149,12 +183,10 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
 
 void escreveDadosAulas(tipoAula vAulas){
-    printf("\tCodigo UC: %d\n",vAulas.codigo);
     printf("\tDescricao: %s\n",vAulas.designacao);
     printf("\tDocente: %s\n",vAulas.docente);
     printf("\tHora: %d:%d as",vAulas.hora.h,vAulas.hora.m);
     printf(" %d:%d\n",vAulas.horaFim,vAulas.minFim);
-    printf("\tRegime: %s\n",vAulas.regimeAula);
     printf("\tData: %d/%d/%d\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
     printf("\tEstado da Aula: %s\n",vAulas.estadoAula);
 
@@ -168,14 +200,13 @@ void escreveDadosAulas(tipoAula vAulas){
 
 }
 
-
 void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     int i;
     if (numAulas == 0) {
         printf("\nSem dados!");
     }
     else{
-        printf("\nListagem das Aulas:\n\n");
+        printf("\nListagem de todas as Aulas:\n\n");
 
         for(i=0; i<numAulas; i++) {
             escreveDadosAulas(vAulas[i]);
@@ -183,40 +214,7 @@ void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     }
 }
 
-void pesquisaAula(tipoAula vAulas[], int num){
-    int posAula;
-    char designacao[20];
 
-    lerString("Designacao da Aula a procurar: ", designacao, MAX_STRING);
-    posAula = procuraAulaNome(vAulas,num,designacao);
-
-    if(posAula == -1){
-        printf("Aula inserida não existe");
-    }
-    else{
-        //apresnetar os dados da aula selecionada
-        printf("\n\tDescricao: %s\n",vAulas[posAula].designacao);
-        printf("\tDocente: %s\n",vAulas[posAula].docente);
-        printf("\tHora de inicio: %d:%d\n",vAulas[posAula].hora.h,vAulas[posAula].hora.m);
-        printf("\tHora de Fim: %d:%d\n",vAulas[posAula].horaFim,vAulas[posAula].minFim);
-        printf("\tRegime: %s\n",vAulas[posAula].regimeAula);
-        printf("\tData: %d/%d/%d\n",vAulas[posAula].data.dia,vAulas[posAula].data.mes,vAulas[posAula].data.ano);
-        printf("\tEstado da Aula: %s\n\n",vAulas[posAula].estadoAula);
-
-       if(strcmp(vAulas[posAula].estadoAula, "Agendada") == 0){
-            printf("\tAula com estado Agendada. Sem informação adicional.\n");
-
-        }else if(strcmp(vAulas[posAula].estadoAula, "A Realizar") == 0){
-            printf("\tAula a Decorrer.\n");
-
-            }else{
-                printf("\tEntrou no else\n");
-                //mostrar a quant de estudantes presentes nessa aula
-                //mostrar quant acesso houve ás gravacoes
-            }
-    }
-
-}
 
 
 // só dá se a aula estiver com estado 'agendada'
@@ -451,9 +449,9 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
                         strcpy(vAulas[posicao].gravacao, "N");
                     }
 
-                    //actualiza a quantidade de aulas agendadas no vetor da UC
-                    vetorUc[posUc].quantidadeAulasAgendadas = vetorUc[posUc].quantidadeAulasAgendadas - 1; printf("\nQuant depois %d",vetorUc[posUc].quantidadeAulasAgendadas);
-
+                    //actualiza a quantidade de aulas agendadas no vetor da UC e a quantidade de aulas realizadas
+                    vetorUc[posUc].quantidadeAulasAgendadas = vetorUc[posUc].quantidadeAulasAgendadas - 1;
+                    vetorUc[posUc].quantAulasRealizadas = vetorUc[posUc].quantAulasRealizadas + 1;
                 }
 
             }else{
@@ -481,7 +479,7 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
         }
         else{
             do{
-                printf("Quer alterar o estado da aula de 'a decorrer' para 'terminada'?(S-Sim, N-Nao): ");
+                printf("Quer alterar o estado da aula de 'a decorrer' para 'realizada'?(S-Sim, N-Nao): ");
                 scanf(" %c", &estado);
                 limpaBufferStdin();
                 estado = toupper(estado);
@@ -492,11 +490,11 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
             } while (estado!='S' && estado!='N');
 
             if(estado == 'S'){
-                if(strcmp(vAulas[posicao].designacao, "Terminada") == 0){
-                    printf("\nAula ja se encontra terminada!\n");
+                if(strcmp(vAulas[posicao].designacao, "Realizada") == 0){
+                    printf("\nAula já realizada!\n");
                 }
                 else{
-                    strcpy(vAulas[posicao].estadoAula, "Terminada");
+                    strcpy(vAulas[posicao].estadoAula, "Realizada");
                     printf("\nTerminou a %s\n",vAulas[posicao].designacao);
                 }
             }

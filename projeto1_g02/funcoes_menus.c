@@ -41,7 +41,7 @@ char menuAulas(){
     char opcao;
     printf("\n\n ----------------- Sub Menu de Aulas Online -----------------");
     printf("\n L - Listar Aulas");
-    printf("\n P - Procurar Aula");
+    printf("\n P - Pesquisar Nome Aula");
     printf("\n A - Agendar Aula");
     printf("\n M - Modificar Aula");
     printf("\n V - Voltar");
@@ -70,6 +70,7 @@ char subMenuUc(){
 
     printf("\n\n ----------------- Sub Menu de Unidades Curriculares -----------------");
     printf("\n L - Listar UC's");
+    printf("\n P - Pesquisar Código UC");
     printf("\n I - Inserir UC");
     printf("\n M - Modificar UC");
     printf("\n E - Eliminar UC");

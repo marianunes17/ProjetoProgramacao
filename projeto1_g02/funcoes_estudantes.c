@@ -151,7 +151,7 @@ void acrescentaEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes, in
 
 
 void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes){
-    int i, posicao, numeroEstudante;
+    int posicao, numeroEstudante;
     char opcao;
 
     if(numTotalEstudantes == 0 ){
@@ -163,36 +163,34 @@ void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes){
         if(posicao==-1){
                 printf("\tO numero nao existe.");
         } else{
-             for (i=0; i<numTotalEstudantes; i++){
-                if (vEstudante[i].numeroEstudante == numeroEstudante){
-                    do{
-                        opcao=subMenuAlteraEstudante();
-                        switch(opcao){
-                            case 'A':
-                                     lerString("Nome: ", vEstudante[i].nome,MAX_STRING);
-                                     break;
-                            case 'B':
-                                    do{
-                                        lerString("\tRegime (D,PL): ", vEstudante[i].regime,3);
-                                    } while( strcmp(vEstudante[i].regime, "D") && strcmp(vEstudante[i].regime, "d") && strcmp(vEstudante[i].regime, "PL") && strcmp(vEstudante[i].regime, "pl"));
-                                    break;
-                            case 'V':
-                                    printf("Voltar");
-                                    break;
-                            default: printf("Opção Invalida.");
-                        }
-                    } while(opcao!='V');
+            if (vEstudante[posicao].numeroEstudante == numeroEstudante){
+                do{
+                    opcao=subMenuAlteraEstudante();
+                    switch(opcao){
+                        case 'A':
+                                 lerString("Nome: ", vEstudante[posicao].nome,MAX_STRING);
+                                 break;
+                        case 'B':
+                                do{
+                                    lerString("\tRegime (D,PL): ", vEstudante[posicao].regime,3);
+                                } while( strcmp(vEstudante[posicao].regime, "D") && strcmp(vEstudante[posicao].regime, "d") && strcmp(vEstudante[posicao].regime, "PL") && strcmp(vEstudante[posicao].regime, "pl"));
+                                break;
+                        case 'V':
+                                printf("Voltar");
+                                break;
+                        default: printf("Opção Invalida.");
+                    }
+                } while(opcao!='V');
 
-                }
             }
+            printf("\n\tOs dados do estudante foram alterado.");
         }
-        printf("\n\tOs dados do estudante foram alterado.");
     }
 }
 
 
 void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
-    int i, posicao, numeroEstudante;
+    int posicao, numeroEstudante;
 
     if(*numTotalEstudantes == 0 ){
         printf("\tNão existem Unidades Curriculares. \n");
@@ -202,16 +200,12 @@ void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
         posicao=procuraEstudante(vEstudante,*numTotalEstudantes, numeroEstudante);
         if(posicao==-1){
             printf("\tA Unidade Curricular não existe. \n");
+        } else {
+            vEstudante[posicao]=vEstudante[posicao+1];
         }
-        else {
-            for(i=posicao; i<*numTotalEstudantes-1; i++){
-                vEstudante[i]=vEstudante[i+1];
-            }
-            (*numTotalEstudantes)--;
 
-
-            printf("\n\tO estudante foi eliminada");
-        }
+        (*numTotalEstudantes)--;
+        printf("\n\tO estudante foi eliminada");
     }
 }
 

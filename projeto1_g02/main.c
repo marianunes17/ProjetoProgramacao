@@ -14,7 +14,7 @@
 
 
 int main(){
-    setlocale(LC_ALL, "");     // Permite texto com acentos
+    setlocale(LC_ALL,"Portuguese");    // Permite texto com acentos
 
     tipoUc vetorUc[MAX_UC];
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
@@ -60,6 +60,12 @@ int main(){
                                 alterarVetorUc(vetorUc, numTotalUc);
                                 break;
 
+
+                        case 'P': //Modificar UC
+                                printf("Escolheu a opção: Pesquisar Unidade Curricular \n");
+                                pesquisaCodigoUc(vetorUc, numTotalUc);
+                                break;
+
                         case 'V':
                                  printf("\nSair do menu de UC. ");
                                 //gravarUcBinario(vetorUc, numTotalUc);
@@ -86,7 +92,7 @@ int main(){
                     // ----- PROCURAR AULA  -----
                     case 'P':
                             printf("Escolheu a opção de Procurar Aula\n");
-                            procuraAula(vAulas, numAula);
+                            pesquisaAula(vAulas, numAula);
                             break;
 
                     // ----- AGENDAR AULA  -----

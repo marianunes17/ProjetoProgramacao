@@ -47,7 +47,6 @@ void calculaHora( int *horaF, int *minF){
 
 
 tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
-
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0;
     char regimeUc[3];
@@ -184,7 +183,7 @@ void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     }
 }
 
-void procuraAula(tipoAula vAulas[], int num){
+void pesquisaAula(tipoAula vAulas[], int num){
     int posAula;
     char designacao[20];
 

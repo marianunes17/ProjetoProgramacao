@@ -11,7 +11,7 @@ void mostrarDadosAula(tipoAula vAulas[], int numAula);
 void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);
 void escreveDadosAulas(tipoAula vAulas[]);
 void calculaHora(int *horaF, int *minF);
-void procuraAula(tipoAula vAulas[], int num);
+void pesquisaAula(tipoAula vAulas[], int num);
 
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas, tipoUc vetorUc[]);
 void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);

@@ -66,7 +66,7 @@ void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
     for (i=0; i<numAulas; i++){
         if ((strcmp(vAulas[i].estadoAula, "Realizada") == 0) && (strcmp(vAulas[i].gravacao, "S") == 0)){
 
-            printf("\tDescricao: %s\n",vAulas[i].designacao);
+            printf("\n\tDescricao: %s\n",vAulas[i].designacao);
             printf("\tDocente: %s\n",vAulas[i].docente);
             printf("\tHora: %d:%d às",vAulas[i].hora.h,vAulas[i].hora.m);
             printf(" %d:%d\n",vAulas[i].horaFim,vAulas[i].minFim);

@@ -298,33 +298,62 @@ void assistirAula(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula 
 
                 } else {
                     printf ("Está a assitir à aula de %s", designacaoAula);
-                        gravaAulasEstudantesTxt(vEstudante, *numTotalEstudantes, *posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
-                       // gravaAulasEstudantesBin(vEstudante, *numTotalEstudantes, vAulas, numTotalAulas);
+                }
+            } else{
+                printf("A aula não esta a decorrer");
+            }
+        }
+           gravaAulasEstudantesTxt(vEstudante, *numTotalEstudantes, *posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
+    }
+}
+
+void assistirGravacaoAula(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
+   int posicaoAula, *posicaoEstudante, i, *numeroEstudante;
+    tipoEstudante info;
+
+    if(numTotalAulas == 0 ){
+        printf("Não existem Aulas. \n");
+    } else {
+        posicaoAula=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
+        if(posicaoAula == -1){
+            printf ("A designação da aula não existe");
+        } else {
+            if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
+                *numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
+
+                *posicaoEstudante = procuraEstudante(vEstudante, *numTotalEstudantes, *numeroEstudante);
+
+                if(*posicaoEstudante == -1){
+                    printf ("O numero de estudante inserido não existe");
+
+                } else {
+                    printf ("Está a assitir à aula de %s", designacaoAula);
+                    gravaAulasEstudantesTxt(vEstudante, *numTotalEstudantes, *posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
+                    // gravaAulasEstudantesBin(vEstudante, *numTotalEstudantes, vAulas, numTotalAulas);
                 }
             } else{
                 printf("A aula não esta a decorrer");
             }
 
             if( (strcmp(vAulas[posicaoAula].estadoAula, "Terminada")==0) ){
-               /* if (strcmp(vAulas[posicaoAula].gravacao)==0) {*/
+               if (strcmp(vAulas[posicaoAula].gravacao,"Sim") == 0) {
                     *numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
-
                     *posicaoEstudante = procuraEstudante(vEstudante, *numTotalEstudantes, *numeroEstudante);
 
                     if(*posicaoEstudante == -1){
                         printf ("O numero de estudante inserido não existe");
 
                     } else {
-                        printf ("Está a assitir à aula de %s", designacaoAula);
-                }
+                        printf ("Está a assitir à gravação da aula de %s", designacaoAula);
+                        gravaAulasEstudantesTxt(vEstudante, *numTotalEstudantes, *posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
+                    }
                 } else{
                     printf("A aula não foi gravada");
                 }
-           /* } else {
-                   printf("A designação da aula não foi encontrada");
-            }*/
-           }
-           gravaAulasEstudantesTxt(vEstudante, *numTotalEstudantes, *posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
+            } else {
+                printf("A aula não esta terminada");
+            }
+        }
     }
 }
 

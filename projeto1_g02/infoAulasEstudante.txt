@@ -1,0 +1,42 @@
+Nome estudante: 0
+Numero: 
+
+Data: 0	0	0
+Hora de Inicio: 0:0
+Hora de Fim: 0:0
+
+Nome estudante: 1111
+Numero: Luis Marques
+
+Data: 5	5	2020
+Hora de Inicio: 20:0
+Hora de Fim: 21:0
+
+Nome estudante: 1111
+Numero: Luis Marques
+
+Data: 0	0	0
+Hora de Inicio: 0:0
+Hora de Fim: 0:0
+
+Nome estudante: 1111
+Numero: Luis Marques
+
+Data: 0	0	0
+Hora de Inicio: 0:0
+Hora de Fim: 0:0
+
+Nome estudante: 0
+Numero: 
+
+Data: 0	0	0
+Hora de Inicio: 0:0
+Hora de Fim: 0:0
+
+Nome estudante: 1111
+Numero: Luis Marques
+
+Data: 5	5	2020
+Hora de Inicio: 20:0
+Hora de Fim: 21:0
+

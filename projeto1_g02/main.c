@@ -187,13 +187,15 @@ int main(){
                                         break;
                                 case 'A':
                                         printf("Escolheu a opção de Assistir à aula\n");
-                                        lerString("Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
+                                        listaAulasDecorrer(vAulas,numAula); //mostrar todas as aulas que estão a decorrer
+                                        lerString("\n\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
                                         assistirAula(vEstudante, numTotalEstudantes, vAulas, numAula, designacao);
 
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");
-                                        lerString("Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
+                                        listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
+                                        lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
                                         assistirGravacaoAula(vEstudante, numTotalEstudantes, vAulas,  numAula, designacao);
                                         break;
                                 case 'V':

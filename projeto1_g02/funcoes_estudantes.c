@@ -60,6 +60,28 @@ int procuraEstudante(tipoEstudante vEstudante[], int numTotalEstudantes, int num
     return posicao;
 }
 
+void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
+    int i;
+
+    for (i=0; i<numAulas; i++){
+        if ((strcmp(vAulas[i].estadoAula, "Realizada") == 0) && (strcmp(vAulas[i].gravacao, "S") == 0)){
+
+            printf("\tDescricao: %s\n",vAulas[i].designacao);
+            printf("\tDocente: %s\n",vAulas[i].docente);
+            printf("\tHora: %d:%d às",vAulas[i].hora.h,vAulas[i].hora.m);
+            printf(" %d:%d\n",vAulas[i].horaFim,vAulas[i].minFim);
+            printf("\tData: %d/%d/%d\n",vAulas[i].data.dia, vAulas[i].data.mes,vAulas[i].data.ano);
+            printf("\tEstado da Aula: %s\n",vAulas[i].estadoAula);
+            printf("\tGravacao: " );
+            if((strcmp(vAulas[i].gravacao, "S") == 0)){
+                printf("Sim");
+            }
+            printf("\n\n");
+
+            }
+    }
+}
+
 
 
 void gravarEstudantesTexto(tipoEstudante vEstudante[], int numTotalEstudante){
@@ -158,7 +180,7 @@ void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes){
         printf("\tNão existem Alunos. \n");
     }
     else{
-        numeroEstudante=lerInteiro("\tNúmero de Estudante: ", 1, 100);
+        numeroEstudante=lerInteiro("\tNúmero de Estudante: ", 1000,2000);
          posicao=procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
         if(posicao==-1){
                 printf("\tO numero nao existe.");
@@ -196,7 +218,7 @@ void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
         printf("\tNão existem Unidades Curriculares. \n");
     }
     else{
-        numeroEstudante=lerInteiro("\tNumero de Estudante: ", 1,100 );
+        numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
         posicao=procuraEstudante(vEstudante,*numTotalEstudantes, numeroEstudante);
         if(posicao==-1){
             printf("\tA Unidade Curricular não existe. \n");
@@ -288,7 +310,7 @@ void assistirAula(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula v
             printf ("A designação da aula não existe");
         } else {
             if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
-                numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
+                numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
 
                 posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
@@ -318,7 +340,7 @@ void assistirGravacaoAula(tipoEstudante vEstudante[], int numTotalEstudantes, ti
         } else {
            if( (strcmp(vAulas[posicaoAula].estadoAula, "Terminada")==0) ){
                if (strcmp(vAulas[posicaoAula].gravacao,"Sim") == 0) {
-                    numeroEstudante=lerInteiro("\tNumero de Estudante: ",1,100);
+                    numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
                     posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
                     if(posicaoEstudante == -1){

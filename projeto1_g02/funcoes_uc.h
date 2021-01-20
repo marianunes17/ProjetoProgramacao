@@ -13,7 +13,7 @@ void eliminarVetorUc(tipoUc vetorUc[], int *numTotalUc);
 void alterarVetorUc(tipoUc vetorUc[], int numTotalUc);
 
 void gravarUcTexto(tipoUc vetorUc[], int numTotalUc);
-void gravarUcBinario(tipoUc vetorUc[], int numTotalUc);
+void gravarUcBinario(tipoUc vetorUc[], int *numTotalUc);
 void leFicheiroUcTexto(tipoUc vetorUc[], int *numTotalUc);
 void leFicheiroUcBinario(tipoUc vetorUc[], int *numTotalUc);
 

@@ -1,0 +1,14 @@
+Lista Todas as Aulas: 2
+
+Designacao: Aula 1
+Docente: Mario Silva
+Codigo UC: 1111
+Data: 5	5	2020
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+Designacao: Aula 2
+Docente: Filipe Gomes
+Codigo UC: 1000
+Data: 6	6	2020
+Hora de Inicio: 18:30
+Hora de Fim: 19:50

@@ -1,21 +1,26 @@
-1
- 1111
- fisica
- s
- t
+Unidades Curriculares: 2
+
+Codigo: 1111
+Designacao: Algebra
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 2
+Regime: d
+Quantidade Total de Horas: 75
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 75
+Quantidade total de horas: 74
+
  1
- d
- 100
- 60
- 100
- 100
- 0
- 
- 
- 
- 0
- 
- 
- 
- 
- 
+Codigo: 1000
+Designacao: Fisica
+Tipo de Uc: n
+Tipo de Aula: t
+Semestre: 3
+Regime: pl
+Quantidade Total de Horas: 100
+Duracao de cada aula: 80
+Quantidade Media de Aulas: 100
+Quantidade total de horas: 98
+
+ 1

@@ -43,6 +43,9 @@ tipoUc leDadosUc(int codigoUc){
     vetorUc.quantidadeAulas = ((vetorUc.quantidadeTotalHoras)/(vetorUc.duracao/60));
 
     vetorUc.quantidadeHoras = vetorUc.quantidadeTotalHoras ;
+
+    vetorUc.quantidadeAulasAgendadas = 0;
+
     return vetorUc;
 }
 
@@ -84,6 +87,7 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n\tDuração de cada aula(em minutos):%d", vetorUc.duracao);
     printf("\n\tMédia de aulas prevista: \t %d\n", vetorUc.quantidadeAulas);
     printf("\n\tQuantidade de horas que faltam lecionar: \t %d", vetorUc.quantidadeHoras);
+    printf("\n\tTotal aulas agendadas: %d \n", vetorUc.quantidadeAulasAgendadas);
 }
 
 
@@ -116,43 +120,46 @@ int procuraUc(tipoUc vetorUc[], int numTotalUc, int codigoUC){
 }
 
 void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
-     FILE *ficheiro;
-        int i;
+    FILE *ficheiro;
+    int i;
 
-        ficheiro=fopen("infoUc.txt", "w");
+    ficheiro=fopen("infoUc.txt", "a+");
 
-        if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
-        } else{
-            fprintf(ficheiro, "Unidades Curriculares: %d\n", numTotalUc);
+    if(ficheiro==NULL){
+        printf("\tErro ao abrir o ficheiro. gravarTXT \n");
+    } else{
+        fprintf(ficheiro, "Unidades Curriculares: %d\n", numTotalUc);
 
-            for(i=0; i<numTotalUc; i++){
-                fprintf(ficheiro, "\nCodigo: %d", vetorUc[i].codigo);
-                fprintf(ficheiro, "\nDesignacao: %s", vetorUc[i].designacao);
-                fprintf(ficheiro, "\nTipo de Uc: %s", vetorUc[i].tipoDeUc);
-                fprintf(ficheiro, "\nTipo de Aula: %s", vetorUc[i].tipoAula);
-                fprintf(ficheiro, "\nSemestre: %d", vetorUc[i].semestre);
-                fprintf(ficheiro, "\nRegime: %s", vetorUc[i].regime);
-                fprintf(ficheiro, "\nQuantidade Total de Horas: %.d", vetorUc[i].quantidadeTotalHoras);
-                fprintf(ficheiro, "\nDuracao de cada aula: %.d", vetorUc[i].duracao);
-                fprintf(ficheiro, "\nQuantidade Media de Aulas: %.d", vetorUc[i].quantidadeAulas);
-                fprintf(ficheiro, "\nQuantidade total de horas: %.d\n", vetorUc[i].quantidadeHoras);
-        //        fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
-            }
-            fclose(ficheiro);
+        for(i=0; i<numTotalUc; i++){
+            fprintf(ficheiro, "\nCodigo: %d", vetorUc[i].codigo);
+            fprintf(ficheiro, "\nDesignacao: %s", vetorUc[i].designacao);
+            fprintf(ficheiro, "\nTipo de Uc: %s", vetorUc[i].tipoDeUc);
+            fprintf(ficheiro, "\nTipo de Aula: %s", vetorUc[i].tipoAula);
+            fprintf(ficheiro, "\nSemestre: %d", vetorUc[i].semestre);
+            fprintf(ficheiro, "\nRegime: %s", vetorUc[i].regime);
+            fprintf(ficheiro, "\nQuantidade Total de Horas: %.d", vetorUc[i].quantidadeTotalHoras);
+            fprintf(ficheiro, "\nDuracao de cada aula: %.d", vetorUc[i].duracao);
+            fprintf(ficheiro, "\nQuantidade Media de Aulas: %.d", vetorUc[i].quantidadeAulas);
+            fprintf(ficheiro, "\nQuantidade total de horas: %.d\n", vetorUc[i].quantidadeHoras);
+            fprintf(ficheiro, "\n %.d", vetorUc[i].quantidadeAulasAgendadas);
         }
+        fclose(ficheiro);
+    }
 }
 
 
-void gravarUcBinario(tipoUc vetorUc[], int numTotalUc){
+void gravarUcBinario(tipoUc vetorUc[], int *numTotalUc){
      FILE *ficheiro;
+     int gravarDados;
 
         ficheiro=fopen("infoUc.dat", "wb");
         if(ficheiro==NULL){
             printf("\tErro ao abrir o ficheiro. \n");
         } else{
-            fwrite(&numTotalUc,sizeof(int),1,ficheiro);
-            fwrite(vetorUc,sizeof(tipoUc),numTotalUc,ficheiro);
+            fwrite(&(*numTotalUc),sizeof(int),1,ficheiro);
+            gravarDados = fwrite(vetorUc,sizeof(tipoUc),*numTotalUc,ficheiro);
+
+            printf("\n uc escritas gravadas bin = %d \n", gravarDados);
 
             fclose(ficheiro);
         }
@@ -162,25 +169,25 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
     FILE *ficheiro;
     int i;
 
-        ficheiro=fopen("infoUc.txt", "r");
-        if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
-        } else{
-            for(i=0; i<*numTotalUc; i++){
-                fscanf(ficheiro, "%d", vetorUc[i].codigo);
-                fgets(vetorUc[i].designacao,100,ficheiro);
-                fgets(vetorUc[i].tipoDeUc,3,ficheiro);
-                fgets(vetorUc[i].tipoAula,3,ficheiro);
-                fscanf(ficheiro, "%d", vetorUc[i].semestre);
-                fgets(vetorUc[i].regime,2,ficheiro);
-                fscanf(ficheiro, "%d", vetorUc[i].quantidadeTotalHoras);
-                fscanf(ficheiro, "%d", vetorUc[i].duracao);
-                fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulas);
-                fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
-            //    fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
+    ficheiro=fopen("infoUc.txt", "r");
+    if(ficheiro==NULL){
+        printf("\tErro ao abrir o ficheiro.\n");
+    } else{
+        for(i=0; i<*numTotalUc; i++){
+            fscanf(ficheiro, "%d", vetorUc[i].codigo);
+            fgets(vetorUc[i].designacao,100,ficheiro);
+            fgets(vetorUc[i].tipoDeUc,3,ficheiro);
+            fgets(vetorUc[i].tipoAula,3,ficheiro);
+            fscanf(ficheiro, "%d", vetorUc[i].semestre);
+            fgets(vetorUc[i].regime,2,ficheiro);
+            fscanf(ficheiro, "%d", vetorUc[i].quantidadeTotalHoras);
+            fscanf(ficheiro, "%d", vetorUc[i].duracao);
+            fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulas);
+            fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
+            fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
             }
-            fclose(ficheiro);
-        }
+        fclose(ficheiro);
+    }
 }
 
 
@@ -189,7 +196,7 @@ void leFicheiroUcBinario(tipoUc vetorUc[], int *numTotalUc){
 
         ficheiro=fopen("infoUc.dat", "rb");
         if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
+            printf("\tErro ao abrir o ficheiro.\n");
         } else{
             fread(&(*numTotalUc),sizeof(int),1,ficheiro);
             fread(vetorUc,sizeof(tipoUc),*numTotalUc,ficheiro);

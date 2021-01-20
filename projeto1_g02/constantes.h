@@ -39,7 +39,7 @@ typedef struct{
     int horaFim;
     int minFim;
     char estadoAula[MAX_STRING];
-    int gavacao;
+    int gravacao;
     int codigo; //chave primaria UCs
 } tipoAula;
 

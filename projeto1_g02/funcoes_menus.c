@@ -14,8 +14,6 @@
 
 char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas){
     char opcao;
-    leFicheiroUcBinario(vetorUc, &numTotalUc);
-    vAulas = lerFicheiroBin(vAulas, &numTotalAulas);
 
     printf("\n\n************************ Menu Principal ************************");
     printf("\nQuantidade de UC's: %d", numTotalUc);
@@ -29,6 +27,7 @@ char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas
     printf("\nE - Estudantes");
     printf("\nR - Raking");
     printf("\nD - Dados Estatísticos");
+    printf("\nG - Gravar Dados");
     printf("\nF - Fim/Sair");
     printf("\n\nInsira Opção ->");
     scanf("%c", &opcao);
@@ -42,6 +41,7 @@ char menuAulas(){
     char opcao;
     printf("\n\n ----------------- Sub Menu de Aulas Online -----------------");
     printf("\n L - Listar Aulas");
+    printf("\n P - Procurar Aula");
     printf("\n A - Agendar Aula");
     printf("\n M - Modificar Aula");
     printf("\n V - Voltar");

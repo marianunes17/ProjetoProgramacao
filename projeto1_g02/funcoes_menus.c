@@ -12,13 +12,13 @@
 #include "funcoes_aulas.h"
 
 
-char menu(tipoUc vetorUc[], int numTotalUc, tipoAula vAulas[], int numTotalAulas){
+char menu(tipoUc vetorUc[], int numTotalUc, int quantAulasAgendadas, int quantAulasRealizadas){
     char opcao;
 
     printf("\n\n************************ Menu Principal ************************");
     printf("\nQuantidade de UC's: %d", numTotalUc);
-    printf("\tQnt. aulas agendadas: %d",numTotalAulas);
-    printf("\nQnt. aulas realizadas: **** ");
+    printf("\tQnt. aulas agendadas: %d", quantAulasAgendadas);
+    printf("\nQnt. aulas realizadas: %d", quantAulasRealizadas);
     printf("\tQnt. aulas gravadas: ****\n");
 
     printf("\nU - Unidades Curriculares");

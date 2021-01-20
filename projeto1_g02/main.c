@@ -21,7 +21,7 @@ int main(){
     vAulas = NULL; // iniciar vetor dinamico a NULL
     tipoEstudante vEstudante[MAX_ESTUDANTES];
 
-    int numTotalUc=0, numAula=0, numTotalEstudantes=0;
+    int numTotalUc=0, numAula=0, numTotalEstudantes=0, quantAulasAgendadas=0, quantAulasRealizadas=0;
     int codigoUc, numeroEstudante, posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala, subMenuEstudante;
     char designacao[80];
@@ -30,9 +30,12 @@ int main(){
     leFicheiroUcBinario(vetorUc, &numTotalUc);
     leEstudantesBinario(vEstudante, &numTotalEstudantes);
 
+    lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);
+    lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);
+
 
      do{
-        opcao = menu(vetorUc, numTotalUc, vAulas, numAula);
+        opcao = menu(vetorUc, numTotalUc, quantAulasAgendadas, quantAulasRealizadas);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
@@ -68,9 +71,6 @@ int main(){
 
                         case 'V':
                                  printf("\nSair do menu de UC. ");
-                                //gravarUcBinario(vetorUc, numTotalUc);
-                                //gravarUcTexto(vetorUc, numTotalUc);
-
                                 break;
 
                         default: printf("\nOpcao inválida. ");
@@ -147,6 +147,7 @@ int main(){
                                     vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                                 }
                             }
+                            lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);//actualiza contador
                             break;
 
                     // ----- MODIFICAR AGENDAMENTO  -----
@@ -182,6 +183,7 @@ int main(){
                                         printf("Escolheu a opção de Terminar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         terminarAula(vAulas, numAula, designacao);
+                                        lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);//actualiza contador
                                         break;
                                 case 'A':
                                         printf("Escolheu a opção de Assistir à aula\n");

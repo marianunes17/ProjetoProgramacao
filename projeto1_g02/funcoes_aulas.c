@@ -214,6 +214,29 @@ void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     }
 }
 
+void lerQuantAulasAgendadas(int *quantidade, tipoAula vAulas[], int numAulas){
+    int i, conta=0;
+
+    for (i=0; i<numAulas; i++){
+        if (strcmp(vAulas[i].estadoAula, "Agendada") == 0){
+            conta++;
+        }
+    }
+    *quantidade = conta;
+}
+
+void lerQuantAulasRealizadas(int *quantidade, tipoAula vAulas[], int numAulas){
+    int i, conta=0;
+
+    for (i=0; i<numAulas; i++){
+        if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
+            conta++;
+        }
+    }
+    *quantidade = conta;
+}
+
+
 void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
     int i;
 
@@ -231,6 +254,7 @@ void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
         }
     }
 }
+
 
 void listaAulasDecorrer(tipoAula vAulas[], int numAulas) {
     int i;

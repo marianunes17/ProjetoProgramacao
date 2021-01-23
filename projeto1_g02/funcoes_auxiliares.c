@@ -11,10 +11,10 @@ int lerInteiro(char mensagem[MAX_STRING], int minimo, int maximo) {
         limpaBufferStdin();
         if (controlo == 0)
         {
-            printf("Devera inserir um numero inteiro \n");
+            printf("\tDevera inserir um numero inteiro. \n");
         } else {
             if(numero<minimo || numero>maximo) {
-                printf("Numero invalido. Insira novamente:\n");
+                printf("\tNumero invalido. Insira novamente. \n");
             }
 
         }
@@ -33,10 +33,10 @@ float lerFloat(char mensagem[MAX_STRING], float minimo, float maximo) {
         limpaBufferStdin();
 
         if (controlo == 0) {
-            printf("Devera inserir um numero decimal (float) \n");
+            printf("\tDevera inserir um numero decimal (float) \n");
         } else {
             if(numero<minimo || numero>maximo) {
-                printf("Numero invalido. Insira novamente:\n");
+                printf("\tNumero invalido. Insira novamente.\n");
             }
         }
     } while(numero<minimo || numero>maximo || controlo ==0);
@@ -54,7 +54,7 @@ void lerString(char mensagem[MAX_STRING], char vetorCaracteres[MAX_STRING], int 
         tamanhoString = strlen(vetorCaracteres);
 
         if (tamanhoString == 1) {
-            printf("Nao foram introduzidos caracteres. Apenas carregou na tecla enter \n\n");
+            printf("Nao foram introduzidos caracteres. Apenas carregou na tecla enter. \n");
         }
 
     } while (tamanhoString == 1);

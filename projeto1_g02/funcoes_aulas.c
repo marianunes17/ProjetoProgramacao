@@ -7,6 +7,7 @@
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
 #include "funcoes_uc.h"
+#include "funcoes_aulasAssistidas.h"
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
@@ -453,12 +454,12 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
     char estado, opGravacao;
 
     if(numTotalAulas == 0 ){
-        printf("Não existem Aulas. \n");
+        printf("Não existem aulas. \n");
     } else {
         posicao=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
 
         if(posicao == -1){
-            printf ("Aula nao encontrada");
+            printf ("A aula nao encontrada");
         }
         else{
 
@@ -469,7 +470,7 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
                 estado = toupper(estado);
 
                 if(estado!='S' && estado!='N' ){
-                    printf("Inserio uma opcao invalida\n");
+                    printf("Inseriu uma opcao invalida.\n");
                 }
 
             }while (estado!='S' && estado!='N');
@@ -480,12 +481,11 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
                     printf("\nAual ja se encontra a Decorrer!\n");
                 }
                 else{
-                    //buscar posicao da UC
+                    //procura posicao da UC
                     codigoUc = vAulas[posicao].codigo;
                     posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
 
                     strcpy(vAulas[posicao].estadoAula, "A decorrer");
-                    printf("\nComecou a %s \n\n",vAulas[posicao].designacao);
 
                     //Gravacao da Aula
                     do{
@@ -495,16 +495,16 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
                         opGravacao = toupper(opGravacao);
 
                         if(opGravacao!='S' && opGravacao!='N' ){
-                            printf("Inserio uma opcao invalida\n");
+                            printf("Inseriu uma opcao invalida\n");
                         }
 
                     }while (opGravacao!='S' && opGravacao!='N');
 
                     if(opGravacao == 'S'){
-                        printf("\nEscolheu opcao %c - aula a gravar!",opGravacao);
+                        printf("\nComecou a aula de %s, esta aula vai ser gravada.",vAulas[posicao].designacao);
                         strcpy(vAulas[posicao].gravacao, "S");
                     }else{
-                        printf("\nEscolheu opcao %c - aula nao vai ser gravada",opGravacao);
+                        printf("\nComecou a aula de %s, esta aula não vai ser gravada.",vAulas[posicao].designacao);
                         strcpy(vAulas[posicao].gravacao, "N");
                     }
 
@@ -514,7 +514,7 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
                 }
 
             }else{
-                printf("\nNao quiz mudar o estado da aula\n");
+                printf("\nO estado da aula não foi alterado\n");
             }
 
         }
@@ -550,15 +550,15 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
 
             if(estado == 'S'){
                 if(strcmp(vAulas[posicao].designacao, "Realizada") == 0){
-                    printf("\nAula já realizada!\n");
+                    printf("\nA aula já foi realizada!\n");
                 }
                 else{
                     strcpy(vAulas[posicao].estadoAula, "Realizada");
-                    printf("\nTerminou a %s\n",vAulas[posicao].designacao);
+                    printf("\nA aula a %s terminou\n",vAulas[posicao].designacao);
                 }
             }
             else{
-                printf("\nNao quiz terminar a aula\n");
+                printf("\nO estado da aula não foi alterado.\n");
             }
         }
     }

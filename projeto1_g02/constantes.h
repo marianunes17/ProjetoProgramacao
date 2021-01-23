@@ -6,12 +6,15 @@
 #define MAX_STRING 100
 
 typedef struct{
-    int dia, mes, ano;
+    int dia;
+    int mes;
+    int ano;
 } tipoData;
 
 
 typedef struct{
-    int h, m;
+    int h;
+    int m;
 } tipoHora;
 
 
@@ -43,14 +46,24 @@ typedef struct{
     char gravacao[MAX_STRING];
     int numAssecoGravacao;
     int codigo; //chave primaria UCs
+    int numeroEstudante;
 } tipoAula;
+
+
+typedef struct{
+    int numEstudante;
+    char designacaoAula[MAX_STRING];
+    char tipoAcesso[MAX_STRING];
+} tipoAulasAssistidas;
 
 
 typedef struct{
     int numeroEstudante;
     char nome[MAX_STRING];
     char regime[MAX_STRING];
+    tipoAulasAssistidas aulas;
 } tipoEstudante;
+
 
 
 

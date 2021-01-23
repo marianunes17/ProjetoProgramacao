@@ -9,6 +9,7 @@
 #include "funcoes_estudantes.h"
 #include "funcoes_uc.h"
 #include "funcoes_aulas.h"
+#include "funcoes_aulasAssistidas.h"
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
@@ -20,8 +21,9 @@ int main(){
     tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
     vAulas = NULL; // iniciar vetor dinamico a NULL
     tipoEstudante vEstudante[MAX_ESTUDANTES];
+    tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES];
 
-    int numTotalUc=0, numAula=0, numTotalEstudantes=0, quantAulasAgendadas=0, quantAulasRealizadas=0;
+    int numTotalUc=0, numAula=0, numTotalEstudantes=0, numAulasAssistidas=0, quantAulasAgendadas=0, quantAulasRealizadas=0;
     int codigoUc, numeroEstudante, posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala, subMenuEstudante;
     char designacao[80];
@@ -35,11 +37,11 @@ int main(){
 
 
      do{
-        opcao = menu(vetorUc, numTotalUc, quantAulasAgendadas, quantAulasRealizadas);
+        opcao = menu(numTotalUc, quantAulasAgendadas, quantAulasRealizadas);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
-                    opcaoSubMenuUc=subMenuUc(vetorUc);
+                    opcaoSubMenuUc=subMenuUc();
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
                                 printf("Escolheu a opção: Listar Unidades Curriculares:\n");
@@ -64,7 +66,7 @@ int main(){
                                 break;
 
 
-                        case 'P': //Modificar UC
+                        case 'P': //Procurar UC
                                 printf("Escolheu a opção: Pesquisar Unidade Curricular \n");
                                 pesquisaCodigoUc(vetorUc, numTotalUc);
                                 break;
@@ -189,14 +191,13 @@ int main(){
                                         printf("Escolheu a opção de Assistir à aula\n");
                                         listaAulasDecorrer(vAulas,numAula); //mostrar todas as aulas que estão a decorrer
                                         lerString("\n\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
-                                        assistirAula(vEstudante, numTotalEstudantes, vAulas, numAula, designacao);
-
+                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, numAulasAssistidas);
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vEstudante, numTotalEstudantes, vAulas,  numAula, designacao);
+                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, numAulasAssistidas);
                                         break;
                                 case 'V':
                                         break;
@@ -260,7 +261,12 @@ int main(){
                         printf("\tEscolheu de Gravar Dados");
                         gravaFicheiroBin(vAulas,numAula);
                         gravarUcBinario(vetorUc, &numTotalUc);
-                        printf("\tGravacao Concluida!");
+                        gravarEstudantesBinario(vEstudante, &numTotalEstudantes);
+                        printf("\tAs alterações foram gravadas!");
+                        break;
+            case 'B':
+                        printf("Escolheu a opção F \n Fim do Programa");
+                        listaDadosAulasAssistidas(vAulasAssistidas, numAulasAssistidas);
                         break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");
@@ -271,12 +277,8 @@ int main(){
     }while(opcao!='F');
 
     gravaFicheiroBin(vAulas, numAula); // grava automaticamente o ficheiro TXT
-        printf("\n gravou aula"); // para confirmar se dá - tirar depois
-
     gravarUcTexto(vetorUc, numTotalUc);
-        printf("\n gravou uc bin"); // para confirmar se dá - tirar depois
     gravarUcBinario(vetorUc, &numTotalUc);
-        printf("\n gravou uc txt"); // para confirmar se dá - tirar depois
 
     free(vAulas);  // Liberta memoria do vetor dinamico
 

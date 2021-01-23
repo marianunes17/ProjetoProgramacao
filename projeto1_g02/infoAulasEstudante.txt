@@ -1,42 +1,28 @@
-Nome estudante: 0
-Numero: 
-
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
-
 Nome estudante: 1111
-Numero: Luis Marques
+Numero: ana
 
-Data: 5	5	2020
-Hora de Inicio: 20:0
-Hora de Fim: 21:0
-
-Nome estudante: 1111
-Numero: Luis Marques
-
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
-
-Nome estudante: 1111
-Numero: Luis Marques
-
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 
 Nome estudante: 0
 Numero: 
 
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 
 Nome estudante: 1111
-Numero: Luis Marques
+Numero: ana
 
-Data: 5	5	2020
-Hora de Inicio: 20:0
-Hora de Fim: 21:0
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
+
+Nome estudante: 1111
+Numero: ana
+
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 

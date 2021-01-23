@@ -1,92 +1,80 @@
-Lista Todas as Aulas: 3
+Lista Todas as Aulas: 2
 
-Designacao: Aula Fisica 1
-Docente: Mario
+Designacao: fisica1
+Docente: raul
 Codigo UC: 1111
-Data: 5	5	2020
-Hora de Inicio: 9:30
-Hora de Fim: 10:30
+Data: 1	1	2019
+Hora de Inicio: 9:12
+Hora de Fim: 10:32
 
-Designacao: Aula Fisica 2
-Docente: Mario
+Designacao: a
+Docente: asas
 Codigo UC: 1111
-Data: 6	6	2020
-Hora de Inicio: 10:30
-Hora de Fim: 11:30
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 
-Designacao: Aula Algebra 1
-Docente: Amelia
-Codigo UC: 1234
-Data: 5	5	2020
-Hora de Inicio: 20:0
-Hora de Fim: 21:0
+Lista Todas as Aulas: 2
 
-Lista Todas as Aulas: 3
-
-Designacao: Aula Fisica 1
-Docente: Mario
+Designacao: fisica1
+Docente: raul
 Codigo UC: 1111
-Data: 5	5	2020
-Hora de Inicio: 9:30
-Hora de Fim: 10:30
+Data: 1	1	2019
+Hora de Inicio: 9:12
+Hora de Fim: 10:32
 
-Designacao: Aula Fisica 2
-Docente: Mario
+Designacao: a
+Docente: asas
 Codigo UC: 1111
-Data: 6	6	2020
-Hora de Inicio: 10:30
-Hora de Fim: 11:30
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 
-Designacao: Aula Algebra 1
-Docente: Amelia
-Codigo UC: 1234
-Data: 5	5	2020
-Hora de Inicio: 20:0
-Hora de Fim: 21:0
+Lista Todas as Aulas: 2
 
-Lista Todas as Aulas: 3
-
-Designacao: Aula Fisica 1
-Docente: Mario
+Designacao: fisica1
+Docente: raul
 Codigo UC: 1111
-Data: 5	5	2020
-Hora de Inicio: 9:30
-Hora de Fim: 10:30
+Data: 1	1	2019
+Hora de Inicio: 9:12
+Hora de Fim: 10:32
 
-Designacao: Aula Fisica 2
-Docente: Mario
+Designacao: a
+Docente: asas
 Codigo UC: 1111
-Data: 6	6	2020
-Hora de Inicio: 10:30
-Hora de Fim: 11:30
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 
-Designacao: Aula Algebra 1
-Docente: Amelia
-Codigo UC: 1234
-Data: 5	5	2020
-Hora de Inicio: 20:0
-Hora de Fim: 21:0
+Lista Todas as Aulas: 2
 
-Lista Todas as Aulas: 3
-
-Designacao: Aula Fisica 1
-Docente: Mario
+Designacao: fisica1
+Docente: raul
 Codigo UC: 1111
-Data: 5	5	2020
-Hora de Inicio: 9:30
-Hora de Fim: 10:30
+Data: 1	1	2019
+Hora de Inicio: 9:12
+Hora de Fim: 10:32
 
-Designacao: Aula Fisica 2
-Docente: Mario
+Designacao: a
+Docente: asas
 Codigo UC: 1111
-Data: 6	6	2020
-Hora de Inicio: 10:30
-Hora de Fim: 11:30
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 
-Designacao: Aula Algebra 1
-Docente: Amelia
-Codigo UC: 1234
-Data: 5	5	2020
-Hora de Inicio: 20:0
-Hora de Fim: 21:0
+Lista Todas as Aulas: 2
+
+Designacao: fisica1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:12
+Hora de Fim: 10:32
+
+Designacao: a
+Docente: asas
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
 

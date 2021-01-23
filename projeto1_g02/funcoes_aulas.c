@@ -59,17 +59,27 @@ void pesquisaAula(tipoAula vAulas[], int num){
         printf("\tData: %d/%d/%d\n",vAulas[posAula].data.dia,vAulas[posAula].data.mes,vAulas[posAula].data.ano);
         printf("\tEstado da Aula: %s\n\n",vAulas[posAula].estadoAula);
 
+        if((strcmp(vAulas[posAula].gravacao, "A") != 0) ){
+            printf("\tGravacao: " );
+            if((strcmp(vAulas[posAula].gravacao, "S") == 0)){
+                printf("Sim");
+            } else {
+                printf("Nao");
+            }
+        }
+
+
        if(strcmp(vAulas[posAula].estadoAula, "Agendada") == 0){
             printf("\tAula com estado Agendada. Sem informação adicional.\n");
 
         }else if(strcmp(vAulas[posAula].estadoAula, "A Realizar") == 0){
             printf("\tAula a Decorrer.\n");
 
-            }else{
-                printf("\tEntrou no else\n");
-                //mostrar a quant de estudantes presentes nessa aula
-                //mostrar quant acesso houve ás gravacoes
-            }
+        }else{
+            printf("\tEntrou no else\n");
+            //mostrar a quant de estudantes presentes nessa aula
+            //mostrar quant acesso houve ás gravacoes
+        }
     }
 
 }
@@ -85,6 +95,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0;
     char regimeUc[3];
+    int i, horaTotalvetor=0, numAgendas=0;
     pAula = vAula;
 
     strcpy(regimeUc,vetorUc[posUc].regime);
@@ -108,7 +119,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         //calcula a hora inicio/fim consoante o regime e o tipo de aula
         if(strcmp(regimeUc, "D") == 0){
 
-                printf("Insira as Horas:\n");
+               /* printf("Insira as Horas:\n");
                 dados.hora = lerHora(8,18);
                 hora = dados.hora.h;
                 min = dados.hora.m;
@@ -116,6 +127,42 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
                 hora = (hora*60);  //coloca hora inicio em minutos
                 horaTotal = hora + min;  //soma a hora em mimutis com os minutos
+                */
+
+
+                numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
+
+                //tentar nao dar para inserir hora igual
+                for (i=0; i<numAgendas; i++){
+                        //horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
+                    do{
+                        horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
+                        printf(" Aula all vetor: %d\n",horaTotalvetor);
+
+                        dados.hora = lerHora(8,18);
+
+                        hora = dados.hora.h;
+                        min = dados.hora.m;
+                        printf("\n Inicio da Aula: %d:%d\n",hora,min);
+
+                        horaTotal = (hora*60) + min;
+                        printf(" hora inserida: %d\n",horaTotal);
+                        printf(" Aula all vetor: %d\n",horaTotalvetor);
+
+                        if (horaTotal == horaTotalvetor){
+                            printf("\nJá se encontra uma aula com a hora inserida. Tente novamente.\n");
+                        }
+                        printf(" Aula all vetor: %d\n",horaTotalvetor);
+
+                    }while(horaTotal != horaTotalvetor);
+                }
+
+                printf("\n FIMMMM  Inicio da Aula: %d:%d",hora,min);
+
+
+
+
+
 
                 //calculação da hora de Fim
                 horaTotal = horaTotal + duracaoUc;
@@ -191,11 +238,13 @@ void escreveDadosAulas(tipoAula vAulas){
     printf("\tData: %d/%d/%d\n",vAulas.data.dia, vAulas.data.mes,vAulas.data.ano);
     printf("\tEstado da Aula: %s\n",vAulas.estadoAula);
 
-    printf("\tGravacao: " );
-    if((strcmp(vAulas.gravacao, "S") == 0) ){
-        printf("Sim");
-    } else {
-        printf("Nao");
+    if((strcmp(vAulas.gravacao, "A") != 0) ){
+        printf("\tGravacao: " );
+        if((strcmp(vAulas.gravacao, "S") == 0)){
+            printf("Sim");
+        } else {
+            printf("Nao");
+        }
     }
     printf("\n");
 
@@ -204,7 +253,7 @@ void escreveDadosAulas(tipoAula vAulas){
 void mostrarDadosAula(tipoAula vAulas[], int numAulas) {
     int i;
     if (numAulas == 0) {
-        printf("\nSem dados!");
+        printf("\nSem dados!Não existem Aulas\n");
     }
     else{
         printf("\nListagem de todas as Aulas:\n\n");
@@ -237,42 +286,64 @@ void lerQuantAulasRealizadas(int *quantidade, tipoAula vAulas[], int numAulas){
     *quantidade = conta;
 }
 
+void lerQuantAulasGravadas(int *quantidade, tipoAula vAulas[], int numAulas){
+    int i, conta=0;
+
+    for (i=0; i<numAulas; i++){
+        if (strcmp(vAulas[i].gravacao, "S") == 0){
+            conta++;
+        }
+    }
+    *quantidade = conta;
+}
+
 
 void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
     int i;
 
-    for (i=0; i<numAulas; i++){
-        if (strcmp(vAulas[i].estadoAula, "Agendada") == 0){
-
-            printf("\n\tDescricao: %s\n",vAulas[i].designacao);
-            printf("\tDocente: %s\n",vAulas[i].docente);
-            printf("\tHora: %d:%d as",vAulas[i].hora.h,vAulas[i].hora.m);
-            printf(" %d:%d\n",vAulas[i].horaFim,vAulas[i].minFim);
-            printf("\tData: %d/%d/%d\n",vAulas[i].data.dia, vAulas[i].data.mes,vAulas[i].data.ano);
-            printf("\tEstado da Aula: %s\n",vAulas[i].estadoAula);
-            printf("\n\n");
-
+    if(numAulas == 0){
+        printf("Não existem Aulas.\n");
+     }else{
+        for (i=0; i<numAulas; i++){
+            if (strcmp(vAulas[i].estadoAula, "Agendada") == 0){
+                escreveDadosAulas(vAulas[i]);
+            }else{
+                printf("Não existem Aulas Agendadas\n");
+            }
         }
-    }
+      }
 }
 
 
 void listaAulasDecorrer(tipoAula vAulas[], int numAulas) {
     int i;
 
-    for (i=0; i<numAulas; i++){
-        if (strcmp(vAulas[i].estadoAula, "A decorrer") == 0){
-            escreveDadosAulas(vAulas[i]);
+    if(numAulas == 0){
+        printf("Não existem Aulas.\n");
+     }else{
+
+        for (i=0; i<numAulas; i++){
+            if (strcmp(vAulas[i].estadoAula, "A decorrer") == 0){
+                escreveDadosAulas(vAulas[i]);
+            }else{
+                printf("Não existem Aulas a Decorrer\n");
+            }
         }
-    }
+     }
 }
 
 void listaAulasRealizadas(tipoAula vAulas[], int numAulas) {
     int i;
 
-    for (i=0; i<numAulas; i++){
-        if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
-            escreveDadosAulas(vAulas[i]);
+    if(numAulas == 0){
+        printf("Não existem Aulas.\n");
+    }else{
+        for (i=0; i<numAulas; i++){
+            if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
+                escreveDadosAulas(vAulas[i]);
+            }else{
+                printf("Não existem Aulas Realizadas\n");
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ int main(){
     tipoEstudante vEstudante[MAX_ESTUDANTES];
     tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES];
 
-    int numTotalUc=0, numAula=0, numTotalEstudantes=0, numAulasAssistidas=0, quantAulasAgendadas=0, quantAulasRealizadas=0;
+    int numTotalUc=0, numAula=0, numTotalEstudantes=0, numAulasAssistidas=0, quantAulasAgendadas=0, quantAulasRealizadas=0, quantAulasGravadas=0;
     int codigoUc, numeroEstudante, posicaoUcVetor, posicaoAulaVetor;
     char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala, subMenuEstudante;
     char designacao[80];
@@ -34,10 +34,11 @@ int main(){
 
     lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);
     lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);
+    lerQuantAulasGravadas(&quantAulasGravadas,vAulas,numAula);
 
 
      do{
-        opcao = menu(numTotalUc, quantAulasAgendadas, quantAulasRealizadas);
+        opcao = menu(numTotalUc, quantAulasAgendadas, quantAulasRealizadas, quantAulasGravadas);
         switch(opcao){
             case 'U':   printf("Escolheu a opção U");
                 do{
@@ -180,6 +181,7 @@ int main(){
                                         printf("Escolheu a opção de Começar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         comecarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
+                                        lerQuantAulasGravadas(&quantAulasGravadas,vAulas,numAula);
                                         break;
                                 case 'T':
                                         printf("Escolheu a opção de Terminar Aula\n");

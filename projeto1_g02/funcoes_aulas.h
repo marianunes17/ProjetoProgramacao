@@ -19,6 +19,7 @@ void listaAulasRealizadas(tipoAula vAulas[], int numAulas);
 
 void lerQuantAulasAgendadas(int *quantidade, tipoAula vAulas[], int numAulas);
 void lerQuantAulasRealizadas(int *quantidade, tipoAula vAulas[], int numAulas);
+void lerQuantAulasGravadas(int *quantidade, tipoAula vAulas[], int numAulas);
 
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas, tipoUc vetorUc[]);
 void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);

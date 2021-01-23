@@ -193,13 +193,13 @@ int main(){
                                         printf("Escolheu a opção de Assistir à aula\n");
                                         listaAulasDecorrer(vAulas,numAula); //mostrar todas as aulas que estão a decorrer
                                         lerString("\n\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
-                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, numAulasAssistidas);
+                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numAulasAssistidas);
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, numAulasAssistidas);
+                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numAulasAssistidas);
                                         break;
                                 case 'V':
                                         break;
@@ -263,12 +263,13 @@ int main(){
                         printf("\tEscolheu de Gravar Dados");
                         gravaFicheiroBin(vAulas,numAula);
                         gravarUcBinario(vetorUc, &numTotalUc);
-                        gravarEstudantesBinario(vEstudante, &numTotalEstudantes);
+                        gravarEstudantesBinario(vEstudante, numTotalEstudantes);
                         printf("\tAs alterações foram gravadas!");
                         break;
             case 'B':
                         printf("Escolheu a opção F \n Fim do Programa");
                         listaDadosAulasAssistidas(vAulasAssistidas, numAulasAssistidas);
+                        printf("Aul: %d", numAulasAssistidas);
                         break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");

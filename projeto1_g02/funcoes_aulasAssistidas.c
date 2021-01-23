@@ -12,38 +12,31 @@
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
-tipoAulasAssistidas ledadosAulasAssistidas(int posicaoEstudante, char designacaoAula[], char acesso[]){
-
-    tipoAulasAssistidas vAulasAssistidas;
-
-    vAulasAssistidas.numEstudante = posicaoEstudante;
-    strcmp(designacaoAula, vAulasAssistidas.designacaoAula);
-    strcmp(acesso, vAulasAssistidas.tipoAcesso);
-}
 
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas){
     printf("\n\tNumero de Estudante: %d", vAulasAssistidas.numEstudante );
     printf("\n\tDesignacao da Aula: %s", vAulasAssistidas.designacaoAula);
-    printf("\n\tTipo de acesso: %s", vAulasAssistidas.tipoAcesso);
+    printf("\n\tTipo de acesso: %s\n", vAulasAssistidas.tipoAcesso);
 }
 
 
 
 void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES], int numAulasAssistidas){
     int i;
-    for (i=0; i<=numAulasAssistidas; i++) {
+    for (i=0; i<numAulasAssistidas; i++) {
         escreveDadosAulasAssistidas(vAulasAssistidas[i]);
-
     }
 }
 
-void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES], int posicaoEstudante, char designacaoAula[], char acesso[], int *numAulasAssistidas){
-    tipoAulasAssistidas dados;
+void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES], int posicaoEstudante, char designacao[], char acesso[], int *numAulasAssistidas){
 
+    vAulasAssistidas->numEstudante = posicaoEstudante;
+    strcpy (vAulasAssistidas->designacaoAula, designacao);
+    strcpy (vAulasAssistidas->tipoAcesso, acesso);
 
-    dados=ledadosAulasAssistidas(posicaoEstudante, designacaoAula, acesso);
-   vAulasAssistidas[*numAulasAssistidas]=dados;
     (*numAulasAssistidas)++;
+
+    printf("Aul: %d", *numAulasAssistidas);
      printf("\n\tFoi acrescentado um novo Estudante");
 }
 
@@ -63,14 +56,15 @@ int procuraAulaAssistida(tipoEstudante vEstudante[], int numTotalEstudantes, int
 }
 
 
-void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int numAulasAssistidas){
+void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numAulasAssistidas){
    int posicaoAula, posicaoEstudante, numeroEstudante;
-   char acesso[] = "aula";
+   char acesso[12];
+   strcpy(acesso, "aula");
 
     if(numTotalAulas == 0 ){
         printf("Não existem Aulas. \n");
     } else {
-        posicaoAula=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
+        posicaoAula=procuraAulaNome(vAulas, numTotalAulas,  designacaoAula);
         if(posicaoAula == -1){
             printf ("A designação da aula não existe");
         } else {
@@ -87,7 +81,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
 
                     vAulas[posicaoAula].numeroEstudante = vEstudante[posicaoAula].numeroEstudante;
 
-                    acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &numAulasAssistidas);
+                    acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasAssistidas));
                 }
             } else{
                 printf("A aula não esta a decorrer");
@@ -97,7 +91,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
     }
 }
 
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int numAulasAssistidas){
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numAulasAssistidas){
    int posicaoAula, posicaoEstudante, numeroEstudante;
    char acesso[] = "gravacao";
 
@@ -118,7 +112,7 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
 
                     } else {
                         printf ("Está a assitir à gravação da aula de %s", designacaoAula);
-                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &numAulasAssistidas);
+                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasAssistidas));
                     }
                 } else{
                     printf("A aula não foi gravada");

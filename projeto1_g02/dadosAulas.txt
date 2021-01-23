@@ -1,80 +1,18 @@
-Lista Todas as Aulas: 2
+Lista Todas as Aulas: 1
 
-Designacao: fisica1
+Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
-Hora de Inicio: 9:12
-Hora de Fim: 10:32
+Hora de Inicio: 1252:32766
+Hora de Fim: 1:20
 
-Designacao: a
-Docente: asas
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:9
-Hora de Fim: 10:29
+Lista Todas as Aulas: 1
 
-Lista Todas as Aulas: 2
-
-Designacao: fisica1
+Designacao: fisica
 Docente: raul
 Codigo UC: 1111
 Data: 1	1	2019
-Hora de Inicio: 9:12
-Hora de Fim: 10:32
-
-Designacao: a
-Docente: asas
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:9
-Hora de Fim: 10:29
-
-Lista Todas as Aulas: 2
-
-Designacao: fisica1
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 9:12
-Hora de Fim: 10:32
-
-Designacao: a
-Docente: asas
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:9
-Hora de Fim: 10:29
-
-Lista Todas as Aulas: 2
-
-Designacao: fisica1
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 9:12
-Hora de Fim: 10:32
-
-Designacao: a
-Docente: asas
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:9
-Hora de Fim: 10:29
-
-Lista Todas as Aulas: 2
-
-Designacao: fisica1
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 9:12
-Hora de Fim: 10:32
-
-Designacao: a
-Docente: asas
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:9
-Hora de Fim: 10:29
+Hora de Inicio: 1252:32766
+Hora de Fim: 1:20
 

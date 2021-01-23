@@ -16,9 +16,9 @@ tipoAulasAssistidas ledadosAulasAssistidas(int posicaoEstudante, char designacao
 
     tipoAulasAssistidas vAulasAssistidas;
 
-    vAulasAssistidas.numEstudante = posicaoEstudante;
-    strcmp(designacaoAula, vAulasAssistidas.designacaoAula);
-    strcmp(acesso, vAulasAssistidas.tipoAcesso);
+    vAulasAssistidas.numEstudante = posicaoEstudante; //passar mesmo o numero do estudante
+    strcpy(designacaoAula, vAulasAssistidas.designacaoAula); //tem que ser copy string
+    strcpy(acesso, vAulasAssistidas.tipoAcesso); //tem que ser copy string
 }
 
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas){
@@ -87,6 +87,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
 
                     vAulas[posicaoAula].numeroEstudante = vEstudante[posicaoAula].numeroEstudante;
 
+                    //passar mesmo o numero de estudante em vez da posição
                     acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &numAulasAssistidas);
                 }
             } else{
@@ -138,7 +139,11 @@ void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
     for (i=0; i<numAulas; i++){
         if ((strcmp(vAulas[i].estadoAula, "Realizada") == 0) && (strcmp(vAulas[i].gravacao, "S") == 0)){
 
-            printf("\n\tDescricao: %s\n",vAulas[i].designacao);
+            // dá para usar a minha função
+            escreveDadosAulas(vAulas[i]);
+
+
+            /*printf("\n\tDescricao: %s\n",vAulas[i].designacao);
             printf("\tDocente: %s\n",vAulas[i].docente);
             printf("\tHora: %d:%d às",vAulas[i].hora.h,vAulas[i].hora.m);
             printf(" %d:%d\n",vAulas[i].horaFim,vAulas[i].minFim);
@@ -148,9 +153,9 @@ void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
             if((strcmp(vAulas[i].gravacao, "S") == 0)){
                 printf("Sim");
             }
-            printf("\n\n");
+            printf("\n\n");*/
 
-            }
+        }
     }
 }
 

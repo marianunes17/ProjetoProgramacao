@@ -1,7 +1,7 @@
 #ifndef FUNCOES_AULASASSISTIDAS_H_INCLUDED
 #define FUNCOES_AULASASSISTIDAS_H_INCLUDED
 
-#include "funcoes_aulasAssistidas.h"
+#include "constantes.h"
 
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas);
 void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas);
@@ -12,6 +12,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
 void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numAulasAssistidas);
 
 void listaAulasComGravacao(tipoAula vAulas[], int numAulas);
+
 
 void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas);
 void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasAssistidas);

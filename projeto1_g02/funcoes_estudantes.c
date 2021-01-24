@@ -66,7 +66,7 @@ int procuraEstudante(tipoEstudante vEstudante[], int numTotalEstudantes, int num
 
 void gravarEstudantesTexto(tipoEstudante vEstudante[], int numTotalEstudante){
      FILE *ficheiro;
-        int i;
+        int i, erro;
 
         ficheiro=fopen("infoEstudante.txt", "a");
         if(ficheiro==NULL){
@@ -79,13 +79,17 @@ void gravarEstudantesTexto(tipoEstudante vEstudante[], int numTotalEstudante){
                 fprintf(ficheiro, "\nNome: %s", vEstudante[i].nome);
                 fprintf(ficheiro, "\nRegime: %s\n", vEstudante[i].regime);
             }
-            fclose(ficheiro);
+            erro = fclose(ficheiro);
+            if (erro != 0){
+                printf ("Erro %d ao fechar ficheiro", erro);
+            }
         }
 }
 
 
 void gravarEstudantesBinario(tipoEstudante vEstudante[], int numTotalEstudante){
      FILE *ficheiro;
+     int erro;
 
         ficheiro=fopen("infoEstudante.dat", "wb");
         if(ficheiro==NULL){
@@ -93,13 +97,17 @@ void gravarEstudantesBinario(tipoEstudante vEstudante[], int numTotalEstudante){
         } else{
             fwrite(&numTotalEstudante,sizeof(int),1,ficheiro);
             fwrite(vEstudante,sizeof(tipoEstudante),numTotalEstudante,ficheiro);
-            fclose(ficheiro);
+
+            erro = fclose(ficheiro);
+            if (erro != 0){
+                printf ("Erro %d ao fechar ficheiro", erro);
+            }
         }
 }
 
 void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante){
     FILE *ficheiro;
-    int i;
+    int i, erro;
 
     ficheiro=fopen("infoEstudante.txt", "r");
     if(ficheiro==NULL){
@@ -110,7 +118,10 @@ void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante){
             fgets(vEstudante[i].nome,100,ficheiro);
             fgets(vEstudante[i].regime,3,ficheiro);
         }
-        fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d ao fechar ficheiro", erro);
+        }
     }
 }
 
@@ -118,6 +129,7 @@ void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante){
 
 void leEstudantesBinario(tipoEstudante vEstudante[], int *numTotalEstudante){
     FILE *ficheiro;
+    int erro;
 
         ficheiro=fopen("infoEstudante.dat", "rb");
         if(ficheiro==NULL){
@@ -126,7 +138,10 @@ void leEstudantesBinario(tipoEstudante vEstudante[], int *numTotalEstudante){
             fread(&(*numTotalEstudante),sizeof(int),1,ficheiro);
             fread(vEstudante,sizeof(tipoEstudante),*numTotalEstudante,ficheiro);
 
-            fclose(ficheiro);
+            erro = fclose(ficheiro);
+            if (erro != 0){
+                printf ("Erro %d ao fechar ficheiro", erro);
+            }
         }
 }
 

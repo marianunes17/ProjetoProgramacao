@@ -136,7 +136,7 @@ void pesquisaCodigoUc(tipoUc vetorUc[], int numTotalUc){
 
 void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
     FILE *ficheiro;
-    int i;
+    int i, erro;
 
     ficheiro=fopen("infoUc.txt", "a+");
 
@@ -158,14 +158,17 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
             fprintf(ficheiro, "\nQuantidade total de horas: %.d\n", vetorUc[i].quantidadeHoras);
             fprintf(ficheiro, "\nQuantidade de aulas agendadas: %.d", vetorUc[i].quantidadeAulasAgendadas);
         }
-        fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d ao fechar ficheiro", erro);
+        }
     }
 }
 
 
 void gravarUcBinario(tipoUc vetorUc[], int *numTotalUc){
      FILE *ficheiro;
-     int gravarDados;
+     int gravarDados, erro;
 
         ficheiro=fopen("infoUc.dat", "wb");
         if(ficheiro==NULL){
@@ -176,13 +179,16 @@ void gravarUcBinario(tipoUc vetorUc[], int *numTotalUc){
 
             printf("\n uc escritas gravadas bin = %d \n", gravarDados);
 
-            fclose(ficheiro);
+            erro = fclose(ficheiro);
+            if (erro != 0){
+                printf ("Erro %d ao fechar ficheiro", erro);
+            }
         }
 }
 
 void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
     FILE *ficheiro;
-    int i;
+    int i, erro;
 
     ficheiro=fopen("infoUc.txt", "r");
     if(ficheiro==NULL){
@@ -201,13 +207,17 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
             fscanf(ficheiro, "%d", vetorUc[i].quantidadeHoras);
             fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
             }
-        fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d ao fechar ficheiro", erro);
+        }
     }
 }
 
 
 void leFicheiroUcBinario(tipoUc vetorUc[], int *numTotalUc){
     FILE *ficheiro;
+    int erro;
 
         ficheiro=fopen("infoUc.dat", "rb");
         if(ficheiro==NULL){
@@ -216,7 +226,10 @@ void leFicheiroUcBinario(tipoUc vetorUc[], int *numTotalUc){
             fread(&(*numTotalUc),sizeof(int),1,ficheiro);
             fread(vetorUc,sizeof(tipoUc),*numTotalUc,ficheiro);
 
-            fclose(ficheiro);
+            erro = fclose(ficheiro);
+            if (erro != 0){
+                printf ("Erro %d ao fechar ficheiro", erro);
+            }
         }
 }
 

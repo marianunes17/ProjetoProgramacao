@@ -95,7 +95,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0;
     char regimeUc[3];
-    int i, horaTotalvetor=0, numAgendas=0, dataInserida, dataVetor;
+    int i, horaTotalvetor=0, numAgendas=0;
     pAula = vAula;
 
     strcpy(regimeUc,vetorUc[posUc].regime);
@@ -131,50 +131,30 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
 
                 numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
-                dataInserida = (dados.data.ano*10000)+(dados.data.mes*100)+dados.data.dia;
 
                 //tentar nao dar para inserir hora igual
                 for (i=0; i<numAgendas; i++){
+                        //horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
+                    do{
+                        horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
+                        printf(" Aula all vetor: %d\n",horaTotalvetor);
 
-                        dataVetor = (vAula[i].data.ano*10000)+(vAula[i].data.mes*100)+vAula[i].data.dia;
+                        dados.hora = lerHora(8,18);
 
-                        if(dataInserida == dataVetor){
+                        hora = dados.hora.h;
+                        min = dados.hora.m;
+                        printf("\n Inicio da Aula: %d:%d\n",hora,min);
 
-                            horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
+                        horaTotal = (hora*60) + min;
+                        printf(" hora inserida: %d\n",horaTotal);
+                        printf(" Aula all vetor: %d\n",horaTotalvetor);
 
-                            do{
-                                //horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
-                                printf("\n antes Inicio da Aula: %d:%d\n",hora,min);
-                                printf(" Aula all vetor: %d\n",horaTotalvetor);
-
-                                dados.hora = lerHora(8,18);
-
-                                hora = dados.hora.h;
-                                min = dados.hora.m;
-                                printf("\n Inicio da Aula: %d:%d\n",hora,min);
-
-                                horaTotal = (hora*60) + min;
-                                printf(" hora inserida: %d\n",horaTotal);
-                                printf(" Aula all vetor: %d\n",horaTotalvetor);
-
-                                if (horaTotal == horaTotalvetor){
-                                    printf("\nJá se encontra uma aula com a hora inserida. Tente novamente.\n");
-                                }
-                                printf(" Aula all vetor: %d\n",horaTotalvetor);
-
-                            }while(horaTotal == horaTotalvetor);
-
+                        if (horaTotal == horaTotalvetor){
+                            printf("\nJá se encontra uma aula com a hora inserida. Tente novamente.\n");
                         }
-                        else{
-                            printf(" Aula else hora \n");
+                        printf(" Aula all vetor: %d\n",horaTotalvetor);
 
-                            dados.hora = lerHora(8,18);
-                            hora = dados.hora.h;
-                            min = dados.hora.m;
-                            printf("\n Inicio da Aula: %d:%d",hora,min);
-
-                        }
-
+                    }while(horaTotal != horaTotalvetor);
                 }
 
                 printf("\n FIMMMM  Inicio da Aula: %d:%d",hora,min);

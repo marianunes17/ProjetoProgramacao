@@ -7,7 +7,6 @@
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
 #include "funcoes_aulas.h"
-#include "funcoes_aulasAssistidas.h"
 #include "funcoes_uc.h"
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
@@ -28,16 +27,16 @@ void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANT
     }
 }
 
-void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES], int posicaoEstudante, char designacao[], char acesso[], int *numAulasAssistidas){
+void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES], int numeroEstudante, char designacao[], char acesso[], int *numAulasAssistidas){
 
-    vAulasAssistidas->numEstudante = posicaoEstudante;
+    vAulasAssistidas->numEstudante = numeroEstudante; //passar o numero de estudante e não a posição
     strcpy (vAulasAssistidas->designacaoAula, designacao);
     strcpy (vAulasAssistidas->tipoAcesso, acesso);
 
     (*numAulasAssistidas)++;
 
     printf("Aul: %d", *numAulasAssistidas);
-     printf("\n\tFoi acrescentado um novo Estudante");
+    printf("\n\tFoi acrescentado um novo Estudante à Aula");
 }
 
 
@@ -79,7 +78,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                 } else {
                     printf ("Está a assitir à aula de %s", designacaoAula);
 
-                    vAulas[posicaoAula].numeroEstudante = vEstudante[posicaoAula].numeroEstudante;
+                    vAulas[posicaoAula].numeroEstudante = vEstudante[posicaoAula].numeroEstudante; // para que serve
 
                     acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasAssistidas));
                 }
@@ -102,8 +101,8 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
         if(posicaoAula == -1){
             printf ("A designação da aula não existe");
         } else {
-           if( (strcmp(vAulas[posicaoAula].estadoAula, "Terminada")==0) ){
-               if (strcmp(vAulas[posicaoAula].gravacao,"Sim") == 0) {
+           if( (strcmp(vAulas[posicaoAula].estadoAula, "Realizada")==0) ){ //já nao é teminada
+               if (strcmp(vAulas[posicaoAula].gravacao,"S") == 0) {
                     numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
                     posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
@@ -150,24 +149,31 @@ void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
 
 
 void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numTotalAulas){
- FILE *ficheiro;
+    FILE *ficheiro;
+    int erro;
 
-        ficheiro=fopen("infoAulasEstudante.dat", "wb");
-        if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
-        } else{
-            fwrite(&numTotalEstudantes,sizeof(int),1,ficheiro);
-            fwrite(vEstudante,sizeof(tipoEstudante),numTotalEstudantes,ficheiro);
+    ficheiro=fopen("infoAulasEstudante.dat", "wb");
+    if(ficheiro==NULL){
+        printf("\tErro ao abrir o ficheiro. \n");
+    } else{
+        fwrite(&numTotalEstudantes,sizeof(int),1,ficheiro);
+        fwrite(vEstudante,sizeof(tipoEstudante),numTotalEstudantes,ficheiro);
 
-            fwrite(&numTotalAulas,sizeof(int),1,ficheiro);
-            fwrite(vAula,sizeof(tipoAula),numTotalAulas,ficheiro);
-            fclose(ficheiro);
+        fwrite(&numTotalAulas,sizeof(int),1,ficheiro);   //acho que não é necessario repetir codigo
+        fwrite(vAula,sizeof(tipoAula),numTotalAulas,ficheiro);
+
+        //fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d ao fechar ficheiro", erro);
         }
+    }
 }
 
 
 void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
- FILE *ficheiro;
+    FILE *ficheiro;
+    int erro;
 
     ficheiro=fopen("infoAulasEstudante.dat", "rb");
     if(ficheiro==NULL){
@@ -176,10 +182,14 @@ void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, t
         fread(&(*numTotalEstudantes),sizeof(int),1,ficheiro);
         fread(vEstudante,sizeof(tipoEstudante),*numTotalEstudantes,ficheiro);
 
-        fread(&(*numTotalAulas),sizeof(int),1,ficheiro);
+        fread(&(*numTotalAulas),sizeof(int),1,ficheiro);   //acho que não é necessario repetir codigo
         fread(vAula,sizeof(tipoEstudante),*numTotalAulas,ficheiro);
 
-        fclose(ficheiro);
+        //fclose(ficheiro);
+        erro = fclose(ficheiro);
+        if (erro != 0){
+            printf ("Erro %d ao fechar ficheiro", erro);
+        }
     }
 }
 

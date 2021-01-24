@@ -10,7 +10,6 @@
 #include "funcoes_uc.h"
 #include "funcoes_aulas.h"
 #include "funcoes_aulasAssistidas.h"
-#include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
 
@@ -24,13 +23,15 @@ int main(){
     tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES];
 
     int numTotalUc=0, numAula=0, numTotalEstudantes=0, numAulasAssistidas=0, quantAulasAgendadas=0, quantAulasRealizadas=0, quantAulasGravadas=0;
-    int codigoUc, numeroEstudante, posicaoUcVetor, posicaoAulaVetor;
+    int codigoUc, numeroEstudante, posicaoUcVetor;
     char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala, subMenuEstudante;
     char designacao[80];
 
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
     leEstudantesBinario(vEstudante, &numTotalEstudantes);
+
+    leAulasEstudantesBin(vEstudante,numTotalEstudantes,vAulas,numAula);
 
     lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);
     lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);

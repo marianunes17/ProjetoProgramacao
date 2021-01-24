@@ -11,7 +11,6 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
 
 void listaAulasComGravacao(tipoAula vAulas[], int numAulas);
 
-void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas);
 void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numTotalAulas);
 void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, int numeroEstudante, tipoAula vAula[], int numTotalAulas, int posicaoAula);
 void leAulasEstudantesTxt(tipoEstudante vEstudante[], int *numTotalEstudantes, int *posicaoEstudante, tipoAula vAula[], int *numTotalAulas, int posicaoAula);

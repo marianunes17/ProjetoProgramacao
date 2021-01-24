@@ -39,8 +39,8 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
 }
 
 
-void pesquisaAula(tipoAula vAulas[], int num){
-    int posAula;
+void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas){
+    int posAula, posRealizada;
     char designacao[20];
 
     lerString("Designacao da Aula a procurar: ", designacao, MAX_STRING);
@@ -72,16 +72,22 @@ void pesquisaAula(tipoAula vAulas[], int num){
        if(strcmp(vAulas[posAula].estadoAula, "Agendada") == 0){
             printf("\tAula com estado Agendada. Sem informação adicional.\n");
 
-        }else if(strcmp(vAulas[posAula].estadoAula, "A Realizar") == 0){
-            printf("\tAula a Decorrer.\n");
-
         }else{
-            printf("\tEntrou no else\n");
-            //mostrar a quant de estudantes presentes nessa aula
-            //mostrar quant acesso houve ás gravacoes
+            if(strcmp(vAulas[posAula].estadoAula, "A Realizar") == 0){
+                printf("\tAula a Decorrer.\n");
+            } else {
+                if(strcmp(vAulas[posAula].estadoAula, "Realizada") == 0){
+                    posRealizada=procuraAulaAssistida(vAulasAssistidas, numAulasAssistidas, designacao);
+                    printf("\n\npos: %d", posRealizada);
+                } else {
+                    printf("\tEntrou no else\n");
+                    //mostrar a quant de estudantes presentes nessa aula
+                    //mostrar quant acesso houve ás gravacoes
+                }
+            }
+
         }
     }
-
 }
 
 void calculaHora( int *horaF, int *minF){

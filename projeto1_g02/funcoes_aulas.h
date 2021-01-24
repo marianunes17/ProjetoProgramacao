@@ -11,7 +11,7 @@ void mostrarDadosAula(tipoAula vAulas[], int numAula);
 void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);
 void escreveDadosAulas(tipoAula vAulas[]);
 void calculaHora(int *horaF, int *minF);
-void pesquisaAula(tipoAula vAulas[], int num);
+void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas);
 
 void listaAulasAgendadas(tipoAula vAulas[], int numAulas);
 void listaAulasDecorrer(tipoAula vAulas[], int numAulas);

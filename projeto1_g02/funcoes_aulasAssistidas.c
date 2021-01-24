@@ -47,17 +47,17 @@ void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAu
     }
 }
 
-int procuraAulaAssistida(tipoEstudante vEstudante[], int numTotalEstudantes, int numEstudante){
-    int i, posicao;
-    posicao = -1;
+int procuraAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[]){
+  int i, contador = 0;
 
-    for (i=0; i<numTotalEstudantes; i++){
-        if (vEstudante[i].numeroEstudante == numEstudante){
-            posicao = i;
-            i = numTotalEstudantes;
+
+    for (i=0; i<=numAulasAssistidas; i++){
+        if (strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0){  // Elemento encontrado
+            contador++;       // guarda posição de numero em vAula
         }
     }
-    return posicao;
+
+    return contador;
 }
 
 

@@ -47,8 +47,8 @@ void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAu
     }
 }
 
-int procuraAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[]){
-  int i, contador = 0;
+int procuraAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
+  int i;
 
 
     for (i=0; i<=numAulasAssistidas; i++){

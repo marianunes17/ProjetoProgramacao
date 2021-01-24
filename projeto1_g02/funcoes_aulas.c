@@ -42,6 +42,9 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
 void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas){
     int posAula, posRealizada;
     char designacao[20];
+  int contadorAulas = 0;
+  int contadorGravacoes = 0;
+
 
     lerString("Designacao da Aula a procurar: ", designacao, MAX_STRING);
     posAula = procuraAulaNome(vAulas,num,designacao);
@@ -77,8 +80,9 @@ void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int
                 printf("\tAula a Decorrer.\n");
             } else {
                 if(strcmp(vAulas[posAula].estadoAula, "Realizada") == 0){
-                    posRealizada=procuraAulaAssistida(vAulasAssistidas, numAulasAssistidas, designacao);
-                    printf("\n\npos: %d", posRealizada);
+                    posRealizada=procuraAulaAssistida(vAulasAssistidas, numAulasAssistidas, designacao, &contadorAulas, &contadorGravacoes);
+
+                    printf("\n\nNumero de alunos que assistiram as aulas: %d", posRealizada);
                 } else {
                     printf("\tEntrou no else\n");
                     //mostrar a quant de estudantes presentes nessa aula

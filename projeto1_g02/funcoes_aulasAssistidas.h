@@ -3,6 +3,7 @@
 
 #include "constantes.h"
 
+tipoAulasAssistidas leDadosAulaAssistidas(int numeroEstudante, char designacao[], char acesso[]);
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas);
 void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas);
 void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int posicaoEstudante, char designacaoAula[], char acesso[], int *numAulasAssistidas);

@@ -13,10 +13,7 @@ tipoUc leDadosUc(int codigoUc){
     tipoUc vetorUc;
 
     vetorUc.codigo = codigoUc;
-
     lerString("\tDesignacao: ", vetorUc.designacao,MAX_STRING);
-
-
 
     do{
         lerString("\tTipo de Uc (S - Obrigatorio, N - Opcional): ", vetorUc.tipoDeUc,3);
@@ -36,12 +33,8 @@ tipoUc leDadosUc(int codigoUc){
     } while( strcmp(vetorUc.regime, "D") && strcmp(vetorUc.regime, "d") && strcmp(vetorUc.regime, "PL") && strcmp(vetorUc.regime, "pl"));
 
     vetorUc.quantidadeTotalHoras = lerInteiro("\tTotal de horas prevista: ", 30, 100);
-
-
     vetorUc.duracao = lerInteiro("\tDuração de cada aula(em minutos): ", 60, 180);
-
     vetorUc.quantidadeAulas = ((vetorUc.quantidadeTotalHoras)/(vetorUc.duracao/60));
-
     vetorUc.quantidadeHoras = vetorUc.quantidadeTotalHoras ;
 
     vetorUc.quantidadeAulasAgendadas = 0;

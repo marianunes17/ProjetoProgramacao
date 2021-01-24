@@ -1,133 +1,17 @@
-Nome estudante: 0
-Numero: 
+Total Numero Alunos a assistir às aulas: 1
+Numero estudante: 1111
+Designacao Aula: fisica
 
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
+Acesso: aula
 
-Nome estudante: 1111
-Numero: Ana
+Total Numero Alunos a assistir às aulas: 2
+Numero estudante: 1111
+Designacao Aula: fisica
 
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
+Acesso: aula
 
-Nome estudante: 0
-Numero: 
+Numero estudante: 1234
+Designacao Aula: fisica1
 
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1234
-Numero: rui
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1234
-Numero: rui
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 0
-Numero: 
-
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
-
-Nome estudante: 1234
-Numero: rui
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1234
-Numero: rui
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 0
-Numero: 
-
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
-
-Nome estudante: 0
-Numero: 
-
-Data: 0	0	0
-Hora de Inicio: 0:0
-Hora de Fim: 0:0
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1234
-Numero: rui
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Nome estudante: 1111
-Numero: Ana
-
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
+Acesso: gravacao
 

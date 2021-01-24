@@ -264,6 +264,7 @@ int main(){
                         gravaFicheiroBin(vAulas,numAula);
                         gravarUcBinario(vetorUc, &numTotalUc);
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
+                        gravaAulasEstudantesBin(vAulasAssistidas, numAulasAssistidas);
                         printf("\tAs alterações foram gravadas!");
                         break;
             case 'B':

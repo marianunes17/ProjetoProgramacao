@@ -120,22 +120,22 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         if(strcmp(regimeUc, "D") == 0){
 
 
-
-                /*dados.hora = lerHora(8,18);
+                printf("Insira as Horas:\n");
+                dados.hora = lerHora(8,18);
                 hora = dados.hora.h;
                 min = dados.hora.m;
                 printf("\n Inicio da Aula: %d:%d",hora,min);
 
                 hora = (hora*60);  //coloca hora inicio em minutos
                 horaTotal = hora + min;  //soma a hora em mimutis com os minutos
-                */
 
 
 
 
 
 
-                numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
+
+                /*numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
                 dataInserida = (dados.data.ano*10000)+(dados.data.mes*100)+dados.data.dia;
 
                 if(numAgendas > 0){
@@ -201,12 +201,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
                     hora = (hora*60);  //coloca hora inicio em minutos
                     horaTotal = hora + min;  //soma a hora em mimutis com os minutos
-                }
-
-
-
-
-
+                }*/
 
 
 

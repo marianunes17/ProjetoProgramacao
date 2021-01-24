@@ -52,15 +52,13 @@ int procuraAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int numAulasAss
 
     for (i=0; i<=numAulasAssistidas; i++){
         if (strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0){  // Elemento encontrado
-            if(strcmp(vAulasAssistidas[i].tipoAcesso, "aula") == 0){
-                *contadorAulas++;
+            if(strcmp(vAulasAssistidas[i].tipoAcesso, "gravacao") == 0){
+                *contadorGravacoes++;
             } else {
-                if(strcmp(vAulasAssistidas[i].tipoAcesso, "gravacao") == 0){
-                    *contadorGravacoes++;
+                if(strcmp(vAulasAssistidas[i].tipoAcesso, "aula") == 0){
+                    *contadorAulas++;
                 }
             }
-            printf("contador Aulas", *contadorAulas);
-            printf("contador Gravacoes", *contadorGravacoes);
         }
     }
 }

@@ -15,3 +15,19 @@ Designacao Aula: fisica1
 
 Acesso: gravacao
 
+Total Numero Alunos a assistir às aulas: 3
+Numero estudante: 1111
+Designacao Aula: fisica
+
+Acesso: aula
+
+Numero estudante: 1234
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica
+
+Acesso: aula
+

@@ -42,8 +42,8 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
 void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas){
     int posAula, posRealizada;
     char designacao[20];
-  int contadorAulas = 0;
-  int contadorGravacoes = 0;
+    int contadorAulas = 0;
+    int contadorGravacoes = 0;
 
 
     lerString("Designacao da Aula a procurar: ", designacao, MAX_STRING);
@@ -51,8 +51,7 @@ void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int
 
     if(posAula == -1){
         printf("Aula inserida não existe");
-    }
-    else{
+    } else{
         //apresnetar os dados da aula selecionada
         printf("\n\tDescricao: %s\n",vAulas[posAula].designacao);
         printf("\tDocente: %s\n",vAulas[posAula].docente);
@@ -64,34 +63,27 @@ void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int
 
         if((strcmp(vAulas[posAula].gravacao, "A") != 0) ){
             printf("\tGravacao: " );
-            if((strcmp(vAulas[posAula].gravacao, "S") == 0)){
+            if( (strcmp(vAulas[posAula].gravacao, "S") == 0) ){
                 printf("Sim");
             } else {
                 printf("Nao");
             }
         }
 
+        if( (strcmp(vAulas[posAula].estadoAula, "Realizada") == 0) ){
+            posRealizada=procuraAulaAssistida(vAulasAssistidas, numAulasAssistidas, designacao, &contadorAulas, &contadorGravacoes);
 
-       if(strcmp(vAulas[posAula].estadoAula, "Agendada") == 0){
-            printf("\tAula com estado Agendada. Sem informação adicional.\n");
-
-        }else{
-            if(strcmp(vAulas[posAula].estadoAula, "A Realizar") == 0){
-                printf("\tAula a Decorrer.\n");
+            printf("\n\nNumero de alunos que assistiram as aulas: %d", posRealizada);
+            printf("\n\ncontador Aulas: %d", contadorAulas);
+            printf("\n\ncontador Gravacoes: %d", contadorGravacoes);
+        } else {
+           if(strcmp(vAulas[posAula].estadoAula, "Agendada") == 0){
+                printf("\tAula com estado Agendada. Sem informação adicional.\n");
             } else {
-                if(strcmp(vAulas[posAula].estadoAula, "Realizada") == 0){
-                    posRealizada=procuraAulaAssistida(vAulasAssistidas, numAulasAssistidas, designacao, &contadorAulas, &contadorGravacoes);
-
-                    printf("\n\nNumero de alunos que assistiram as aulas: %d", posRealizada);
-                    printf("\n\ncontador Aulas: %d", contadorAulas);
-                    printf("\n\ncontador Gravacoes: %d", contadorGravacoes);
-                } else {
-                    printf("\tEntrou no else\n");
-                    //mostrar a quant de estudantes presentes nessa aula
-                    //mostrar quant acesso houve ás gravacoes
+                if(strcmp(vAulas[posAula].estadoAula, "A decorrer") == 0){
+                    printf("\tAula a Decorrer.\n");
                 }
             }
-
         }
     }
 }

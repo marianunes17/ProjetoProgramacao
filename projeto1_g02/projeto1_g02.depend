@@ -117,3 +117,91 @@
 	"funcoes_estudantes.h"
 	"funcoes_menus.h"
 
+1611504728 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<locale.h>
+	"constantes.h"
+	"funcoes_auxiliares.h"
+	"funcoes_aulas.h"
+	"funcoes_uc.h"
+	"funcoes_estudantes.h"
+	"funcoes_menus.h"
+
+1611486696 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\constantes.h
+
+1610382236 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_auxiliares.h
+	"constantes.h"
+
+1611506530 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulas.h
+	"constantes.h"
+
+1611144479 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_uc.h
+	"constantes.h"
+
+1611421222 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estudantes.h
+	"constantes.h"
+
+1611438204 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_menus.h
+	"constantes.h"
+
+1611418769 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_auxiliares.c
+	<stdio.h>
+	<string.h>
+	"funcoes_auxiliares.h"
+
+1611487384 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estudantes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<locale.h>
+	"constantes.h"
+	"funcoes_auxiliares.h"
+	"funcoes_aulas.h"
+	"funcoes_uc.h"
+	"funcoes_menus.h"
+
+1611438204 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_menus.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<locale.h>
+	"constantes.h"
+	"funcoes_menus.h"
+	"funcoes_auxiliares.h"
+	"funcoes_uc.h"
+	"funcoes_aulas.h"
+
+1611490417 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_uc.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<locale.h>
+	"constantes.h"
+	"funcoes_auxiliares.h"
+	"funcoes_menus.h"
+
+1611506530 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<locale.h>
+	"constantes.h"
+	"funcoes_auxiliares.h"
+	"funcoes_estudantes.h"
+	"funcoes_uc.h"
+	"funcoes_aulas.h"
+	"funcoes_aulasAssistidas.h"
+	"funcoes_estatistica.h"
+	"funcoes_menus.h"
+
+1611501641 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.h
+	"constantes.h"
+
+1611506530 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.h
+

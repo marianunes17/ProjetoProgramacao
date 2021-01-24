@@ -47,18 +47,27 @@ void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAu
     }
 }
 
-int procuraAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
+
+void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
   int i;
 
     for (i=0; i<=numAulasAssistidas; i++){
-        if (strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0){  // Elemento encontrado
-            if(strcmp(vAulasAssistidas[i].tipoAcesso, "gravacao") == 0){
-                *contadorGravacoes++;
-            } else {
-                if(strcmp(vAulasAssistidas[i].tipoAcesso, "aula") == 0){
-                    *contadorAulas++;
-                }
-            }
+        if(strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0 && strcmp(vAulasAssistidas[i].tipoAcesso, "aula") == 0){
+            (*contadorAulas)++;
+
+            printf("\t\t %d\n", vAulasAssistidas[i].numEstudante);
+        }
+    }
+}
+
+
+void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
+  int i;
+
+    for (i=0; i<=numAulasAssistidas; i++){
+        if (strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0 && strcmp(vAulasAssistidas[i].tipoAcesso, "gravacao") == 0){
+            (*contadorGravacoes)++;
+            printf("\t\t %d\n", vAulasAssistidas[i].numEstudante);
         }
     }
 }
@@ -149,8 +158,21 @@ void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasA
 }
 
 
+int procuraAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacaoAula[], int numeroEstudante, int numAulasAssistidas){
+    int i, posicao;
+    posicao = -1;
+
+    for (i=0; i<numAulasAssistidas; i++){
+        if(strcmp(vAulasAssistidas[i].designacaoAula, designacaoAula) == 0 && vAulasAssistidas[i].numEstudante == numeroEstudante){
+            posicao = i;
+            i = numAulasAssistidas;
+        }
+    }
+    return posicao;
+}
+
 void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numAulasAssistidas){
-   int posicaoAula, posicaoEstudante, numeroEstudante;
+   int posicaoAula, posicaoEstudante, numeroEstudante, posAssistir;
    char acesso[7];
    strcpy(acesso, "aula");
 
@@ -170,14 +192,20 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                     printf ("O numero de estudante inserido não existe");
 
                 } else {
-                    printf ("Está a assitir à aula de %s", designacaoAula);
+                    posAssistir=procuraAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasAssistidas);
 
-                    acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasAssistidas));
+                    if(posAssistir == -1){
+                        printf("\tJa está a assistir à aula");
+                    } else {
+                        printf ("Está a assitir à aula de %s", designacaoAula);
 
-                    gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasAssistidas);
-                    gravaAulasEstudantesBin(vAulasAssistidas, *numAulasAssistidas);
+                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasAssistidas));
+
+                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasAssistidas);
+                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasAssistidas);
+                    }
                 }
-            } else{
+            } else {
                 printf("A aula não esta a decorrer");
             }
         }

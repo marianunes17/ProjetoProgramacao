@@ -51,6 +51,7 @@ typedef struct{
 
 typedef struct{
     int numEstudante;
+    int nome;
     char designacaoAula[MAX_STRING];
     char tipoAcesso[MAX_STRING];
 } tipoAulasAssistidas;

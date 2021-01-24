@@ -103,3 +103,146 @@ Data: 1	1	2019
 Hora de Inicio: 8:9
 Hora de Fim: 9:29
 
+Lista Todas as Aulas: 3
+
+Designacao: fisica
+Docente: Raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
+
+Designacao: fisica1
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Designacao: fisica5
+Docente: Raul
+Codigo UC: 1111
+Data: 2	1	2019
+Hora de Inicio: 18:19
+Hora de Fim: 19:39
+
+Lista Todas as Aulas: 4
+
+Designacao: fisica
+Docente: Raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
+
+Designacao: fisica1
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Designacao: fisica5
+Docente: Raul
+Codigo UC: 1111
+Data: 2	1	2019
+Hora de Inicio: 18:19
+Hora de Fim: 19:39
+
+Designacao: mat
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Lista Todas as Aulas: 4
+
+Designacao: fisica
+Docente: Raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
+
+Designacao: fisica1
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Designacao: fisica5
+Docente: Raul
+Codigo UC: 1111
+Data: 2	1	2019
+Hora de Inicio: 18:19
+Hora de Fim: 19:39
+
+Designacao: mat
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Lista Todas as Aulas: 4
+
+Designacao: fisica
+Docente: Raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
+
+Designacao: fisica1
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Designacao: fisica5
+Docente: Raul
+Codigo UC: 1111
+Data: 2	1	2019
+Hora de Inicio: 18:19
+Hora de Fim: 19:39
+
+Designacao: mat
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Lista Todas as Aulas: 4
+
+Designacao: fisica
+Docente: Raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:9
+Hora de Fim: 10:29
+
+Designacao: fisica1
+Docente: pedro
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+
+Designacao: fisica5
+Docente: Raul
+Codigo UC: 1111
+Data: 2	1	2019
+Hora de Inicio: 18:19
+Hora de Fim: 19:39
+
+Designacao: mat
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 8:9
+Hora de Fim: 9:29
+

@@ -1,6 +1,8 @@
 #ifndef FUNCOES_AULASASSISTIDAS_H_INCLUDED
 #define FUNCOES_AULASASSISTIDAS_H_INCLUDED
 
+#include "funcoes_aulasAssistidas.h"
+
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas);
 void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas);
 void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int posicaoEstudante, char designacaoAula[], char acesso[], int *numAulasAssistidas);

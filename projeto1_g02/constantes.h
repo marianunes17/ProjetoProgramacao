@@ -46,7 +46,6 @@ typedef struct{
     char gravacao[MAX_STRING];
     int numAssecoGravacao;
     int codigo; //chave primaria UCs
-    int numeroEstudante;
 } tipoAula;
 
 

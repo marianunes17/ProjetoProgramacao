@@ -19,7 +19,6 @@ void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas){
 }
 
 
-
 void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES], int numAulasAssistidas){
     int i;
     for (i=0; i<numAulasAssistidas; i++) {
@@ -78,15 +77,15 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                 } else {
                     printf ("Está a assitir à aula de %s", designacaoAula);
 
-                    vAulas[posicaoAula].numeroEstudante = vEstudante[posicaoAula].numeroEstudante; // para que serve
 
                     acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasAssistidas));
+
+                    //gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasAssistidas);
                 }
             } else{
                 printf("A aula não esta a decorrer");
             }
         }
-           gravaAulasEstudantesTxt(vEstudante, numTotalEstudantes, posicaoEstudante, vAulas, numTotalAulas, posicaoAula);
     }
 }
 
@@ -150,6 +149,7 @@ void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
 
 void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas){
     FILE *ficheiro;
+    int gravarDados;
     int erro;
 
     ficheiro=fopen("infoAulasEstudante.dat", "wb");
@@ -157,7 +157,7 @@ void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAula
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
         fwrite(&numAulasAssistidas,sizeof(int),1,ficheiro);
-        fwrite(numAulasAssistidas,sizeof(tipoAulasAssistidas),numAulasAssistidas,ficheiro);
+        gravarDados=fwrite(vAulasAssistidas,sizeof(tipoAulasAssistidas),numAulasAssistidas,ficheiro);
 
         //fclose(ficheiro);
         erro = fclose(ficheiro);

@@ -7,9 +7,9 @@ tipoAulasAssistidas leDadosAulaAssistidas(int numeroEstudante, char designacao[]
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas);
 void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas);
 void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int posicaoEstudante, char designacaoAula[], char acesso[], int *numAulasGravacoesAssistidas);
-void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes);
-void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes);
-int procuraAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacaoAula, int numeroEstudante, int numAulasGravacoesAssistidas);
+void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas);
+void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas);
+int procuraEstudanteAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacao[], int numeroEstudante, int numAulasGravacoesAssistidas);
 
 void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas);
 void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas);

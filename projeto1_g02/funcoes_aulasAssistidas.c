@@ -35,8 +35,7 @@ void acrescentaAulaAssistida(tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES
     vAulasAssistidas[*numAulasGravacoesAssistidas]=dados;
     (*numAulasGravacoesAssistidas)++;
 
-    printf("Aul: %d", *numAulasGravacoesAssistidas);
-    printf("\n\tFoi acrescentado um novo Estudante à Aula");
+    printf("Total de Aulas: %d \n", *numAulasGravacoesAssistidas);
 }
 
 
@@ -48,7 +47,7 @@ void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAu
 }
 
 
-void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
+void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas){
   int i;
 
     for (i=0; i<=numAulasGravacoesAssistidas; i++){
@@ -61,7 +60,7 @@ void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAul
 }
 
 
-void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
+void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorGravacoes){
   int i;
 
     for (i=0; i<=numAulasGravacoesAssistidas; i++){
@@ -158,16 +157,17 @@ void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasG
 }
 
 
-int procuraAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacaoAula[], int numeroEstudante, int numAulasGravacoesAssistidas){
+int procuraEstudanteAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacao[], int numeroEstudante, int numAulasGravacoesAssistidas){
     int i, posicao;
     posicao = -1;
 
     for (i=0; i<numAulasGravacoesAssistidas; i++){
-        if(strcmp(vAulasAssistidas[i].designacaoAula, designacaoAula) == 0 && vAulasAssistidas[i].numEstudante == numeroEstudante){
+        if(strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0 && vAulasAssistidas[i].numEstudante == numeroEstudante){
             posicao = i;
             i = numAulasGravacoesAssistidas;
         }
     }
+
     return posicao;
 }
 
@@ -192,19 +192,21 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                     printf ("O numero de estudante inserido não existe");
 
                 } else {
-                    posAssistir=procuraAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasGravacoesAssistidas);
+                     posAssistir=procuraEstudanteAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasGravacoesAssistidas);
 
                     if(posAssistir == -1){
-                        printf("\tJa está a assistir à aula");
+                        printf("\tJa está a assistir à aula de %s", designacaoAula);
                     } else {
-                        printf ("Está a assitir à aula de %s", designacaoAula);
 
                         acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
+
+                        (*numTotalAulasAssistidas)++;
+
+                        printf ("Está a assitir à aula de %s", designacaoAula);
 
                         gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas);
                         gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas);
 
-                        (*numTotalAulasAssistidas)++;
                     }
                 }
             } else {

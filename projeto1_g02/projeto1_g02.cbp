@@ -47,6 +47,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funcoes_auxiliares.h" />
+		<Unit filename="funcoes_estatistica.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funcoes_estatistica.h" />
 		<Unit filename="funcoes_estudantes.c">
 			<Option compilerVar="CC" />
 		</Unit>

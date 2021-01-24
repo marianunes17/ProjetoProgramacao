@@ -251,11 +251,14 @@ int main(){
 
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos");
+                        mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
+
                        /* printf("\n\tPercentagem de Ucs com aulas gravadas:");
 
                         printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");*/
 
                         printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
+
                         //quantidadeAulasOnline(vAulas, numAula);
 
 

@@ -1,9 +1,9 @@
 Estudantes:2
 
 Numero Estudante: 1111
-Nome: Ana
+Nome: luis
 Regime: d
 
 Numero Estudante: 1234
-Nome: rui
-Regime: pl
+Nome: ana
+Regime: d

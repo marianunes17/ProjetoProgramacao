@@ -10,7 +10,9 @@
 #include "funcoes_uc.h"
 #include "funcoes_aulas.h"
 #include "funcoes_aulasAssistidas.h"
+#include "funcoes_estatistica.h"
 #include "funcoes_menus.h"
+
 
 
 int main(){
@@ -253,7 +255,7 @@ int main(){
                         printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");*/
 
                         printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
-                        quantidadeAulasOnline(vAulas, numAula, vetorUc);
+                        //quantidadeAulasOnline(vAulas, numAula);
 
 
                        /* printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");

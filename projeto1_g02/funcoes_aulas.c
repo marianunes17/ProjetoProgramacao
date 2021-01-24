@@ -556,35 +556,6 @@ void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc 
 
 }
 
-void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas,tipoUc vetorUc[]){
-    int contador=0, maior=0, conta=0;
-    int i, j;
-
-    if(numTotalAulas==0){
-        printf("\nNão existem aulas agendadas.");
-    } else {
-        for(i=0; i<numTotalAulas; i++){
-            contador=0;
-            for(j=0; j<numTotalAulas; j++){
-                if(vAulas[i].codigo == vAulas[j].codigo){
-                    contador++;
-                    maior = vAulas[j].codigo;
-                }
-            }
-        }
-
-
-        printf("\n\t A disciplina com mais aulas online é: %d \n", maior);
-        for(i=0; i<numTotalAulas; i++){
-            if(vAulas[i].codigo == maior){
-                escreveDadosAulas(vAulas[i]);
-                conta++;
-            }
-        }
-    }
-}
-
-
 void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tipoUc vetorUc[], int numTotalUc){
     int posicao, codigoUc, posUc;
     char estado, opGravacao;
@@ -660,7 +631,7 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
 
 
 void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
-    int posicao, i;
+    int posicao;
     char estado;
 
     if(numTotalAulas == 0 ){
@@ -804,7 +775,7 @@ tipoAula *lerFicheiroTextAula(tipoAula vAulas[],int *num){
     FILE *ficheiro;
 
     tipoAula *pAula;
-    int lerDados,i,erro;
+    int i,erro;
 
     ficheiro = fopen("dadosAulas.txt", "r");
 

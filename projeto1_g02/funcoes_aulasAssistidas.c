@@ -148,7 +148,7 @@ void listaAulasComGravacao(tipoAula vAulas[], int numAulas) {
 }
 
 
-void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAula[], int numTotalAulas){
+void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas){
     FILE *ficheiro;
     int erro;
 
@@ -156,11 +156,8 @@ void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes,
     if(ficheiro==NULL){
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
-        fwrite(&numTotalEstudantes,sizeof(int),1,ficheiro);
-        fwrite(vEstudante,sizeof(tipoEstudante),numTotalEstudantes,ficheiro);
-
-        fwrite(&numTotalAulas,sizeof(int),1,ficheiro);   //acho que não é necessario repetir codigo
-        fwrite(vAula,sizeof(tipoAula),numTotalAulas,ficheiro);
+        fwrite(&numAulasAssistidas,sizeof(int),1,ficheiro);
+        fwrite(numAulasAssistidas,sizeof(tipoAulasAssistidas),numAulasAssistidas,ficheiro);
 
         //fclose(ficheiro);
         erro = fclose(ficheiro);
@@ -171,52 +168,52 @@ void gravaAulasEstudantesBin(tipoEstudante vEstudante[], int numTotalEstudantes,
 }
 
 
-void leAulasEstudantesBin(tipoEstudante vEstudante[], int *numTotalEstudantes, tipoAula vAula[], int *numTotalAulas){
+void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasAssistidas){
     FILE *ficheiro;
-    int erro;
 
-    ficheiro=fopen("infoAulasEstudante.dat", "rb");
+    ficheiro=fopen("infoEstudante.dat", "rb");
     if(ficheiro==NULL){
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
-        fread(&(*numTotalEstudantes),sizeof(int),1,ficheiro);
-        fread(vEstudante,sizeof(tipoEstudante),*numTotalEstudantes,ficheiro);
+        fread(&(*numAulasAssistidas),sizeof(int),1,ficheiro);
+        fread(vAulasAssistidas,sizeof(tipoAulasAssistidas),*numAulasAssistidas,ficheiro);
 
-        fread(&(*numTotalAulas),sizeof(int),1,ficheiro);   //acho que não é necessario repetir codigo
-        fread(vAula,sizeof(tipoEstudante),*numTotalAulas,ficheiro);
-
-        //fclose(ficheiro);
-        erro = fclose(ficheiro);
-        if (erro != 0){
-            printf ("Erro %d ao fechar ficheiro", erro);
-        }
+        fclose(ficheiro);
     }
 }
 
 
-void gravaAulasEstudantesTxt(tipoEstudante vEstudante[], int numTotalEstudantes, int numEstudante, tipoAula vAula[], int numTotalAulas, int posicaoAula){
-        FILE *ficheiro;
-        int i,j;
 
-        ficheiro=fopen("infoAulasEstudante.txt", "a+");
-        if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
-        } else{
+void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas){
+    FILE *ficheiro;
+    int i;
 
-                fprintf(ficheiro, "Nome estudante: %d\n", vEstudante[numEstudante].numeroEstudante);
-                fprintf(ficheiro, "Numero: %s\n\n", vEstudante[numEstudante].nome);
+    ficheiro=fopen("infoAulasEstudante.txt", "a+");
+    if(ficheiro==NULL){
+        printf("\tErro ao abrir o ficheiro. \n");
+    } else{
+        for(i=0; i<numAulasAssistidas; i++){
+            fprintf(ficheiro, "Numero estudante: %d\n", vAulasAssistidas[i].numEstudante);
+            fprintf(ficheiro, "Designacao Aula: %s\n\n", vAulasAssistidas[i].designacaoAula);
+            fprintf(ficheiro, "Acesso: %s\n\n", vAulasAssistidas[i].tipoAcesso);
+        }
+        fclose(ficheiro);
+    }
+}
 
+void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasAssistidas){
+    FILE *ficheiro;
+    int i;
 
-
-                  //  fprintf(ficheiro,"Designacao %s", vAula[posicaoAula].designacao);
-                    fprintf(ficheiro,"Data: %d\t",vAula[posicaoAula].data.dia);
-                    fprintf(ficheiro,"%d\t",vAula[posicaoAula].data.mes);
-                    fprintf(ficheiro,"%d\n",vAula[posicaoAula].data.ano);
-                    fprintf(ficheiro,"Hora de Inicio: %d:%d\n",vAula[posicaoAula].hora.h,vAula[posicaoAula].hora.m);
-                    fprintf(ficheiro,"Hora de Fim: %d:%d\n\n",vAula[posicaoAula].horaFim,vAula[posicaoAula].minFim);
-
-
-            fclose(ficheiro);
-            }
-
+    ficheiro=fopen("infoAulasEstudante.txt", "r");
+    if(ficheiro==NULL){
+        printf("\tErro ao abrir o ficheiro. \n");
+    } else{
+        for(i=0; i<*numAulasAssistidas; i++){
+            fscanf(ficheiro, "%d", vAulasAssistidas[i].numEstudante);
+            fgets(vAulasAssistidas[i].designacaoAula,100,ficheiro);
+            fgets(vAulasAssistidas[i].tipoAcesso,3,ficheiro);
+        }
+        fclose(ficheiro);
+    }
 }

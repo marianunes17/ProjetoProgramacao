@@ -30,8 +30,7 @@ int main(){
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
     leEstudantesBinario(vEstudante, &numTotalEstudantes);
-
-    leAulasEstudantesBin(vEstudante,numTotalEstudantes,vAulas,numAula);
+    leAulasEstudantesBin(vAulasAssistidas, &numAulasAssistidas);
 
     lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);
     lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);

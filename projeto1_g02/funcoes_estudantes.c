@@ -101,17 +101,17 @@ void leEstudantesTexto(tipoEstudante vEstudante[], int *numTotalEstudante){
     FILE *ficheiro;
     int i;
 
-        ficheiro=fopen("infoEstudante.txt", "r");
-        if(ficheiro==NULL){
-            printf("\tErro ao abrir o ficheiro. \n");
-        } else{
-            for(i=0; i<*numTotalEstudante; i++){
-                fscanf(ficheiro, "%d", vEstudante[i].numeroEstudante);
-                fgets(vEstudante[i].nome,100,ficheiro);
-                fgets(vEstudante[i].regime,3,ficheiro);
-            }
-            fclose(ficheiro);
+    ficheiro=fopen("infoEstudante.txt", "r");
+    if(ficheiro==NULL){
+        printf("\tErro ao abrir o ficheiro. \n");
+    } else{
+        for(i=0; i<*numTotalEstudante; i++){
+            fscanf(ficheiro, "%d", vEstudante[i].numeroEstudante);
+            fgets(vEstudante[i].nome,100,ficheiro);
+            fgets(vEstudante[i].regime,3,ficheiro);
         }
+        fclose(ficheiro);
+    }
 }
 
 

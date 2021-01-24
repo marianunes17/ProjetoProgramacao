@@ -50,14 +50,19 @@ void listaDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas[], int numAu
 int procuraAulaAssistida(tipoAulasAssistidas vAulasAssistidas[], int numAulasAssistidas, char designacao[], int *contadorAulas, int *contadorGravacoes){
   int i;
 
-
     for (i=0; i<=numAulasAssistidas; i++){
         if (strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0){  // Elemento encontrado
-            contador++;       // guarda posição de numero em vAula
+            if(strcmp(vAulasAssistidas[i].tipoAcesso, "aula") == 0){
+                *contadorAulas++;
+            } else {
+                if(strcmp(vAulasAssistidas[i].tipoAcesso, "gravacao") == 0){
+                    *contadorGravacoes++;
+                }
+            }
+            printf("contador Aulas", *contadorAulas);
+            printf("contador Gravacoes", *contadorGravacoes);
         }
     }
-
-    return contador;
 }
 
 

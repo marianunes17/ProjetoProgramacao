@@ -83,6 +83,8 @@ void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int
                     posRealizada=procuraAulaAssistida(vAulasAssistidas, numAulasAssistidas, designacao, &contadorAulas, &contadorGravacoes);
 
                     printf("\n\nNumero de alunos que assistiram as aulas: %d", posRealizada);
+                    printf("\n\ncontador Aulas: %d", contadorAulas);
+                    printf("\n\ncontador Gravacoes: %d", contadorGravacoes);
                 } else {
                     printf("\tEntrou no else\n");
                     //mostrar a quant de estudantes presentes nessa aula
@@ -105,7 +107,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0;
     char regimeUc[3];
-    int i, horaTotalvetor=0, numAgendas=0, dataInserida, dataVetor;
+    int i, horaTotalvetor=0, numAgendas=0, dataInserida, dataVetor, codigoUC, contaA=0;
     pAula = vAula;
 
     strcpy(regimeUc,vetorUc[posUc].regime);
@@ -153,8 +155,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
                 horaTotal = (hora*60) + min; //soma a hora em mimutis com os minutos
 
             }else{
-
-                for (i=0; i<num; i++){
+                for (i=0; i<*num; i++){
 
                     if (codigoUC == vAula[i].codigo){
 
@@ -176,7 +177,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
                             horaTotal = (hora*60) + min;
 
-                            i = num; // para concluir pesquisa (sair do for)
+                            i = *num; // para concluir pesquisa (sair do for)
 
                         }
                         else{
@@ -207,7 +208,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
                             }while(horaTotal == horaTotalvetor);
 
-                            i = num; // para concluir pesquisa (sair do for)
+                            i = *num; // para concluir pesquisa (sair do for)
 
                         }
 
@@ -278,8 +279,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         if(vAula == NULL){
             printf("ERRO - impossivel inserir aula");
             vAula = pAula;
-        }else
-        {
+        } else {
             vAula[*num] = dados;
             (*num)++;
 

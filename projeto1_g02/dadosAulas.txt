@@ -1,18 +1,16 @@
-Lista Todas as Aulas: 1
+Lista Todas as Aulas: 2
 
-Designacao: fisica
+Designacao: aula fisica 1
+Docente: amelia
+Codigo UC: 1111
+Data: 5	5	2020
+Hora de Inicio: 9:30
+Hora de Fim: 10:50
+
+Designacao: aual fisica 2
 Docente: raul
 Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
-Hora de Fim: 1:20
-
-Lista Todas as Aulas: 1
-
-Designacao: fisica
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 1252:32766
+Data: 4	5	2020
+Hora de Inicio: 10:30
 Hora de Fim: 1:20
 

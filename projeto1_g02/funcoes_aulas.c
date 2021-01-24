@@ -365,6 +365,7 @@ void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
         for (i=0; i<numAulas; i++){
             if (strcmp(vAulas[i].estadoAula, "Agendada") == 0){
                 escreveDadosAulas(vAulas[i]);
+                conta++;
             }
         }
         if (conta == 0){
@@ -384,6 +385,7 @@ void listaAulasDecorrer(tipoAula vAulas[], int numAulas) {
         for (i=0; i<numAulas; i++){
             if (strcmp(vAulas[i].estadoAula, "A decorrer") == 0){
                 escreveDadosAulas(vAulas[i]);
+                conta++;
             }
         }
         if (conta == 0){
@@ -401,6 +403,7 @@ void listaAulasRealizadas(tipoAula vAulas[], int numAulas) {
         for (i=0; i<numAulas; i++){
             if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
                 escreveDadosAulas(vAulas[i]);
+                conta++;
             }
         }
         if (conta == 0){

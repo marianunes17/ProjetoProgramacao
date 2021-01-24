@@ -127,6 +127,7 @@ void pesquisaCodigoUc(tipoUc vetorUc[], int numTotalUc){
         }
 }
 
+
 void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
     FILE *ficheiro;
     int i, erro;

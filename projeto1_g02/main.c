@@ -24,7 +24,8 @@ int main(){
     tipoEstudante vEstudante[MAX_ESTUDANTES];
     tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES];
 
-    int numTotalUc=0, numAula=0, numTotalEstudantes=0, numAulasAssistidas=0, quantAulasAgendadas=0, quantAulasRealizadas=0, quantAulasGravadas=0;
+    int numTotalUc=0, numAula=0, numTotalEstudantes=0, numAulasGravacoesAssistidas=0, quantAulasAgendadas=0, quantAulasRealizadas=0, quantAulasGravadas=0;
+    int numTotalAulasAssistidas=0, numTotalGravacoesAssistidas=0;
     int codigoUc, numeroEstudante, posicaoUcVetor;
     char opcao,subMenuAula, subSubMenuAula, opcaoSubMenuUc, subMenuSala, subMenuEstudante;
     char designacao[80];
@@ -32,7 +33,7 @@ int main(){
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
     leEstudantesBinario(vEstudante, &numTotalEstudantes);
-    leAulasEstudantesBin(vAulasAssistidas, &numAulasAssistidas);
+    leAulasEstudantesBin(vAulasAssistidas, &numAulasGravacoesAssistidas);
 
     lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);
     lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);
@@ -130,7 +131,7 @@ int main(){
                     // ----- PROCURAR AULA  -----
                     case 'P':
                         printf("Escolheu a opção: Procurar Aula\n");
-                        pesquisaAula(vAulas, vAulasAssistidas, numAula, numAulasAssistidas);
+                        pesquisaAula(vAulas, vAulasAssistidas, numAula, numAulasGravacoesAssistidas);
                         break;
 
                     // ----- AGENDAR AULA  -----
@@ -182,7 +183,7 @@ int main(){
                                 case 'C':
                                         printf("Escolheu a opção de Começar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                        comecarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
+                                        comecarAula(vAulas, numAula, designacao, vetorUc, numTotalAulasAssistidas);
                                         lerQuantAulasGravadas(&quantAulasGravadas,vAulas,numAula);
                                         break;
                                 case 'T':
@@ -195,13 +196,13 @@ int main(){
                                         printf("Escolheu a opção de Assistir à aula\n");
                                         listaAulasDecorrer(vAulas,numAula); //mostrar todas as aulas que estão a decorrer
                                         lerString("\n\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
-                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numAulasAssistidas);
+                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas);
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numAulasAssistidas);
+                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalGravacoesAssistidas, &numAulasGravacoesAssistidas);
                                         break;
                                 case 'V':
                                         break;
@@ -266,13 +267,13 @@ int main(){
                         gravaFicheiroBin(vAulas,numAula);
                         gravarUcBinario(vetorUc, &numTotalUc);
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
-                        gravaAulasEstudantesBin(vAulasAssistidas, numAulasAssistidas);
+                        gravaAulasEstudantesBin(vAulasAssistidas, numAulasGravacoesAssistidas);
                         printf("\tAs alterações foram gravadas!");
                         break;
             case 'B':
                         printf("Escolheu a opção F \n Fim do Programa");
-                        listaDadosAulasAssistidas(vAulasAssistidas, numAulasAssistidas);
-                        printf("Aul: %d", numAulasAssistidas);
+                        listaDadosAulasAssistidas(vAulasAssistidas, numAulasGravacoesAssistidas);
+                        printf("Aul: %d", numAulasGravacoesAssistidas);
                         break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");

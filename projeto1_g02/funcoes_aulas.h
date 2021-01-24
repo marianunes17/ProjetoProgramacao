@@ -9,7 +9,7 @@ tipoAula *eliminaAula(tipoAula vAulas[], int *num, char designacao[], tipoUc vet
 int procuraAulaNome(tipoAula vAula[], int num, char procAula[]);
 void mostrarDadosAula(tipoAula vAulas[], int numAula);
 void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);
-void escreveDadosAulas(tipoAula vAulas[]);
+void escreveDadosAulas(tipoAula vAulas);
 void calculaHora(int *horaF, int *minF);
 void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas);
 

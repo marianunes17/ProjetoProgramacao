@@ -41,11 +41,8 @@
 		</Unit>
 		<Unit filename="funcoes_aulasAssistidas.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="funcoes_aulasAssistidas.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="funcoes_aulasAssistidas.h" />
 		<Unit filename="funcoes_auxiliares.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -126,94 +126,103 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         strcpy(dados.regimeAula,regimeUc);
         dados.data = lerData();
 
+        dataInserida = (dados.data.ano*10000)+(dados.data.mes*100)+dados.data.dia;
+
+
         //calcula a hora inicio/fim consoante o regime e o tipo de aula
         if(strcmp(regimeUc, "D") == 0){
 
 
-                printf("Insira as Horas:\n");
+            numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
+            codigoUC = vetorUc[posUc].codigo;
+
+            printf("\n\tQuantas aulas agendada tem a UC -> confirmacao: %d\n",numAgendas); //confimacao
+            printf("\n\tCodigo UC -> confirmacao: %d\n",vetorUc[posUc].codigo); //confimacao
+
+
+            if(numAgendas == 0){
+                // se não houver ainda aulas agendadas
+
+                printf("\n -- Aula - else - sem agendadas hora -- \n"); //confimacao
+
                 dados.hora = lerHora(8,18);
                 hora = dados.hora.h;
                 min = dados.hora.m;
                 printf("\n Inicio da Aula: %d:%d",hora,min);
 
-                hora = (hora*60);  //coloca hora inicio em minutos
-                horaTotal = hora + min;  //soma a hora em mimutis com os minutos
+                horaTotal = (hora*60) + min; //soma a hora em mimutis com os minutos
 
+            }else{
 
+                for (i=0; i<num; i++){
 
+                    if (codigoUC == vAula[i].codigo){
 
+                        printf("\n ---- Entrou no FOR ----- "); //confimacao
+                        printf("\nConfirmar -- Codigo UC aula: %d",vAula[i].codigo); //confimacao
+                        printf(" -- Descricao: %s\n",vAula[i].designacao);  //confimacao
 
+                        contaA ++; //confirma a quantidade de aulas existentes
 
-
-                /*numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
-                dataInserida = (dados.data.ano*10000)+(dados.data.mes*100)+dados.data.dia;
-
-                if(numAgendas > 0){
-
-                    //tentar nao dar para inserir hora igual
-                    for (i=0; i<numAgendas; i++){
                         dataVetor = (vAula[i].data.ano*10000)+(vAula[i].data.mes*100)+vAula[i].data.dia;
 
-                        if(dataInserida == dataVetor){
+                        if(dataInserida != dataVetor){
+
+                            printf("\n ** Aula > data diferente **\n\n"); //confimacao
+
+                            dados.hora = lerHora(8,18);
+                            hora = dados.hora.h;
+                            min = dados.hora.m;
+
+                            horaTotal = (hora*60) + min;
+
+                            i = num; // para concluir pesquisa (sair do for)
+
+                        }
+                        else{
+
+                            printf("\n *** Aula > data inserida igual ***\n\n"); //confimacao
 
                             horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
 
                             do{
-                                //horaTotalvetor = (vAula[i].hora.h*60) + vAula[i].hora.m;
-                                printf("\n antes Inicio da Aula: %d:%d\n",hora,min);
-                                printf(" Aula all vetor: %d\n",horaTotalvetor);
-
                                 dados.hora = lerHora(8,18);
 
                                 hora = dados.hora.h;
                                 min = dados.hora.m;
-                                printf("\n Inicio da Aula: %d:%d\n",hora,min);
+                                printf("\n -- suposta hora -> %d:%d\n",hora,min); //confimacao
 
                                 horaTotal = (hora*60) + min;
-                                printf(" hora inserida: %d\n",horaTotal);
-                                printf(" Aula all vetor: %d\n",horaTotalvetor);
+
+                                printf("\n -- hora inserida em min: %d\n",horaTotal); //confimacao
+                                printf(" -- hora vetor em mim: %d\n",horaTotalvetor); //confimacao
+
 
                                 if (horaTotal == horaTotalvetor){
-                                    printf("\nJá se encontra uma aula com a hora inserida. Tente novamente.\n");
+                                    printf("\n Ja se encontra uma aula com a hora inserida!\n");
+                                    printf(" Insira novamente:\n");
                                 }
-                                printf(" Aula all vetor: %d\n",horaTotalvetor);
+
+                                printf("\n -- hora vetor em mim continua igula - confere -> %d\n",horaTotalvetor); //confimacao
 
                             }while(horaTotal == horaTotalvetor);
 
-                            i = numAgendas; // para concluir pesquisa (sair do for)
-
-                        }
-                        else{
-                            printf("\n Aula else hora \n");
-
-
-                            printf("Insira as Horas:\n");
-                            dados.hora = lerHora(8,18);
-                            hora = dados.hora.h;
-                            min = dados.hora.m;
-                            printf("\n Inicio da Aula: %d:%d",hora,min);
-
-                            i = numAgendas; // para concluir pesquisa (sair do for)
+                            i = num; // para concluir pesquisa (sair do for)
 
                         }
 
                     }
 
+                    printf("\n\tQuantas aulas ha/leu nesta UC -> confere: %d\n",contaA); //confimacao
 
-                //caso ainda não tenha nenhuma aula
-                }else{
-                    printf("\n Entro no else de ainda sem aulas agendadas - confirmacao apenas \n");
-                    printf("Insira as Horas:\n");
-                    dados.hora = lerHora(8,18);
-                    hora = dados.hora.h;
-                    min = dados.hora.m;
-                    printf("\n Inicio da Aula: %d:%d",hora,min);
-
-                    hora = (hora*60);  //coloca hora inicio em minutos
-                    horaTotal = hora + min;  //soma a hora em mimutis com os minutos
-                }*/
+                } //end For
 
 
+
+            }// fim do else - caso tenha aulas agendadas
+
+            printf("\n --- Sai0 do FOR --- \n");  //confimacao
+            printf("\n -- FIMMMM ---  Inicio que ficou: %d:%d",hora,min); //confimacao
 
 
                 //calculação da hora de Fim
@@ -234,6 +243,8 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
         }
         else{
+                // --- se for do regime Pos-laboral ---
+
                 printf("Insira as Horas:\n");
                 dados.hora = lerHora(18,24);
                 hora = dados.hora.h;

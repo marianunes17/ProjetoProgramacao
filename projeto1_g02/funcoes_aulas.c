@@ -361,7 +361,7 @@ void lerQuantAulasGravadas(int *quantidade, tipoAula vAulas[], int numAulas){
 
 
 void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
-    int i;
+    int i,conta=0;
 
     if(numAulas == 0){
         printf("Não existem Aulas.\n");
@@ -371,12 +371,15 @@ void listaAulasAgendadas(tipoAula vAulas[], int numAulas) {
                 escreveDadosAulas(vAulas[i]);
             }
         }
+        if (conta == 0){
+            printf("Não existem Aulas a Agendadas\n");
+        }
     }
 }
 
 
 void listaAulasDecorrer(tipoAula vAulas[], int numAulas) {
-    int i;
+    int i, conta=0;
 
     if(numAulas == 0){
         printf("Não existem Aulas.\n");
@@ -385,13 +388,16 @@ void listaAulasDecorrer(tipoAula vAulas[], int numAulas) {
         for (i=0; i<numAulas; i++){
             if (strcmp(vAulas[i].estadoAula, "A decorrer") == 0){
                 escreveDadosAulas(vAulas[i]);
+            }
         }
-     }
-}
+        if (conta == 0){
+            printf("Não existem Aulas a A Decorrer\n");
+        }
+    }
 }
 
 void listaAulasRealizadas(tipoAula vAulas[], int numAulas) {
-    int i;
+    int i,conta=0;
 
     if(numAulas == 0){
         printf("Não existem Aulas.\n");
@@ -399,9 +405,10 @@ void listaAulasRealizadas(tipoAula vAulas[], int numAulas) {
         for (i=0; i<numAulas; i++){
             if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
                 escreveDadosAulas(vAulas[i]);
-            }else{
-                printf("Não existem Aulas Realizadas\n");
             }
+        }
+        if (conta == 0){
+            printf("Não existem Aulas a Realizadas\n");
         }
     }
 }

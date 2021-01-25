@@ -17,11 +17,11 @@
 
 
 int main(){
-    setlocale(LC_ALL,"Portuguese");    // Permite texto com acentos
+    setlocale(LC_ALL,"Portuguese");  // Permite texto com acentos
 
     tipoUc vetorUc[MAX_UC];
-    tipoAula *vAulas;   // Ponteiro (para vetor dinamico)
-    vAulas = NULL; // iniciar vetor dinamico a NULL
+    tipoAula *vAulas;   // Ponteiro (para vetor dinâmico)
+    vAulas = NULL; // iniciar vetor dinâmico a NULL
     tipoEstudante vEstudante[MAX_ESTUDANTES];
     tipoAulasAssistidas vAulasAssistidas[MAX_ESTUDANTES];
 
@@ -44,19 +44,19 @@ int main(){
      do{
         opcao = menu(numTotalUc, quantAulasAgendadas, quantAulasRealizadas, quantAulasGravadas);
         switch(opcao){
-            case 'U':   printf("Escolheu a opção U");
+            case 'U':   printf("Escolheu a opção das Unidades Curriculares \n");
                 do{
                     opcaoSubMenuUc=subMenuUc();
                     switch(opcaoSubMenuUc){
                         case 'L': //Listar UC
-                                printf("Escolheu a opção: Listar Unidades Curriculares:\n");
+                                printf("Escolheu a opção: Listar Unidades Curriculares \n");
                                 printf("\nTotal de UC: %d\n", numTotalUc);
                                 listaDadosUc(vetorUc, numTotalUc);
                                 break;
 
                         case 'I': //Inserir nova UC
                                 printf("Escolheu a opção: Inserir nova Unidade Curricular \n");
-                                codigoUc=lerInteiro("\tCodigo: ",1000,2000);
+                                codigoUc=lerInteiro("\tCódigo: ",1000,2000);
                                 acrescentaUc(vetorUc, &numTotalUc, codigoUc);
                                 break;
 
@@ -93,7 +93,6 @@ int main(){
                     // ----- LISTAR AULA  -----
                     case 'L':
                         printf("Escolheu a opção: Listagem de Aulas\n");
-                        //mostrarDadosAula(vAulas,numAula);
                          do{
                             subSubMenuAula = submenuAulas();
                             switch(subSubMenuAula){
@@ -139,40 +138,41 @@ int main(){
                     case 'A':
                             printf("Escolheu a opção: Agendar uma Aula\n\n");
 
-                            codigoUc = lerInteiro("Indique codiogo Uc: ",1000,2000);
-                            posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc); // funcao Maria
+                            codigoUc = lerInteiro("Indique código Uc: ",1000,2000);
+                            posicaoUcVetor = procuraUc(vetorUc, numTotalUc, codigoUc);
                             if(posicaoUcVetor == -1){
-                                printf("Uc inserida não foi encontrada, ou não existe!");
+                                printf("Uc inserida não foi encontrada.");
                             }
                             else{
                                 if(vetorUc[posicaoUcVetor].quantidadeHoras == 0){
-                                    printf("Esgotou as horas para o agendamento");
+                                    printf("Esgotou as horas disponíveis! Já não e possível agendar mais aulas.");
                                 }
                                 else{
-                                    printf("Uc de %s", vetorUc[posicaoUcVetor].designacao);
-                                    printf(" e ainda tem disponivel %d horas\n", vetorUc[posicaoUcVetor].quantidadeHoras);
+                                    printf("Uc de %s,", vetorUc[posicaoUcVetor].designacao);
+                                    printf(" tem disponível %d horas\n", vetorUc[posicaoUcVetor].quantidadeHoras);
                                     vAulas = acrescentaAula(vAulas,&numAula,vetorUc,posicaoUcVetor);
                                 }
                             }
-                            lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);//actualiza contador
+                            lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula); // atualiza contador aulas agendadas
                             break;
 
                     // ----- MODIFICAR AGENDAMENTO  -----
                     case 'M':
+                            printf("Escolheu a opção: Modificar Aula \n");
                             lerString("Designação da Aula que prentende alterar: ", designacao, MAX_STRING);
                             alteraAulas(vAulas, &numAula, designacao, vetorUc, numTotalUc);
                             break;
 
                     // ----- ELIMINAR AULA  -----
                     case 'E':
+                            printf("Escolheu a opção: Eliminar Aula \n");
                             lerString("Designação da Aula a Eliminar: ", designacao, MAX_STRING);
                             vAulas = eliminaAula(vAulas, &numAula, designacao, vetorUc, numTotalUc);
                             break;
 
-                    // ----- SAIR SUBMENU AULA -----
                     case 'V':
                         break;
-                    default:    printf("\n\n Opção Inválida! Tente Novamente...\n");
+                    default:    printf("\n\n Opção Inválida. \n");
                     }
                 }while(subMenuAula!='V');
                 break;
@@ -182,26 +182,30 @@ int main(){
                             subMenuSala = subMenuSalasOnline();
                             switch(subMenuSala){
                                 case 'C':
-                                        printf("Escolheu a opção de Começar Aula\n");
+                                        // Começar Aula
+                                        printf("Escolheu a opção: Começar Aula \n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         comecarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
-                                        lerQuantAulasGravadas(&quantAulasGravadas,vAulas,numAula);
+                                        lerQuantAulasGravadas(&quantAulasGravadas,vAulas,numAula); // atualiza contador aulas gravadas
                                         break;
                                 case 'T':
-                                        printf("Escolheu a opção de Terminar Aula\n");
+                                        // Terminar Aula
+                                        printf("Escolheu a opção: Terminar Aula \n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
                                         terminarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
-                                        lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);//actualiza contador
+                                        lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula); // atualiza contador aulas realizadas
                                         break;
                                 case 'A':
-                                        printf("Escolheu a opção de Assistir à aula\n");
+                                        // Assistir à Aula
+                                        printf("Escolheu a opção de Assistir à aula \n");
                                         listaAulasDecorrer(vAulas,numAula); //mostrar todas as aulas que estão a decorrer
-                                        lerString("\n\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
+                                        lerString("\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
                                         assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalGravacoesAssistidas);
-                                       printf("\nnum Total AulasAssistidas: %d\n", numTotalAulasAssistidas);
+                                        printf("\nNum Total AulasAssistidas: %d\n", numTotalAulasAssistidas);
                                         break;
                                 case 'G':
-                                        printf("Escolheu a opção de Ver Gravações\n");
+                                        // Assistir à Gravação
+                                        printf("Escolheu a opção: Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
                                         assistirGravacaoAula(vAulasAssistidas, vetorUc, vAulas, vEstudante, numTotalEstudantes, numAula, designacao, &numTotalGravacoesAssistidas, &numAulasGravacoesAssistidas, &numTotalAulasAssistidas, numTotalUc);
@@ -218,7 +222,7 @@ int main(){
                             subMenuEstudante = subMenuEstudantes();
                             switch(subMenuEstudante){
                                 case 'L': //Listar Estudante
-                                        printf("Escolheu a opção: Listar Estudantes:\n");
+                                        printf("Escolheu a opção: Listar Estudantes \n");
                                         printf("\nTotal de Estudantes: %d\n", numTotalEstudantes);
                                         listaDadosEstudante(vEstudante, numTotalEstudantes);
                                         break;
@@ -249,11 +253,11 @@ int main(){
                         }while(subMenuEstudante!='V');
 
                         break;
-            case 'R':   printf("Escolheu a opção Raking: \n");
+            case 'R':   printf("Escolheu a opção: Raking \n");
                         rakingUcGravacoes(vetorUc, numTotalUc);
 
                         break;
-            case 'D':   printf("\nEscolheu a opção Dados Estatisticos\n");
+            case 'D':   printf("Escolheu a opção: Dados Estatísticos \n");
 
                         //quantidadeAulasOnline(vAulas, numAula);
 
@@ -278,14 +282,10 @@ int main(){
                         break;
             case 'G':
                         printf("\tEscolheu de Gravar Dados");
-                        gravaFicheiroBin(vAulas,numAula);
-                        gravaFicheiroTextAula(vAulas,numAula);
+                        gravaFicheiroBin(vAulas,numAula); // grava automaticamente o ficheiro de texto das aulas
 
                         gravarUcBinario(vetorUc, &numTotalUc);
                         gravarUcTexto(vetorUc, numTotalUc);
-
-                        gravarUcTexto(vetorUc, numTotalUc);
-                        gravarUcBinario(vetorUc, &numTotalUc);
 
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
                         gravarEstudantesTexto(vEstudante, numTotalEstudantes);
@@ -302,11 +302,18 @@ int main(){
        }
     }while(opcao!='F');
 
-    gravaFicheiroBin(vAulas, numAula); // grava automaticamente o ficheiro TXT
+    gravaFicheiroBin(vAulas, numAula); // grava automaticamente o ficheiro de texto das aulas
     gravarUcTexto(vetorUc, numTotalUc);
     gravarUcBinario(vetorUc, &numTotalUc);
 
-    free(vAulas);  // Liberta memoria do vetor dinamico
+    gravarEstudantesBinario(vEstudante, numTotalEstudantes);
+    gravarEstudantesTexto(vEstudante, numTotalEstudantes);
+
+    gravaAulasEstudantesBin(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+    gravaAulasEstudantesTxt(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+
+
+    free(vAulas);  // Liberta memoria do vetor dinâmico vAulas
 
     return 0;
 }

@@ -259,19 +259,19 @@ int main(){
                         break;
             case 'D':   printf("Escolheu a opção: Dados Estatísticos \n");
 
-                        printf("\n\tMEDIA DE PRESENCAS NAS AULAS: \n");
+                        printf("\n\tMEDIA DE PRESENCAS NAS AULAS: \n\n");
                         mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
 
-                        printf("\n\n\tPERCENTAGEM DE AULAS COM GRAVACAO: \n");
+                        printf("\n\n\tPERCENTAGEM DE AULAS COM GRAVACAO: \n\n");
                         percentagemUcAulasGravadas(vetorUc, numTotalUc);
 
-                        printf("\n\tUC COM MENOR QUANTIDADE DE AULAS REALIZADAS: \n");
+                        printf("\n\tUC COM MENOR QUANTIDADE DE AULAS REALIZADAS: \n\n");
                         UcMenorAulasRealizadas(vetorUc, numTotalUc);
 
-                        printf("\n\tAULAS COM MAIOR ACESSO AS GRAVACOES: \n");
+                        printf("\n\tAULAS COM MAIOR ACESSO AS GRAVACOES: \n\n");
                         tipoAulasMaiorAcessoGravacoes(vetorUc, numTotalUc);
 
-                        printf("\n\tAULAS REALIZADAS À MAIS TEMPO: \n");
+                        printf("\n\tAULAS REALIZADAS À MAIS TEMPO: \n\n");
                         aulaMaisAntiga(vAulas, numAula);
 
                         break;

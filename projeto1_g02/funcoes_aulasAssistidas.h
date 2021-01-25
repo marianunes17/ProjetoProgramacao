@@ -12,7 +12,7 @@ void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int nu
 int procuraEstudanteAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacao[], int numeroEstudante, int numAulasGravacoesAssistidas);
 
 void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas, int numTotalGravacoesAssistidas);
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas);
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoUc vetorUc[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas);
 void listaAulasComGravacao(tipoAula vAulas[], int numAulas);
 
 

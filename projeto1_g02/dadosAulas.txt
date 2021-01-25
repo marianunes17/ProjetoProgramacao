@@ -1,110 +1,256 @@
-Lista Todas as Aulas: 0
+NumAulas: 0
 
-Lista Todas as Aulas: 2
+NumAulas: 3
 
-Designacao: mat
-Docente: pedro
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:0
-Hora de Fim: 20:0
-
-Designacao: mat2
-Docente: ana
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:11
-Hora de Fim: 20:11
-
-Lista Todas as Aulas: 2
-
-Designacao: mat
-Docente: pedro
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:0
-Hora de Fim: 20:0
-
-Designacao: mat2
-Docente: ana
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:11
-Hora de Fim: 20:11
-
-Lista Todas as Aulas: 2
-
-Designacao: mat
-Docente: pedro
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:0
-Hora de Fim: 20:0
-
-Designacao: mat2
-Docente: ana
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:11
-Hora de Fim: 20:11
-
-NumAulas: 4
-
-Designacao: mat
-Docente: pedro
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:0
-Hora de Fim: 20:0
-
-Designacao: mat2
-Docente: ana
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:11
-Hora de Fim: 20:11
-
-Designacao: aula1
+Designacao: programacao1
 Docente: raul
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:19
-Hora de Fim: 10:39
-
-Designacao: aula3
-Docente: sasas
-Codigo UC: 1111
+Codigo UC: 1000
 Data: 1	1	2019
-Hora de Inicio: 9:2
-Hora de Fim: 10:22
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
 
-NumAulas: 4
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
 
-Designacao: mat
-Docente: pedro
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:0
-Hora de Fim: 20:0
-
-Designacao: mat2
+Designacao: programacao3
 Docente: ana
-Codigo UC: 1234
-Data: 1	1	2019
-Hora de Inicio: 19:11
-Hora de Fim: 20:11
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
 
-Designacao: aula1
+NumAulas: 3
+
+Designacao: programacao1
 Docente: raul
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:19
-Hora de Fim: 10:39
-
-Designacao: aula3
-Docente: sasas
-Codigo UC: 1111
+Codigo UC: 1000
 Data: 1	1	2019
-Hora de Inicio: 9:2
-Hora de Fim: 10:22
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+NumAulas: 3
+
+Designacao: programacao1
+Docente: raul
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+NumAulas: 5
+
+Designacao: programacao1
+Docente: raul
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao4
+Docente: ana
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:19
+Hora de Fim: 12:19
+
+Designacao: programacao5
+Docente: raul
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+NumAulas: 5
+
+Designacao: programacao1
+Docente: raul
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao4
+Docente: ana
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:19
+Hora de Fim: 12:19
+
+Designacao: programacao5
+Docente: raul
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+NumAulas: 5
+
+Designacao: programacao1
+Docente: raul
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao4
+Docente: ana
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:19
+Hora de Fim: 12:19
+
+Designacao: programacao5
+Docente: raul
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+NumAulas: 5
+
+Designacao: programacao1
+Docente: raul
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao4
+Docente: ana
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:19
+Hora de Fim: 12:19
+
+Designacao: programacao5
+Docente: raul
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+NumAulas: 5
+
+Designacao: programacao1
+Docente: raul
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
+
+Designacao: programacao2
+Docente: paulo
+Codigo UC: 1000
+Data: 1	1	2021
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao3
+Docente: ana
+Codigo UC: 1000
+Data: 1	1	2015
+Hora de Inicio: 9:12
+Hora de Fim: 12:12
+
+Designacao: programacao4
+Docente: ana
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:19
+Hora de Fim: 12:19
+
+Designacao: programacao5
+Docente: raul
+Codigo UC: 1000
+Data: 4	12	2019
+Hora de Inicio: 9:10
+Hora de Fim: 12:10
 

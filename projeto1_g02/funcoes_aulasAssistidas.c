@@ -223,7 +223,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
     }
 }
 
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas){
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], tipoUc vetorUc[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas){
    int posicaoAula, posicaoEstudante, numeroEstudante;
     char acesso[10];
    strcpy(acesso, "gravacao");
@@ -248,6 +248,8 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
 
                         gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
                         gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
+
+                        vetorUc[posicaoAula].quantAcessosGravacoes = vetorUc[posicaoAula].quantAcessosGravacoes + 1;
                     }
                 } else{
                     printf("A aula não foi gravada");

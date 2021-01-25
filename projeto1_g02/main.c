@@ -204,7 +204,7 @@ int main(){
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalAulasAssistidas);
+                                        assistirGravacaoAula(vAulasAssistidas, vetorUc, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalAulasAssistidas);
                                         break;
                                 case 'V':
                                         break;
@@ -266,8 +266,12 @@ int main(){
                         percentagemUcAulasGravadas(vetorUc, numTotalUc);
 
                         printf("\n\tUC COM MENOR QUANTITADE DE AULAS REALIZADAS: \n");
-                        UcMenosAulasOnline(vetorUc, numTotalUc);
+                        UcMenorAulasRealizadas(vetorUc, numTotalUc);
 
+                        printf("\n\tAULAS COM MAIOR ACESSO AS GRAVACOES: \n");
+                        aulasMaiorAcessoGravacoes(vetorUc, numTotalUc);
+
+                        printf("\n\tAULAS REALIZADAS À MAIS TEMPO: \n");
                         aulasRealizadasAntigas(vAulas,numAula);
 
                         break;

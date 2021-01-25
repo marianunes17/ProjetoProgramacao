@@ -15,7 +15,7 @@ tipoUc leDadosUc(int codigoUc){
     tipoUc vetorUc;
 
     vetorUc.codigo = codigoUc;
-    lerString("\tDesignacao: ", vetorUc.designacao,MAX_STRING);
+    lerString("\tDesignação: ", vetorUc.designacao,MAX_STRING);
 
     do{
         lerString("\tTipo de Uc (S - Obrigatorio, N - Opcional): ", vetorUc.tipoDeUc,3);
@@ -63,12 +63,12 @@ void escreveDadosUc(tipoUc vetorUc){
 
     printf("\n\tTipo de Aula: \t ");
         if( (strcmp(vetorUc.tipoAula, "T")==0) ){
-                printf("Teorico");
+                printf("Teorica");
         } else {
             if( (strcmp(vetorUc.tipoAula, "P")==0) ){
-                printf("Prático");
+                printf("Prática");
             } else{
-                printf("Prático Laboratorial");
+                printf("Prática Laboratorial");
             }
         }
 
@@ -123,7 +123,7 @@ int procuraUc(tipoUc vetorUc[], int numTotalUc, int codigoUC){
 void pesquisaCodigoUc(tipoUc vetorUc[], int numTotalUc){
     int posUC, codigoUc,i;
 
-    codigoUc = lerInteiro("Insira o codigo da Uc", 1000, 2000);
+    codigoUc = lerInteiro("Insira o código da Uc", 1000, 2000);
     posUC=procuraUc(vetorUc,numTotalUc, codigoUc);
         if(posUC==-1){
             printf("\tA Unidade Curricular não existe. \n");
@@ -244,7 +244,7 @@ void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numTotalUc, int codigoUc){
     int posicao;
 
     if (*numTotalUc == MAX_UC){
-        printf("\tImpossível acrescentar uma nova Unidade Curricular. O maximo de Unidades Curriculares é de: %d", MAX_UC);
+        printf("\tImpossível acrescentar uma nova Unidade Curricular. O máximo de Unidades Curriculares é de: %d", MAX_UC);
     } else{
         posicao=procuraUc(vetorUc, *numTotalUc, codigoUc);
 
@@ -275,13 +275,13 @@ void eliminarVetorUc(tipoUc vetorUc[], tipoAula vAula[], int *numTotalUc){
         } else {
             if( codigoUc == vAula->codigo){
                 if(strcmp(vAula->estadoAula, "Agendada")==0){
-                     printf("\tNão é possivel eliminar a unidade curricular de %s, uma vez que a mesma tem uma aula agendada. \n", vetorUc[posicao].designacao);
+                     printf("\tNão é possível eliminar a unidade curricular de %s, uma vez que a mesma tem uma aula agendada. \n", vetorUc[posicao].designacao);
                 } else {
                     if(strcmp(vAula->estadoAula, "A decorrer")==0){
-                         printf("\tNão é possivel eliminar a unidade curricular de %s, uma vez que a mesma tem uma aula a decorrer. \n", vetorUc[posicao].designacao);
+                         printf("\tNão é possível eliminar a unidade curricular de %s, uma vez que a mesma tem uma aula a decorrer. \n", vetorUc[posicao].designacao);
                     } else {
                         if(strcmp(vAula->estadoAula, "Realizada")==0){
-                             printf("\tNão é possivel eliminar a unidade curricular de %s, uma vez que a mesma já tem aulas realizada. \n", vetorUc[posicao].designacao);
+                             printf("\tNão é possível eliminar a unidade curricular de %s, uma vez que a mesma já tem aulas realizada. \n", vetorUc[posicao].designacao);
                         }
                     }
                 }
@@ -325,7 +325,7 @@ void alterarVetorUc(tipoUc vetorUc[], int numTotalUc){
         codigoUc=lerInteiro("\tNúmero de Unidades Curriculares: ", 1000, 2000);
         posicao=procuraUc(vetorUc,numTotalUc, codigoUc);
         if(posicao==-1){
-                printf("\tO numero nao existe.");
+                printf("\tO código inserido não existe.");
         } else{
             if (vetorUc[posicao].codigo == codigoUc){
                 do{
@@ -333,8 +333,8 @@ void alterarVetorUc(tipoUc vetorUc[], int numTotalUc){
                     switch(opcao){
                         case 'A':
                                 printf("Escolheu a opção de Alterar Designação\n");
-                                 lerString("Designacao: ", vetorUc[posicao].designacao,MAX_STRING);
-                                 break;
+                                lerString("Designacao: ", vetorUc[posicao].designacao,MAX_STRING);
+                                break;
                         case 'B':
                                 printf("Escolheu a opção de Alterar Tipo de Uc\n");
                                 do{
@@ -366,8 +366,8 @@ void alterarVetorUc(tipoUc vetorUc[], int numTotalUc){
                                 break;
                         case 'G':
                                 printf("Escolheu a opção de Alterar Duração de cada aula(em minutos)\n");
-                                 vetorUc[posicao].duracao = lerInteiro("\tf: ", 60, 180);
-                                 vetorUc[posicao].quantidadeAulas = ((vetorUc[posicao].quantidadeTotalHoras)/(vetorUc[posicao].duracao/60));
+                                vetorUc[posicao].duracao = lerInteiro("\tf: ", 60, 180);
+                                vetorUc[posicao].quantidadeAulas = ((vetorUc[posicao].quantidadeTotalHoras)/(vetorUc[posicao].duracao/60));
                                 break;
                         case 'V':
                                 printf("Voltar");

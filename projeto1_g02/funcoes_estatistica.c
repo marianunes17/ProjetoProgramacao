@@ -145,11 +145,12 @@ void ordenaPosAulasRealizadas(tipoUc vetorUc[], int numTotalUc){
 
 
 void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc){
-    int i;
-    float gravacoes=0, aulasRealizadas=0;
+    int i, dados=3;
+    float gravacoes=0, aulasRealizadas=0, percentagemTotal=0,totalGravacoes=0;
     float conta=0;
 
     ordenaPosUcGravacao(vetorUc, numTotalUc);
+
     for (i=0; i<numTotalUc; i++) {
         printf("\t\tCodigo %d", vetorUc[i].codigo);
         printf("\n\t\tDesignacao %s", vetorUc[i].designacao);
@@ -162,13 +163,29 @@ void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc){
 
         conta = ((float)((gravacoes/ 100) * (aulasRealizadas)));
         printf("\n\t\tPercentagem de gravacoes: %.2f %\n\n", conta);
+
+        totalGravacoes = (float)(totalGravacoes + vetorUc[i].numGravacoes);
     }
+    percentagemTotal = ((float)((totalGravacoes/ 100) * (aulasRealizadas)));
+
+    printf("\n\n\t\tPercentagem de UCs com aulas realizadas %.2f\n\n", percentagemTotal);
+
 
     printf("\n\tUC COM MENOR QUANTITADE DE AULAS ONLINE : \n");
     ordenaPosAulasRealizadas(vetorUc, numTotalUc);
-        printf("\t\tCodigo %d", vetorUc->codigo);
-        printf("\n\t\tDesignacao %s", vetorUc->designacao);
-        printf("\n\t\tAulas Realizadas %d", vetorUc->quantAulasRealizadas);
+
+    if(numTotalUc == 0){
+        printf("Nao existem unidades curriculares");
+    } else{
+        if(numTotalUc < 3){
+            dados=numTotalUc;
+        }
+         for (i=0; i<dados; i++) {
+            printf("\t\tCodigo %d", vetorUc[i].codigo);
+            printf("\n\t\tDesignacao %s", vetorUc[i].designacao);
+            printf("\n\t\tAulas Realizadas %d\n\n", vetorUc[i].quantAulasRealizadas);
+        }
+    }
 }
 
 

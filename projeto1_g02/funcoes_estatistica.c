@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <locale.h>
+#include<math.h>
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
@@ -17,7 +18,7 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas){
     int i, j;
 
     if(numTotalAulas==0){
-        printf("\nNão existem aulas agendadas.");
+        printf("\nNÃ£o existem aulas agendadas.");
     } else {
         for(i=0; i<numTotalAulas; i++){
             contador=0;
@@ -30,7 +31,7 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas){
         }
 
 
-        printf("\n\t A disciplina com mais aulas online é: %d \n", maior);
+        printf("\n\t A disciplina com mais aulas online Ã©: %d \n", maior);
         for(i=0; i<numTotalAulas; i++){
             if(vAulas[i].codigo == maior){
                 escreveDadosAulas(vAulas[i]);
@@ -47,12 +48,12 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasR
     numTotalUc2 = numTotalUc;
 
     if(numTotalUc == 0){
-        printf("\tNão existem dados referentes às Unidades Curriculares.\n");
+        printf("\tNÃ£o existem dados referentes Ã s Unidades Curriculares.\n");
     }
     else{
         if(quantAulasRealizadas < 3){
-            printf("\tNão tem dados suficientes para efetuar a quantidade maior e menor de aulas realizadas.\n");
-            printf("\tPrecisa de, no mínimo, ter 3 aulas realizadas.\n");
+            printf("\tNÃ£o tem dados suficientes para efetuar a quantidade maior e menor de aulas realizadas.\n");
+            printf("\tPrecisa de, no mÃ­nimo, ter 3 aulas realizadas.\n");
         }
         else{
 
@@ -67,7 +68,7 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasR
                 }
             }
 
-            printf("\n\tAs primeiras UCs com maior quantidade de aulas realizadas são:\n\n");
+            printf("\n\tAs primeiras UCs com maior quantidade de aulas realizadas sÃ£o:\n\n");
             for(i=0;i<3;i++){
                 printf("\tA UC de %s com um total de %d aula(s).\n", vetorUc[i].designacao, vetorUc[i].quantAulasRealizadas);
             }
@@ -83,7 +84,7 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasR
                 }
             }
 
-            printf("\n\tAs primeiras UCs com menor quantidade de aulas realizadas são:\n\n");
+            printf("\n\tAs primeiras UCs com menor quantidade de aulas realizadas sÃ£o:\n\n");
             for(k=0;k<3;k++){
                 printf("\tA UC de %s com apenas %d aula(s).\n", vetorUc[k].designacao, vetorUc[k].quantAulasRealizadas);
             }
@@ -95,22 +96,93 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasR
 
 
 void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssistidas){
-   /* int conta=0, media, i;
-    printf("\nnumTotalAulasAssistidas: %d\n", numTotalAulasAssistidas);
+   int contador=0, i;
+   float media=0;
 
-     for (i=0; i<numAulas; i++){
-        if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
-            conta++;
+    if(numTotalAulasAssistidas==0){
+        printf("\nNÃ£o hÃ¡ informaÃ§Ã£o referente Ã s aulas assistidas. \n");
+    } else {
+         for (i=0; i<numAulas; i++){
+            if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
+                contador++;
+            }
+        }
+
+        //media = float(numTotalAulasAssistidas / contador);
+        media = numTotalAulasAssistidas / contador;
+        printf("A media de presenÃ§as de presenÃ§as nas aulas Ã© de: %.2f % \n", media);
+    }
+}
+
+void ordenaPosUc(tipoUc vetorUc[], int numTotalUc){
+    int i, j, aux;  //j elementos a comparar
+
+    for(i=0; i < numTotalUc-1; i++) {        //Percorre vetor
+        for (j= i+1; j<numTotalUc; j++) {
+            if( vetorUc[j].numGravacoes > vetorUc[i].numGravacoes ){        // para ordenacao decrescente
+                aux = vetorUc[j].numGravacoes;       // Troca valores v[i] â†” v[j] */
+                vetorUc[j].numGravacoes = vetorUc[i].numGravacoes;
+                vetorUc[i].numGravacoes = aux;
+            }
+        }
+    }
+}
+
+
+void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc, int numTotalGravacoesAssistidas){
+    int i, conta=0;
+
+    ordenaPosUc(vetorUc, numTotalUc);
+    for (i=0; i<numTotalUc; i++) {
+        printf("\nCodigo %d", vetorUc[i].codigo);
+        printf("\nDesignacao %s", vetorUc[i].designacao);
+        printf("\nNumero gravacoes %d", vetorUc[i].numGravacoes);
+
+        conta= (vetorUc[i].numGravacoes/100)*(vetorUc[i].quantAulasRealizadas);
+    printf("\nPercentagem de gravacos: %d %\n", conta);
+
+    printf("\nvetorUc[i].numGravacoes: %d %\n", vetorUc[i].numGravacoes);
+    printf("\nnumTotalGravacoesAssistidas: %d %\n", numTotalGravacoesAssistidas);
+    }
+
+
+}
+
+
+/*
+void percentagemUcAulasGravadas(tipoAula vAulas[], int numTotalAulas, int quantAulasGravadas, tipoUc vetorUc[], int numTotalUc){
+
+    int i, conta=0, media=0;
+    float percentagem;
+
+       if(numTotalUc == 0){
+        printf("NÃ£o existem UC\n");
+    }
+    else{
+
+        for (i=0; i<numTotalUc; i++){
+            if(vetorUc[i].codigo == vAulas[i].codigo){
+
+                if (strcmp(vAulas[i].gravacao, "S") == 0){
+                    conta++;
+                    printf("\n\tOpcao garvacao-> %s de %d aulas da UC %s\n", vAulas[i].gravacao,conta,vetorUc[i].designacao);
+                }
+
+            }
+                printf("\n\tOpcao garvacao-> %s de %d aulas da UC %s\n", vAulas[i].gravacao,conta,vetorUc[i].designacao);
+                percentagem = (conta/quantAulasGravadas)*100;
+                printf("\n\tPercetagem: %.2f da UC %s\n", percentagem,vetorUc[i].designacao);
+
         }
     }
 
-    media = (numTotalAulasAssistidas/conta);
+    percentagem = (numTotalUc/quantAulasGravadas)*100;
 
-    printf("\nnumTotalAulasAssistidas: %d\n", numTotalAulasAssistidas);
-    printf("conta: %d\n", conta);
-    printf("A media de presenças é de: %d\n", media);
-    */
+    printf("\n\tEm cada Aula Ã  uma mÃ©dia de: %.2f presenÃ§as\n", media);
+
+
 }
+*/
 
 
 void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
@@ -135,47 +207,14 @@ void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
 
         }
 
-        //foi usado ponteiros para guardar a posição don vetor
-        printf("\n\tA aula realizada à mais tempo é:\n");
+        //foi usado ponteiros para guardar a posiÃ§Ã£o don vetor
+        printf("\n\tA aula realizada Ã  mais tempo Ã©:\n");
         printf("\t%s",vAulas[*pdata1].designacao);
         printf(" com a data: %d/%d/%d\n",vAulas[*pdata1].data.dia, vAulas[*pdata1].data.mes,vAulas[*pdata1].data.ano);
 
 
     }else{
-        printf("Não existem dados referentes às Aulas Online.\n");
+        printf("NÃ£o existem dados referentes Ã s Aulas Online.\n");
     }
 */
-}
-
-void percentagemUcAulasGravadas(tipoAula vAulas[], int numTotalAulas, int quantAulasGravadas, tipoUc vetorUc[], int numTotalUc){
-/*
-    int i, conta=0;
-    float percentagem;
-
-       if(numTotalUc == 0){
-        printf("Não existem UC\n");
-    }
-    else{
-
-        for (i=0; i<numTotalUc; i++){
-            if(vetorUc[i].codigo == vAulas[i].codigo){
-
-                if (strcmp(vAulas[i].gravacao, "S") == 0){
-                    conta++;
-                    printf("\n\tOpcao garvacao-> %s de %d aulas da UC %s\n", vAulas[i].gravacao,conta,vetorUc[i].designacao);
-                }
-
-            }
-                printf("\n\tOpcao garvacao-> %s de %d aulas da UC %s\n", vAulas[i].gravacao,conta,vetorUc[i].designacao);
-                percentagem = (conta/quantAulasGravadas)*100;
-                printf("\n\tPercetagem: %.2f da UC %s\n", percentagem,vetorUc[i].designacao);
-
-        }
-    }
-
-    //percentagem = (numTotalUc/quantAulasGravadas)*100;
-
-    //printf("\n\tEm cada Aula à uma média de: %.2f presenças\n", media);
-*/
-
 }

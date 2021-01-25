@@ -1,71 +1,50 @@
 Lista Todas as Aulas: 0
 
-Lista Todas as Aulas: 3
+Lista Todas as Aulas: 2
 
-Designacao: fisica1
-Docente: Raul
-Codigo UC: 1111
+Designacao: mat
+Docente: pedro
+Codigo UC: 1234
 Data: 1	1	2019
-Hora de Inicio: 8:0
-Hora de Fim: 11:0
-
-Designacao: fisica2
-Docente: Ana
-Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 17:0
+Hora de Inicio: 19:0
 Hora de Fim: 20:0
 
-Designacao: fisica3
-Docente: Laura
-Codigo UC: 1111
-Data: 3	2	2019
-Hora de Inicio: 8:30
-Hora de Fim: 11:30
-
-Lista Todas as Aulas: 3
-
-Designacao: fisica1
-Docente: Raul
-Codigo UC: 1111
+Designacao: mat2
+Docente: ana
+Codigo UC: 1234
 Data: 1	1	2019
-Hora de Inicio: 8:0
-Hora de Fim: 11:0
+Hora de Inicio: 19:11
+Hora de Fim: 20:11
 
-Designacao: fisica2
-Docente: Ana
-Codigo UC: 1111
+Lista Todas as Aulas: 2
+
+Designacao: mat
+Docente: pedro
+Codigo UC: 1234
 Data: 1	1	2019
-Hora de Inicio: 17:0
+Hora de Inicio: 19:0
 Hora de Fim: 20:0
 
-Designacao: fisica3
-Docente: Laura
-Codigo UC: 1111
-Data: 3	2	2019
-Hora de Inicio: 8:30
-Hora de Fim: 11:30
-
-Lista Todas as Aulas: 3
-
-Designacao: fisica1
-Docente: Raul
-Codigo UC: 1111
+Designacao: mat2
+Docente: ana
+Codigo UC: 1234
 Data: 1	1	2019
-Hora de Inicio: 8:0
-Hora de Fim: 11:0
+Hora de Inicio: 19:11
+Hora de Fim: 20:11
 
-Designacao: fisica2
-Docente: Ana
-Codigo UC: 1111
+Lista Todas as Aulas: 2
+
+Designacao: mat
+Docente: pedro
+Codigo UC: 1234
 Data: 1	1	2019
-Hora de Inicio: 17:0
+Hora de Inicio: 19:0
 Hora de Fim: 20:0
 
-Designacao: fisica3
-Docente: Laura
-Codigo UC: 1111
-Data: 3	2	2019
-Hora de Inicio: 8:30
-Hora de Fim: 11:30
+Designacao: mat2
+Docente: ana
+Codigo UC: 1234
+Data: 1	1	2019
+Hora de Inicio: 19:11
+Hora de Fim: 20:11
 

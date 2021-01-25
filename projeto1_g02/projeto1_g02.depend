@@ -135,10 +135,10 @@
 1610382236 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_auxiliares.h
 	"constantes.h"
 
-1611573204 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulas.h
+1611586787 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulas.h
 	"constantes.h"
 
-1611584364 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_uc.h
+1611590474 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_uc.h
 	"constantes.h"
 
 1611534168 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estudantes.h
@@ -176,7 +176,7 @@
 	"funcoes_uc.h"
 	"funcoes_aulas.h"
 
-1611585631 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_uc.c
+1611590872 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_uc.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -185,9 +185,10 @@
 	"constantes.h"
 	"funcoes_auxiliares.h"
 	"funcoes_aulas.h"
+	"funcoes_estatistica.h"
 	"funcoes_menus.h"
 
-1611585542 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\main.c
+1611591642 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -204,9 +205,9 @@
 1611530061 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.h
 	"constantes.h"
 
-1611584955 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.h
+1611591575 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.h
 
-1611584976 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulas.c
+1611588939 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulas.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -219,12 +220,13 @@
 	"funcoes_estudantes.h"
 	"funcoes_menus.h"
 
-1611585229 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.c
+1611591634 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<locale.h>
+	<math.h>
 	"constantes.h"
 	"funcoes_auxiliares.h"
 	"funcoes_uc.h"

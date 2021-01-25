@@ -8,6 +8,7 @@
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
 #include "funcoes_aulas.h"
+#include "funcoes_estatistica.h"
 #include "funcoes_menus.h"
 
 tipoUc leDadosUc(int codigoUc){
@@ -85,7 +86,7 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n\tHoras que faltam lecionar: \t %d", vetorUc.quantidadeHoras);
     printf("\n\tAulas agendadas: \t\t %d", vetorUc.quantidadeAulasAgendadas);
     printf("\n\tAulas realizadas: \t\t %d ", vetorUc.quantAulasRealizadas);
-    printf("\n\tAulas gravadas: \t\t %d ", vetorUc.numGravacoes);
+    printf("\n\tAulas gravadas: \t\t %d \n\n", vetorUc.numGravacoes);
 }
 
 

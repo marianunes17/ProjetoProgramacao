@@ -253,12 +253,10 @@ int main(){
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos\n");
                         quantidadeAulasOnline(vAulas, numAula);
-
-
                         quantidadeAulasRealizadasUc(vetorUc,numTotalUc,quantAulasRealizadas);
-                        percentagemUcAulasGravadas(vAulas,numAula,quantAulasGravadas,vetorUc,numTotalUc);
-
                         mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
+
+                        //percentagemUcAulasGravadas(vAulas,numAula,quantAulasGravadas,vetorUc,numTotalUc);
 
                        /* printf("\n\tPercentagem de Ucs com aulas gravadas:");
 
@@ -283,19 +281,12 @@ int main(){
                         gravaAulasEstudantesBin(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
                         printf("\tAs alterações foram gravadas!");
                         break;
-
-
-
             case 'B':
-                        printf("Escolheu a opção F \n Fim do Programa");
-                        listaDadosAulasAssistidas(vAulasAssistidas, numAulasGravacoesAssistidas);
+                    printf("Escolheu a opção F \n Fim do Programa");
+                    percentagemUcAulasGravadas(vetorUc, numTotalUc, numTotalGravacoesAssistidas);
 
 
-                        quantidadeAulasOnline(vAulas, numAula);
-                        break;
-
-
-
+                    break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");
                     break;

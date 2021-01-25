@@ -4,7 +4,7 @@
 #include "constantes.h"
 
 
-void escreveDadosUc(tipoUc vetorUc[]);
+void escreveDadosUc(tipoUc vetorUc);
 tipoUc leDadosUc();
 void listaDadosUc(tipoUc vetorUc[MAX_UC], int numTotalUc);
 int procuraUc(tipoUc vetorUc[], int numTotalUc, int codigoUC);

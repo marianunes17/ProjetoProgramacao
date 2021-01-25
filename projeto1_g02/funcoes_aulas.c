@@ -562,6 +562,7 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
                     if(opGravacao == 'S'){
                         printf("\nComecou a aula de %s, esta aula vai ser gravada.",vAulas[posicao].designacao);
                         strcpy(vAulas[posicao].gravacao, "S");
+                        vetorUc[posicao].numGravacoes++;
                     }else{
                         printf("\nComecou a aula de %s, esta aula não vai ser gravada.",vAulas[posicao].designacao);
                         strcpy(vAulas[posicao].gravacao, "N");

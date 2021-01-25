@@ -1,9 +1,0 @@
-Lista Todas as Aulas: 1
-
-Designacao: fisica
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2019
-Hora de Inicio: 12:0
-Hora de Fim: 15:0
-

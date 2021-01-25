@@ -7,7 +7,7 @@
 1610380716 c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_auxiliares.h
 	"constantes.h"
 
-1611586004 c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\constantes.h
+1611601167 c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\constantes.h
 
 1611574699 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_estudantes.c
 	<string.h>
@@ -42,7 +42,7 @@
 1611595952 c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_aulas.h
 	"constantes.h"
 
-1611592084 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_uc.c
+1611601167 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_uc.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -54,7 +54,7 @@
 	"funcoes_estatistica.h"
 	"funcoes_menus.h"
 
-1611592208 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_aulas.c
+1611596065 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_aulas.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -67,7 +67,7 @@
 	"funcoes_estudantes.h"
 	"funcoes_menus.h"
 
-1611595952 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\main.c
+1611601167 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -104,9 +104,9 @@
 1611504366 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_aulasassistidas.h
 	"constantes.h"
 
-1611594763 c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_estatistica.h
+1611599393 c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_estatistica.h
 
-1611594763 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_estatistica.c
+1611601167 source:c:\mariana pastas\licenciatura ei\programacao_i\projeto_g2_programacao\projeto1_g02\funcoes_estatistica.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

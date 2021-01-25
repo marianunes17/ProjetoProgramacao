@@ -1,0 +1,52 @@
+Estudantes:3
+
+Numero Estudante: 1111
+Nome: Manuel
+Regime: d
+
+Numero Estudante: 1112
+Nome: Hugo
+Regime: d
+
+Numero Estudante: 1113
+Nome: Ana
+Regime: d
+Estudantes:3
+
+Numero Estudante: 1111
+Nome: Manuel
+Regime: d
+
+Numero Estudante: 1112
+Nome: Hugo
+Regime: d
+
+Numero Estudante: 1113
+Nome: Ana
+Regime: d
+Estudantes:3
+
+Numero Estudante: 1111
+Nome: Manuel
+Regime: d
+
+Numero Estudante: 1112
+Nome: Hugo
+Regime: d
+
+Numero Estudante: 1113
+Nome: Ana
+Regime: d
+Estudantes:3
+
+Numero Estudante: 1111
+Nome: Manuel
+Regime: d
+
+Numero Estudante: 1112
+Nome: Hugo
+Regime: d
+
+Numero Estudante: 1113
+Nome: Ana
+Regime: d

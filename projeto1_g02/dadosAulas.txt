@@ -1,0 +1,132 @@
+NumAulas: 6
+
+Designacao: Fisica aula 1
+Docente: Miguel
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+
+Designacao: Fisica aula 2
+Docente: Miguel
+Codigo UC: 1111
+Data: 3	2	2019
+Hora de Inicio: 15:30
+Hora de Fim: 16:30
+
+Designacao: Progamacao aula 1
+Docente: Rui
+Codigo UC: 1122
+Data: 3	2	2019
+Hora de Inicio: 10:0
+Hora de Fim: 11:0
+
+Designacao: Algebra aula 1
+Docente: Amelia
+Codigo UC: 1133
+Data: 5	5	2019
+Hora de Inicio: 11:30
+Hora de Fim: 12:30
+
+Designacao: Algebra aula 2
+Docente: Amelia
+Codigo UC: 1133
+Data: 6	3	2019
+Hora de Inicio: 8:30
+Hora de Fim: 9:30
+
+Designacao: Algebra aula 3
+Docente: Amelia
+Codigo UC: 1133
+Data: 4	3	2019
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+
+NumAulas: 6
+
+Designacao: Fisica aula 1
+Docente: Miguel
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+
+Designacao: Fisica aula 2
+Docente: Miguel
+Codigo UC: 1111
+Data: 3	2	2019
+Hora de Inicio: 15:30
+Hora de Fim: 16:30
+
+Designacao: Progamacao aula 1
+Docente: Rui
+Codigo UC: 1122
+Data: 3	2	2019
+Hora de Inicio: 10:0
+Hora de Fim: 11:0
+
+Designacao: Algebra aula 1
+Docente: Amelia
+Codigo UC: 1133
+Data: 5	5	2019
+Hora de Inicio: 11:30
+Hora de Fim: 12:30
+
+Designacao: Algebra aula 2
+Docente: Amelia
+Codigo UC: 1133
+Data: 6	3	2019
+Hora de Inicio: 8:30
+Hora de Fim: 9:30
+
+Designacao: Algebra aula 3
+Docente: Amelia
+Codigo UC: 1133
+Data: 4	3	2019
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+
+NumAulas: 6
+
+Designacao: Fisica aula 1
+Docente: Miguel
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+
+Designacao: Fisica aula 2
+Docente: Miguel
+Codigo UC: 1111
+Data: 3	2	2019
+Hora de Inicio: 15:30
+Hora de Fim: 16:30
+
+Designacao: Progamacao aula 1
+Docente: Rui
+Codigo UC: 1122
+Data: 3	2	2019
+Hora de Inicio: 10:0
+Hora de Fim: 11:0
+
+Designacao: Algebra aula 1
+Docente: Amelia
+Codigo UC: 1133
+Data: 5	5	2019
+Hora de Inicio: 11:30
+Hora de Fim: 12:30
+
+Designacao: Algebra aula 2
+Docente: Amelia
+Codigo UC: 1133
+Data: 6	3	2019
+Hora de Inicio: 8:30
+Hora de Fim: 9:30
+
+Designacao: Algebra aula 3
+Docente: Amelia
+Codigo UC: 1133
+Data: 4	3	2019
+Hora de Inicio: 9:30
+Hora de Fim: 10:30
+

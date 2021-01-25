@@ -1,0 +1,22 @@
+Total Acessos: 0
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravações: 0
+Total Acessos: 0
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravações: 0
+Total Acessos: 1
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravações: 1
+Numero estudante: 1112
+Designação Aula: Fisica aula 1
+
+Acesso: gravacao
+
+Total Acessos: 1
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravações: 1
+Numero estudante: 1112
+Designação Aula: Fisica aula 1
+
+Acesso: gravacao
+

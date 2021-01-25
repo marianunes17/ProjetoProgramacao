@@ -180,7 +180,7 @@ void gravarUcBinario(tipoUc vetorUc[], int *numTotalUc){
             fwrite(&(*numTotalUc),sizeof(int),1,ficheiro);
             gravarDados = fwrite(vetorUc,sizeof(tipoUc),*numTotalUc,ficheiro);
 
-            printf("\n uc escritas gravadas bin = %d \n", gravarDados);
+            //printf("\n uc escritas gravadas bin = %d \n", gravarDados);
 
             erro = fclose(ficheiro);
             if (erro != 0){

@@ -1,17 +1,139 @@
-Unidades Curriculares: 1
+Unidades Curriculares: 3
 
 Codigo: 1111
-Designacao: fisica
+Designacao: Fisica
 Tipo de Uc: s
 Tipo de Aula: t
-Semestre: 1
+Semestre: 4
 Regime: d
-Quantidade Total de Horas: 100
-Duracao de cada aula: 90
-Quantidade Media de Aulas: 100
-Quantidade total de horas: 100
+Quantidade Total de Horas: 75
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 75
+Quantidade total de horas: 73
 
-Quantidade de aulas agendadas: 
+Quantidade de aulas agendadas: 2
 Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: 
+Codigo: 1122
+Designacao: Programacao
+Tipo de Uc: s
+Tipo de Aula: tp
+Semestre: 4
+Regime: d
+Quantidade Total de Horas: 70
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 70
+Quantidade total de horas: 69
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: 
+Codigo: 1133
+Designacao: Algebra
+Tipo de Uc: n
+Tipo de Aula: t
+Semestre: 2
+Regime: d
+Quantidade Total de Horas: 70
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 70
+Quantidade total de horas: 67
+
+Quantidade de aulas agendadas: 3
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: Unidades Curriculares: 3
+
+Codigo: 1111
+Designacao: Fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 4
+Regime: d
+Quantidade Total de Horas: 75
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 75
+Quantidade total de horas: 73
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 1
+Quantidade de aulas gravadas: 1
+Quantidade de acesso à gravação: 
+Codigo: 1122
+Designacao: Programacao
+Tipo de Uc: s
+Tipo de Aula: tp
+Semestre: 4
+Regime: d
+Quantidade Total de Horas: 70
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 70
+Quantidade total de horas: 69
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: 
+Codigo: 1133
+Designacao: Algebra
+Tipo de Uc: n
+Tipo de Aula: t
+Semestre: 2
+Regime: d
+Quantidade Total de Horas: 70
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 70
+Quantidade total de horas: 67
+
+Quantidade de aulas agendadas: 2
+Quantidade de aulas realizadas: 1
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: Unidades Curriculares: 3
+
+Codigo: 1111
+Designacao: Fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 4
+Regime: d
+Quantidade Total de Horas: 75
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 75
+Quantidade total de horas: 73
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 1
+Quantidade de aulas gravadas: 1
+Quantidade de acesso à gravação: 1
+Codigo: 1122
+Designacao: Programacao
+Tipo de Uc: s
+Tipo de Aula: tp
+Semestre: 4
+Regime: d
+Quantidade Total de Horas: 70
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 70
+Quantidade total de horas: 69
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: 
+Codigo: 1133
+Designacao: Algebra
+Tipo de Uc: n
+Tipo de Aula: t
+Semestre: 2
+Regime: d
+Quantidade Total de Horas: 70
+Duracao de cada aula: 60
+Quantidade Media de Aulas: 70
+Quantidade total de horas: 67
+
+Quantidade de aulas agendadas: 2
+Quantidade de aulas realizadas: 1
 Quantidade de aulas gravadas: 
 Quantidade de acesso à gravação: 

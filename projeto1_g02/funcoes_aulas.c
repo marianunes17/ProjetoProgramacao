@@ -143,7 +143,6 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         strcpy(dados.regimeAula,regimeUc);
         dados.data = lerData();
 
-
         //calcula a hora inicio/fim consoante o regime e o tipo de aula
         if(strcmp(regimeUc, "D") == 0){
 
@@ -164,13 +163,13 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
             caclHoraTotal = (hora*60) + min; //soma a hora em mimutis com os minutos
         }
 
-        //calcula hora de FIM   <----
+        //calcula hora de FIM
         horaTotal = caclHoraTotal + duracaoUc;
         minF = horaTotal;
         calculaHora(&horaF,&minF);
         dados.horaFim = horaF;
         dados.minFim = minF;
-        // -----------------------------------
+
 
         posHora= procuraHora(vAula, *num, codigoUC, dados.data.ano, dados.data.mes, dados.data.dia, dados.hora.h, dados.hora.m );
 
@@ -180,15 +179,6 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
             printf("\n Inicio da Aula: %d:%d",hora,min);
             printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
-
-            /*horaTotal = caclHoraTotal + duracaoUc;
-
-            minF = horaTotal;
-            calculaHora(&horaF,&minF); //funcao calcula hora de FIM
-            printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
-
-            dados.horaFim = horaF;
-            dados.minFim = minF;*/
 
             quantHorasUc = (quantHorasUc*60); //passa horas para minutos
             duracaoUcRest = quantHorasUc - duracaoUc; //faz a redução
@@ -417,7 +407,7 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[], tipoUc veto
 
 
 void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc){
-    int  posAula, i, hora, min, minF, horaF=0, horaTotal, codigoUc, posUc, duracaoUc;
+    int  posAula, i, hora, min, minF, horaF=0, horaTotal, codigoUc, posUc, duracaoUc, caclHoraTotal=0, posHora;
     char opcao, regimeUc[3];
 
     if(*numAulas == 0 ){
@@ -453,44 +443,45 @@ void alteraAulas(tipoAula vAula[], int *numAulas, char designacaoAula[], tipoUc 
                             case 'H':
                                     printf("\tEscolheu a opção de Alterar Hora\n");
 
-                                     //calcula a hora inicio/fim consoante o regime e o tipo de aula
+                                    //calcula a hora inicio/fim consoante o regime e o tipo de aula
                                     if(strcmp(regimeUc, "D") == 0){
 
-                                        vAula[posAula].hora = lerHora(8,18);
+                                        printf("Insira as Horas:\n");
+                                        vAula[posAula].hora = lerHora(8,17);
                                         hora = vAula[posAula].hora.h;
                                         min = vAula[posAula].hora.m;
-                                        printf("\n Inicio da Aula: %d:%d",hora,min);
 
-                                        hora = (hora*60);  //coloca hora inicio em minutos
-                                        horaTotal = hora + min;  //soma a hora em mimutis com os minutos
-
-                                        //calculação da hora de Fim
-                                        horaTotal = horaTotal + duracaoUc;
-                                        minF = horaTotal;
-                                        calculaHora(&horaF,&minF); //funcao calcula hora de FIM
-                                        printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
-
-                                        vAula[posAula].horaFim = horaF;
-                                        vAula[posAula].minFim = minF;
+                                        caclHoraTotal = (hora*60) + min;
                                     }
                                     else{
+                                        //se for do regime Pos-laboral
 
+                                        printf("Insira as Horas:\n");
                                         vAula[posAula].hora = lerHora(18,24);
                                         hora = vAula[posAula].hora.h;
                                         min = vAula[posAula].hora.m;
+
+                                        caclHoraTotal = (hora*60) + min;
+                                    }
+
+                                    //calcula hora de FIM
+                                    horaTotal = caclHoraTotal + duracaoUc;
+                                    minF = horaTotal;
+                                    calculaHora(&horaF,&minF);
+                                    vAula[posAula].horaFim = horaF;
+                                    vAula[posAula].minFim = minF;
+
+
+                                    posHora= procuraHora(vAula, *numAulas, codigoUc, vAula[posAula].data.ano, vAula[posAula].data.mes, vAula[posAula].data.dia, vAula[posAula].hora.h, vAula[posAula].hora.m );
+
+                                    if(posHora != -1){
+                                        printf("\n\nNao e possivel marcar uma aula para esta hora, pois ja ha uma aula marcada");
+                                    } else {
+
                                         printf("\n Inicio da Aula: %d:%d",hora,min);
+                                        printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
 
-                                        hora = (hora*60);
-                                        horaTotal = hora + min;
-
-                                        //calculação da hora de Fim
-                                        horaTotal = horaTotal + duracaoUc;
-                                        minF = horaTotal;
-                                        calculaHora(&horaF,&minF); //funcao calcula hora de FIM
-                                        printf("\n Fim da Aula: %d:%d",horaF,minF);
-
-                                        vAula[posAula].horaFim = horaF;
-                                        vAula[posAula].minFim = minF;
+                                        printf("\n\nAula Alterada com sucesso!\n");
                                     }
 
                                     break;

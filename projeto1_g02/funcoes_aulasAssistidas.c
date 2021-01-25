@@ -243,7 +243,7 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoUc vetorUc
            if( (strcmp(vAulas[posicaoAula].estadoAula, "Realizada")==0) ){ //já nao é teminada
                if (strcmp(vAulas[posicaoAula].gravacao,"S") == 0) {
                     numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
-                    if(numTotalAulas==0){
+                    if(numTotalEstudantes==0){
                         printf("Não existem estudantes. \n");
                     } else {
                         posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);

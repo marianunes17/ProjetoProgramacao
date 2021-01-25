@@ -198,11 +198,20 @@ void ordenarAulasData(tipoAula vAulas[], int numTotalAulas){
 
 }
 
-
 void aulaMaisAntiga(tipoAula vAulas[], int numTotalAulas){
-    int i;
+    int i, dados=3;
+
+
 
     ordenarAulasData(vAulas, numTotalAulas);
+
+
+
+    if(numTotalAulas < 3){
+            dados=numTotalAulas;
+    }
+
+
 
     for (i=0; i<3; i++) {
         printf("\n\t\tDesignacao: %s", vAulas[i].designacao);
@@ -210,7 +219,6 @@ void aulaMaisAntiga(tipoAula vAulas[], int numTotalAulas){
         printf("\n\t\tHora: %d:%d\n", vAulas[i].hora.h, vAulas[i].hora.m);
     }
 }
-
 
 
 

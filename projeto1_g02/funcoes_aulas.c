@@ -116,9 +116,8 @@ int procuraHora(tipoAula vAula[], int numTotalAulas, int codigoUC, int ano, int 
     for (i=0; i<numTotalAulas; i++){
         if(codigoUC == vAula[i].codigo) {
             if (ano == vAula[i].data.ano && mes== vAula[i].data.mes && dia== vAula[i].data.dia){
-
-                if( (hora < vAula[i].hora.h || hora > vAula[i].horaFim) ||  (hora < vAula[i].hora.h && hora > vAula[i].horaFim)){
-                    if(minuto < vAula[i].hora.m || minuto > vAula[i].minFim){
+                if( (hora <= vAula[i].hora.h && hora >= vAula[i].horaFim) ){
+                    if(minuto <= vAula[i].hora.m && minuto >= vAula[i].minFim){
                         posicao = i;
                         i = numTotalAulas; // Quando se encontra o codigoUc iguala-se o i=numTotalUc (sair do for)
                     }
@@ -177,6 +176,16 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
             caclHoraTotal = (hora*60) + min; // soma a hora em minutos com os minutos
         }
 
+
+        // verifica se data/hora já existe
+
+        posHora= procuraHora(vAula, *num, codigoUC, dados.data.ano, dados.data.mes, dados.data.dia, dados.hora.h, dados.hora.m );
+
+        printf(" posHora1 %d", posHora);
+        if(posHora != -1){
+            printf("\n\nNão foi possível marcar uma aula para esta hora, pois já há existe uma com a mesma hora.");
+
+        } else{
         // calcula hora de FIM
         horaTotal = caclHoraTotal + duracaoUc;
         minF = horaTotal;
@@ -184,13 +193,6 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         dados.horaFim = horaF;
         dados.minFim = minF;
 
-        // verifica se data/hora já existe
-        posHora= procuraHora(vAula, *num, codigoUC, dados.data.ano, dados.data.mes, dados.data.dia, dados.hora.h, dados.hora.m );
-
-        if(posHora != -1){
-            printf("\n\nNão foi possível marcar uma aula para esta hora, pois já há existe uma com a mesma hora.");
-        }
-        else{
             printf("\n Inicio da Aula: %d:%d",hora,min);
             printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
 

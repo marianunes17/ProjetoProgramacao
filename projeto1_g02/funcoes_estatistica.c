@@ -183,6 +183,36 @@ void tipoAulasMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
 }
 
 
+void ordenarAulasData(tipoAula vAulas[], int numTotalAulas){
+    int i,j,aux;
+
+    for(i=0; i < numTotalAulas; i++) {        //Percorre vetor
+        for (j= i+1; j<numTotalAulas; j++) {
+            if( vAulas[j].data.ano < vAulas[i].data.ano ){        // para ordenacao crescente
+                aux = vAulas[j].data.ano;       // Troca valores v[i] ↔ v[j] */
+                vAulas[j].data.ano = vAulas[i].data.ano;
+                vAulas[i].data.ano = aux;
+            }
+        }
+    }
+
+}
+
+
+void aulaMaisAntiga(tipoAula vAulas[], int numTotalAulas){
+    int i;
+
+    ordenarAulasData(vAulas, numTotalAulas);
+
+    for (i=0; i<numTotalAulas; i++) {
+        printf("\n\t\tDesignacao: %s", vAulas[i].designacao);
+        printf("\n\t\tData: %d/%d/%d", vAulas[i].data.dia, vAulas[i].data.mes, vAulas[i].data.ano);
+        printf("\n\t\tHora: %d:%d\n", vAulas[i].hora.h, vAulas[i].hora.m);
+    }
+}
+
+
+
 
 //Raking:
 
@@ -219,6 +249,7 @@ void rakingUcGravacoes(tipoUc vetorUc[], int numTotalUc){
     printf("\tTotal de acesso as gravacoes: %d", contadorAcessoGravacao);
 
 }
+
 
 
 /*

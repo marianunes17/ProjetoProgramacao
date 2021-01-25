@@ -294,6 +294,10 @@ int main(){
                         gravaAulasEstudantesTxt(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
                         printf("\tAs alterações foram gravadas!");
                         break;
+            case 'B':
+                    printf("Escolheu a opção F \n Fim do Programa");
+                    aulaMaisAntiga(vAulas, numTotalAulas)
+                    break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");
                     break;

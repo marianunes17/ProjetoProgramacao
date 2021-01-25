@@ -108,7 +108,7 @@ void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssis
 
 
 void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
-
+/*
     int i,j,aux;
     int *pdata1=NULL, *pdata2=NULL;
 
@@ -138,5 +138,5 @@ void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
     }else{
         printf("Não existem dados referentes às Aulas Online.\n");
     }
-
+*/
 }

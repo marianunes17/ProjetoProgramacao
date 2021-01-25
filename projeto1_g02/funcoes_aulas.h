@@ -13,6 +13,9 @@ void escreveDadosAulas(tipoAula vAulas);
 void calculaHora(int *horaF, int *minF);
 void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas);
 
+
+int procuraHora(tipoAula vAula[], int numTotalAulas, int codigoUC, int ano, int mes, int dia, int hora, int minuto);
+
 void listaAulasAgendadas(tipoAula vAulas[], int numAulas);
 void listaAulasDecorrer(tipoAula vAulas[], int numAulas);
 void listaAulasRealizadas(tipoAula vAulas[], int numAulas);

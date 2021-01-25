@@ -189,7 +189,7 @@ int main(){
                                 case 'T':
                                         printf("Escolheu a opção de Terminar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                        terminarAula(vAulas, numAula, designacao);
+                                        terminarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
                                         lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);//actualiza contador
                                         break;
                                 case 'A':

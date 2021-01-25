@@ -25,7 +25,7 @@ void lerQuantAulasRealizadas(int *quantidade, tipoAula vAulas[], int numAulas);
 void lerQuantAulasGravadas(int *quantidade, tipoAula vAulas[], int numAulas);
 
 void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[], tipoUc vetorUc[], int numTotalUc);
-void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]);
+void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tipoUc vetorUc[], int numTotalUc);
 
 tipoAula *lerFicheiroBin(tipoAula vAulas[],int *num);
 void gravaFicheiroBin(tipoAula vAulas[],int num);

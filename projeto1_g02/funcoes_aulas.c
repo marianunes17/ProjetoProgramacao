@@ -570,7 +570,6 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
 
                     //actualiza a quantidade de aulas agendadas no vetor da UC e a quantidade de aulas realizadas
                     vetorUc[posUc].quantidadeAulasAgendadas = vetorUc[posUc].quantidadeAulasAgendadas - 1;
-                    vetorUc[posUc].quantAulasRealizadas = vetorUc[posUc].quantAulasRealizadas + 1;
                 }
 
             }else{
@@ -583,8 +582,8 @@ void comecarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tip
 
 
 
-void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
-    int posicao;
+void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],tipoUc vetorUc[],int numTotalUc){
+    int posicao,codigoUc,posUc;
     char estado;
 
     if(numTotalAulas == 0 ){
@@ -592,6 +591,9 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
 
     } else {
         posicao=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
+
+        codigoUc = vAulas[posicao].codigo;
+        posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
 
         if(posicao == -1){
             printf ("Aula nao está agendada");
@@ -615,6 +617,7 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[]){
                 else{
                     strcpy(vAulas[posicao].estadoAula, "Realizada");
                     printf("\nA aula a %s terminou\n",vAulas[posicao].designacao);
+                    vetorUc[posUc].quantAulasRealizadas = vetorUc[posUc].quantAulasRealizadas + 1;
                 }
             }
             else{

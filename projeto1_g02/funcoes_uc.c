@@ -42,6 +42,7 @@ tipoUc leDadosUc(int codigoUc){
     vetorUc.quantidadeAulasAgendadas = 0;
     vetorUc.quantAulasRealizadas = 0;
     vetorUc.numGravacoes = 0;
+    vetorUc.quantAcessosGravacoes = 0;
 
     return vetorUc;
 }
@@ -87,6 +88,7 @@ void escreveDadosUc(tipoUc vetorUc){
     printf("\n\tAulas agendadas: \t\t %d", vetorUc.quantidadeAulasAgendadas);
     printf("\n\tAulas realizadas: \t\t %d ", vetorUc.quantAulasRealizadas);
     printf("\n\tAulas gravadas: \t\t %d \n\n", vetorUc.numGravacoes);
+    printf("\n\tQuantidade de acesso à gravação: \t\t %d \n\n", vetorUc.quantAcessosGravacoes);
 }
 
 
@@ -157,6 +159,7 @@ void gravarUcTexto(tipoUc vetorUc[], int numTotalUc){
             fprintf(ficheiro, "\nQuantidade de aulas agendadas: %.d", vetorUc[i].quantidadeAulasAgendadas);
             fprintf(ficheiro, "\nQuantidade de aulas realizadas: %.d", vetorUc[i].quantAulasRealizadas);
             fprintf(ficheiro, "\nQuantidade de aulas gravadas: %.d", vetorUc[i].numGravacoes);
+            fprintf(ficheiro, "\nQuantidade de acesso à gravação: %.d", vetorUc[i].quantAcessosGravacoes);
         }
         erro = fclose(ficheiro);
         if (erro != 0){
@@ -208,6 +211,7 @@ void leFicheiroTexto(tipoUc vetorUc[], int *numTotalUc){
             fscanf(ficheiro, "%d", vetorUc[i].quantidadeAulasAgendadas);
             fscanf(ficheiro, "%d", vetorUc[i].quantAulasRealizadas);
             fscanf(ficheiro, "%d", vetorUc[i].numGravacoes);
+            fscanf(ficheiro, "%d", vetorUc[i].quantAcessosGravacoes);
             }
         erro = fclose(ficheiro);
         if (erro != 0){

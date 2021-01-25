@@ -266,7 +266,7 @@ int main(){
                         printf("\n\n\tPERCENTAGEM DE AULAS COM GRAVACAO: \n");
                         percentagemUcAulasGravadas(vetorUc, numTotalUc);
 
-                        printf("\n\tUC COM MENOR QUANTITADE DE AULAS REALIZADAS: \n");
+                        printf("\n\tUC COM MENOR QUANTIDADE DE AULAS REALIZADAS: \n");
                         UcMenorAulasRealizadas(vetorUc, numTotalUc);
 
                         printf("\n\tAULAS COM MAIOR ACESSO AS GRAVACOES: \n");
@@ -281,13 +281,11 @@ int main(){
                         gravaFicheiroBin(vAulas,numAula);
                         gravaFicheiroTextAula(vAulas,numAula);
 
-<<<<<<< Updated upstream
                         gravarUcBinario(vetorUc, &numTotalUc);
                         gravarUcTexto(vetorUc, numTotalUc);
-=======
+
                         gravarUcTexto(vetorUc, numTotalUc);
                         gravarUcBinario(vetorUc, &numTotalUc);
->>>>>>> Stashed changes
 
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
                         gravarEstudantesTexto(vEstudante, numTotalEstudantes);

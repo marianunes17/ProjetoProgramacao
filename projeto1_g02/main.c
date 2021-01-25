@@ -33,7 +33,7 @@ int main(){
     vAulas = lerFicheiroBin(vAulas, &numAula); //carrega os elementos existentes para o vetor
     leFicheiroUcBinario(vetorUc, &numTotalUc);
     leEstudantesBinario(vEstudante, &numTotalEstudantes);
-    leAulasEstudantesBin(vAulasAssistidas, &numAulasGravacoesAssistidas);
+    leAulasEstudantesBin(vAulasAssistidas, &numAulasGravacoesAssistidas, &numTotalAulasAssistidas, &numTotalGravacoesAssistidas);
 
     lerQuantAulasAgendadas(&quantAulasAgendadas,vAulas,numAula);
     lerQuantAulasRealizadas(&quantAulasRealizadas,vAulas,numAula);
@@ -61,7 +61,7 @@ int main(){
 
                         case 'E': //Eliminar UC
                                 printf("Escolheu a opção: Eliminar Unidade Curricular \n");
-                                eliminarVetorUc(vetorUc, &numTotalUc);
+                                eliminarVetorUc(vetorUc, vAulas, &numTotalUc);
                                 break;
 
                         case 'M': //Modificar UC
@@ -183,7 +183,7 @@ int main(){
                                 case 'C':
                                         printf("Escolheu a opção de Começar Aula\n");
                                         lerString("Designação da Aula: ", designacao, MAX_STRING);
-                                        comecarAula(vAulas, numAula, designacao, vetorUc, numTotalAulasAssistidas);
+                                        comecarAula(vAulas, numAula, designacao, vetorUc, numTotalUc);
                                         lerQuantAulasGravadas(&quantAulasGravadas,vAulas,numAula);
                                         break;
                                 case 'T':
@@ -196,13 +196,14 @@ int main(){
                                         printf("Escolheu a opção de Assistir à aula\n");
                                         listaAulasDecorrer(vAulas,numAula); //mostrar todas as aulas que estão a decorrer
                                         lerString("\n\n Designação da Aula que pretende assistir: ", designacao, MAX_STRING);
-                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas);
+                                        assistirAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalGravacoesAssistidas);
+                                       printf("\nnum Total AulasAssistidas: %d\n", numTotalAulasAssistidas);
                                         break;
                                 case 'G':
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalGravacoesAssistidas, &numAulasGravacoesAssistidas);
+                                        assistirGravacaoAula(vAulasAssistidas, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalAulasAssistidas);
                                         break;
                                 case 'V':
                                         break;
@@ -270,7 +271,7 @@ int main(){
                         gravaFicheiroBin(vAulas,numAula);
                         gravarUcBinario(vetorUc, &numTotalUc);
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
-                        gravaAulasEstudantesBin(vAulasAssistidas, numAulasGravacoesAssistidas);
+                        gravaAulasEstudantesBin(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
                         printf("\tAs alterações foram gravadas!");
                         break;
             case 'B':

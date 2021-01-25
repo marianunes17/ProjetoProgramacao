@@ -92,6 +92,7 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc){
 
 void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssistidas){
     int conta=0, media, i;
+    printf("\nnumTotalAulasAssistidas: %d\n", numTotalAulasAssistidas);
 
      for (i=0; i<numAulas; i++){
         if (strcmp(vAulas[i].estadoAula, "Realizada") == 0){
@@ -99,7 +100,7 @@ void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssis
         }
     }
 
-    media = numTotalAulasAssistidas/conta;
+    media = (numTotalAulasAssistidas/conta);
 
     printf("\nnumTotalAulasAssistidas: %d\n", numTotalAulasAssistidas);
     printf("conta: %d\n", conta);

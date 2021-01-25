@@ -7,6 +7,7 @@
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
+#include "funcoes_aulas.h"
 #include "funcoes_menus.h"
 
 tipoUc leDadosUc(int codigoUc){
@@ -249,24 +250,55 @@ void acrescentaUc(tipoUc vetorUc[MAX_UC], int *numTotalUc, int codigoUc){
 
 
 
-void eliminarVetorUc(tipoUc vetorUc[], int *numTotalUc){
-    int posicao, numeroUc;
+void eliminarVetorUc(tipoUc vetorUc[], tipoAula vAula[], int *numTotalUc){
+    int posicao, codigoUc;
+    char eliminacao;
 
     if(*numTotalUc == 0 ){
         printf("\tNão existem Unidades Curriculares. \n");
-    }
-    else{
-        numeroUc=lerInteiro("\tCódigo da Unidade Curricular: ", 1000,2000 );
-        posicao=procuraUc(vetorUc,*numTotalUc, numeroUc);
+    } else {
+        codigoUc=lerInteiro("\tCódigo da Unidade Curricular: ", 1000,2000 );
+        posicao=procuraUc(vetorUc,*numTotalUc, codigoUc);
         if(posicao==-1){
             printf("\tA Unidade Curricular não existe. \n");
-        }
-        else {
-            vetorUc[posicao]=vetorUc[posicao+1];
+        } else {
+            if( codigoUc == vAula->codigo){
+                if(strcmp(vAula->estadoAula, "Agendada")==0){
+                     printf("\tNão é possivel eliminar a unidade curricular de %s, uma vez que a mesma tem uma aula agendada. \n", vetorUc[posicao].designacao);
+                } else {
+                    if(strcmp(vAula->estadoAula, "A decorrer")==0){
+                         printf("\tNão é possivel eliminar a unidade curricular de %s, uma vez que a mesma tem uma aula a decorrer. \n", vetorUc[posicao].designacao);
+                    } else {
+                        if(strcmp(vAula->estadoAula, "Realizada")==0){
+                             printf("\tNão é possivel eliminar a unidade curricular de %s, uma vez que a mesma já tem aulas realizada. \n", vetorUc[posicao].designacao);
+                        }
+                    }
+                }
+
+            } else{
+                do{
+                    printf("Tem a certeza que quer eliminar a aula %s'?(S-Sim, N-Nao): ", vetorUc[posicao].designacao);
+                    scanf("%c", &eliminacao);
+                    limpaBufferStdin();
+                    eliminacao = toupper(eliminacao);
+
+                    if(eliminacao!='S' && eliminacao!='N' ){
+                        printf("Inseriu uma opcao invalida.\n");
+                    }
+
+                }while (eliminacao!='S' && eliminacao!='N');
+
+                if(eliminacao == 'S'){
+                    vetorUc[posicao]=vetorUc[posicao+1];
+
+                    (*numTotalUc)--;
+                     printf("\n\tA Unidade Curricular %s foi eliminada. \n", vetorUc[posicao].designacao);
+                } else {
+                    printf("\n\tA Unidade Curricular não %s foi eliminada. \n", vetorUc[posicao].designacao);
+                }
+            }
         }
 
-        (*numTotalUc)--;
-         printf("\n\tA Unidade Curricular foi eliminada");
     }
 }
 

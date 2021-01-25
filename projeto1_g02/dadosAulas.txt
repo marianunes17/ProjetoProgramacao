@@ -78,3 +78,83 @@ Data: 1	1	2018
 Hora de Inicio: 9:2
 Hora de Fim: 10:12
 
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 10:11
+
+Designacao: fisica1
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:2
+Hora de Fim: 10:12
+
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 10:11
+
+Designacao: fisica1
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:2
+Hora de Fim: 10:12
+
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 10:11
+
+Designacao: fisica1
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:2
+Hora de Fim: 10:12
+
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 10:11
+
+Designacao: fisica1
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:2
+Hora de Fim: 10:12
+
+Lista Todas as Aulas: 2
+
+Designacao: fisica
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 10:11
+
+Designacao: fisica1
+Docente: paulo
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:2
+Hora de Fim: 10:12
+

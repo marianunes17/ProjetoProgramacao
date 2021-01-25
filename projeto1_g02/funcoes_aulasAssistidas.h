@@ -11,13 +11,13 @@ void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAul
 void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, char designacao[], int *contadorAulas);
 int procuraEstudanteAssistir(tipoAulasAssistidas vAulasAssistidas[], char designacao[], int numeroEstudante, int numAulasGravacoesAssistidas);
 
-void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas);
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas);
+void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas, int numTotalGravacoesAssistidas);
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas);
 void listaAulasComGravacao(tipoAula vAulas[], int numAulas);
 
 
-void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas);
-void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas);
-void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas);
-void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas);
+void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalGravacoesAssistidas);
+void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas, int *numTotalAulasAssistidas, int *numTotalGravacoesAssistidas);
+void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalGravacoesAssistidas);
+void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas, int *numTotalAulasAssistidas, int *numTotalGravacoesAssistidas);
 #endif // FUNCOES_AULASASSISTIDAS_H_INCLUDED

@@ -208,20 +208,37 @@ void alterarVetorEstudante(tipoEstudante vEstudante[], int numTotalEstudantes){
 
 void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
     int posicao, numeroEstudante;
+    char eliminacao;
 
     if(*numTotalEstudantes == 0 ){
         printf("\tNão existem Unidades Curriculares. \n");
-    }
-    else{
+    } else{
         numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
         posicao=procuraEstudante(vEstudante,*numTotalEstudantes, numeroEstudante);
+
         if(posicao==-1){
             printf("\tA Unidade Curricular não existe. \n");
         } else {
-            vEstudante[posicao]=vEstudante[posicao+1];
-        }
+            do{
+                printf("Tem a certeza que quer eliminar o estudante %s, com o numero %d'?(S-Sim, N-Nao): ", vEstudante[posicao].nome, vEstudante[posicao].numeroEstudante);
+                scanf("%c", &eliminacao);
+                limpaBufferStdin();
+                eliminacao = toupper(eliminacao);
 
-        (*numTotalEstudantes)--;
-        printf("\n\tO estudante foi eliminada");
+                if(eliminacao!='S' && eliminacao!='N' ){
+                    printf("Inseriu uma opcao invalida.\n");
+                }
+
+            }while (eliminacao!='S' && eliminacao!='N');
+
+            if(eliminacao == 'S'){
+                vEstudante[posicao]=vEstudante[posicao+1];
+
+                (*numTotalEstudantes)--;
+                 printf("\n\tO estudante %s foi eliminada, com o numero %d. \n", vEstudante[posicao].nome, vEstudante[posicao].numeroEstudante);
+            } else {
+                printf("\n\tO estudante não %s foi eliminada, com o numero %d. \n", vEstudante[posicao].nome, vEstudante[posicao].numeroEstudante);
+            }
+        }
     }
 }

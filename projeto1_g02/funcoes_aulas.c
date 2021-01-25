@@ -435,7 +435,7 @@ tipoAula *eliminaAula(tipoAula vAula[], int *num, char designacao[], tipoUc veto
             printf ("Aula nao existe!");
         }
         else{
-            if(strcmp(estAula, "Agendada") == 0){
+            if(strcmp(estAula, "Agendada") == 0 ){
 
                 for(i=posAula; i<*num-1; i++){
                     vAula[i] = vAula[i+1];

@@ -72,7 +72,7 @@ void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int nu
 }
 
 
-void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas){
+void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalGravacoesAssistidas){
     FILE *ficheiro;
     int gravarDados;
     int erro;
@@ -82,6 +82,8 @@ void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAula
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
         fwrite(&numAulasGravacoesAssistidas,sizeof(int),1,ficheiro);
+        fwrite(&numTotalAulasAssistidas,sizeof(int),1,ficheiro);
+        fwrite(&numTotalGravacoesAssistidas,sizeof(int),1,ficheiro);
         gravarDados=fwrite(vAulasAssistidas,sizeof(tipoAulasAssistidas),numAulasGravacoesAssistidas,ficheiro);
 
         erro = fclose(ficheiro);
@@ -92,7 +94,7 @@ void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAula
 }
 
 
-void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas){
+void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas, int *numTotalAulasAssistidas, int *numTotalGravacoesAssistidas){
     FILE *ficheiro;
     int erro;
 
@@ -101,6 +103,8 @@ void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasG
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
         fread(&(*numAulasGravacoesAssistidas),sizeof(int),1,ficheiro);
+        fread(&(*numTotalAulasAssistidas),sizeof(int),1,ficheiro);
+        fread(&(*numTotalGravacoesAssistidas),sizeof(int),1,ficheiro);
         fread(vAulasAssistidas,sizeof(tipoAulasAssistidas),*numAulasGravacoesAssistidas,ficheiro);
 
         erro = fclose(ficheiro);
@@ -112,7 +116,7 @@ void leAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int *numAulasG
 
 
 
-void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas){
+void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalGravacoesAssistidas){
     FILE *ficheiro;
     int i, erro;
 
@@ -120,7 +124,9 @@ void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAula
     if(ficheiro==NULL){
         printf("\tErro ao abrir o ficheiro. \n");
     } else{
-         fprintf(ficheiro, "Total Numero Alunos a assistir às aulas: %d\n", numAulasGravacoesAssistidas);
+         fprintf(ficheiro, "Total Acessos: %d\n", numAulasGravacoesAssistidas);
+         fprintf(ficheiro, "Total Numero Alunos a assistir às aulas: %d\n", numTotalAulasAssistidas);
+         fprintf(ficheiro, "Total Numero Alunos a assistir às gravacoes: %d\n", numTotalGravacoesAssistidas);
 
 
         for(i=0; i<numAulasGravacoesAssistidas; i++){
@@ -136,7 +142,7 @@ void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAula
     }
 }
 
-void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas){
+void leAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int *numAulasGravacoesAssistidas, int *numTotalAulasAssistidas, int *numTotalGravacoesAssistidas){
     FILE *ficheiro;
     int i, erro;
 
@@ -171,7 +177,7 @@ int procuraEstudanteAssistir(tipoAulasAssistidas vAulasAssistidas[], char design
     return posicao;
 }
 
-void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas){
+void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalAulasAssistidas, int *numAulasGravacoesAssistidas, int numTotalGravacoesAssistidas){
    int posicaoAula, posicaoEstudante, numeroEstudante, posAssistir;
    char acesso[7];
    strcpy(acesso, "aula");
@@ -195,18 +201,19 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                      posAssistir=procuraEstudanteAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasGravacoesAssistidas);
 
                     if(posAssistir == -1){
-                        printf("\tJa está a assistir à aula de %s", designacaoAula);
-                    } else {
-
                         acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
+                        printf ("Está a assitir à aula de %s", designacaoAula);
 
                         (*numTotalAulasAssistidas)++;
 
-                        printf ("Está a assitir à aula de %s", designacaoAula);
+                        printf("numTotalAulasAssistidas %d", *numTotalAulasAssistidas);
 
-                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas);
-                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas);
+                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
 
+                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+
+                    } else {
+                         printf("\tJa está a assistir à aula de %s", designacaoAula);
                     }
                 }
             } else {
@@ -216,7 +223,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
     }
 }
 
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas){
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas){
    int posicaoAula, posicaoEstudante, numeroEstudante;
     char acesso[10];
    strcpy(acesso, "gravacao");
@@ -234,17 +241,13 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
                     posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
                     if(posicaoEstudante == -1){
-                        printf ("O numero de estudante inserido não existe");
-
-                    } else {
+                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
                         printf ("Está a assitir à gravação da aula de %s", designacaoAula);
 
-                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
-
-                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas);
-                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas);
-
                         (*numTotalGravacoesAssistidas)++;
+
+                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
+                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
                     }
                 } else{
                     printf("A aula não foi gravada");

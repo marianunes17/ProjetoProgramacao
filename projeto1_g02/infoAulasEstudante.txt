@@ -1,0 +1,8 @@
+Total Acessos: 1
+Total Numero Alunos a assistir às aulas: 1
+Total Numero Alunos a assistir às gravacoes: 0
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: aula
+

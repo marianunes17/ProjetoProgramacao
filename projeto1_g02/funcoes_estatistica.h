@@ -15,9 +15,13 @@ void UcMenorAulasRealizadas(tipoUc vetorUc[], int numTotalUc);
 void ordenaAulaTipo(tipoUc vetorUc[], int numTotalUc);
 void tipoAulasMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc);
 
+void aulaMaisAntiga(tipoAula vAulas[], int numTotalAulas);
 
 void ordenarMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc);
 void rakingUcGravacoes(tipoUc vetorUc[], int numTotalUc);
+
+
+
 
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas);
 void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasRealizadas);

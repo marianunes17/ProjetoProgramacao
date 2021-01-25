@@ -72,3 +72,39 @@ Designacao Aula: programacao
 
 Acesso: gravacao
 
+Total Acessos: 3
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravacoes: 3
+Numero estudante: 1111
+Designacao Aula: fisica
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: programacao
+
+Acesso: gravacao
+
+Total Acessos: 3
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravacoes: 3
+Numero estudante: 1111
+Designacao Aula: fisica
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: programacao
+
+Acesso: gravacao
+

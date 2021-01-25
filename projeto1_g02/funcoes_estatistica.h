@@ -7,6 +7,6 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasR
 
 void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssistidas);
 void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas);
-void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc, int numTotalGravacoesAssistidas);
+void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc);
 
 #endif // FUNCOES_ESTATISTICA_H_INCLUDED

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <locale.h>
+#include <math.h>
 
 
 #include "constantes.h"
@@ -252,25 +253,16 @@ int main(){
 
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos\n");
+
                         quantidadeAulasOnline(vAulas, numAula);
+
                         quantidadeAulasRealizadasUc(vetorUc,numTotalUc,quantAulasRealizadas);
+
                         mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
 
                         aulasRealizadasAntigas(vAulas,numAula);
 
-                        //percentagemUcAulasGravadas(vAulas,numAula,quantAulasGravadas,vetorUc,numTotalUc);
-
-                       /* printf("\n\tPercentagem de Ucs com aulas gravadas:");
-
-                        ;*/
-
-                        //printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
-
-                        //
-
-
-                       /* printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");
-                        printf("\n\tAula(s) online realizada(s) há mais tempo.: ");*/
+                        percentagemUcAulasGravadas(vetorUc, numTotalUc);
                         break;
             case 'G':
                         printf("\tEscolheu de Gravar Dados");
@@ -282,7 +274,7 @@ int main(){
                         break;
             case 'B':
                     printf("Escolheu a opção F \n Fim do Programa");
-                    percentagemUcAulasGravadas(vetorUc, numTotalUc, numTotalGravacoesAssistidas);
+                    percentagemUcAulasGravadas(vetorUc, numTotalUc);
 
 
                     break;

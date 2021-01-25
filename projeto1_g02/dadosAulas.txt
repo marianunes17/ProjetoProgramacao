@@ -48,3 +48,63 @@ Data: 1	1	2019
 Hora de Inicio: 19:11
 Hora de Fim: 20:11
 
+NumAulas: 4
+
+Designacao: mat
+Docente: pedro
+Codigo UC: 1234
+Data: 1	1	2019
+Hora de Inicio: 19:0
+Hora de Fim: 20:0
+
+Designacao: mat2
+Docente: ana
+Codigo UC: 1234
+Data: 1	1	2019
+Hora de Inicio: 19:11
+Hora de Fim: 20:11
+
+Designacao: aula1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:19
+Hora de Fim: 10:39
+
+Designacao: aula3
+Docente: sasas
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:2
+Hora de Fim: 10:22
+
+NumAulas: 4
+
+Designacao: mat
+Docente: pedro
+Codigo UC: 1234
+Data: 1	1	2019
+Hora de Inicio: 19:0
+Hora de Fim: 20:0
+
+Designacao: mat2
+Docente: ana
+Codigo UC: 1234
+Data: 1	1	2019
+Hora de Inicio: 19:11
+Hora de Fim: 20:11
+
+Designacao: aula1
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2018
+Hora de Inicio: 9:19
+Hora de Fim: 10:39
+
+Designacao: aula3
+Docente: sasas
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:2
+Hora de Fim: 10:22
+

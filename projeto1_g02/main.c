@@ -132,7 +132,7 @@ int main(){
                     // ----- PROCURAR AULA  -----
                     case 'P':
                         printf("Escolheu a opção: Procurar Aula\n");
-                        pesquisaAula(vAulas, vAulasAssistidas, numAula, numAulasGravacoesAssistidas);
+                        pesquisaAula(vAulas, vAulasAssistidas, numAula, numAulasGravacoesAssistidas,vetorUc, numTotalUc);
                         break;
 
                     // ----- AGENDAR AULA  -----

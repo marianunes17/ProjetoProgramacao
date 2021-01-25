@@ -37,38 +37,43 @@ int procuraAulaNome(tipoAula vAula[], int num, char procAula[]){
 }
 
 
-void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas){
-    int posAula;
+void pesquisaAula(tipoAula vAulas[], tipoAulasAssistidas vAulasAssistidas[], int num, int numAulasAssistidas, tipoUc vetorUc[], int numTotalUc){
+    int posAula, codigoUc, posUc;
     char designacao[20];
     int contadorAulas = 0, contadorGravacoes = 0;
 
     lerString("Designacao da Aula a procurar: ", designacao, MAX_STRING);
     posAula = procuraAulaNome(vAulas,num,designacao);
 
+    codigoUc = vAulas[posAula].codigo;
+    posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
+
     if(posAula == -1){
         printf("A Designação inserida não foi encontrada.");
     }
     else{
         // apresenta os dados da aula inserida
-        printf("\n\tDescricao: %s\n",vAulas[posAula].designacao);
-        printf("\tDocente: %s\n",vAulas[posAula].docente);
-        printf("\tHora de inicio: %d:%d\n",vAulas[posAula].hora.h,vAulas[posAula].hora.m);
-        printf("\tHora de Fim: %d:%d\n",vAulas[posAula].horaFim,vAulas[posAula].minFim);
+        printf("\n\tDescrição da UC: %s\n",vetorUc[posUc].designacao);
         printf("\tRegime: ");
-        if( (strcmp(vAulas[posAula].regimeAula, "D")==0) ){
+        if( (strcmp(vetorUc[posUc].regime, "D")==0) ){
             printf("Diurno\n");
         } else {
             printf("Pós-Laboral\n");
         }
+
+        printf("\n\tDescrição da Aula: %s\n",vAulas[posAula].designacao);
+        printf("\tDocente: %s\n",vAulas[posAula].docente);
+        printf("\tHora de inicio: %d:%d\n",vAulas[posAula].hora.h,vAulas[posAula].hora.m);
+        printf("\tHora de Fim: %d:%d\n",vAulas[posAula].horaFim,vAulas[posAula].minFim);
         printf("\tData: %d/%d/%d\n",vAulas[posAula].data.dia,vAulas[posAula].data.mes,vAulas[posAula].data.ano);
         printf("\tEstado da Aula: %s\n",vAulas[posAula].estadoAula);
 
         if((strcmp(vAulas[posAula].gravacao, "A") != 0) ){
             printf("\tGravacao: " );
             if( (strcmp(vAulas[posAula].gravacao, "S") == 0) ){
-                printf("Sim");
+                printf("Sim\n");
             } else {
-                printf("Nao");
+                printf("Nao\n");
             }
         }
 

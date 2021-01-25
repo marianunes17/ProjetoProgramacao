@@ -8,7 +8,6 @@
 #include "funcoes_auxiliares.h"
 #include "funcoes_uc.h"
 #include "funcoes_aulas.h"
-#include "funcoes_aulasAssistidas.h"
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
@@ -75,12 +74,12 @@ void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc){
         }
 
 
-        printf("\n As 3 primeiras UC com quantidade maior de aula realizadas são:\n\n");
+        printf("\n\t As 3 primeiras UC com quantidade maior de aula realizadas são:\n\n");
         for(i=0;i<3;i++){
             printf("\tA UC de %s com um total de %d \n", vetorUc[i].designacao, vetorUc[i].quantAulasRealizadas);
         }
 
-        printf("\n e as 3  UC com quantidade menor de aula realizadas são:\n\n");
+        printf("\n\t e as 3  UC com quantidade menor de aula realizadas são:\n\n");
         for(k=0;k<3;k++){
             printf("\tA UC de %s com apenas %d aula\n", vetorUc[k].designacao, vetorUc[k].quantAulasRealizadas);
         }
@@ -105,4 +104,39 @@ void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssis
     printf("\nnumTotalAulasAssistidas: %d\n", numTotalAulasAssistidas);
     printf("conta: %d\n", conta);
     printf("A media de presenças é de: %d\n", media);
+}
+
+
+void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
+
+    int i,j,aux;
+    int *pdata1=NULL, *pdata2=NULL;
+
+    if(numTotalAulas == 0){
+
+        for(i=0;i<numTotalAulas;i++){
+            for(j = i+1; j<numTotalAulas; j++){
+
+                pdata1 = &vAulas[i].data;
+                pdata2 = &vAulas[j].data;
+
+                if(pdata1 > pdata2){
+                    aux = pdata2;
+                    *pdata2 = *pdata1;
+                    *pdata1 = aux;
+                }
+            }
+
+        }
+
+        //foi usado ponteiros para guardar a posição don vetor
+        printf("\n\tA aula realizada à mais tempo é:\n");
+        printf("\t%s",vAulas[*pdata1].designacao);
+        printf(" com a data: %d/%d/%d\n",vAulas[*pdata1].data.dia, vAulas[*pdata1].data.mes,vAulas[*pdata1].data.ano);
+
+
+    }else{
+        printf("Não existem dados referentes às Aulas Online.\n");
+    }
+
 }

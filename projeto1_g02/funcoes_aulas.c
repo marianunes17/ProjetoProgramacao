@@ -603,7 +603,6 @@ void terminarAula(tipoAula vAulas[], int numTotalAulas, char designacaoAula[],ti
         }
         else{
             do{
-                printf("Quer alterar o estado da aula de 'a decorrer' para 'realizada'?(S-Sim, N-Nao): ");
                 printf("Pretende terminar a aula de %s? (S-Sim, N-Nao): ",designacaoAula);
                 scanf(" %c", &estado);
                 limpaBufferStdin();

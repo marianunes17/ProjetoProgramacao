@@ -1,3 +1,20 @@
+Estudantes:0
+Estudantes:0
+Estudantes:1
+
+Numero Estudante: 1111
+Nome: ana
+Regime: d
+Estudantes:1
+
+Numero Estudante: 1111
+Nome: ana
+Regime: d
+Estudantes:1
+
+Numero Estudante: 1111
+Nome: ana
+Regime: d
 Estudantes:1
 
 Numero Estudante: 1111

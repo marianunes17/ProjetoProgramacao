@@ -228,7 +228,8 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
     }
 }
 
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], tipoUc vetorUc[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalUc){
+
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoUc vetorUc[], tipoAula vAulas[], tipoEstudante vEstudante[],  int numTotalEstudantes,  int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int *numTotalAulasAssistidas, int numTotalUc){
    int posicaoAula, posicaoEstudante, numeroEstudante, codigoUc, posUc;
     char acesso[10];
    strcpy(acesso, "gravacao");
@@ -253,18 +254,20 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
 
                             (*numTotalGravacoesAssistidas)++;
 
-                            gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
-                            gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
+
+                            gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
+                            gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
 
 
                             codigoUc = vAulas[posicaoAula].codigo;
                             posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
 
                             vetorUc[posUc].quantAcessosGravacoes = vetorUc[posUc].quantAcessosGravacoes + 1;
+
+
                             printf("vetorUc[posUc].quantAcessosGravacoes %d", vetorUc[posUc].quantAcessosGravacoes);
 
                             printf ("Está a assitir à gravação da aula de %s", designacaoAula);
-
                         }
                     }
                 } else{

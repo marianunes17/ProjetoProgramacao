@@ -204,7 +204,7 @@ int main(){
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vAulasAssistidas, vetorUc, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalUc);
+                                        assistirGravacaoAula(vAulasAssistidas, vetorUc, vAulas, vEstudante, numTotalEstudantes, numAula, designacao, &numTotalGravacoesAssistidas, &numAulasGravacoesAssistidas, &numTotalAulasAssistidas, numTotalUc);
                                         break;
                                 case 'V':
                                         break;
@@ -249,8 +249,8 @@ int main(){
                         }while(subMenuEstudante!='V');
 
                         break;
-            case 'R':   printf("Escolheu a opção Raking");
-                        void rakingUcGravacoes(tipoUc vetorUc[], int numTotalUc);
+            case 'R':   printf("Escolheu a opção Raking: \n");
+                        rakingUcGravacoes(vetorUc, numTotalUc);
 
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos\n");
@@ -279,17 +279,18 @@ int main(){
             case 'G':
                         printf("\tEscolheu de Gravar Dados");
                         gravaFicheiroBin(vAulas,numAula);
+                        gravaFicheiroTextAula(vAulas,numAula);
+
                         gravarUcBinario(vetorUc, &numTotalUc);
+                        gravarUcTexto(vetorUc, numTotalUc);
+
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
+                        gravarEstudantesTexto(vEstudante, numTotalEstudantes);
+
                         gravaAulasEstudantesBin(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+                        gravaAulasEstudantesTxt(vAulasAssistidas, numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalGravacoesAssistidas);
                         printf("\tAs alterações foram gravadas!");
                         break;
-            case 'B':
-                    printf("Escolheu a opção F \n Fim do Programa");
-                    percentagemUcAulasGravadas(vetorUc, numTotalUc);
-
-
-                    break;
             case 'F':
                     printf("Escolheu a opção F \n Fim do Programa");
                     break;

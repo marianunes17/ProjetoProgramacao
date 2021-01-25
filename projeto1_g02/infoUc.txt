@@ -1,0 +1,96 @@
+Unidades Curriculares: 1
+
+Codigo: 1111
+Designacao: fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 1
+Regime: d
+Quantidade Total de Horas: 100
+Duracao de cada aula: 180
+Quantidade Media de Aulas: 33
+Quantidade total de horas: 100
+
+Quantidade de aulas agendadas: 
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: Unidades Curriculares: 1
+
+Codigo: 1111
+Designacao: fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 1
+Regime: d
+Quantidade Total de Horas: 100
+Duracao de cada aula: 180
+Quantidade Media de Aulas: 33
+Quantidade total de horas: 97
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: Unidades Curriculares: 1
+
+Codigo: 1111
+Designacao: fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 1
+Regime: d
+Quantidade Total de Horas: 100
+Duracao de cada aula: 180
+Quantidade Media de Aulas: 33
+Quantidade total de horas: 97
+
+Quantidade de aulas agendadas: 1
+Quantidade de aulas realizadas: 
+Quantidade de aulas gravadas: 
+Quantidade de acesso à gravação: Unidades Curriculares: 1
+
+Codigo: 1111
+Designacao: fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 1
+Regime: d
+Quantidade Total de Horas: 100
+Duracao de cada aula: 180
+Quantidade Media de Aulas: 33
+Quantidade total de horas: 97
+
+Quantidade de aulas agendadas: 
+Quantidade de aulas realizadas: 1
+Quantidade de aulas gravadas: 1
+Quantidade de acesso à gravação: 1Unidades Curriculares: 2
+
+Codigo: 1111
+Designacao: fisica
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 1
+Regime: d
+Quantidade Total de Horas: 100
+Duracao de cada aula: 180
+Quantidade Media de Aulas: 33
+Quantidade total de horas: 97
+
+Quantidade de aulas agendadas: 
+Quantidade de aulas realizadas: 1
+Quantidade de aulas gravadas: 1
+Quantidade de acesso à gravação: 2
+Codigo: 1000
+Designacao: programacao
+Tipo de Uc: s
+Tipo de Aula: t
+Semestre: 1
+Regime: d
+Quantidade Total de Horas: 80
+Duracao de cada aula: 120
+Quantidade Media de Aulas: 40
+Quantidade total de horas: 78
+
+Quantidade de aulas agendadas: 
+Quantidade de aulas realizadas: 1
+Quantidade de aulas gravadas: 1
+Quantidade de acesso à gravação: 1

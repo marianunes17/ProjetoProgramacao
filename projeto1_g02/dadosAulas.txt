@@ -1,27 +1,90 @@
-NumAulas: 1
+NumAulas: 0
 
-Designacao: fisica1
-Docente: raul
-Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:12
-Hora de Fim: 12:12
+NumAulas: 0
 
 NumAulas: 1
 
-Designacao: fisica1
+Designacao: fisica
 Docente: raul
 Codigo UC: 1111
-Data: 1	1	2018
-Hora de Inicio: 9:12
-Hora de Fim: 12:12
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
 
 NumAulas: 1
 
-Designacao: fisica1
+Designacao: fisica
 Docente: raul
 Codigo UC: 1111
-Data: 1	1	2018
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+NumAulas: 1
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+NumAulas: 1
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+NumAulas: 1
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+NumAulas: 1
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+NumAulas: 2
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+Designacao: programacao
+Docente: pedro
+Codigo UC: 1000
+Data: 1	1	2019
 Hora de Inicio: 9:12
-Hora de Fim: 12:12
+Hora de Fim: 11:12
+
+NumAulas: 2
+
+Designacao: fisica
+Docente: raul
+Codigo UC: 1111
+Data: 1	1	2019
+Hora de Inicio: 9:1
+Hora de Fim: 12:1
+
+Designacao: programacao
+Docente: pedro
+Codigo UC: 1000
+Data: 1	1	2019
+Hora de Inicio: 9:12
+Hora de Fim: 11:12
 

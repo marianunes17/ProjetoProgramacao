@@ -167,7 +167,7 @@ void ordenarMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
 
     for(i=0; i < numTotalUc-1; i++) {        //Percorre vetor
         for (j= i+1; j<numTotalUc; j++) {
-            if( vetorUc[j].quantAcessosGravacoes < vetorUc[i].quantAcessosGravacoes ){        // para ordenacao crescente
+            if( vetorUc[j].quantAcessosGravacoes > vetorUc[i].quantAcessosGravacoes ){        // para ordenacao decrescente
                 aux = vetorUc[j].quantAcessosGravacoes;       // Troca valores v[i] ↔ v[j] */
                 vetorUc[j].quantAcessosGravacoes = vetorUc[i].quantAcessosGravacoes;
                 vetorUc[i].quantAcessosGravacoes = aux;

@@ -63,7 +63,6 @@ typedef struct{
     int numeroEstudante;
     char nome[MAX_STRING];
     char regime[MAX_STRING];
-    tipoAulasAssistidas aulas;
 } tipoEstudante;
 
 

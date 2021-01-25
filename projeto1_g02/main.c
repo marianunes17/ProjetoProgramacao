@@ -262,13 +262,14 @@ int main(){
                         mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
 
 
-                        printf("\n\tUC COM MENOR QUANTITADE DE AULAS ONLINE : \n");
+                        printf("\n\n\tPERCENTAGEM DE AULAS COM GRAVACAO: \n");
+                        percentagemUcAulasGravadas(vetorUc, numTotalUc);
+
+                        printf("\n\tUC COM MENOR QUANTITADE DE AULAS REALIZADAS: \n");
                         UcMenosAulasOnline(vetorUc, numTotalUc);
 
                         aulasRealizadasAntigas(vAulas,numAula);
 
-                        printf("\n\n\tPERCENTAGEM DE AULAS COM GRAVACAO: \n");
-                        percentagemUcAulasGravadas(vetorUc, numTotalUc);
                         break;
             case 'G':
                         printf("\tEscolheu de Gravar Dados");

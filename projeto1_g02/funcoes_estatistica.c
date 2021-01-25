@@ -11,6 +11,11 @@
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
 
+
+void quantAcessosGravacoes(){
+
+}
+
 /*
 void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas){
     int contador=0, maior=0, conta=0;
@@ -168,7 +173,7 @@ void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc){
     }
     percentagemTotal = ((float)((totalGravacoes/ 100) * (aulasRealizadas)));
 
-    printf("\n\n\t\tPercentagem de UCs com aulas realizadas %.2f\n\n", percentagemTotal);
+    printf("\n\n\t\tPercentagem de UCs com aulas gravadas %.2f\n\n", percentagemTotal);
 
 }
 

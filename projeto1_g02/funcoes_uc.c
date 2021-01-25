@@ -292,7 +292,7 @@ void eliminarVetorUc(tipoUc vetorUc[], tipoAula vAula[], int *numTotalUc){
                     vetorUc[posicao]=vetorUc[posicao+1];
 
                     (*numTotalUc)--;
-                     printf("\n\tA Unidade Curricular %s foi eliminada. \n", vetorUc[posicao].designacao);
+                     printf("\n\tA Unidade Curricular foi eliminada. \n");
                 } else {
                     printf("\n\tA Unidade Curricular não %s foi eliminada. \n", vetorUc[posicao].designacao);
                 }

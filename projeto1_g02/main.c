@@ -258,10 +258,7 @@ int main(){
 
                         printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");*/
 
-                        printf("\n\tUC(s) com a maior/menor quantidade de aulas online realizadas: ");
-
-                        quantidadeAulasRealizadasUc(vetorUc,numTotalUc);
-                        aulasRealizadasAntigas(vAulas,numAula);
+                        printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
 
                         //quantidadeAulasOnline(vAulas, numAula);
 

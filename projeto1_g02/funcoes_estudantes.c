@@ -235,7 +235,7 @@ void eliminarEstudante(tipoEstudante vEstudante[], int *numTotalEstudantes){
                 vEstudante[posicao]=vEstudante[posicao+1];
 
                 (*numTotalEstudantes)--;
-                 printf("\n\tO estudante %s foi eliminada, com o numero %d. \n", vEstudante[posicao].nome, vEstudante[posicao].numeroEstudante);
+                 printf("\n\tO estudante foi eliminada, com o numero. \n");
             } else {
                 printf("\n\tO estudante não %s foi eliminada, com o numero %d. \n", vEstudante[posicao].nome, vEstudante[posicao].numeroEstudante);
             }

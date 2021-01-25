@@ -81,11 +81,11 @@ void escreveDadosUc(tipoUc vetorUc){
 
     printf("\n\tTotal de horas prevista: \t %d", vetorUc.quantidadeTotalHoras);
     printf("\n\tDuração de cada aula(em minutos):%d", vetorUc.duracao);
-    printf("\n\tMédia de aulas prevista: \t %d\n", vetorUc.quantidadeAulas);
-    printf("\n\tQuantidade de horas que faltam lecionar: \t %d", vetorUc.quantidadeHoras);
-    printf("\n\tAulas agendadas: %d \n", vetorUc.quantidadeAulasAgendadas);
-    printf("\n\tAulas realizadas: %d \n", vetorUc.quantAulasRealizadas);
-    printf("\n\tAulas gravadas: %d \n", vetorUc.numGravacoes);
+    printf("\n\tMédia de aulas prevista: \t %d", vetorUc.quantidadeAulas);
+    printf("\n\tHoras que faltam lecionar: \t %d", vetorUc.quantidadeHoras);
+    printf("\n\tAulas agendadas: \t\t %d", vetorUc.quantidadeAulasAgendadas);
+    printf("\n\tAulas realizadas: \t\t %d ", vetorUc.quantAulasRealizadas);
+    printf("\n\tAulas gravadas: \t\t %d ", vetorUc.numGravacoes);
 }
 
 

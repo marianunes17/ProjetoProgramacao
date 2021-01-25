@@ -1,0 +1,13 @@
+Estudantes:3
+
+Numero Estudante: 1111
+Nome: Raquel
+Regime: d
+
+Numero Estudante: 1234
+Nome: Joao
+Regime: pl
+
+Numero Estudante: 1000
+Nome: Antonio
+Regime: d

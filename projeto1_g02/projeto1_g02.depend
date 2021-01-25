@@ -119,7 +119,7 @@
 	"funcoes_estudantes.h"
 	"funcoes_menus.h"
 
-1611530806 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.c
+1611603628 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -190,7 +190,7 @@
 	"funcoes_estatistica.h"
 	"funcoes_menus.h"
 
-1611598864 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\main.c
+1611603640 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -205,10 +205,10 @@
 	"funcoes_estatistica.h"
 	"funcoes_menus.h"
 
-1611530061 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.h
+1611603615 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulasassistidas.h
 	"constantes.h"
 
-1611597519 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.h
+1611603262 c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.h
 
 1611596674 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_aulas.c
 	<string.h>
@@ -223,7 +223,7 @@
 	"funcoes_estudantes.h"
 	"funcoes_menus.h"
 
-1611599766 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.c
+1611604026 source:c:\users\maria\desktop\programação i\projetoprogramacao\projeto1_g02\funcoes_estatistica.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

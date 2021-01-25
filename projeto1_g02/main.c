@@ -281,8 +281,13 @@ int main(){
                         gravaFicheiroBin(vAulas,numAula);
                         gravaFicheiroTextAula(vAulas,numAula);
 
+<<<<<<< Updated upstream
                         gravarUcBinario(vetorUc, &numTotalUc);
                         gravarUcTexto(vetorUc, numTotalUc);
+=======
+                        gravarUcTexto(vetorUc, numTotalUc);
+                        gravarUcBinario(vetorUc, &numTotalUc);
+>>>>>>> Stashed changes
 
                         gravarEstudantesBinario(vEstudante, numTotalEstudantes);
                         gravarEstudantesTexto(vEstudante, numTotalEstudantes);

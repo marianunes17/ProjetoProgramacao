@@ -145,17 +145,17 @@ void ordenaPosAulasRealizadas(tipoUc vetorUc[], int numTotalUc){
 
 
 void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc){
-    int i, dados=3;
+    int i;
     float gravacoes=0, aulasRealizadas=0, percentagemTotal=0,totalGravacoes=0;
     float conta=0;
 
     ordenaPosUcGravacao(vetorUc, numTotalUc);
 
     for (i=0; i<numTotalUc; i++) {
-        printf("\t\tCodigo %d", vetorUc[i].codigo);
-        printf("\n\t\tDesignacao %s", vetorUc[i].designacao);
-        printf("\n\t\tAulas Realizadas %d", vetorUc[i].quantAulasRealizadas);
-        printf("\n\t\tAulas gravadas %d", vetorUc[i].numGravacoes);
+        printf("\t\tCodigo: %d", vetorUc[i].codigo);
+        printf("\n\t\tDesignacao: %s", vetorUc[i].designacao);
+        printf("\n\t\tAulas Realizadas: %d", vetorUc[i].quantAulasRealizadas);
+        printf("\n\t\tAulas gravadas: %d", vetorUc[i].numGravacoes);
 
 
         gravacoes = vetorUc[i].numGravacoes;
@@ -170,8 +170,28 @@ void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc){
 
     printf("\n\n\t\tPercentagem de UCs com aulas realizadas %.2f\n\n", percentagemTotal);
 
+}
 
-    printf("\n\tUC COM MENOR QUANTITADE DE AULAS ONLINE : \n");
+void ordenaAulaTipo(tipoUc vetorUc[], int numTotalUc){
+    int i, j, troca=1;
+    char aux[50];
+
+    for(i=0; i <numTotalUc-1 && troca!=0; i++){
+        troca=0;
+        for (j= 0; j < numTotalUc-i-1; j++){
+            if(strcmp(vetorUc[j+1].tipoAula ,vetorUc[j].tipoAula ) < 0){ /* > para decrescente */
+                troca=1; /* se elemento seguinte inferior */
+                strcpy(aux,vetorUc[j].tipoAula ); /* efetua a troca */
+                strcpy(vetorUc[j].tipoAula ,vetorUc[j+1].tipoAula );
+                strcpy(vetorUc[j+1].tipoAula ,aux);
+            }
+        }
+    }
+}
+
+void UcMenosAulasOnline(tipoUc vetorUc[], int numTotalUc){
+    int i, dados=3, contadorT=0, contadorP=0, contadorTP=0;
+
     ordenaPosAulasRealizadas(vetorUc, numTotalUc);
 
     if(numTotalUc == 0){
@@ -181,12 +201,39 @@ void percentagemUcAulasGravadas(tipoUc vetorUc[], int numTotalUc){
             dados=numTotalUc;
         }
          for (i=0; i<dados; i++) {
-            printf("\t\tCodigo %d", vetorUc[i].codigo);
-            printf("\n\t\tDesignacao %s", vetorUc[i].designacao);
-            printf("\n\t\tAulas Realizadas %d\n\n", vetorUc[i].quantAulasRealizadas);
+            printf("\t\tCodigo: %d", vetorUc[i].codigo);
+            printf("\n\t\tDesignacao: %s", vetorUc[i].designacao);
+            printf("\n\t\tTipo de Aula: ");
+                if( (strcmp(vetorUc[i].tipoAula, "T")==0) || (strcmp(vetorUc[i].tipoAula, "t")==0) ){
+                    printf("Teorico");
+                } else {
+                    if( (strcmp(vetorUc[i].tipoAula, "P")==0) || (strcmp(vetorUc[i].tipoAula, "p")==0) ){
+                        printf("Prático");
+                    } else{
+                        if( (strcmp(vetorUc[i].tipoAula, "TP")==0) || (strcmp(vetorUc[i].tipoAula, "tp")==0) ) {
+                        printf("Prático Laboratorial");
+                        }
+                    }
+                }
+            printf("\n\t\tAulas Realizadas: %d\n\n", vetorUc[i].quantAulasRealizadas);
+        }
+
+        ordenaAulaTipo(vetorUc, numTotalUc);
+        printf("\t\tO tipo de aula com maior quantidade de acessos e o:" );
+        if( (strcmp(vetorUc->tipoAula, "T")==0) || (strcmp(vetorUc->tipoAula, "t")==0) ){
+            printf("teorico");
+        } else {
+            if( (strcmp(vetorUc->tipoAula, "P")==0) || (strcmp(vetorUc->tipoAula, "p")==0) ){
+                printf("prático");
+            } else{
+                if( (strcmp(vetorUc->tipoAula, "TP")==0) || (strcmp(vetorUc->tipoAula, "tp")==0) ) {
+                printf("prático laboratorial");
+                }
+            }
         }
     }
 }
+
 
 
 

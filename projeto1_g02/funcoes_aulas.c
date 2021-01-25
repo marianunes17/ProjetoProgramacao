@@ -104,6 +104,7 @@ int procuraHora(tipoAula vAula[], int numTotalAulas, int codigoUC, int ano, int 
     for (i=0; i<numTotalAulas; i++){
         if(codigoUC == vAula[i].codigo) {
             if (ano == vAula[i].data.ano && mes== vAula[i].data.mes && dia== vAula[i].data.dia){
+
                 if( (hora < vAula[i].hora.h || hora > vAula[i].horaFim) ||  (hora < vAula[i].hora.h && hora > vAula[i].horaFim)){
                     if(minuto < vAula[i].hora.m || minuto > vAula[i].minFim){
                         posicao = i;
@@ -120,8 +121,8 @@ int procuraHora(tipoAula vAula[], int numTotalAulas, int codigoUC, int ano, int 
 tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0, posHora;
+    int i, horaTotalvetor=0,codigoUC, contaA=0, caclHoraTotal=0;
     char regimeUc[3];
-    int i, horaTotalvetor=0, numAgendas=0, dataInserida, dataVetor, codigoUC, contaA=0, caclHoraTotal=0;
     pAula = vAula;
 
     strcpy(regimeUc,vetorUc[posUc].regime);
@@ -129,6 +130,7 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
 
     duracaoUc = vetorUc[posUc].duracao;
     quantHorasUc = vetorUc[posUc].quantidadeHoras;
+    codigoUC = vetorUc[posUc].codigo;
 
     dados = lerDadosAula();
     posAula = procuraAulaNome(vAula,*num,dados.designacao);
@@ -141,49 +143,52 @@ tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc
         strcpy(dados.regimeAula,regimeUc);
         dados.data = lerData();
 
-        dataInserida = (dados.data.ano*10000)+(dados.data.mes*100)+dados.data.dia;
-
 
         //calcula a hora inicio/fim consoante o regime e o tipo de aula
         if(strcmp(regimeUc, "D") == 0){
 
-            numAgendas = vetorUc[posUc].quantidadeAulasAgendadas;
-            codigoUC = vetorUc[posUc].codigo;
-
-            printf("\n -- Aula - else - sem agendadas hora -- \n"); //confimacao
-
+            printf("Insira as Horas:\n");
             dados.hora = lerHora(8,17);
             hora = dados.hora.h;
             min = dados.hora.m;
-            printf("\n Inicio da Aula: %d:%d",hora,min);
 
             caclHoraTotal = (hora*60) + min; //soma a hora em mimutis com os minutos
 
-        } else { // --- se for do regime Pos-laboral ---
+        }else {
+            // --- se for do regime Pos-laboral ---
             printf("Insira as Horas:\n");
             dados.hora = lerHora(18,24);
             hora = dados.hora.h;
             min = dados.hora.m;
-            printf("\n Inicio da Aula: %d:%d",hora,min);
 
             caclHoraTotal = (hora*60) + min; //soma a hora em mimutis com os minutos
         }
 
+        //calcula hora de FIM   <----
+        horaTotal = caclHoraTotal + duracaoUc;
+        minF = horaTotal;
+        calculaHora(&horaF,&minF);
+        dados.horaFim = horaF;
+        dados.minFim = minF;
+        // -----------------------------------
+
         posHora= procuraHora(vAula, *num, codigoUC, dados.data.ano, dados.data.mes, dados.data.dia, dados.hora.h, dados.hora.m );
 
-        if(posHora!= -1){
+        if(posHora != -1){
             printf("\n\nNao e possivel marcar uma aula para esta hora, pois ja ha uma aula marcada");
         } else {
 
-            horaTotal = caclHoraTotal + duracaoUc;
+            printf("\n Inicio da Aula: %d:%d",hora,min);
+            printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
+
+            /*horaTotal = caclHoraTotal + duracaoUc;
 
             minF = horaTotal;
             calculaHora(&horaF,&minF); //funcao calcula hora de FIM
             printf("\n Fim da Aula: %d:%d\n\n",horaF,minF);
 
-
             dados.horaFim = horaF;
-            dados.minFim = minF;
+            dados.minFim = minF;*/
 
             quantHorasUc = (quantHorasUc*60); //passa horas para minutos
             duracaoUcRest = quantHorasUc - duracaoUc; //faz a redução

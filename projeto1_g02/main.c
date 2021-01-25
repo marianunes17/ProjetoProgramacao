@@ -258,9 +258,12 @@ int main(){
 
                         printf("\n\tUC(s) com a menor quantidade de aulas online realizadas: ");*/
 
-                        printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
+                        //printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
 
                         //quantidadeAulasOnline(vAulas, numAula);
+                        quantidadeAulasRealizadasUc(vetorUc,numTotalUc);
+                        percentagemUcAulasGravadas(vAulas,numAula,quantAulasGravadas,vetorUc,numTotalUc);
+
 
 
                        /* printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");

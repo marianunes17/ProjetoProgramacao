@@ -25,7 +25,7 @@ tipoAulasAssistidas leDadosAulaAssistidas(int numeroEstudante, char designacao[]
 
 void escreveDadosAulasAssistidas(tipoAulasAssistidas vAulasAssistidas){
     printf("\n\tNumero de Estudante: %d", vAulasAssistidas.numEstudante );
-    printf("\n\tDesignacao da Aula: %s", vAulasAssistidas.designacaoAula);
+    printf("\n\tDesignação da Aula: %s", vAulasAssistidas.designacaoAula);
     printf("\n\tTipo de acesso: %s\n", vAulasAssistidas.tipoAcesso);
 }
 
@@ -55,7 +55,7 @@ void procuraAulaAssistidaAula(tipoAulasAssistidas vAulasAssistidas[], int numAul
         if(strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0 && strcmp(vAulasAssistidas[i].tipoAcesso, "aula") == 0){
             (*contadorAulas)++;
 
-            printf("\t\t %d\n", vAulasAssistidas[i].numEstudante);
+            //printf("\t\t %d\n", vAulasAssistidas[i].numEstudante);
         }
     }
 }
@@ -67,7 +67,7 @@ void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int nu
     for (i=0; i<=numAulasGravacoesAssistidas; i++){
         if (strcmp(vAulasAssistidas[i].designacaoAula, designacao) == 0 && strcmp(vAulasAssistidas[i].tipoAcesso, "gravacao") == 0){
             (*contadorGravacoes)++;
-            printf("\t\t %d\n", vAulasAssistidas[i].numEstudante);
+            //printf("\t\t %d\n", vAulasAssistidas[i].numEstudante);
         }
     }
 }
@@ -75,7 +75,6 @@ void procuraAulaAssistidaGravacao(tipoAulasAssistidas vAulasAssistidas[], int nu
 
 void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalGravacoesAssistidas){
     FILE *ficheiro;
-    int gravarDados;
     int erro;
 
     ficheiro=fopen("infoAulasEstudante.dat", "wb");
@@ -85,7 +84,7 @@ void gravaAulasEstudantesBin(tipoAulasAssistidas vAulasAssistidas[], int numAula
         fwrite(&numAulasGravacoesAssistidas,sizeof(int),1,ficheiro);
         fwrite(&numTotalAulasAssistidas,sizeof(int),1,ficheiro);
         fwrite(&numTotalGravacoesAssistidas,sizeof(int),1,ficheiro);
-        gravarDados=fwrite(vAulasAssistidas,sizeof(tipoAulasAssistidas),numAulasGravacoesAssistidas,ficheiro);
+        fwrite(vAulasAssistidas,sizeof(tipoAulasAssistidas),numAulasGravacoesAssistidas,ficheiro);
 
         erro = fclose(ficheiro);
         if (erro != 0){
@@ -127,12 +126,12 @@ void gravaAulasEstudantesTxt(tipoAulasAssistidas vAulasAssistidas[], int numAula
     } else{
          fprintf(ficheiro, "Total Acessos: %d\n", numAulasGravacoesAssistidas);
          fprintf(ficheiro, "Total Numero Alunos a assistir às aulas: %d\n", numTotalAulasAssistidas);
-         fprintf(ficheiro, "Total Numero Alunos a assistir às gravacoes: %d\n", numTotalGravacoesAssistidas);
+         fprintf(ficheiro, "Total Numero Alunos a assistir às gravações: %d\n", numTotalGravacoesAssistidas);
 
 
         for(i=0; i<numAulasGravacoesAssistidas; i++){
             fprintf(ficheiro, "Numero estudante: %d\n", vAulasAssistidas[i].numEstudante);
-            fprintf(ficheiro, "Designacao Aula: %s\n\n", vAulasAssistidas[i].designacaoAula);
+            fprintf(ficheiro, "Designação Aula: %s\n\n", vAulasAssistidas[i].designacaoAula);
             fprintf(ficheiro, "Acesso: %s\n\n", vAulasAssistidas[i].tipoAcesso);
         }
 
@@ -184,11 +183,11 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
    strcpy(acesso, "aula");
 
     if(numTotalAulas == 0 ){
-        printf("Não existem Aulas. \n");
+        printf("Não existem dados referentes às Aulas Online. \n");
     } else {
         posicaoAula=procuraAulaNome(vAulas, numTotalAulas,  designacaoAula);
         if(posicaoAula == -1){
-            printf ("A designação da aula não existe");
+            printf ("A Designação da aula inserida não foi encontrada.");
         } else {
             if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
                 numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
@@ -199,7 +198,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                     posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
                     if(posicaoEstudante == -1){
-                        printf ("O numero de estudante inserido não existe");
+                        printf ("O numero de estudante inserido não foi encontrada.");
 
                     } else {
                          posAssistir=procuraEstudanteAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasGravacoesAssistidas);
@@ -210,7 +209,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
 
                             (*numTotalAulasAssistidas)++;
 
-                            printf("numTotalAulasAssistidas %d", *numTotalAulasAssistidas);
+                            printf("\nNumTotalAulasAssistidas %d", *numTotalAulasAssistidas);
 
                             gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
 
@@ -222,7 +221,7 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
                     }
                 }
             } else {
-                printf("A aula não esta a decorrer");
+                printf("\nA Aula não se encontra a decorrer.");
             }
         }
     }
@@ -235,11 +234,11 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoUc vetorUc
    strcpy(acesso, "gravacao");
 
     if(numTotalAulas == 0 ){
-        printf("Não existem Aulas. \n");
+        printf("Não existem dados referentes às Aulas Online. \n");
     } else {
         posicaoAula=procuraAulaNome(vAulas, numTotalAulas, designacaoAula);
         if(posicaoAula == -1){
-            printf ("A designação da aula não existe");
+            printf ("A Designação da aula inserida não foi encontrada.");
         } else {
            if( (strcmp(vAulas[posicaoAula].estadoAula, "Realizada")==0) ){ //já nao é teminada
                if (strcmp(vAulas[posicaoAula].gravacao,"S") == 0) {
@@ -264,17 +263,14 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoUc vetorUc
 
                             vetorUc[posUc].quantAcessosGravacoes = vetorUc[posUc].quantAcessosGravacoes + 1;
 
-
-                            printf("vetorUc[posUc].quantAcessosGravacoes %d", vetorUc[posUc].quantAcessosGravacoes);
-
-                            printf ("Está a assitir à gravação da aula de %s", designacaoAula);
+                            printf ("EEstá a assistir à gravação da aula com a designação %s", designacaoAula);
                         }
                     }
                 } else{
-                    printf("A aula não foi gravada");
+                    printf("A aula selecionada não foi gravada.");
                 }
             } else {
-                printf("A aula não esta terminada");
+                printf("A aula selecionada não se encontra terminada.");
             }
         }
     }

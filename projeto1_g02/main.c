@@ -295,12 +295,12 @@ int main(){
                         printf("\tAs alterações foram gravadas!");
                         break;
             case 'B':
-                    printf("Escolheu a opção F \n Fim do Programa");
-                    aulaMaisAntiga(vAulas, numTotalAulas)
-                    break;
+                        printf("Escolheu a opção F \n Fim do Programa");
+                        aulaMaisAntiga(vAulas, numAula);
+                        break;
             case 'F':
-                    printf("Escolheu a opção F \n Fim do Programa");
-                    break;
+                        printf("Escolheu a opção F \n Fim do Programa");
+                        break;
             default:
                 printf("\nOpcao invalida");
        }

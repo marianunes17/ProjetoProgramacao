@@ -8,6 +8,7 @@
 #include "funcoes_aulas.h"
 #include "funcoes_auxiliares.h"
 #include "funcoes_estudantes.h"
+#include "funcoes_estatistica.h"
 #include "funcoes_menus.h"
 #include "funcoes_uc.h"
 
@@ -192,28 +193,32 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
             if(strcmp(vAulas[posicaoAula].estadoAula, "A decorrer")==0){
                 numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
 
-                posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
-
-                if(posicaoEstudante == -1){
-                    printf ("O numero de estudante inserido não existe");
-
+                if(numTotalAulas==0){
+                    printf("Não existem estudantes. \n");
                 } else {
-                     posAssistir=procuraEstudanteAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasGravacoesAssistidas);
+                    posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
-                    if(posAssistir == -1){
-                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
-                        printf ("Está a assitir à aula de %s", designacaoAula);
-
-                        (*numTotalAulasAssistidas)++;
-
-                        printf("numTotalAulasAssistidas %d", *numTotalAulasAssistidas);
-
-                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
-
-                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+                    if(posicaoEstudante == -1){
+                        printf ("O numero de estudante inserido não existe");
 
                     } else {
-                         printf("\tJa está a assistir à aula de %s", designacaoAula);
+                         posAssistir=procuraEstudanteAssistir(vAulasAssistidas, designacaoAula, numeroEstudante, *numAulasGravacoesAssistidas);
+
+                        if(posAssistir == -1){
+                            acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
+                            printf ("Está a assitir à aula de %s", designacaoAula);
+
+                            (*numTotalAulasAssistidas)++;
+
+                            printf("numTotalAulasAssistidas %d", *numTotalAulasAssistidas);
+
+                            gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+
+                            gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, *numTotalAulasAssistidas, numTotalGravacoesAssistidas);
+
+                        } else {
+                             printf("\tJa está a assistir à aula de %s", designacaoAula);
+                        }
                     }
                 }
             } else {
@@ -223,8 +228,8 @@ void assistirAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudan
     }
 }
 
-void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], tipoUc vetorUc[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas){
-   int posicaoAula, posicaoEstudante, numeroEstudante;
+void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante vEstudante[], tipoUc vetorUc[], int numTotalEstudantes, tipoAula vAulas[], int numTotalAulas, char designacaoAula[], int *numTotalGravacoesAssistidas, int *numAulasGravacoesAssistidas, int numTotalAulasAssistidas, int numTotalUc){
+   int posicaoAula, posicaoEstudante, numeroEstudante, codigoUc, posUc;
     char acesso[10];
    strcpy(acesso, "gravacao");
 
@@ -238,18 +243,29 @@ void assistirGravacaoAula(tipoAulasAssistidas vAulasAssistidas[], tipoEstudante 
            if( (strcmp(vAulas[posicaoAula].estadoAula, "Realizada")==0) ){ //já nao é teminada
                if (strcmp(vAulas[posicaoAula].gravacao,"S") == 0) {
                     numeroEstudante=lerInteiro("\tNumero de Estudante: ",1000,2000);
-                    posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
+                    if(numTotalAulas==0){
+                        printf("Não existem estudantes. \n");
+                    } else {
+                        posicaoEstudante = procuraEstudante(vEstudante, numTotalEstudantes, numeroEstudante);
 
-                    if(posicaoEstudante == -1){
-                        acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
-                        printf ("Está a assitir à gravação da aula de %s", designacaoAula);
+                        if(posicaoEstudante != -1){
+                            acrescentaAulaAssistida(vAulasAssistidas, numeroEstudante, designacaoAula, acesso, &(*numAulasGravacoesAssistidas));
 
-                        (*numTotalGravacoesAssistidas)++;
+                            (*numTotalGravacoesAssistidas)++;
 
-                        gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
-                        gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
+                            gravaAulasEstudantesTxt(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
+                            gravaAulasEstudantesBin(vAulasAssistidas, *numAulasGravacoesAssistidas, numTotalAulasAssistidas, *numTotalGravacoesAssistidas);
 
-                        vetorUc[posicaoAula].quantAcessosGravacoes = vetorUc[posicaoAula].quantAcessosGravacoes + 1;
+
+                            codigoUc = vAulas[posicaoAula].codigo;
+                            posUc = procuraUc(vetorUc, numTotalUc, codigoUc);
+
+                            vetorUc[posUc].quantAcessosGravacoes = vetorUc[posUc].quantAcessosGravacoes + 1;
+                            printf("vetorUc[posUc].quantAcessosGravacoes %d", vetorUc[posUc].quantAcessosGravacoes);
+
+                            printf ("Está a assitir à gravação da aula de %s", designacaoAula);
+
+                        }
                     }
                 } else{
                     printf("A aula não foi gravada");

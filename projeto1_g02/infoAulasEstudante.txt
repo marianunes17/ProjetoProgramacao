@@ -1,39 +1,123 @@
 Total Acessos: 1
-Total Numero Alunos a assistir às aulas: 1
-Total Numero Alunos a assistir às gravacoes: 0
+Total Numero Alunos a assistir às aulas: 0
+Total Numero Alunos a assistir às gravacoes: 1
 Numero estudante: 1111
-Designacao Aula: programacao2
+Designacao Aula: fisica1
 
-Acesso: aula
+Acesso: gravacao
 
 Total Acessos: 2
 Total Numero Alunos a assistir às aulas: 1
 Total Numero Alunos a assistir às gravacoes: 2
 Numero estudante: 1111
-Designacao Aula: programacao2
+Designacao Aula: fisica1
 
-Acesso: aula
+Acesso: gravacao
 
-Numero estudante: 1234
-Designacao Aula: programacao1
+Numero estudante: 1111
+Designacao Aula: fisica1
 
 Acesso: gravacao
 
 Total Acessos: 3
-Total Numero Alunos a assistir às aulas: 2
-Total Numero Alunos a assistir às gravacoes: 3
+Total Numero Alunos a assistir às aulas: 1
+Total Numero Alunos a assistir às gravacoes: 2
 Numero estudante: 1111
-Designacao Aula: programacao2
-
-Acesso: aula
-
-Numero estudante: 1234
-Designacao Aula: programacao1
+Designacao Aula: fisica1
 
 Acesso: gravacao
 
-Numero estudante: 1234
-Designacao Aula: programacao1
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Total Acessos: 4
+Total Numero Alunos a assistir às aulas: 2
+Total Numero Alunos a assistir às gravacoes: 3
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Total Acessos: 5
+Total Numero Alunos a assistir às aulas: 2
+Total Numero Alunos a assistir às gravacoes: 3
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Total Acessos: 6
+Total Numero Alunos a assistir às aulas: 2
+Total Numero Alunos a assistir às gravacoes: 3
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
+
+Acesso: gravacao
+
+Numero estudante: 1111
+Designacao Aula: fisica1
 
 Acesso: gravacao
 

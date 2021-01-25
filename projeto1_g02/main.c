@@ -250,6 +250,7 @@ int main(){
 
                         break;
             case 'R':   printf("Escolheu a opção Raking");
+                        void rakingUcGravacoes(tipoUc vetorUc[], int numTotalUc);
 
                         break;
             case 'D':   printf("\nEscolheu a opção Dados Estatisticos\n");
@@ -269,7 +270,7 @@ int main(){
                         UcMenorAulasRealizadas(vetorUc, numTotalUc);
 
                         printf("\n\tAULAS COM MAIOR ACESSO AS GRAVACOES: \n");
-                        aulasMaiorAcessoGravacoes(vetorUc, numTotalUc);
+                        tipoAulasMaiorAcessoGravacoes(vetorUc, numTotalUc);
 
                         printf("\n\tAULAS REALIZADAS À MAIS TEMPO: \n");
                         aulasRealizadasAntigas(vAulas,numAula);

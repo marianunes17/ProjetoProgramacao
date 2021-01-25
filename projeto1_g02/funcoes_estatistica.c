@@ -6,6 +6,7 @@
 
 #include "constantes.h"
 #include "funcoes_auxiliares.h"
+#include "funcoes_aulasAssistidas.h"
 #include "funcoes_uc.h"
 #include "funcoes_aulas.h"
 #include "funcoes_estudantes.h"
@@ -31,7 +32,7 @@ void mediaPresencasAulas(tipoAula vAulas[], int numAulas, int numTotalAulasAssis
         }
 
         media = ((float)(numTotalAulasAssistidas / contador));
-        printf("\n\nA media de presenças de presenças nas aulas é de: %.2f % \n", media);
+        printf("\t\tA media de presenças de presenças nas aulas é de: %.2f % \n", media);
     }
 }
 
@@ -127,21 +128,6 @@ void UcMenorAulasRealizadas(tipoUc vetorUc[], int numTotalUc){
 }
 
 
-void ordenarMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
-    int i, j, aux;  //j elementos a comparar
-
-    for(i=0; i < numTotalUc-1; i++) {        //Percorre vetor
-        for (j= i+1; j<numTotalUc; j++) {
-            if( vetorUc[j].quantAcessosGravacoes < vetorUc[i].quantAcessosGravacoes ){        // para ordenacao crescente
-                aux = vetorUc[j].quantAcessosGravacoes;       // Troca valores v[i] ↔ v[j] */
-                vetorUc[j].quantAcessosGravacoes = vetorUc[i].quantAcessosGravacoes;
-                vetorUc[i].quantAcessosGravacoes = aux;
-            }
-        }
-    }
-}
-
-
 void ordenaAulaTipo(tipoUc vetorUc[], int numTotalUc){
     int i, j, troca=1;
     char aux[50];
@@ -160,7 +146,38 @@ void ordenaAulaTipo(tipoUc vetorUc[], int numTotalUc){
 }
 
 
-void aulasMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
+void tipoAulasMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
+    ordenaAulaTipo(vetorUc, numTotalUc);
+    printf("\n\t\tO tipo de aula com maior quantidade de acessos e o:" );
+    if( (strcmp(vetorUc->tipoAula, "T")==0) || (strcmp(vetorUc->tipoAula, "t")==0) ){
+        printf("teorico");
+    } else {
+        if( (strcmp(vetorUc->tipoAula, "P")==0) || (strcmp(vetorUc->tipoAula, "p")==0) ){
+            printf("prático");
+        } else{
+            if( (strcmp(vetorUc->tipoAula, "TP")==0) || (strcmp(vetorUc->tipoAula, "tp")==0) ) {
+            printf("prático laboratorial");
+            }
+        }
+    }
+}
+
+void ordenarMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
+    int i, j, aux;  //j elementos a comparar
+
+    for(i=0; i < numTotalUc-1; i++) {        //Percorre vetor
+        for (j= i+1; j<numTotalUc; j++) {
+            if( vetorUc[j].quantAcessosGravacoes < vetorUc[i].quantAcessosGravacoes ){        // para ordenacao crescente
+                aux = vetorUc[j].quantAcessosGravacoes;       // Troca valores v[i] ↔ v[j] */
+                vetorUc[j].quantAcessosGravacoes = vetorUc[i].quantAcessosGravacoes;
+                vetorUc[i].quantAcessosGravacoes = aux;
+            }
+        }
+    }
+}
+
+
+void rakingUcGravacoes(tipoUc vetorUc[], int numTotalUc){
     int i;
 
     ordenarMaiorAcessoGravacoes(vetorUc, numTotalUc);
@@ -170,21 +187,6 @@ void aulasMaiorAcessoGravacoes(tipoUc vetorUc[], int numTotalUc){
         printf("\n\t\tTipo Aula: %s", vetorUc[i].tipoAula);
         printf("\n\t\tAcesso a  gravacao: %d \n\n", vetorUc[i].quantAcessosGravacoes);
     }
-
-
-        ordenaAulaTipo(vetorUc, numTotalUc);
-        printf("\n\t\tO tipo de aula com maior quantidade de acessos e o:" );
-        if( (strcmp(vetorUc->tipoAula, "T")==0) || (strcmp(vetorUc->tipoAula, "t")==0) ){
-            printf("teorico");
-        } else {
-            if( (strcmp(vetorUc->tipoAula, "P")==0) || (strcmp(vetorUc->tipoAula, "p")==0) ){
-                printf("prático");
-            } else{
-                if( (strcmp(vetorUc->tipoAula, "TP")==0) || (strcmp(vetorUc->tipoAula, "tp")==0) ) {
-                printf("prático laboratorial");
-                }
-            }
-        }
 }
 
 

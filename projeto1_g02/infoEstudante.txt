@@ -1,30 +1,5 @@
-Estudantes:2
-
-Numero Estudante: 1000
-Nome: Ana
-Regime: d
-
-Numero Estudante: 1122
-Nome: Ricardo
-Regime: d
-Estudantes:5
-
-Numero Estudante: 1000
-Nome: Ana
-Regime: d
-
-Numero Estudante: 0
-Nome: ^
-Regime: 
-
-Numero Estudante: 1234
-Nome: Catarina
-Regime: d
+Estudantes:1
 
 Numero Estudante: 1111
-Nome: Jose
-Regime: d
-
-Numero Estudante: 1122
-Nome: Laura
+Nome: ana
 Regime: d

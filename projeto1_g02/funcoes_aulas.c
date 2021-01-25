@@ -5,11 +5,12 @@
 #include <locale.h>
 
 #include "constantes.h"
-#include "funcoes_auxiliares.h"
-#include "funcoes_uc.h"
 #include "funcoes_aulasAssistidas.h"
+#include "funcoes_auxiliares.h"
+#include "funcoes_estatistica.h"
 #include "funcoes_estudantes.h"
 #include "funcoes_menus.h"
+#include "funcoes_uc.h"
 
 
 tipoAula lerDadosAula(){

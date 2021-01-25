@@ -251,7 +251,7 @@ int main(){
             case 'R':   printf("Escolheu a opção Raking");
 
                         break;
-            case 'D':   printf("\nEscolheu a opção Dados Estatisticos");
+            case 'D':   printf("\nEscolheu a opção Dados Estatisticos\n");
                         mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
 
                        /* printf("\n\tPercentagem de Ucs com aulas gravadas:");
@@ -261,7 +261,7 @@ int main(){
                         //printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
 
                         //quantidadeAulasOnline(vAulas, numAula);
-                        quantidadeAulasRealizadasUc(vetorUc,numTotalUc);
+                        quantidadeAulasRealizadasUc(vetorUc,numTotalUc,quantAulasRealizadas);
                         percentagemUcAulasGravadas(vAulas,numAula,quantAulasGravadas,vetorUc,numTotalUc);
 
 

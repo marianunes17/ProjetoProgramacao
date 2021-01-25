@@ -41,51 +41,56 @@ void quantidadeAulasOnline(tipoAula vAulas[], int numTotalAulas){
     }
 }
 
-void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc){
+void quantidadeAulasRealizadasUc(tipoUc vetorUc[],int numTotalUc,int quantAulasRealizadas){
 
-    int i,j,k,n,aux,aux2;
+   int i,j,k,n,aux,aux2, numTotalUc2;
+    numTotalUc2 = numTotalUc;
 
     if(numTotalUc == 0){
-        printf("Não existem dados referentes às Unidades Curriculares.\n");
+        printf("\tNão existem dados referentes às Unidades Curriculares.\n");
     }
     else{
-        //calcula o maior
-        for(i=0;i<numTotalUc;i++){
-            for(j = i+1; j<numTotalUc; j++){
-                if(vetorUc[i].quantAulasRealizadas < vetorUc[j].quantAulasRealizadas){
-                    aux = vetorUc[j].quantAulasRealizadas;
-                    vetorUc[j].quantAulasRealizadas = vetorUc[i].quantAulasRealizadas;
-                    vetorUc[i].quantAulasRealizadas = aux;
+        if(quantAulasRealizadas < 3){
+            printf("\tNão tem dados suficientes para efetuar a quantidade maior e menor de aulas realizadas.\n");
+            printf("\tPrecisa de, no mínimo, ter 3 aulas realizadas.\n");
+        }
+        else{
+
+            //calcula o maior
+            for(i=0;i<numTotalUc-1;i++){
+                for(j=i+1;j<numTotalUc; j++){
+                    if(vetorUc[i].quantAulasRealizadas < vetorUc[j].quantAulasRealizadas){
+                        aux = vetorUc[j].quantAulasRealizadas;
+                        vetorUc[j].quantAulasRealizadas = vetorUc[i].quantAulasRealizadas;
+                        vetorUc[i].quantAulasRealizadas = aux;
+                    }
                 }
+            }
+
+            printf("\n\tAs primeiras UCs com maior quantidade de aulas realizadas são:\n\n");
+            for(i=0;i<3;i++){
+                printf("\tA UC de %s com um total de %d aula(s).\n", vetorUc[i].designacao, vetorUc[i].quantAulasRealizadas);
+            }
+
+            //calcula o menor
+            for(k=0;k<numTotalUc2-1;k++){
+                for(n=k+1; n<numTotalUc2; n++){
+                    if(vetorUc[k].quantAulasRealizadas > vetorUc[n].quantAulasRealizadas){
+                        aux2 = vetorUc[n].quantAulasRealizadas;
+                        vetorUc[n].quantAulasRealizadas = vetorUc[k].quantAulasRealizadas;
+                        vetorUc[k].quantAulasRealizadas = aux2;
+                    }
+                }
+            }
+
+            printf("\n\tAs primeiras UCs com menor quantidade de aulas realizadas são:\n\n");
+            for(k=0;k<3;k++){
+                printf("\tA UC de %s com apenas %d aula(s).\n", vetorUc[k].designacao, vetorUc[k].quantAulasRealizadas);
             }
 
         }
 
-        //calcula o menor
-        for(k=0;k<numTotalUc;k++){
-            for(n = k+1; n<numTotalUc; n++){
-                if(vetorUc[k].quantAulasRealizadas > vetorUc[n].quantAulasRealizadas){
-                    aux2 = vetorUc[n].quantAulasRealizadas;
-                    vetorUc[n].quantAulasRealizadas = vetorUc[k].quantAulasRealizadas;
-                    vetorUc[k].quantAulasRealizadas = aux2;
-                }
-            }
-
-        }
-
-
-        printf("\n\t As 3 primeiras UC com quantidade maior de aula realizadas são:\n\n");
-        for(i=0;i<3;i++){
-            printf("\tA UC de %s com um total de %d \n", vetorUc[i].designacao, vetorUc[i].quantAulasRealizadas);
-        }
-
-        printf("\n\t e as 3  UC com quantidade menor de aula realizadas são:\n\n");
-        for(k=0;k<3;k++){
-            printf("\tA UC de %s com apenas %d aula\n", vetorUc[k].designacao, vetorUc[k].quantAulasRealizadas);
-        }
     }
-
-
 }
 
 

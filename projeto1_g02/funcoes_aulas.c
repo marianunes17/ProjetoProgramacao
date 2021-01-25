@@ -104,8 +104,8 @@ int procuraHora(tipoAula vAula[], int numTotalAulas, int codigoUC, int ano, int 
     for (i=0; i<numTotalAulas; i++){
         if(codigoUC == vAula[i].codigo) {
             if (ano == vAula[i].data.ano && mes== vAula[i].data.mes && dia== vAula[i].data.dia){
-                if(hora > vAula[i].hora.h || hora < vAula[i].horaFim){
-                    if(minuto > vAula[i].hora.m || minuto < vAula[i].minFim){
+                if( (hora < vAula[i].hora.h || hora > vAula[i].horaFim) ){
+                    if(minuto <= vAula[i].hora.m || minuto > vAula[i].minFim){
                         posicao = i;
                         i = numTotalAulas; //Quando se encontra o codigoUc iguala-se o i=numTotalUc para sair do for
                     }

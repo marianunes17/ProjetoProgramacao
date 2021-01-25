@@ -204,7 +204,7 @@ int main(){
                                         printf("Escolheu a opção de Ver Gravações\n");
                                         listaAulasComGravacao(vAulas,numAula); //mostrar todas as aulas que estão realizadas
                                         lerString("\n\n Designação da Aula da qual pretende ver a gravação: ", designacao, MAX_STRING);
-                                        assistirGravacaoAula(vAulasAssistidas, vetorUc, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalAulasAssistidas);
+                                        assistirGravacaoAula(vAulasAssistidas, vetorUc, vEstudante, numTotalEstudantes, vAulas, numAula, designacao, &numTotalAulasAssistidas, &numAulasGravacoesAssistidas, numTotalAulasAssistidas, numTotalUc);
                                         break;
                                 case 'V':
                                         break;

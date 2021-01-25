@@ -256,6 +256,8 @@ int main(){
                         quantidadeAulasRealizadasUc(vetorUc,numTotalUc,quantAulasRealizadas);
                         mediaPresencasAulas(vAulas, numAula, numTotalAulasAssistidas);
 
+                        aulasRealizadasAntigas(vAulas,numAula);
+
                         //percentagemUcAulasGravadas(vAulas,numAula,quantAulasGravadas,vetorUc,numTotalUc);
 
                        /* printf("\n\tPercentagem de Ucs com aulas gravadas:");
@@ -265,9 +267,6 @@ int main(){
                         //printf("\n\tUC(s) com a maior quantidade de aulas online realizadas: ");
 
                         //
-
-
-
 
 
                        /* printf("\n\tTipo de aula com a maior quantidade de acessos às gravações: ");

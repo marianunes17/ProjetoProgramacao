@@ -186,14 +186,17 @@ void percentagemUcAulasGravadas(tipoAula vAulas[], int numTotalAulas, int quantA
 
 
 void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
-/*
+
     int i,j,aux;
     int *pdata1=NULL, *pdata2=NULL;
 
     if(numTotalAulas == 0){
+        printf("Não existem dados referentes às Aulas Online.\n");
+    }
+    else{
 
         for(i=0;i<numTotalAulas;i++){
-            for(j = i+1; j<numTotalAulas; j++){
+            for(j=i+1; j<numTotalAulas; j++){
 
                 pdata1 = &vAulas[i].data;
                 pdata2 = &vAulas[j].data;
@@ -209,12 +212,9 @@ void aulasRealizadasAntigas(tipoAula vAulas[], int numTotalAulas){
 
         //foi usado ponteiros para guardar a posição don vetor
         printf("\n\tA aula realizada à mais tempo é:\n");
-        printf("\t%s",vAulas[*pdata1].designacao);
+        printf("\tA aula de %s",vAulas[*pdata1].designacao);
         printf(" com a data: %d/%d/%d\n",vAulas[*pdata1].data.dia, vAulas[*pdata1].data.mes,vAulas[*pdata1].data.ano);
 
-
-    }else{
-        printf("Não existem dados referentes às Aulas Online.\n");
     }
-*/
+
 }

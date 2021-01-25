@@ -127,7 +127,7 @@ int procuraHora(tipoAula vAula[], int numTotalAulas, int codigoUC, int ano, int 
 tipoAula *acrescentaAula(tipoAula vAula[], int *num, tipoUc vetorUc[], int posUc){
     tipoAula *pAula, dados;
     int posAula, hora, min, horaTotal, duracaoUc=0, horaF=0, minF, quantHorasUc=0, duracaoUcRest=0, posHora;
-    int i, horaTotalvetor=0,codigoUC, contaA=0, caclHoraTotal=0;
+    int codigoUC, caclHoraTotal=0;
     char regimeUc[3];
     pAula = vAula;
 
